@@ -36,6 +36,9 @@ function changeColor(){
 }
 
 function changeBgColor(color){
-  var p = document.querySelectorAll("p")
-  p.style.backgroundColor = color;
+  var p = document.querySelectorAll("p");
+  for(var i = 0; i<= p.length; i++){
+   p[i].backgroundColor = color
+  }
+  
 }
