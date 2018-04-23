@@ -5,6 +5,7 @@ function changeFontSize(x) {
   }
   return parseInt(x)
 }
+//console.log(changeFontSize("20px"))
 
 function increaseFontSize(paragraph) {
   var call = document.getElementById(paragraph).style.fontSize;
@@ -15,6 +16,7 @@ function increaseFontSize(paragraph) {
   }
   return size
 }
+//console.log(increaseFontSize("p1"))
 
 function decreaseFontSize(paragraph) {
   var call = document.getElementById(paragraph).style.fontSize;
@@ -25,6 +27,7 @@ function decreaseFontSize(paragraph) {
   }
   return size
 }
+//console.log(decreaseFontSize("p1"))
 
 function changeColor(){
   var p1 = document.getElementById("p1");
@@ -34,11 +37,16 @@ function changeColor(){
   p2.style.color = "yellow";
   p3.style.color = "red";
 }
+//console.log(changeColor("p1")
 
 function changeBgColor(color){
-  var p = document.querySelectorAll("p");
-  for(var i = 0; i<= p.length; i++){
-   p[i].backgroundColor = color
-  }
-  
+  document.body.style.backgroundColor = color;
 }
+//console.log(changeBgColor("red"))
+
+function copyContent(){
+  var p1 = document.getElementById("p1");
+  var p2 = document.getElementById("p2");
+  p1.innerHTML = p2.innerHTML
+}
+//console.log(copyContent())
