@@ -1,0 +1,10 @@
+.wrap   {
+margin: auto;
+max-width: 1200px;
+text-align: center;
+font-size: 2em;
+}
+h1{
+  text-align: center;
+  margin-bottom: 3%;
+}
