@@ -4,9 +4,10 @@ function getid(bt) {
 }
 function transform(input) {
     x += input.value;
-    getid("input").value = x
+
+    return getid("input").value = x
 }
-function result(input) {
+function result() {
     if (getid("input").value != "") {
         x = eval(getid("input").value)
         return getid("input").value = x
@@ -17,9 +18,12 @@ function result(input) {
 function square() {
     if (getid("input").value != "") {
         x = getid("input").value * getid("input").value
+        return getid("input").value = x
     }
-    else reset()
-    return getid("input").value = x
+
+   else getid("input").value = ""
+
+    
 }
 function factorial() {
     if (getid("input").value != "") {
@@ -36,8 +40,8 @@ function factorial() {
 }
 
 function squareroot() {
-    if (getid("input").value != "" && getid("input").value >=0) {
-    x = Math.sqrt(getid("input").value)
+    if (getid("input").value != "") {
+        x = Math.sqrt(getid("input").value)
     }
     else reset()
     return getid("input").value = x;
@@ -50,8 +54,8 @@ function reset() {
     return getid("input").value = x;
 }
 
-function deleted(){
+function deleted() {
     x = getid("input").value;
-    var x = x.slice(0,getid("input").value.length-1);
-    return getid("input").value=x
+    x = x.slice(0, -1);
+    return getid("input").value = x
 }

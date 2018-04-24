@@ -1,10 +1,141 @@
-.wrap   {
-margin: auto;
-max-width: 1200px;
-text-align: center;
-font-size: 2em;
+h1 {
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size: px;
+  padding: 80px 50px;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
 }
-h1{
+h1.shadow {
+  color: #e0dfdc;
+  background-color: #333;
+  letter-spacing: .1em;
+  text-shadow: 0 -1px 0 #fff, 0 1px 0 #2a2a2a, 0 2px 0 #2a2a2a, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+
+html {
+  background-color: #333333
+}
+.wrap {
+  margin: auto;
+  text-align: center;
+  font-size: 2em;
+}
+
+h1 {
   text-align: center;
   margin-bottom: 3%;
+  color: aquamarine
+}
+
+#input {
+  font-size: 23px;
+  width: 21.5%;
+  height: 5%;
+  margin: 0% 0% 0.3% 0.6%;
+  border: solid 2px #848484;
+
+}
+
+#row1 input {
+  font-size: 25px;
+  width: 5%;
+  height: 5%;
+  background-color: #D2D2D2;
+  color: #333;
+  margin-bottom: 0.3%;
+  
+}
+
+#row1 #reset {
+  color: #fff;
+  background-color: rgb(224, 0, 0)
+}
+
+#row2 input {
+  font-size: 25px;
+  width: 5%;
+  height: 5%;
+  background-color: #D2D2D2;
+  color: #333;
+  margin-bottom: 0.3%;
+}
+#row2 #multiplication{
+  padding: 0% 0% 0% 0%
+}
+
+#row3 #deleted {
+  background-color: #D2D2D2;
+}
+
+#row3 input {
+  font-size: 25px;
+  width: 5%;
+  height: 5%;
+  background-color: #F2F2F2;
+  color: #333;
+  margin-bottom: 0.3%
+}
+
+#row4 {
+  margin: 0% 5.55% 0% 0%;
+}
+
+#row4 input {
+  font-size: 25px;
+  width: 5.3%;
+  height: 5%;
+  background-color: #F2F2F2;
+  color: #333;
+  margin-bottom: 0.3%
+}
+
+#row5 {
+  margin: 0% 5.55% 0% 0%;
+}
+
+#row5 input {
+  font-size: 25px;
+  width: 5.3%;
+  height: 5%;
+  background-color: #F2F2F2;
+  color: #333;
+  margin-bottom: 0.3%
+}
+
+#row6 {
+  margin: 0% 5.65% 0% 0%;
+}
+
+#row6 input {
+  font-size: 25px;
+  width: 5.3%;
+  height: 5%;
+  background-color: #D2D2D2;
+  color: #333;
+}
+
+#row6 #bt0 {
+  width: 11.3%;
+  height: 5%;
+  background-color: #F2F2F2;
+  padding: 0% 5.7% 0% 0%;
+}
+
+#row6 #dot {
+  width: 5.27%;
+  height: 5%;
+}
+
+#box #row6 #result {
+  width: 4.98%;
+  height: 96%;
+  position: absolute;
+  bottom: 0%;
+  right: 39.1%;
+}
+
+#box {
+  position: relative;
 }
