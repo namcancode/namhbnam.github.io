@@ -11,17 +11,17 @@ function result(input) {
         x = eval(getid("input").value)
         return getid("input").value = x
     }
-    else reset()
+    else getid("input").value = ""
 
 }
-function square(input) {
+function square() {
     if (getid("input").value != "") {
         x = getid("input").value * getid("input").value
     }
     else reset()
     return getid("input").value = x
 }
-function factorial(input) {
+function factorial() {
     if (getid("input").value != "") {
         var rs = 1
         x = getid("input").value
@@ -32,11 +32,11 @@ function factorial(input) {
         }
         return getid("input").value = rs
     }
-    else reset()
+    else getid("input").value = ""
 }
 
 function squareroot() {
-    if (getid("input").value != "") {
+    if (getid("input").value != "" && getid("input").value >=0) {
     x = Math.sqrt(getid("input").value)
     }
     else reset()
@@ -48,4 +48,10 @@ function squareroot() {
 function reset() {
     x = ""
     return getid("input").value = x;
+}
+
+function deleted(){
+    x = getid("input").value;
+    var x = x.slice(0,getid("input").value.length-1);
+    return getid("input").value=x
 }
