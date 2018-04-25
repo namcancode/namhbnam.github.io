@@ -31,9 +31,9 @@ h1 {
 
 #input {
   font-size: 23px;
-  width: 21.5%;
+  width: 21%;
   height: 5%;
-  margin: 0% 0% 0.3% 0.6%;
+  margin: 0% 0% 0.3% 0.47%;
   border: solid 2px #848484;
 
 }
@@ -42,7 +42,7 @@ h1 {
   font-size: 25px;
   width: 5%;
   height: 5%;
-  background-color: #D2D2D2;
+  background-color: #D3D3D3;
   color: #333;
   margin-bottom: 0.3%;
   
@@ -57,7 +57,7 @@ h1 {
   font-size: 25px;
   width: 5%;
   height: 5%;
-  background-color: #D2D2D2;
+  background-color: #D3D3D3;
   color: #333;
   margin-bottom: 0.3%;
 }
@@ -66,7 +66,7 @@ h1 {
 }
 
 #row3 #deleted {
-  background-color: #D2D2D2;
+  background-color: #D3D3D3;
 }
 
 #row3 input {
@@ -79,7 +79,7 @@ h1 {
 }
 
 #row4 {
-  margin: 0% 5.55% 0% 0%;
+  margin: 0% 5.4% 0% 0%;
 }
 
 #row4 input {
@@ -92,7 +92,7 @@ h1 {
 }
 
 #row5 {
-  margin: 0% 5.55% 0% 0%;
+  margin: 0% 5.4% 0% 0%;
 }
 
 #row5 input {
@@ -105,19 +105,19 @@ h1 {
 }
 
 #row6 {
-  margin: 0% 5.65% 0% 0%;
+  margin: 0% 5.5% 0% 0%;
 }
 
 #row6 input {
   font-size: 25px;
   width: 5.3%;
   height: 5%;
-  background-color: #D2D2D2;
+  background-color: #D3D3D3;
   color: #333;
 }
 
 #row6 #bt0 {
-  width: 11.3%;
+  width: 11.15%;
   height: 5%;
   background-color: #F2F2F2;
   padding: 0% 5.7% 0% 0%;
@@ -129,11 +129,11 @@ h1 {
 }
 
 #box #row6 #result {
-  width: 4.98%;
-  height: 96%;
+  width: 5%;
+  height: 97%;
   position: absolute;
   bottom: 0%;
-  right: 39.1%;
+  right: 39.40%;
 }
 
 #box {
