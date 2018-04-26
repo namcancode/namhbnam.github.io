@@ -6,7 +6,6 @@
     BOM
   </title>
   <meta charset="uft-8" />
-  <script type="text/javascript" src="js/javascript.js"></script>
   <link href="css/index.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -15,15 +14,17 @@
     Browser Object Model
   </h1>
   <div class="wrap">
-    <input type="button" id="question" value="Câu hỏi" />
+    <input type="button" id="question"  value="Câu hỏi 0 " />
     <br>
     <div id="row1">
-      <input type="button" id="answer1" value="1" onclick="square(this)" />
-      <input type="button" id="answer2" value="2" onclick="squareroot(this)" />
-      <input type="button" id="answer3" value="3" onclick="factorial(this)" />
-      <input type="button" id="answer4" value="4" onclick="reset(this)" />
+      <input type="button" id="bt1"  value="Đáp án 01" onclick="runquest()" />
+      <input type="button" id="bt2"  value="Đáp án 02" onclick="runquest()" />
+      <input type="button" id="bt3"  value="Đáp án 03" onclick="runquest()" />
+      <input type="button" id="bt4"  value="Đáp án 04" onclick="runquest()" />
     </div>
+    <div class="insert-qs"></div>
   </div>
+  <script type="text/javascript" src="js/javascript.js"></script>
 
 </body>
 
