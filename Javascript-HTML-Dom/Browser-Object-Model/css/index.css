@@ -13,7 +13,6 @@ h1.shadow {
   text-shadow: 0 -1px 0 #fff, 0 1px 0 #2a2a2a, 0 2px 0 #2a2a2a, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
 }
 
-
 html {
   background-color: #333333
 }
@@ -28,7 +27,6 @@ h1 {
   margin-bottom: 3%;
   color: aquamarine
 }
-
 
 #question {
     background-color: #4CAF50;
@@ -59,5 +57,14 @@ h1 {
 #row1 #reset {
   color: #fff;
   background-color: rgb(224, 0, 0)
+}
+#row2 button{
+  font-size: 25px;
+  width: 30%;
+  height: 5%;
+  background-color: #D3D3D3;
+  color: #333;
+  margin: 2%;
+  cursor: pointer;
 }
 

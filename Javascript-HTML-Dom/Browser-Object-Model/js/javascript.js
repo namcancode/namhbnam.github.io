@@ -4,7 +4,7 @@ var question0 = {
     answer2: "Đáp án 02",
     answer3: "Đáp án 03",
     answer4: "Đáp án 04",
-    answer: "Đáp án 01"
+    answer: "01"
 }
 var question1 = {
     quest: "Câu hỏi 1",
@@ -12,7 +12,7 @@ var question1 = {
     answer2: "Đáp án 12",
     answer3: "Đáp án 13",
     answer4: "Đáp án 14",
-    answer: "Đáp án 11"
+    answer: "11"
 }
 var question2 = {
     quest: "Câu hỏi 2",
@@ -20,7 +20,7 @@ var question2 = {
     answer2: "Đáp án 22",
     answer3: "Đáp án 23",
     answer4: "Đáp án 24",
-    answer: "Đáp án 22"
+    answer: "22"
 }
 var question3 = {
     quest: "Câu hỏi 3",
@@ -28,7 +28,7 @@ var question3 = {
     answer2: "Đáp án 32",
     answer3: "Đáp án 33",
     answer4: "Đáp án 34",
-    answer: "Đáp án 33"
+    answer: "33"
 }
 var question4 = {
     quest: "Câu hỏi 4",
@@ -36,7 +36,7 @@ var question4 = {
     answer2: "Đáp án 42",
     answer3: "Đáp án 43",
     answer4: "Đáp án 44",
-    answer: "Đáp án 44"
+    answer: "44"
 }
 var question5 = {
     quest: "Câu hỏi 5",
@@ -44,7 +44,7 @@ var question5 = {
     answer2: "Đáp án 52",
     answer3: "Đáp án 53",
     answer4: "Đáp án 54",
-    answer: "Đáp án 53"
+    answer: "53"
 }
 function getid(bt) {
     return document.getElementById(bt)
@@ -54,36 +54,86 @@ function getcs(bt) {
 }
 
 var question = [question0, question1, question2, question3, question4, question5];
-var button1 = document.getElementById("bt1");
-var button2 = document.getElementById("bt2");
-var button3 = document.getElementById("bt3");
-var button4 = document.getElementById("bt4");
 var count = 0;
 var checkbt1 = 0;
 var checkbt2 = 0;
 var checkbt3 = 0;
 var checkbt4 = 0;
-var score = 0;
-
-function runquest() {
+var point = 0;
+var x = 0;
+function runquest1() {
+    
+    if (getid("question").value == question0.quest)  {
+        point++
+    }
+    else if (getid("question").value == question1.quest){
+        point++
+    }
     count++;
     quest0();
+    return getid("result").innerText = "Bạn được: " + point + " điểm"
+    // score();
+    
 }
+
+
+function runquest2() {
+    
+    if (getid("question").value == question2.quest) {
+        point++
+    }
+    count++;
+    quest0();
+    return getid("result").innerText = "Bạn được: " + point + " điểm"
+    // score();
+}
+
+
+function runquest3() {
+    if (getid("question").value == question3.quest) {
+        point++
+    }
+    else if (getid("question").value == question5.quest){
+        point++
+    }
+    count++;
+    quest0();
+    return getid("result").innerText = "Bạn được: " + point + " điểm"
+    // score();
+}
+
+
+function runquest4() {
+    if (getid("question").value == question4.quest) {
+        point++
+    }
+    count++;
+    quest0();
+    return getid("result").innerText = "Bạn được: " + point + " điểm"
+    // score();
+}
+
+
 function quest0() {
     if (count == 1) {
-        quest1()
+        quest1();
+
     }
     else if (count == 2) {
-        quest2()
+        quest2();
+
     }
     else if (count == 3) {
-        quest3()
+        quest3();
+
     }
     else if (count == 4) {
-        quest4()
+        quest4();
+
     }
     else if (count == 5) {
-        quest5()
+        quest5();
+
     }
 }
 
@@ -93,6 +143,9 @@ function quest1() {
     getid("bt2").innerText = question1.answer2;
     getid("bt3").innerText = question1.answer3;
     getid("bt4").innerText = question1.answer4;
+    getid("bt1").value = question1.answer;
+    getid("question").value = question1.quest;
+
 
 }
 function quest2() {
@@ -101,6 +154,9 @@ function quest2() {
     getid("bt2").innerText = question2.answer2;
     getid("bt3").innerText = question2.answer3;
     getid("bt4").innerText = question2.answer4;
+    getid("bt2").value = question2.answer;
+    getid("question").value = question2.quest;
+
 }
 function quest3() {
     getid("question").innerText = question3.quest;
@@ -108,6 +164,9 @@ function quest3() {
     getid("bt2").innerText = question3.answer2;
     getid("bt3").innerText = question3.answer3;
     getid("bt4").innerText = question3.answer4;
+    getid("bt3").value = question3.answer;
+    getid("question").value = question3.quest;
+
 }
 function quest4() {
     getid("question").innerText = question4.quest;
@@ -115,6 +174,9 @@ function quest4() {
     getid("bt2").innerText = question4.answer2;
     getid("bt3").innerText = question4.answer3;
     getid("bt4").innerText = question4.answer4;
+    getid("bt4").value = question4.answer;
+    getid("question").value = question4.quest;
+
 }
 function quest5() {
     getid("question").innerText = question5.quest;
@@ -122,6 +184,9 @@ function quest5() {
     getid("bt2").innerText = question5.answer2;
     getid("bt3").innerText = question5.answer3;
     getid("bt4").innerText = question5.answer4;
+    getid("bt3").value = question5.answer;
+    getid("question").value = question5.quest;
+
 }
 
 
@@ -167,36 +232,62 @@ getid("bt2").addEventListener("click", check2);
 getid("bt3").addEventListener("click", check3);
 getid("bt4").addEventListener("click", check4);
 
-function loop(){
-    
-}
-
 function check1() {
-    if (getid("bt1").innerText == question[0].answer){
-        score++
-    }
-        return checkbt1++
+    // if (getid("bt1").innerText == question[0].answer){
+    //     point++
+    // }
+    return checkbt1++
 }
 function check2() {
-    if (getid("bt2").innerText == question[1].answer){
-        score++
-    }
+    // if (getid("bt2").innerText == question[1].answer){
+    //     point++
+    // }
     return checkbt2++
 }
 function check3() {
-    if (getid("bt3").innerText == question[2].answer){
-        score++
-    }
+    // if (getid("bt3").innerText == question[2].answer){
+    //     point++
+    // }
     return checkbt3++
 }
 function check4() {
-    if (getid("bt4").innerText == question[3].answer){
-        score++
-    }
+    // if (getid("bt4").innerText == question[3].answer){
+    //     point++
+    // }
     return checkbt4++
 }
-function score() {
-    if (checkbt1 == "1") {
-        return score++
-    }
-}
+
+
+// function score() {
+
+//     // if ((getid("question").value == question1.quest && checkbt1 == 1)
+//     //  (getid("question").value == question2.quest && checkbt1 == 2) || 
+//     //  (getid("question").value == question3.quest && checkbt2 == 1) || 
+//     //  (getid("question").value == question4.quest && checkbt3 == 1) || 
+//     //  (getid("question").value == question5.quest && checkbt4 == 1) || 
+//     //  (getid("question").value == question5.quest && checkbt3 == 2)) {
+//     //     point++
+//     // }
+//     if (getid("question").value == question1.quest && checkbt1 == 1) {
+//         point++
+//     }
+//     else if (getid("question").value == question2.quest && checkbt1 == 1) {
+//         point++
+//     }
+//     else if (getid("question").value == question3.quest && checkbt2 == 0) {
+//         point++
+//     }
+//     else if (getid("question").value == question4.quest && checkbt3 == 0) {
+//         point++
+//     }
+//     else if (getid("question").value == question5.quest && checkbt4 == 0) {
+//         point++
+//     }
+//     else if (getid("question").value == question5.quest && checkbt3 == 1) {
+//         point++
+//     }
+//     else point--
+
+//     return getid("result").innerText = "Bạn được: " + point + " điểm"
+
+// }
