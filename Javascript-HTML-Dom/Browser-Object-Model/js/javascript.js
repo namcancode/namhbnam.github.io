@@ -196,7 +196,7 @@ function check4() {
     return checkbt4++
 }
 function score() {
-    if (getid("question").value == "q0" && checkbt1 == 1) {
+    if (checkbt1 == "1") {
         return score++
     }
 }

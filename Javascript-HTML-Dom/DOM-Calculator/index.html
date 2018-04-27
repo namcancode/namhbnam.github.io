@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>
+    BOM
+  </title>
+  <meta charset="uft-8" />
+  <link href="css/index.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1 class='shadow'>
+    Calculator 2.1
+  </h1>
+  <div class="wrap">
+    <input type="text" id="input" />
+    <br>
+    <div id="row1">
+      <input type="button" id="square" value="x&#178;" onclick="square(this)" />
+      <input type="button" id="square-root" value="&radic;" onclick="squareroot(this)" />
+      <input type="button" id="factorial" value="!n" onclick="factorial(this)" />
+      <input type="button" id="reset" value="C" onclick="reset(this)" />
+    </div>
+
+    <div id="row2">
+      <input type="button" id="addition" value="+" onclick="transform(this)" />
+      <input type="button" id="subtraction" value="-" onclick="transform(this)" />
+      <input type="button" id="multiplication" value="*" onclick="transform(this)" />
+      <input type="button" id="division" value="/" onclick="transform(this)" />
+    </div>
+    <div id="row3">
+      <input type="button" id="bt7" value="7" onclick="transform(this)" />
+      <input type="button" id="bt8" value="8" onclick="transform(this)" />
+      <input type="button" id="bt9" value="9" onclick="transform(this)" />
+      <input type="button" id="deleted" name="deleted" value="&larr;" onclick="deleted(this)" />
+    </div>
+    <div id="box">
+      <div id="row4">
+        <input type="button" id="bt4" value="4" onclick="transform(this)" />
+        <input type="button" id="bt5" value="5" onclick="transform(this)" />
+        <input type="button" id="bt6" value="6" onclick="transform(this)" />
+      </div>
+      <div id="row5">
+        <input type="button" id="bt1" value="1" onclick="transform(this)" />
+        <input type="button" id="bt2" value="2" onclick="transform(this)" />
+        <input type="button" id="bt3" value="3" onclick="transform(this)" />
+      </div>
+      <div id="row6">
+        <input type="button" id="bt0" value="0" onclick="transform(this)" />
+        <input type="button" id="dot" value="." onclick="transform(this)" />
+        <input type="button" id="result" name="result" value="=" onclick="result(this)" />
+      </div>
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript" src="js/javascript.js"></script>
+
+</html>
