@@ -52,8 +52,6 @@ function getid(bt) {
 function getcl(bt) {
     return document.getElementsByClassName(bt)
 }
-
-
 var count = 0;
 var checkbt1 = 0;
 var checkbt2 = 0;
@@ -73,10 +71,7 @@ function runquest1() {
     quest0();
     return getid("result").innerText = "Bạn được: " + point + " điểm"
 
-    // score();
-
 }
-
 
 function runquest2() {
 
@@ -86,15 +81,13 @@ function runquest2() {
     count++;
     quest0();
     return getid("result").innerText = "Bạn được: " + point + " điểm"
-    // score();
 }
-
 
 function runquest3() {
     if (point < 6) {
         if (getid("question").value == question3.quest) {
             point++
-            
+
         }
         else if (getid("question").value == question5.quest) {
             point++
@@ -103,20 +96,15 @@ function runquest3() {
                 getid("reward").style.display = "block";
                 getid("box1").style.display = "block"
                 getid("result").addEventListener("click", restart)
-                 return getid("result").innerText = "Bạn được đã trả lời đúng tất cả"
+                return getid("result").innerText = "Bạn được đã trả lời đúng tất cả"
             }
-            
         }
         count++;
         quest0();
-         return getid("result").innerText = "Bạn được: " + point + " điểm"
-        
+        return getid("result").innerText = "Bạn được: " + point + " điểm"
     }
     else return (point);
-    // score();
 }
-
-
 function runquest4() {
     if (getid("question").value == question4.quest) {
         point++
@@ -124,9 +112,7 @@ function runquest4() {
     count++;
     quest0();
     return getid("result").innerText = "Bạn được: " + point + " điểm"
-    // score();
 }
-
 
 function quest0() {
     if (count == 1) {
@@ -156,10 +142,9 @@ function quest0() {
         getid('box').style.display = "none";
         getid('box2').style.display = "block";
         getid("box1").style.display = "block"
-         getid("result").addEventListener("click", restart)
+        getid("result").addEventListener("click", restart)
     }
 }
-
 
 function quest1() {
     getid("question").innerText = question1.quest;
@@ -168,8 +153,6 @@ function quest1() {
     getid("bt3").innerText = question1.answer3;
     getid("bt4").innerText = question1.answer4;
     getid("question").value = question1.quest;
-
-
 }
 function quest2() {
     getid("question").innerText = question2.quest;
@@ -195,7 +178,6 @@ function quest4() {
     getid("question").value = question4.quest;
 }
 function quest5() {
-
     getid("question").innerText = question5.quest;
     getid("bt1").innerText = question5.answer1;
     getid("bt2").innerText = question5.answer2;
