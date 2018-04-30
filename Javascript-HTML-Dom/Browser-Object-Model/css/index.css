@@ -6,6 +6,7 @@ h1 {
   text-transform: uppercase;
   text-rendering: optimizeLegibility;
 }
+
 h1.shadow {
   color: #e0dfdc;
   background-color: #333;
@@ -16,10 +17,34 @@ h1.shadow {
 html {
   background-color: #333333
 }
-.wrap {
+#box1{
+  
+  text-align: center;
+  display: none;
+}
+#box1 button {
+  font-size: 25px;
+  width: 30%;
+  height: 5%;
+  background-color: #D3D3D3;
+  color: #333;
+  margin: 2%;
+  cursor: pointer;
+
+}
+
+#box {
   margin: auto;
   text-align: center;
   font-size: 2em;
+}
+
+#box2 {
+  margin: auto;
+  text-align: center;
+  font-size: 2em;
+  display: none;
+
 }
 
 h1 {
@@ -29,18 +54,17 @@ h1 {
 }
 
 #question {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    width: 20%;
-
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 20%;
 }
 
 #row1 button {
@@ -49,22 +73,42 @@ h1 {
   height: 5%;
   background-color: #D3D3D3;
   color: #333;
-  margin-bottom: 0.3%;
+  margin: 1%;
   cursor: pointer;
-  
+  border-radius: 15px;
 }
 
+#row1 button:hover {
+
+ background-color: #57cdff
+}
+#row2 button:hover {
+ background-color: #57cdff
+}
 #row1 #reset {
   color: #fff;
   background-color: rgb(224, 0, 0)
 }
-#row2 button{
+#row2 button {
   font-size: 25px;
-  width: 30%;
+  width: 20%;
   height: 5%;
   background-color: #D3D3D3;
   color: #333;
-  margin: 2%;
+  margin: 1%;
   cursor: pointer;
+  border-radius: 15px;
 }
 
+#reward {
+  display: none
+}
+/* else if(getid("question").value == question5.quest && point==6){
+  getid("box").style.display = "none";
+getid("reward").style.display = "block";
+} */
+/* if( point<7){
+  getid('box').style.display = "none";
+  getid('box2').style.display = "block";
+  getid("box1").style.display = "block"
+  } */

@@ -2,44 +2,47 @@
 <html>
 
 <head>
-  <title>
-    BOM
-  </title>
-  <meta charset="uft-8" />
-  <link href="css/index.css" rel="stylesheet" type="text/css" />
+    <title>
+        BOM
+    </title>
+    <meta charset="uft-8" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <h1 class='shadow'>
-    Browser Object Model
-  </h1>
-  <div class="wrap">
-    <!-- <input type="button" id="question"  value="Câu hỏi 0" /> -->
-    <button id="question" value="Câu hỏi 0">Câu hỏi 0</button>
-    <br>
-    <div id="row1">
-        <!-- <button id="bt1" value="01">Đáp án 01</button>
-        <button id="bt2" value="" >Đáp án 02</button>
-        <button id="bt3" value="" >Đáp án 03</button>
-        <button id="bt4" value="" >Đáp án 04</button> -->
-
-      <button id="bt1" value="01" onclick="runquest1()">Đáp án 01</button>
-      <button id="bt2" value="" onclick="runquest2()">Đáp án 02</button>
-      <button id="bt3" value="" onclick="runquest3()">Đáp án 03</button>
-      <button id="bt4" value="" onclick="runquest4()">Đáp án 04</button>
-
-      <!-- <input type="button" id="bt1" value="Đáp án 01" onclick="runquest()" />
-      <input type="button" id="bt2" value="Đáp án 02" onclick="runquest()" />
-      <input type="button" id="bt3" value="Đáp án 03" onclick="runquest()" />
-      <input type="button" id="bt4" value="Đáp án 04" onclick="runquest()" /> -->
+    <div>
+        <h1 class='shadow'>
+      Browser Object Model
+    </h1>
+        <div id="box">
+            <div>
+                <button id="question" value="[...[...'...']].length">[...[...'...']].length</button>
+                <br>
+                <div id="row1">
+                    <button id="bt1" value="01" onclick="runquest1()">3</button>
+                    <button id="bt2" value="" onclick="runquest2()">1</button>
+                </div>
+                <div id="row2">
+                    <button id="bt3" value="" onclick="runquest3()">6</button>
+                    <button id="bt4" value="" onclick="runquest4()">Error</button>
+                </div>
+                <div id="row3">
+                    <button id="count">Câu 1/6</button>
+                </div>
+            </div>
+        </div>
+        <div id="box1">
+            <button id="result">Bạn được: 0 điểm</button>
+        </div>
+        <div id="box2">
+            <button id="bt5" value="restart" onclick="restart()">Làm lại</button>
+        </div>
+        <div id="reward">
+            <p>Chúc mừng người chiến thắng</p>
+            <iframe width="1200" height="800" src="https://www.youtube.com/embed/JqWuzvSMs08?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <script type="text/javascript" src="js/javascript.js"></script>
     </div>
-    <div id="row2">
-      <button id="result">Bạn được: 0 điểm</button>
-    </div>
-  </div>
-  <script type="text/javascript" src="js/javascript.js"></script>
-
 </body>
-
 
 </html>
