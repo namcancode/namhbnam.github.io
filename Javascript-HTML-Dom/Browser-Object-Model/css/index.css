@@ -34,6 +34,7 @@ html {
 }
 
 #box {
+  display: block;
   margin: auto;
   text-align: center;
   font-size: 2em;
@@ -101,14 +102,8 @@ h1 {
 }
 
 #reward {
-  display: none
+  display: none;
+  text-align:  center;
+  color: white;
+  font-size:  25px;
 }
-/* else if(getid("question").value == question5.quest && point==6){
-  getid("box").style.display = "none";
-getid("reward").style.display = "block";
-} */
-/* if( point<7){
-  getid('box').style.display = "none";
-  getid('box2').style.display = "block";
-  getid("box1").style.display = "block"
-  } */
