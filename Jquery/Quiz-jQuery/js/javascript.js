@@ -40,80 +40,75 @@ var question5 = {
     answer3: "undefined",
     answer4: "Error",
 }
-function getid(bt) {
-    return document.getElementById(bt)
-}
 var questions = [question0, question1, question2, question3, question4, question5];
 var count = 0;
 var point = 0;
 function runquest1() {
-
-    if (getid("question").value == question0.quest) {
+    if ($("#question").val() == question0.quest) {
         point++
     }
-    else if (getid("question").value == question1.quest) {
+    else if ($("#question").val() == question1.quest) {
         point++
     }
     count++;
     loadquest();
-    return getid("result").innerText = "Bạn được: " + point + " điểm"
+    return $("#result").html("Bạn được: " + point + " điểm")
 }
 
 function runquest2() {
-
-    if (getid("question").value == question2.quest) {
+    if ($("#question").val() == question2.quest) {
         point++
     }
     count++;
     loadquest();
-    return getid("result").innerText = "Bạn được: " + point + " điểm"
+    return $("#result").html("Bạn được: " + point + " điểm")
 }
 function runquest3() {
     if (point < 6) {
-        if (getid("question").value == question3.quest) {
+        if ($("#question").val() == question3.quest) {
             point++
 
         }
-        else if (getid("question").value == question5.quest) {
+        else if ($("#question").val() == question5.quest) {
             point++
             if (point == 6) {
-                getid("box").style.display = "none";
-                getid("reward").style.display = "block";
-                getid("box1").style.display = "block";
-                getid("result").addEventListener("click", restart)
-                return getid("result").innerText = "Bạn đã trả lời đúng tất cả"
+                $("#box").css("display", "none");
+                $("#reward").css("display", "block");
+                $("#box1").css("display", "block");
+                $("#result").bind("click", restart);
+                return $("#result").html("Bạn đã trả lời đúng tất cả");
             }
         }
         count++;
         loadquest();
-        return getid("result").innerText = "Bạn được: " + point + " điểm"
+        return $("#result").html("Bạn được: " + point + " điểm")
     }
     else return (point);
 }
 function runquest4() {
-    if (getid("question").value == question4.quest) {
+    if ($("#question").val() == question4.quest) {
         point++
     }
     count++;
     loadquest();
-    return getid("result").innerText = "Bạn được: " + point + " điểm"
+    return $("#result").html("Bạn được: " + point + " điểm")
 }
 function loadquest() {
     var run = questions[count];
-    if (getid("question").value == question5.quest && point <= 6) {
-        getid('box').style.display = "none";
-        getid('box2').style.display = "block";
-        getid("box1").style.display = "block";
-        getid("result").addEventListener("click", restart);
+    if ($("#question").val() == question5.quest && point <= 6) {
+        $("#box").css("display", "none");
+        $("#box2").css("display", "block");
+        $("#box1").css("display", "block");
+        $("#result").bind("click", restart);
     }
     else {
-        getid("question").innerText = run.quest;
-        getid("bt1").innerText = run.answer1;
-        getid("bt2").innerText = run.answer2;
-        getid("bt3").innerText = run.answer3;
-        getid("bt4").innerText = run.answer4;
-        getid("question").value = run.quest;
-        getid("count").innerText = "Câu số " + (count + 1) + "/" + questions.length;
+        $("#question").html(run.quest);
+        $("#bt1").html(run.answer1);
+        $("#bt2").html(run.answer2);
+        $("#bt3").html(run.answer3);
+        $("#bt4").html(run.answer4);
+        $("#question").val(run.quest);
+        $("#count").html("Câu số " + (count + 1) + "/" + questions.length)
     }
 }
 function restart() {
