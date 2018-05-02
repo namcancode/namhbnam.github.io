@@ -1,4 +1,4 @@
-        html {
+html {
   user-select: none;
 }
 
@@ -149,7 +149,8 @@ h1 {
   color: white;
   font-size: 25px;
 }
-#themes{
+
+#themes {
   border: 1.3px #B0E0E6 solid;
   width: 70px;
   text-align: center;
@@ -159,7 +160,8 @@ h1 {
   border-radius: 10px;
   margin: 2% 0% 0% 18%;
 }
-#background{
+
+#background {
   border: 1.3px #B0E0E6 solid;
   width: 90px;
   text-align: center;
