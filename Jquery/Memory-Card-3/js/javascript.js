@@ -1,9 +1,9 @@
 var pics = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg", "img/6.jpg", "img/7.jpg", "img/8.jpg", "img/9.jpg", "img/10.jpg", "img/11.jpg", "img/12.jpg", "img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg", "img/6.jpg", "img/7.jpg", "img/8.jpg", "img/9.jpg", "img/10.jpg", "img/11.jpg", "img/12.jpg"];
 var current = null;
-var count = 0;
 var classCurrent = null;
 var classCurrent2 = null;
-var remainingTime = 10;
+var count = 0;
+
 function shuffle(array) {
     var currentIndex = array.length,
         temporaryValue, randomIndex;
@@ -61,40 +61,48 @@ function clickEvent() {
                     $("#correct")[0].play();
                 }, 400)
                 setTimeout(function () {
-                if (count == 12) {
-                    alert("win")
-                }
-            }, 600)
+                    if (count == 12) {
+                        $(".wrap").css("display", "none")
+                        $(".win img").css("display", "block")
+                        $(".win img").click(function () {
+                            window.location.href = "index.html";
+                        })
+                    }
+                }, 600)
             }
         }
     })
 }
 
+function move() {
+    var elem = document.getElementById("myBar");
+    var id = setInterval(frame, 1200);
+    var width = 100;
+
+    function frame() {
+        if (width == 0) {
+            clearInterval(id);
+            $(".wrap").css("display", "none")
+            $(".lose img").css("display", "block")
+            $(".lose img").click(function () {
+                window.location.href = "index.html";
+            })
+        } else if (count == 12) {
+            clearInterval(id);
+        } else {
+            width--;
+            elem.style.width = width + '%';
+        }
+    }
+}
+
+function hack() {
+    $(".card .front").css("transform", "rotateY(0deg)")
+}
 
 $(function () {
     shuffle(pics);
     showImages();
     clickEvent();
-   
-    // var time = setInterval(function(){
-    //     remainingTime--
-    //     if (remainingTime == 0){
-    //         clearInterval(time)
-    //         alert("lose")
-    //     }
-    // },1000)
-    $("#progressbar").progressbar();
-    var tick_interval = 1;
-    var tick_increment = 10;
-    var tick_function = function() {
-        var value = $("#progressbar").progressbar("option", "value");
-        value += tick_increment;
-        $("#progressbar").progressbar("option", "value", value);
-        if (value < 100) {
-            window.setTimeout(tick_function, tick_interval * 1000);
-        } else {
-            alert("Done");
-        }
-    };
-    window.setTimeout(tick_function, tick_interval * 1000);
+    move();
 })

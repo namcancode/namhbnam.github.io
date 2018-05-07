@@ -1,13 +1,16 @@
 * {
 	box-sizing: border-box;
 }
+
 body {
 	margin: 0;
 	padding: 0;
 	overflow: scroll;
 	background-image: url("../img/background.png");
 }
+
 .wrap {
+	display: block;
 	position: relative;
 	margin: auto;
 	padding: 1%;
@@ -16,55 +19,76 @@ body {
 	height: 100%;
 	user-select: none;
 }
+
 .content {
 	position: relative;
 	overflow: auto;
 }
+
 .card {
 	width: 12%;
 	float: left;
 	position: relative;
 	cursor: pointer;
 }
+
 .card img {
 	width: 100%;
 	padding: 0% 5% 5% 5%;
 	top: 0;
 	left: 0;
 }
+
 .card img:hover {
 	box-shadow: 0px 0px 15px 0px #777;
 }
 
 .card .front {
 	transform: rotateY(180deg);
-	transform: rotateY(0deg);
+	/* transform: rotateY(0deg); */
 	position: absolute;
 }
+
 .flip .front {
 	transform: rotateY(0deg);
 }
+
 .flip .backside {
 	transform: rotateY(180deg);
 }
-.card .front, .card .backside {
+
+.card .front,
+.card .backside {
 	transition: all .7s;
 	backface-visibility: hidden;
 }
+
 .hidden {
 	visibility: hidden;
 	opacity: 0;
 	transition: visibility 1s, opacity 1s ease;
 }
+
+.result img {
+	cursor: pointer;
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
 audio {
-    display: none;
+	display: none;
 }
+
 #myProgress {
-    width: 100%;
-    background-color: grey;
+	width: 100%;
+	background-color: #c5c5c54a;
 }
+
 #myBar {
-    width: 1%;
-    height: 30px;
-    background-color: green;
+	width: 1%;
+	height: 3px;
+	background-color: #BF7F39;
+	opacity: 1;
 }
