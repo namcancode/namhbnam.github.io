@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+}
+.box {
+	font-size: 25px;
+}
+.box button{
+	font-size: 25px;
+	margin-left: 0.5%;
+	margin-right: 21%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	overflow: scroll;
+
+}
+.clear{clear: both}
+
+.imgs img{
+	width: 100%;
+}
+.card {
+	border: 1px solid red;
+	width: 1000px;
+	height: 294px;
+}
+.imgs{
+	float: left;
+	width: 200px;
+}
