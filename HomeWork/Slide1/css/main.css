@@ -1,18 +1,24 @@
 body {
-	user-select: none;  
-	
+	user-select: none;
 }
 
 .clear {
 	clear: both
 }
 
+.slider {
+	border: solid 2px green;
+	width: 80%;
+	margin: auto;
+}
+
+
 .slider .list_img {
 	width: 419px;
-	height: 629px;
+	height: 610px;
 	overflow: hidden;
 	position: relative;
-	border: solid 1px red;
+	margin: auto;
 }
 
 .slider .list_img .wrap {
@@ -28,48 +34,54 @@ body {
 
 .slider .list_img .wrap a img {
 	width: 100%;
-
 }
 
 .slider .list_img .box_wrap .circle .c1, .slider .list_img .box_wrap .circle .c2, .slider .list_img .box_wrap .circle .c3 {
-	border: solid 2px black;
-	width: 10px;
-	height: 10px;
+	border: solid 2px white;
+	width: 8px;
+	height: 8px;
 	border-radius: 50%;
-	opacity: .3;
-	
+	opacity: 0;
+	position: absolute;
+	top: 98%;
+	left: 45%;
+	transform: translate(-50%, -50%)
 }
 
 .slider .list_img .box_wrap .circle .c2 {
-margin-left: 10px;
+	margin-left: 20px;
 }
 
 .slider .list_img .box_wrap .circle .c3 {
-	margin-left: 10px;
+	margin-left: 40px;
 }
 
 .slider .list_img .box_wrap .circle .c {
 	float: left;
+	transition:  0.4s all;
 }
 
-.slider .list_img .box_wrap .circle {
+/* .slider .list_img .box_wrap .circle {
 	margin-left: 42%;
-}
-.box_wrap .box .btn1, .btn2{
+} */
+
+.box_wrap .box .btn1, .btn2 {
 	width: 60px;
-	
 }
-.box_wrap .box .btn{
+
+.box_wrap .box .btn {
 	position: absolute;
 	top: 48%;
 	left: 12%;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%, -50%);
 	float: left;
 }
-.box_wrap .box .btn2{
+
+.box_wrap .box .btn2 {
 	margin-left: 350px;
 }
-button{
+
+button {
 	background-color: #ffffff00;
 	border: none;
 	outline: none;
@@ -78,24 +90,25 @@ button{
 	margin-left: 0.5%;
 	margin-right: 21%;
 }
-.fa-angle-left, .fa-angle-right{
-	color:  #ffffff00; 
-	transition: 1s color ease, 0.5s transform;
-	
+
+.fa-angle-left, .fa-angle-right {
+	opacity:0;
+	color: #ffffffa8;
+	transition: 1s opacity ease-out, 0.5s transform;
 }
-.slider .list_img:hover .fa-angle-left{
-	color:  #ffffffa8; 
-	
+
+.slider .list_img:hover .fa-angle-left {
+	opacity:1;
 }
+
+.slider .list_img:hover .fa-angle-right {
+	opacity:1;
+}
+
 .fa-angle-left:hover {
-	
 	transform: scale(1.8);
-	
 }
+
 .fa-angle-right:hover {
 	transform: scale(1.8);
 }
-.slider .list_img:hover .fa-angle-right{
-	color:  #ffffffa8; 
-}
-
