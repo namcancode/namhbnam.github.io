@@ -1,0 +1,28 @@
+body {
+	box-sizing: border-box;
+	background-color: #1282af7e;
+}
+.clear {
+	clear: both
+}
+.content_wrap {
+	margin: auto;
+	width: 1200px;
+}
+.content_wrap .coffer{
+	float: left;
+	width: 50px ;
+	height: 50px;
+	margin:0.5px;
+	border: 1px solid #00787c;
+	background-color: #00f6ff;
+	cursor: pointer;
+	text-align: center;
+	font-size: 35px;
+	user-select: none;
+	line-height: 50px;
+}
+.content_wrap .coffer:hover{
+	background-color: #42a9ce;
+}
+
