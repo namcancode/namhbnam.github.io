@@ -11,7 +11,7 @@ function chessBoard() {
 }
 
 function Click() {
-
+    
     $(".coffer").click(function () {
         const current = +$(this).attr("id");
         checkRow()
@@ -34,6 +34,9 @@ console.log("You Win");
             }
         }
 
+    })
+    $("button").click(function () {
+        location.reload()
     })
 
 }

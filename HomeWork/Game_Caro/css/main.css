@@ -25,4 +25,7 @@ body {
 .content_wrap .coffer:hover{
 	background-color: #42a9ce;
 }
+button{
+	font-size: 25px;
+}
 
