@@ -33,9 +33,9 @@ function Click() {
         console.log("i = " +currentI, "j = " +currentJ);
 
         count++;
-        // if ($(this).html() == "") {
+       // if ($(this).html() == "") {
 
-        //  if (count % 2 == 1) {
+     //    if (count % 2 == 1) {
         $(this).html("X");
         $(this).attr("check","X");
         value = $(this).text();
@@ -46,8 +46,11 @@ function Click() {
 
         // } else {
         //     $(this).html("O")
+        //     $(this).attr("check","O");
         //     value = $(this).text();
         //     checkRow();
+        //     checkCol();
+        //     checkDia();
 
         // }
         //    }
@@ -57,8 +60,8 @@ function Click() {
     })
     function checkRow() {
         for (let j = 1; j < 20; j++) {
-            if ($("[i='" + currentI + "'][j='" + j + "']").attr("check")=="X" &&
-            $("[i='" + currentI + "'][j='" + (j+1) + "']").attr("check")=="X") {
+            if ($("[i='" + currentI + "'][j='" + j + "']").attr("check")==value &&
+            $("[i='" + currentI + "'][j='" + (j+1) + "']").attr("check")==value) {
             // if ($("[i='" + currentI + "'][j='" + j + "']").attr("check") == value && $("[i='" + currentI + "'][j='" + j + "']").attr("check")==$("[i='" + currentI + "'][j='" + (j+1) + "']").attr("check")) {
                 result++
                 
@@ -99,8 +102,8 @@ function Click() {
     }
     function checkCol() {
         for (let i = 1; i < 20; i++) {
-            if ($("[i='" + i + "'][j='" + currentJ + "']").attr("check")=="X" &&
-             $("[i='" + (i+1) + "'][j='" + currentJ + "']").attr("check")=="X") {
+            if ($("[i='" + i + "'][j='" + currentJ + "']").attr("check")==value &&
+             $("[i='" + (i+1) + "'][j='" + currentJ + "']").attr("check")==value) {
             // if ($("[i='" + currentI + "'][j='" + j + "']").attr("check") == value && $("[i='" + currentI + "'][j='" + j + "']").attr("check")==$("[i='" + currentI + "'][j='" + (j+1) + "']").attr("check")) {
                 result++
                 
@@ -117,8 +120,8 @@ function Click() {
         
         console.log(res);
        // for (let i = 1 ;i <= 5; i++) {
-            if ($("[i='" + currentI + "'][j='" + currentJ + "']").attr("check")=="X" &&
-             $("[i='" + (currentI-1) + "'][j='" + (currentJ-1) + "']").attr("check")=="X") {
+            if ($("[i='" + currentI + "'][j='" + currentJ + "']").attr("check")==value &&
+             $("[i='" + (currentI-1) + "'][j='" + (currentJ-1) + "']").attr("check")==value) {
             // if ($("[i='" + currentI + "'][j='" + j + "']").attr("check") == value && $("[i='" + currentI + "'][j='" + j + "']").attr("check")==$("[i='" + currentI + "'][j='" + (j+1) + "']").attr("check")) {
              
                 res = res +1;
