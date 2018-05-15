@@ -3,6 +3,8 @@ body {
 	background-color: #67d2fd7e;
 	background-image: url("../img/background.png");
 	background-size: cover;
+	background-repeat: no-repeat;
+   
     
 }
 .clear {
