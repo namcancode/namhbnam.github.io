@@ -1,31 +1,24 @@
 $(function () {
     chessBoard();
     Click();
-   // effect();
+  
 })
 
 function chessBoard() {
     for (i = 1; i <= 20; i++) {
-        for (j = 1; j <= 33; j++) {
+        for (j = 1; j <= 34; j++) {
             $(".content_wrap").append("<div class='coffer' check = '' j = '" + j + "' i = '" + i + "'></div>")
         }
     }
 }
-var count = 0
+var count = Math.floor((Math.random() * 100) + 1);
 var value = "";
 var result = 0;
 var result1 = 0;
 var currentI = "";
 var currentJ = "";
 
-function effect() {
-    $(".coffer").mouseover(function () {
-        $(this).append('<img src="img/X.png" style="width: 80%;margin-top: 4.5px;box-shadow: -2px 3px 10px 0px;" >')
-    })
-    $(".coffer").mouseout(function () {
-       
-    })
-}
+
 
 function Click() {
     var res = 0;
@@ -37,18 +30,19 @@ function Click() {
         count++;
         if ($(this).html() == "") {
             if (count % 2 == 1) {
-                $(this).prepend('<img src="img/X.png" style="width: 80%;margin-top: 4.5px;box-shadow: -2px 3px 10px 0px;" >')
+                $(this).prepend('<img src="img/X.png" style="width: 70%;margin-top: 5.5px;box-shadow: -2px 3px 10px 0px;" >')
                 $(this).attr("check", "X");
-               
+              
                 value = $(this).attr("check");
                 checkRow();
                 checkCol();
                 checkDiaLeft();
                 checkDiaRight();
             } else {
-                $(this).prepend('<img src="img/O.png" style="width: 80%; margin-top: 4.5px;box-shadow: -2px 3px 10px 0px;">')
+                $(this).prepend('<img src="img/O.png" style="width: 70%; margin-top: 5.5px;box-shadow: -2px 3px 10px 0px;">')
                 $(this).attr("check", "O");
                 value = $(this).attr("check");
+             
                 checkRow();
                 checkCol();
                 checkDiaLeft();
@@ -69,7 +63,7 @@ function Click() {
     }
 
     function checkRow() {
-        for (let j = 1; j < 33; j++) {
+        for (let j = 1; j < 34; j++) {
             if ($("[i='" + currentI + "'][j='" + j + "']").attr("check") == value &&
                 $("[i='" + currentI + "'][j='" + (j + 1) + "']").attr("check") == value) {
                 result++
@@ -84,7 +78,7 @@ function Click() {
     }
 
     function checkCol() {
-        for (let i = 1; i < 33; i++) {
+        for (let i = 1; i < 34; i++) {
             if ($("[i='" + i + "'][j='" + currentJ + "']").attr("check") == value &&
                 $("[i='" + (i + 1) + "'][j='" + currentJ + "']").attr("check") == value) {
                 result++
