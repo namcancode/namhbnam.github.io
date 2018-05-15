@@ -39,9 +39,7 @@ function Click() {
             if (count % 2 == 1) {
                 $(this).prepend('<img src="img/X.png" style="width: 80%;margin-top: 4.5px;box-shadow: -2px 3px 10px 0px;" >')
                 $(this).attr("check", "X");
-                $(".coffer").hover(function () {
-                    $(this).html('<img src="img/O.png" style="width: 80%;margin-top: 4.5px; opacity: .3" >')
-                })
+               
                 value = $(this).attr("check");
                 checkRow();
                 checkCol();
