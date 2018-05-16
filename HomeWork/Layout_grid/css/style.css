@@ -124,13 +124,14 @@
     font-size: 1.2rem;
     padding-left: 67px;
     position: relative;
+    line-height: 40px;
 }
 .title_left::after{
     position: absolute;
     content: '';
     border: solid 1px #ef4a86;
     height: 45px;
-    top: -9px;
+
     right: 33px;
 }
 .title_left::before{
@@ -138,7 +139,7 @@
     content: '';
     border: solid 1px #ef4a86;
     height: 45px;
-    top: -9px;
+
     left: 28px;
 }
 .title_right{
