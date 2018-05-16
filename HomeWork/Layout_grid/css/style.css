@@ -21,12 +21,14 @@
 }
 .wrap_menu .menu_right {
     display: grid;
-    grid-template-columns: 7% 12.5% 8.3% 10%;
+    grid-template-columns: auto auto auto auto;
+    justify-content: end;
+    opacity: .6;
     
 }
 .wrap_menu .menu_right .text_right{
     position: relative;
-    padding: 0px 0px 0px 6px;
+    padding: 0px 0px 0px 12px
 }
 .wrap_menu .menu_right .text_right::after{
     content: '';
@@ -35,7 +37,7 @@
     height: 15px;
     transform: rotate(25deg);
     top: 0px;
-    left: 0%;
+    left: 5px;
 }
 .wrap_menu .menu_right .text_right_menu{
     text-transform: uppercase;
@@ -56,14 +58,12 @@
     padding: 0px 0px 0px 0px;
     text-align: center;
     line-height: 30px;
-    
-
 }
 
 .wrap_menu .menu_left .text_menu::before {
     position: absolute;
     content: '';
-    border: solid 2px red;
+    border: solid 2px #ef4a86;
     height: 30px;
     top: 0;
     left: 0;
@@ -75,8 +75,32 @@
 
 .wrap_content1 {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 1.8rem;
+}
+.wrap_content1 .item{
+    display: grid;
+    grid-template-rows: auto auto;
     grid-gap: 1rem;
+}
+.price{
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-gap: .5rem;
+}
+.price_row{
+    display: grid;
+    grid-template-columns: 23% 50%;
+}
+.price_current{
+    color: #ef4a86;
+    opacity: .8;
+    
+}
+.price_sale{
+    text-align: left;
+    text-decoration: line-through;
+    opacity: .5;
 }
 
 .wrap_content1 .item img {
@@ -92,12 +116,49 @@
 .wrap_content2 .box {
     display: grid;
     grid-template-rows: auto auto;
+    grid-gap: 2rem;
+    border: #ef4a86 1px solid;
+}
+.title_left{
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    padding-left: 67px;
+    position: relative;
+}
+.title_left::after{
+    position: absolute;
+    content: '';
+    border: solid 1px #ef4a86;
+    height: 45px;
+    top: -9px;
+    right: 33px;
+}
+.title_left::before{
+    position: absolute;
+    content: '';
+    border: solid 1px #ef4a86;
+    height: 45px;
+    top: -9px;
+    left: 28px;
+}
+.title_right{
+    margin: 0px 30px 0px 100px;
+    text-align: center;
+    line-height: 41px;
+}
+#square{
+    border: black 1px solid;
+    width: 100px;
+    height: 45px;
+    opacity: .5;
+    line-height: 41px;
+    margin-bottom: -30px
 }
 
 .wrap_content2 .box .box_title {
+    margin-top: 25px;
     display: grid;
     grid-template-columns: 50% 50%;
-    background-color: red
 }
 
 .wrap_content2 .box .box_content {
