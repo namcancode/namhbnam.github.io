@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.wrap {
+    width: 1200px;
+    margin: auto;
+}
+
+.wrap_menu {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.wrap_menu .menu_left {
+    display: grid;
+    grid-template-columns: 25% 37%;
+}
+.wrap_menu .menu_right {
+    display: grid;
+    grid-template-columns: 7% 12.5% 8.3% 10%;
+    
+}
+.wrap_menu .menu_right .text_right{
+    position: relative;
+    padding: 0px 0px 0px 6px;
+}
+.wrap_menu .menu_right .text_right::after{
+    content: '';
+    position: absolute;
+    border: solid 1px black;
+    height: 15px;
+    transform: rotate(25deg);
+    top: 0px;
+    left: 0%;
+}
+.wrap_menu .menu_right .text_right_menu{
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    line-height: 15px;
+}
+.wrap_menu .menu_left .left{
+    font-size: 1.1rem;
+    text-align: center
+}
+.wrap_menu .menu_left .right{
+    text-transform: uppercase;
+    font-size: 1.4rem;
+}
+
+.wrap_menu .menu_left .text_menu {
+    position: relative;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+    line-height: 30px;
+    
+
+}
+
+.wrap_menu .menu_left .text_menu::before {
+    position: absolute;
+    content: '';
+    border: solid 2px red;
+    height: 30px;
+    top: 0;
+    left: 0;
+}
+
+.space_1 {
+    height: 50px;
+}
+
+.wrap_content1 {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 1rem;
+}
+
+.wrap_content1 .item img {
+    width: 100%;
+}
+
+.wrap_content2 {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 1rem;
+}
+
+.wrap_content2 .box {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.wrap_content2 .box .box_title {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: red
+}
+
+.wrap_content2 .box .box_content {
+    display: grid;
+    grid-template-rows: 33.333% 33.333% 33.333%;
+    grid-gap: 1rem;
+}
+
+.item1_img img {
+    width: 100%;
+}
+
+.box_content_item {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 1rem;
+}
