@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		body{
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+		}
+		
+		@media screen and (max-width:760px){
+			#content{
+			grid-template-areas:
+			"header header header header"
+			"footer footer footer footer"
+			"main main main main"
+			"main main main main"
+			"aside aside nav nav"
+			"section section section section"
+			"section section section section"!important;
+		}
+		}
+		#content{
+            grid-template-columns: repeat(4,1fr);
+            grid-auto-rows: minmax(100px,auto);
+            display: grid;
+            max-width: 960px;
+			margin: 0 auto;
+			grid-gap: 10px;
+			grid-template-areas:
+			"header header header header"
+			"aside aside main main"
+			"nav nav main main"
+			"section section section section"
+			"section section section section"
+			"footer footer footer footer";
+		}
+		
+       
+		#content>*{
+			background: #3bbced;
+			padding: 30px;
+		}
+		header{
+			grid-area: header;
+		}
+		main{
+			grid-area: main;
+		}
+		section{
+			grid-area: section;
+		}
+		aside{
+			grid-area: aside;
+		}
+		nav{
+			grid-area: nav;
+		}
+		footer{
+			grid-area: footer;
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<header>Header</header>
+		<main>Main</main>
+		<section>Section</section>
+		<aside>Aside</aside>
+		<nav>Nav</nav>
+		<footer>Footer</footer>
+	</div>
+</body>
+</html>
