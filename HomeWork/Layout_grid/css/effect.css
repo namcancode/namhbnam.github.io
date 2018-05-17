@@ -1,0 +1,78 @@
+.wrap_icon{
+    bottom: 5px;
+    left: -160px;
+    position: absolute;
+    transition: .5s all ease-out;
+    user-select: none;
+    z-index: 2;
+}
+.wrap_icon .icon {
+    width: 40px;
+    margin: 8px 6px;
+    height: 40px;
+    background-color: white;
+    text-align: center;
+    line-height: 38px;
+    cursor: pointer;
+}
+.img:hover .wrap_icon{
+    left: 0px;
+}
+.img img{
+    transform: scale(1.1);
+    transition: 0.5s all;
+}
+.img:hover img{
+    transform: scale(1.038);
+}
+
+
+.item1_img{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    
+    
+    
+}
+.item1_img img{
+    transform: scale(1.2);
+    transition: 0.5s transform ease-out;
+}
+.item1_img:hover img{
+    transform: scale(1.1);
+}
+.item_icon{
+    position: absolute;
+    border: rgba(255, 255, 255, 0.774) solid 5px;
+    width: 112px;
+    height: 161px;
+    text-align: center;
+    line-height: 155px;
+    transform: scale(1.2);
+    font-size: 1.5rem;
+    color: white;
+    opacity: 0;
+    transition: 0.5s all ease-out;
+    z-index: 5;
+   
+}
+.item1_img:hover .item_icon{
+    opacity: .8;
+    transform: scale(0.85);
+}
+
+#blur{
+    position: absolute;
+    background-color: rgb(230, 34, 34);
+    width: 112px;
+    height: 170px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    transition: 0.5s all ease-out;
+}
+.item1_img:hover #blur{
+    opacity: .2;
+}

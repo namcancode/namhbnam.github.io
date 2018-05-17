@@ -13,7 +13,7 @@
 
 .wrap_menu {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
 }
 
 .wrap_menu .menu_left {
@@ -77,7 +77,7 @@
 
 .wrap_menu .menu_right .text_right_menu {
     text-transform: uppercase;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 15px;
 }
 
@@ -90,9 +90,8 @@
 }
 
 .wrap_content1 {
-    width: 92%;
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 1fr 1fr  1fr 1fr;
     grid-column-gap: 1.8rem;
 }
 
@@ -105,7 +104,7 @@
 .price {
     display: grid;
     font-size: 1.1rem;
-    grid-template-rows: auto auto;
+    grid-template-rows: 1fr 1fr;
     grid-gap: .5rem;
 }
 
@@ -130,10 +129,7 @@
    overflow: hidden;
     position: relative;
 }
-.img:hover .wrap_icon{
-    left: 0px;
-   
-}
+
 .wrap_content1 .item .img img {
     width: 100%;
 }
@@ -198,7 +194,7 @@
 
 .wrap_content2 {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 2rem;
     
 }
@@ -264,12 +260,12 @@
 .wrap_content2 .box .box_title {
     margin-top: 25px;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
 }
 
 .wrap_content2 .box .box_content {
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 1.8rem;
 }
 
@@ -302,42 +298,14 @@
     padding: 12px 0px;
     opacity: .9;
 }
-.item1_img{
-    position: relative;
-    overflow: hidden;
-    
-}
-.item_icon{
-    position: absolute;
-    border: rgba(255, 255, 255, 0.774) solid 5px;
-    width: 112px;
-    height: 161px;
-    text-align: center;
-    line-height: 155px;
-    transform: scale(1.2);
-    font-size: 1.5rem;
-    color: white;
-    opacity: 0;
-    transition: 0.5s all ease-out;
-    z-index: 5;
-   
-}
-.item1_img:hover .item_icon{
-    opacity: .8;
-    transform: scale(0.85);
-}
-#blur{
-    position: absolute;
-    background-color: rgb(230, 34, 34);
-    width: 112px;
-    height: 161px;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 1;
-    transition: 0.5s all ease-out;
-}
-.item1_img:hover #blur{
-    opacity: .2;
-   
-}
+
+
+/* @media only screen and (max-width: 540px) {
+    .wrap_menu{
+        grid-template-columns: 1fr;
+      
+    }
+    .menu_right{
+        justify-content: left!important;
+    }
+} */
