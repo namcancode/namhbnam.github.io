@@ -1,4 +1,4 @@
-.wrap_icon{
+.wrap_icon {
     bottom: 5px;
     left: -160px;
     position: absolute;
@@ -6,6 +6,7 @@
     user-select: none;
     z-index: 2;
 }
+
 .wrap_icon .icon {
     width: 40px;
     margin: 8px 6px;
@@ -15,34 +16,48 @@
     line-height: 38px;
     cursor: pointer;
 }
-.img:hover .wrap_icon{
+
+.icon:hover {
+    background-color: #ef4a86;
+}
+
+.icon:hover .fa-heart {
+    color: white;
+}
+
+.shop:hover{
+    background-color: #ef4a87b6;
+}
+
+.img:hover .wrap_icon {
     left: 0px;
 }
-.img img{
+
+.img img {
     transform: scale(1.1);
     transition: 0.5s all;
 }
-.img:hover img{
+
+.img:hover img {
     transform: scale(1.038);
 }
 
-
-.item1_img{
+.item1_img {
     position: relative;
     overflow: hidden;
     width: 100%;
-    
-    
-    
 }
-.item1_img img{
+
+.item1_img img {
     transform: scale(1.2);
     transition: 0.5s transform ease-out;
 }
-.item1_img:hover img{
+
+.item1_img:hover img {
     transform: scale(1.1);
 }
-.item_icon{
+
+.item_icon {
     position: absolute;
     border: rgba(255, 255, 255, 0.774) solid 5px;
     width: 112px;
@@ -55,14 +70,14 @@
     opacity: 0;
     transition: 0.5s all ease-out;
     z-index: 5;
-   
 }
-.item1_img:hover .item_icon{
+
+.item1_img:hover .item_icon {
     opacity: .8;
     transform: scale(0.85);
 }
 
-#blur{
+#blur {
     position: absolute;
     background-color: rgb(230, 34, 34);
     width: 150px;
@@ -73,6 +88,7 @@
     z-index: 1;
     transition: 0.5s all ease-out;
 }
-.item1_img:hover #blur{
+
+.item1_img:hover #blur {
     opacity: .2;
 }
