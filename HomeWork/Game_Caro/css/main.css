@@ -37,7 +37,7 @@ body {
 }
 #popup{
 	width: 500px;
-	background-color: #333;
+	background-color: #eeff00b7;
 	height: 300px;
 	top: 300px;
 	left: 35.5%;
@@ -50,11 +50,11 @@ body {
 	user-select: none;
 }
 #popup p{
-	color: white;
+	color: rgb(8, 8, 8);
 }
 #popup img{
 	user-select: none;
-	width: 80%;
+	width: 60%;
 	padding: 8px 0px 0px 14px;
 	cursor: pointer;
 }

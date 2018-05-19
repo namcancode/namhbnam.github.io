@@ -12,6 +12,7 @@ html {
 
 body {
   margin: 0;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,7 +27,6 @@ h1, h2, h3, h4, h5, h6 {
 .codepen{
   display: grid;
   grid-template-rows: auto 1fr 1fr auto;
-
 }
 .pen{
   display: grid;
@@ -37,6 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   background: black;
   color: white;
   padding: 10px;
+  border-bottom: #4D4D50 5px solid;
 }
 .preview{
   display: grid;
@@ -60,14 +61,55 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 .button--small{
-  padding: 5px;
+  padding: 4px;
   font-size: 12px;
+  align-self: center;
+
 }
 .code{
   display: grid;
   grid-template-columns: repeat(3,1fr);
+  background: #1b2b34;
+}
+.editor{
+  background: #1B2B34;
+  display: grid;
+  grid-template-rows: auto 1fr
 }
 .editor__header{
   display: grid;
   grid-template-columns: auto 1fr auto;
+  background: #18272F;
+  padding: 5px;
+  grid-gap: 5px;
+
+}
+.editor__heading{
+  color: white;
+}
+.editor__code{
+  color: white;
+  display: grid;
+  grid-template-columns: auto 1fr;
+ 
+}
+.editor__number{
+  display: block;
+  padding: 0 10px;
+
+}
+.editor__input{
+  resize: none;
+  background: none;
+  border: 0;
+  color: grey;
+  font-size: 16px;
+  line-height: 25px;
+
+
+}
+.settings{
+  padding: 5px;
+  background: black;
+  border-top: 3px solid grey;
 }

@@ -154,6 +154,41 @@
       font-weight: 100;
       margin: 0;
     }
+
+    .post{
+      display: grid;
+      max-width: 1000px;
+      margin: 200px auto;
+      grid-template-columns: 3fr 12fr 5fr;
+      grid-gap: 10px 50px;
+    }
+    .post > *{
+      grid-column: 2/-2
+    }
+    .post >figure{
+      margin: 0;
+      grid-column: 1 / -1;
+    }
+    figcaption {
+      font-size: 10px;
+    }
+    .post > blockquote{
+      grid-column: 1 / -1;
+      font-size: 60px;
+      font-style: italic;
+      text-align: center;
+      margin: 0;
+    }
+    .tip{
+      background: #FAFAFA;
+      padding: 10px;
+    }
+    .tip-left{
+    grid-column: 1 / span 1;
+    text-align: right;
+    border-right: 2px solid yellow;
+  }
+
   </style>
 
 </body>
