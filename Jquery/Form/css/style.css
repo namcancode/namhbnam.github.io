@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Wrap CSS */
+
+.wrap {
+    width: 800px;
+    margin: auto;
+    display: grid;
+    border: 1px solid #000;
+
+}
+
+.content_wrap {
+    padding: 10px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 250px;
+    border: 1px solid #000;
+    background: yellow;
+    justify-content: center;
+                                               
+}
+
+/* Info CSS */
+
+.info {
+    display: grid;
+    grid-template-rows: auto auto;
+    padding: 10px;
+    justify-items: center;
+}
+
+.info img {
+    width: 80%;
+}
+
+/* Box Css */
+
+.box {
+    display: grid;
+    grid-gap: 20px;
+}
+
+.header {
+    display: grid;
+    grid-template-rows: repeat(2, 37px);
+    align-items: center;
+    grid-gap: 10px;
+}
+
+.header img {
+    width: 15%;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.content>input {
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+    font-size: 18px;
+}
+
+#email {
+    grid-column: 1 / -1
+}
