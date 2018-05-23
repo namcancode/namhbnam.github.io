@@ -17,14 +17,21 @@
     <label for="base">Base Color</label>
     <input id="base" type="color" name="base" value="#ffc600">
   </div>
+ 
+  <div class="images">
+    <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  </div>
+  <div class="aa">
+    <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  
 
   <style>
     :root {
       --base: #ffc600;
       --spacing: 10px;
-      --blur: 10px;
+      --blur: 1px;
     }
     img{
       padding: var(--spacing);
@@ -60,11 +67,14 @@
   </style>
 
   <script>
+const images = document.querySelector(".images img")
 
     const inputs = document.querySelectorAll(".controls input");
     function ChangFn (a) {
-      // body
-      console.log(this.value );
+     const suffix = this.dataset.sizing ||'';
+     images.style.setProperty(`--${this.name}`,  this.value + suffix)
+   
+    //  document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
     }
     inputs.forEach(item => item.addEventListener("input", ChangFn))
   </script>
