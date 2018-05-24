@@ -16,10 +16,10 @@
     </ul>
   </form>
   <script>
-    var api, description, currenttemp, mintemp, maxtemp, city, live;
+    var api, description, currenttemp, mintemp, maxtemp, city, live, idpoop, namepoop;
 
     const apiWeather = [];
-    const idCity = 'https://raw.githubusercontent.com/racquesta/WeatherPy/master/city.list.json'
+    const idCity = 'https://raw.githubusercontent.com/namhbnam/namhbnam.github.io/master/HomeWork/demo/Wesbos-30daysJS/06%20-%20Type%20Ahead/city.list.json'
     const endpoint = 'http://api.openweathermap.org/data/2.5/weather';
     const endpoints =
       'http://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric';
@@ -31,7 +31,7 @@
     //   .then(blob =>console.log(blob.json()))
     // .then(data => cities.push(...data));
 
-    let nam = fetch(idCity)
+    fetch(idCity)
       .then(blob => {
         blob.json().then(data => {
           apiWeather.push(...data)
@@ -42,11 +42,13 @@
       // body
       live = this.value;
       let convert = parseInt(live);
-      const idc = apiWeather.find(name => {
+       apiWeather.find(name => {
         if (name.id === convert) {
           live = name.name;
+          idpoop = name.id;
         }
       });
+     
       // console.log('convert :', typeof(convert));
       if (convert >= 0) {
         api = `${endpoint}?id=${this.value}&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric`
@@ -66,6 +68,7 @@
             mintemp = "...";
             maxtemp = "...";
             city = "không tìm thấy";
+            idpoop = "0";
             displayMatch();
             // console.clear();
             // console.log('Lỗi tên thành phố ');
@@ -76,6 +79,7 @@
             currenttemp = data["main"]["temp"];
             mintemp = data["main"]["temp_min"];
             maxtemp = data["main"]["temp_max"]
+            idpoop = data.id;
             displayMatch();
             // console.clear();
             // console.log('data :', data);
@@ -92,7 +96,7 @@
       return suggestions.innerHTML =
         `
       <li>
-          <p class="name">Thành Phố: ${city}</p>
+          <p class="name">Thành Phố: ${city} - Id: ${idpoop}</p>
           <p class="name">Hiện tại: ${currenttemp} &deg;C</p>
           <p class="name">Trạng thái: ${description}</>
           <p class="population">Cao nhất: ${maxtemp} &deg;C</>
