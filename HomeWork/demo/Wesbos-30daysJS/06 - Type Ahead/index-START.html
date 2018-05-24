@@ -19,7 +19,8 @@
     var api, description, currenttemp, mintemp, maxtemp, city, live;
 
     const apiWeather = [];
-    const endpoint = 'http://api.openweathermap.org/data/2.5/weather?q=';
+    const idCity = 'https://raw.githubusercontent.com/racquesta/WeatherPy/master/city.list.json'
+    const endpoint = 'http://api.openweathermap.org/data/2.5/weather';
     const endpoints =
       'http://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric';
     const cities = [];
@@ -29,33 +30,56 @@
     // fetch(endpoint)
     //   .then(blob =>console.log(blob.json()))
     // .then(data => cities.push(...data));
+
+    let nam = fetch(idCity)
+      .then(blob => {
+        blob.json().then(data => {
+          apiWeather.push(...data)
+        })
+      })
+
     function getApi() {
       // body
       live = this.value;
-      api = `${endpoint}${this.value}&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric`
+      let convert = parseInt(live);
+      const idc = apiWeather.find(name => {
+        if (name.id === convert) {
+          live = name.name;
+        }
+      });
+      // console.log('convert :', typeof(convert));
+      if (convert >= 0) {
+        api = `${endpoint}?id=${this.value}&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric`
+      } else {
+        api = `${endpoint}?q=${this.value}&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric`
+      }
+
       fetchApi();
     }
 
     function fetchApi() {
       fetch(api).then(blob => {
         blob.json().then(data => {
-          if (typeof(data["cod"]) == "string") {
-            // console.log('Lỗi tên thành phố ');
-            displayMatch();
+          if (typeof (data["cod"]) == "string") {
+            description = "không rõ";
+            currenttemp = "...";
+            mintemp = "...";
+            maxtemp = "...";
             city = "không tìm thấy";
+            displayMatch();
+            // console.clear();
+            // console.log('Lỗi tên thành phố ');
+
           } else {
             city = live;
-            // console.log('data :', data);
             description = data["weather"][0]["description"];
             currenttemp = data["main"]["temp"];
             mintemp = data["main"]["temp_min"];
             maxtemp = data["main"]["temp_max"]
             displayMatch();
+            // console.clear();
+            // console.log('data :', data);
           }
-
-
-          // console.clear();
-          // console.log(currenttemp);
         })
       })
 
@@ -68,11 +92,11 @@
       return suggestions.innerHTML =
         `
       <li>
-          <p class="name">Thành Phố ${city}</p>
-          <p class="name">Hiện tại: ${currenttemp}</p>
+          <p class="name">Thành Phố: ${city}</p>
+          <p class="name">Hiện tại: ${currenttemp} &deg;C</p>
           <p class="name">Trạng thái: ${description}</>
-          <p class="population">Cao nhất: ${maxtemp}</>
-          <p class="population">Nhỏ nhất: ${mintemp} </>
+          <p class="population">Cao nhất: ${maxtemp} &deg;C</>
+          <p class="population">Nhỏ nhất: ${mintemp} &deg;C</>
       </li>
     `;
 
