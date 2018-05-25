@@ -33,10 +33,7 @@
 
     fetch(idCity)
       .then(blob => {
-        blob.json().then(data => {
-          console.log('data :', data);
-          apiWeather.push(...data)
-        })
+    console.log('object :', blob.json());    
       })
 
     function getApi() {
