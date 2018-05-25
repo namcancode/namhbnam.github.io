@@ -19,7 +19,7 @@
     var api, description, currenttemp, mintemp, maxtemp, city, live, idpoop, namepoop;
 
     const apiWeather = [];
-    const idCity = 'https://raw.githubusercontent.com/namhbnam/namhbnam.github.io/master/HomeWork/demo/Wesbos-30daysJS/06%20-%20Type%20Ahead/city.list.json'
+    const idCity = 'https://raw.githubusercontent.com/namhbnam/namhbnam.github.io/master/HomeWork/Study/Wesbos-30daysJS/06-Type%20Ahead/city.list.json'
     const endpoint = 'http://api.openweathermap.org/data/2.5/weather';
     // const endpoints =
     //   'http://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric';
@@ -34,6 +34,7 @@
     fetch(idCity)
       .then(blob => {
         blob.json().then(data => {
+          console.log('data :', data);
           apiWeather.push(...data)
         })
       })
@@ -46,6 +47,7 @@
         if (name.id === convert) {
           live = name.name;
           idpoop = name.id;
+          console.log('idpoop :', idpoop);
         }
       });
      
