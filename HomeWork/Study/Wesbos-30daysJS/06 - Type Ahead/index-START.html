@@ -16,45 +16,62 @@
     </ul>
   </form>
   <script>
-    var api, description, currenttemp, mintemp, maxtemp, city, live, idpoop, namepoop;
-
+    var api, description, searchCity, currenttemp, mintemp, maxtemp, city, live, idpoop, namepoop;
     const apiWeather = [];
-    const idCity = 'https://raw.githubusercontent.com/namhbnam/namhbnam.github.io/master/HomeWork/Study/Wesbos-30daysJS/06%20-%20Type%20Ahead/city.list.json'
+    // const idCity ='https://raw.githubusercontent.com/namhbnam/namhbnam.github.io/master/HomeWork/Study/Wesbos-30daysJS/06%20-%20Type%20Ahead/city.list.json'
     const endpoint = 'http://api.openweathermap.org/data/2.5/weather';
     // const endpoints =
     //   'http://api.openweathermap.org/data/2.5/weather?q=hanoi&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric';
     const cities = [];
-    // const prom = fetch(endpoint);
-    // console.log('prom :', prom);
 
-    // fetch(endpoint)
-    //   .then(blob =>console.log(blob.json()))
-    // .then(data => cities.push(...data));
 
-    fetch(idCity)
-      .then(blob => {
-    console.log('object :', blob.json());    
-      })
+
+    function loadJSON(callback) {
+      var xobj = new XMLHttpRequest();
+      xobj.overrideMimeType("application/json");
+      xobj.open('GET', 'city.list.json', true); // Replace 'my_data' with the path to your file
+      xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+          // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+          callback(xobj.responseText);
+        }
+      };
+      xobj.send(null);
+    }
+
+    function init() {
+      loadJSON(function (response) {
+        // Parse JSON string into object
+        var actual_JSON = JSON.parse(response);
+        apiWeather.push(...actual_JSON)
+      });
+    }
+    init()
+    // fetch(idCity)
+    //   .then(blob => {
+    //     blob.json().then(data => {
+    //       // console.log('data :', data);
+    //       apiWeather.push(...data)
+    //     });
+    //   })
 
     function getApi() {
       // body
       live = this.value;
       let convert = parseInt(live);
-       apiWeather.find(name => {
+      apiWeather.find(name => {
         if (name.id === convert) {
           live = name.name;
           idpoop = name.id;
-          console.log('idpoop :', idpoop);
+          // console.log('idpoop :', idpoop);
         }
       });
-     
       // console.log('convert :', typeof(convert));
       if (convert >= 0) {
         api = `${endpoint}?id=${this.value}&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric`
       } else {
         api = `${endpoint}?q=${this.value}&appid=f52d4aa6d8a4fa337c268df3999687b6&units=metric`
       }
-
       fetchApi();
     }
 
@@ -88,8 +105,6 @@
 
     }
 
-
-
     function displayMatch() {
       const matchArray = currenttemp;
       return suggestions.innerHTML =
@@ -103,60 +118,13 @@
       </li>
     `;
 
-
-      //  console.log('html :', html);
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // function findMatches(wordToMatch, cities) {
-    //   return cities.filter(place => {
-    //     // console.log(place); //Trả về 1 loạt object
-    //     // console.log('place.city :', place.city);
-    //     // here we need to figure out if the city or state matches what was searched
-    //     // cần tìm cho một vị trí nhất định
-    //     const regex = new RegExp(wordToMatch, 'gi');
-    //      return place.city.match(regex) ||place.state.match(regex)  //object cần tìm đúng tên thành phố
-    //   });
-    // }
-
-    // function displayMatches () {
-    //   // body
-    //   console.log('this.value :', this.value);
-    //  const matchArray =  findMatches(this.value, cities);
-    //  const html = matchArray.map(place =>{
-    //    const regex = new RegExp(this.value, 'gi')
-    //    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`)
-    //    const stateName = place.city.replace(regex, `<span class="hl">${this.value}</span>`)
-    //    return `
-    //     <li>
-    //         <span class="name">${cityName}, ${stateName}</span>
-    //         <span class="population">Số dân: ${place.population} </span>
-    //       </li>
-
-    //    `
-    //  }).join("")
-    // //  console.log('html :', html);
-    //  suggestions.innerHTML = html
-    // }
-
-
     const searchInput = document.querySelector(".search");
     const suggestions = document.querySelector(".suggestions");
     // searchInput.addEventListener("input", displayMatches)
     searchInput.addEventListener("input", getApi)
   </script>
+
 </body>
 
 </html>
