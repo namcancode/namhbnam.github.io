@@ -1,0 +1,64 @@
+/* Container CSS */
+#container_header {
+    background-color: #000;
+}
+
+#container_banner {
+    background-image: url('../img/banner.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#container_social {
+
+}
+#container_effect {
+
+}
+#container_sub_list {
+
+}
+#container_picture {
+
+}
+/* header nav-bar CSS */
+
+#nav-bar {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #000;
+    
+}
+
+.bar-left {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+
+.bar-left img {
+    justify-self: center;
+    align-self: center;
+    cursor: pointer;
+    
+}
+
+.bar-right {
+    display: grid;
+    color: #c0c0c0;
+    grid-auto-flow: column;
+    padding: 30px;
+    font-family: 'Open Sans Semibold', 'Open Sans Regular', 'Open Sans';
+    font-weight: 600;
+    cursor: pointer;
+    justify-items: center;
+    align-items: center;
+    margin: 0;
+}
+/* section banner CSS */
+#banner{
+    max-width: 1170px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
