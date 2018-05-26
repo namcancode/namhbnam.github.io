@@ -1,7 +1,67 @@
 /* Nav-bar effect */
-.text p{
-    transition: color 0.2s
+
+.text p {
+    transition: color 0.3s ease-in-out;
 }
-.text:hover p{
+
+.text:hover p {
     color: #ff8b38
+}
+
+/* Banner box_left button effect */
+
+#box_left button {
+    transition: background 0.3s ease-in-out;
+}
+
+#box_left button:hover {
+    background: #ff9b51;
+}
+
+/* Banner box_right a effect */
+
+#box_right form a {
+    transition: background 0.3s ease-in-out;
+}
+
+#box_right form a:hover {
+    background: #000;
+}
+
+/* Social social-right effect */
+
+#social_right a i {
+    transition: color 0.3s ease-in-out;
+}
+
+#social_right a:hover i {
+    color: #ff9b51;
+}
+
+/* Tab_list effect */
+
+#tab_links li a{
+    transition: background 0.2s ease-in-out;
+}
+
+#tab_links .active,
+#tab_links li a:hover {
+    background: #ff8b38;
+}
+.tab{
+    transition: all 0.5s;
+}
+@keyframes effect{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.0;
+    }
+    90%{
+        opacity: 1;
+    }
+}
+.active2{
+    animation: effect 1s;
 }

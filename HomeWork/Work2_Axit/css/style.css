@@ -1,25 +1,5 @@
 /* Container CSS */
-#container_header {
-    background-color: #000;
-}
 
-#container_banner {
-    background-image: url('../img/banner.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-#container_social {
-
-}
-#container_effect {
-
-}
-#container_sub_list {
-
-}
-#container_picture {
-
-}
 /* header nav-bar CSS */
 
 #nav-bar {
@@ -28,37 +8,209 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: #000;
-    
+    padding-right: 15px;
+    grid-gap: 20px;
 }
 
 .bar-left {
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    padding-left: 20px;
 }
 
 .bar-left img {
-    justify-self: center;
+    justify-self: left;
     align-self: center;
     cursor: pointer;
-    
 }
 
 .bar-right {
     display: grid;
     color: #c0c0c0;
-    grid-auto-flow: column;
-    padding: 30px;
+    /* grid-auto-flow: column; */
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    grid-gap: 5px;
+    padding: 30px 7px 30px 0px;
+    justify-items: right;
+    align-items: center;
+    padding-left: 100px;
+}
+
+.bar-right p {
     font-family: 'Open Sans Semibold', 'Open Sans Regular', 'Open Sans';
     font-weight: 600;
+    font-size: 14px;
     cursor: pointer;
-    justify-items: center;
-    align-items: center;
-    margin: 0;
+    background-color: transparent;
 }
+
 /* section banner CSS */
-#banner{
+
+#banner {
     max-width: 1170px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+}
+
+#box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(351px, 1fr));
+    grid-gap: 30px;
+    padding: 110px 0px 0px 15px;
+}
+
+#box_left {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 30px;
+}
+
+#box_left h2 {
+    color: #fff;
+    font-weight: 400;
+    font-family: 'Raleway', sans-serif;
+    font-size: 36px;
+    text-transform: uppercase;
+    line-height: 40px;
+}
+
+#box_left span {
+    width: 64px;
+    height: 2px;
+    background: #fff
+}
+
+#box_left p {
+    color: #c0c0c0;
+}
+
+#box_left button {
+    width: 130px;
+    height: 40px;
+    border: #fff 2px solid;
+    font-size: 15px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+#box_right {
+    justify-self: right;
+    padding-right: 15px;
+}
+
+#box_right form {
+    max-width: 360px;
+    background: #fff;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#box_right form h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333333;
+    background: #f5f5f5;
+    padding: 20px 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+#box_right form h3 span {
+    color: #ff9b51;
+}
+
+#box_right form input {
+    border: 0;
+    margin-top: 30px;
+    width: 85%;
+    border-bottom: #d6d6d6 1px solid;
+    padding: 10px;
+    font-size: 14px;
+    opacity: .7;
+}
+
+#box_right form a {
+    background: #ff9b51;
+    color: #fff;
+    display: block;
+    width: 100%;
+    margin-top: 50px;
+    padding: 20px 0px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+/* Social CSS */
+
+#social {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 20px 0;
+    grid-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))
+}
+
+#social_left {
+    padding-left: 15px;
+    padding-right: 100px;
+}
+
+#social_left h3 {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+
+#social_left p {
+    color: #86878b;
+    font-size: 15px;
+}
+
+#social_right {
+    padding-right: 15px;
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: right;
+    align-items: center;
+}
+
+#social_right a i {
+    color: #cccccc;
+}
+
+.fa-3x {
+    font-size: 2.5rem !important;
+}
+
+/* Tab_list CSS */
+
+#tab_list {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 20px;
+}
+
+#tab_col {}
+
+#tab_links {}
+
+#tab_links li a {
+    display: block;
+    background: #333;
+    width: 115px;
+    height: 115px;
+    line-height: 115px;
+    border-bottom: 1px solid #fff;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
 }
