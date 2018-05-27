@@ -1,6 +1,11 @@
 /* Nav-bar effect */
 
+body {
+    scroll-behavior: smooth;
+}
+
 .text p {
+    -webkit-transition: color 0.3s ease-in-out;
     transition: color 0.3s ease-in-out;
 }
 
@@ -11,6 +16,7 @@
 /* Banner box_left button effect */
 
 #box_left button {
+    -webkit-transition: background 0.3s ease-in-out;
     transition: background 0.3s ease-in-out;
 }
 
@@ -18,9 +24,14 @@
     background: #ff9b51;
 }
 
+#menu button:hover {
+    color: #ff9b51;
+}
+
 /* Banner box_right a effect */
 
 #box_right form a {
+    -webkit-transition: background 0.3s ease-in-out;
     transition: background 0.3s ease-in-out;
 }
 
@@ -28,9 +39,14 @@
     background: #000;
 }
 
+#box_right form input:focus {
+    border-bottom: #ff9b51 1px solid;
+}
+
 /* Social social-right effect */
 
 #social_right a i {
+    -webkit-transition: color 0.3s ease-in-out;
     transition: color 0.3s ease-in-out;
 }
 
@@ -40,28 +56,65 @@
 
 /* Tab_list effect */
 
-#tab_links li a{
+#tab_links li a {
+    -webkit-transition: background 0.2s ease-in-out;
     transition: background 0.2s ease-in-out;
 }
 
-#tab_links .active,
-#tab_links li a:hover {
+#tab_links .active {
     background: #ff8b38;
 }
-.tab{
+
+#tab_links li a:hover {
+    background: #f38f47;
+}
+
+.tab {
+    -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
-@keyframes effect{
-    0%{
+
+@-webkit-keyframes effect {
+    0% {
         opacity: 1;
     }
-    50%{
+    50% {
         opacity: 0.0;
     }
-    90%{
+    90% {
         opacity: 1;
     }
 }
-.active2{
+
+@keyframes effect {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.0;
+    }
+    90% {
+        opacity: 1;
+    }
+}
+
+/* Tab_content effect */
+
+.tab_content button:hover {
+    background: #333;
+}
+
+.active2 {
+    -webkit-animation: effect 1s;
     animation: effect 1s;
+}
+
+.hide {
+    display: none;
+}
+
+/* footer effect*/
+
+.footicon:hover {
+    color: #f38f47
 }

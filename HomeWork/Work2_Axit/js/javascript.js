@@ -1,45 +1,183 @@
-const tab_link1 = document.querySelector('#tab_link1');
-const tab_link2 = document.querySelector('#tab_link2');
-const tab_link3 = document.querySelector('#tab_link3');
-const tab_content1 = document.querySelector('#tab_content1');
-const tab_content2 = document.querySelector('#tab_content2');
-const tab_content3 = document.querySelector('#tab_content3');
+const menu = document.querySelector("#menu button");
+let count = 0;
+let scrollCount = 0;
+const tab_content = document.querySelectorAll('.tab')
+const tab_links = document.querySelectorAll('#tab_links li a')
+const text = document.querySelectorAll('.text')
 
-function handlerClick1(e) {
-    this.classList.toggle("active");
-    tab_link2.classList.remove("active");
-    tab_link3.classList.remove("active");
-    tab_content1.classList.toggle("active2");
-    tab_content2.classList.remove("active2");
-    tab_content3.classList.remove("active2");
-    tab_content1.style.display = "block";
-    tab_content2.style.display = "none";
-    tab_content3.style.display = "none";
+function handlerClick(e) {
+    tab_links.forEach(a => {
+        a.classList.remove("active");
+    })
+    e.target.classList.add('active')
+    const data = this.getAttribute('data-id')
+    tab_content.forEach(b => {
+        b.classList.remove("active2");
+        b.classList.add("hide");
+    })
+    const datanum = document.querySelector(`[data-num="${data}"]`)
+    datanum.classList.remove("hide")
+    datanum.classList.add("active2")
 }
 
-function handlerClick2(e) {
-    this.classList.toggle("active");
-    tab_link1.classList.remove("active");
-    tab_link3.classList.remove("active");
-    tab_content2.classList.toggle("active2");
-    tab_content1.classList.remove("active2");
-    tab_content3.classList.remove("active2");
-    tab_content1.style.display = "none";
-    tab_content2.style.display = "block";
-    tab_content3.style.display = "none";
+function barRightClick(e) {
+    if (document.querySelector('.bar-right').style.display == "none" || document.querySelector('.bar-right').style.display == "") {
+        document.querySelector('.bar-right').style.display = "grid";
+        count++;
+        document.querySelector('#nav-bar').style.height = "190px";
+    } else {
+        document.querySelector('.bar-right').style.display = "none";
+        count = 0;
+        document.querySelector('#nav-bar').style.height = "";
+    }
 }
 
-function handlerClick3(e) {
-    this.classList.toggle("active");
-    tab_link1.classList.remove("active");
-    tab_link2.classList.remove("active");
-    tab_content3.classList.toggle("active2");
-    tab_content1.classList.remove("active2");
-    tab_content2.classList.remove("active2");
-    tab_content1.style.display = "none";
-    tab_content2.style.display = "none";
-    tab_content3.style.display = "block";
+window.onscroll = () => {
+    let scroll = document.documentElement.scrollTop;
+    scrollCount = scroll;
+    scrolLoadUp();
+    if (scroll >= 1) {
+        document.querySelector('#container_header').classList.add("sticky");
+        if (count == 1) {
+            document.querySelector('#nav-bar').style.height = "50px";
+        } else document.querySelector('#nav-bar').style.height = "50px";
+    } else {
+        document.querySelector('#container_header').classList.remove("sticky");
+        document.querySelector('#nav-bar').style.height = "";
+    }
 }
-tab_link1.addEventListener('click', handlerClick1);
-tab_link2.addEventListener('click', handlerClick2);
-tab_link3.addEventListener('click', handlerClick3);
+
+function scrolLoadUp() {
+    let banner = document.querySelector(`[href="#container_banner"]`)
+    let tab = document.querySelector(`[href="#container_tab_list"]`)
+    let sub = document.querySelector(`[href="#container_sub_list"]`)
+    let pic = document.querySelector(`[href="#container_picture"]`)
+    let footer = document.querySelector(`[href="#container_footer"]`)
+    if (scrollCount == 0) {
+        text.forEach((e) => {
+            e.style.color = "#c0c0c0"
+        })
+    }
+    if (scrollCount >= 1) {
+        text.forEach((e) => {
+            e.style.color = "#c0c0c0"
+        });
+        banner.style.color = "#f38f47";
+        document.querySelector('.bar-right').setAttribute("style", "display:none")
+    }
+    if (scrollCount >= 540) {
+        text.forEach((e) => {
+            e.style.color = "#c0c0c0"
+        })
+        tab.style.color = "#f38f47"
+    }
+    if (scrollCount >= 1000) {
+        text.forEach((e) => {
+            e.style.color = "#c0c0c0"
+        })
+        sub.style.color = "#f38f47"
+    }
+    if (scrollCount >= 1550) {
+        text.forEach((e) => {
+            e.style.color = "#c0c0c0"
+        })
+        pic.style.color = "#f38f47"
+    }
+    if (scrollCount >= 1830) {
+        text.forEach((e) => {
+            e.style.color = "#c0c0c0"
+        })
+        footer.style.color = "#f38f47"
+    }
+}
+
+tab_links.forEach(tab => tab.addEventListener('click', handlerClick))
+menu.addEventListener('click', barRightClick)
+
+// -----------------------------------------------------------------------
+// Style console.log
+console.log("%cStop!", "color: red; font-size: 100px; font-weight: bold; text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);");
+console.log("%cBạn Đang Truy Cập Trái Phép", "color: blue; font-size: 25px; font-weight: bold");
+// Style console.log
+
+// -----------------------------------------------------------------------
+
+// Home JS 
+const people = [{
+        name: "Bui Tien Dung",
+        position: "goalkeeper",
+        birth_year: 1997,
+        height: "1m81",
+        club: "FLC Thanh Hoa",
+    },
+    {
+        name: "Bui Tien Dung",
+        position: "defender",
+        birth_year: 1995,
+        height: "1m76",
+        club: "Viettel",
+    },
+    {
+        name: "Nguyen Cong Phuong",
+        position: "striker",
+        birth_year: 1996,
+        height: "1m68",
+        club: "HAGL",
+    },
+    {
+        name: "Nguyen Van Anh",
+        position: "boss",
+        birth_year: 1992,
+        height: "1m88",
+        club: "Saigon",
+    },
+
+
+]
+
+function countAllPlayers() {
+    return `Found ${people.length} players`
+}
+
+function checkNumberOfPlayers() {
+    return countAllPlayers() >= 16 ? true : false
+}
+
+function getPlayersByBirthYear(year) {
+    people.forEach(a => (a.birth_year == year && year >= 0) ? console.table(a) : false)
+}
+
+function getPlayersByClub(b) {
+    people.forEach((a) => {
+        if (1 == (new RegExp(b, "gi")).test(a.club)) return console.table(a)
+    })
+};
+
+function getTallerPlayers(b) {
+    people.forEach((a) => {
+        if (+b.match(/\d/g).join("") < +a.height.match(/\d/g).join("")) return console.table(a)
+    })
+};
+
+function sortPlayersByName() {
+    return console.table(people.sort((a, b) => a.name.localeCompare(b.name))); 
+}
+
+function sortPlayersByHeight() {
+    return console.table(people.sort((a, b) => a.height.localeCompare(b.height)));
+}
+
+function getRandomPlayer() {
+    return console.table(people.sort(() => {
+        return 0.5 - Math.random()
+    })[1]);
+}
+
+function getPositionOfPlayer(index) {
+    return console.table(people[index - 1]);
+}
+
+function isVietnamWin() {
+    new Date().getSeconds() % 2 == 0 ? console.info(true) : console.info(false);
+}
+// Home JS
