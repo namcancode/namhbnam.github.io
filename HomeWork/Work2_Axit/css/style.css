@@ -1,7 +1,6 @@
 /* Container CSS */
 
 /* header nav-bar CSS */
-
 .sticky {
     position: fixed;
     width: 100%;
@@ -203,7 +202,8 @@ button[aria-hidden="true"] {
     padding: 20px 0;
     grid-gap: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    overflow: hidden;
 }
 
 #social_left {
@@ -333,6 +333,7 @@ button[aria-hidden="true"] {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 50px;
     padding: 110px 0px 120px;
+    overflow: hidden;
 }
 
 #sub-picture {
@@ -396,6 +397,7 @@ button[aria-hidden="true"] {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 50px;
     padding: 80px 0px;
+    overflow: hidden;
 }
 
 #st-content {
