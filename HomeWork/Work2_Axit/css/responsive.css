@@ -19,7 +19,7 @@
         background: #f5f5f5;
     }
     .bar-right {
-        display: grid !important;
+        display: grid!important;
     }
 }
 
@@ -47,13 +47,14 @@
         -ms-flex-item-align: center;
         align-self: center;
         justify-self: end;
-        padding: 20px 0;
+        padding: 10px 0;
         cursor: pointer;
     }
     .bar-right {
         padding: 10px 0;
         display: none;
         justify-self: end;
+        grid-gap: 8px;
     }
     #box {
         display: grid;
@@ -123,6 +124,7 @@
     #box_right {
         justify-self: center;
         padding-right: 10px;
+       
     }
     .tab {
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));

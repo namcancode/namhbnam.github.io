@@ -155,9 +155,9 @@ body {
 
 #st-content{
     transition: 1s transform ease;
-    transform: translateY(200%)
+    transform: translateY(300%)
 }
 #st-pic{
     transition: 1s transform ease;
-    transform: translateY(-200%)
+    transform: translateY(-300%)
 }

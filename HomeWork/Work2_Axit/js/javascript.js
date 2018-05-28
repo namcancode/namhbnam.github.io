@@ -4,7 +4,7 @@ let scrollCount = 0;
 const tab_content = document.querySelectorAll('.tab');
 const tab_links = document.querySelectorAll('#tab_links li a');
 const text = document.querySelectorAll('.text');
-let scrollNumber = 0;
+let pointStandart, pointBot;
 
 function handlerClick(e) {
     tab_links.forEach(a => {
@@ -26,46 +26,18 @@ function barRightClick(e) {
         document.querySelector('.bar-right').style.display = "grid";
         count++;
         document.querySelector('#nav-bar').style.height = "190px";
+        menu.setAttribute("class", "fas fas fa-times fa-2x");
     } else {
         document.querySelector('.bar-right').style.display = "none";
         count = 0;
         document.querySelector('#nav-bar').style.height = "50px";
+        menu.setAttribute("class", "fas fa-bars fa-2x");
     }
 }
 
-
-
-
-
-
-
-function displaywheel(e){
-    var evt=window.event || e //equalize event object
-    var delta=evt.detail? evt.detail*(-1) : evt.wheelDelta //check for detail first so Opera uses that instead of wheelDelta
-    console.log('delta :', delta);
-}
- 
-var mousewheelevt=(/Firefox/i.test(navigator.userAgent))? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
- 
-if (document.attachEvent) //if IE (and Opera depending on user setting)
-    document.attachEvent("on"+mousewheelevt, displaywheel)
-else if (document.addEventListener) //WC3 browsers
-    document.addEventListener(mousewheelevt, displaywheel, false)
-
-
-
-
-
-
-
-
-
-
 window.onscroll = () => {
- 
-    scrollNumber++
-    let scroll = document.querySelector('html').scrollTop;
-    // console.log('scroll :', scrollNumber);
+    let scroll = document.documentElement.scrollTop;
+    // console.log('scroll :', scroll);
     scrollCount = scroll;
     scrolLoadUp();
     if (scroll >= 1) {
@@ -74,38 +46,29 @@ window.onscroll = () => {
         document.querySelector("#social_right").style.transform = "translateX(0)"
         if (count == 1) {
             document.querySelector('#nav-bar').style.height = "50px";
-        } else document.querySelector('#nav-bar').style.height = "50px";
+            menu.setAttribute("class", "fas fa-bars fa-2x");
+        } else {
+            document.querySelector('#nav-bar').style.height = "50px";
+            menu.setAttribute("class", "fas fa-bars fa-2x");
+        }
     } else {
         document.querySelector('#container_header').classList.remove("sticky");
         document.querySelector('#nav-bar').style.height = "";
+        menu.setAttribute("class", "fas fa-bars fa-2x");
     }
-    if (scroll > 383) {
+    if (scroll >= 550) {
         document.querySelector("#box_left").style.transform = "translateX(-200%)"
         document.querySelector("#box_right").style.transform = "translateX(200%)"
     } else {
         document.querySelector("#box_left").style.transform = "translateX(0)"
         document.querySelector("#box_right").style.transform = "translateX(0)"
     }
-    if (scroll > 600) {
+    if (scroll > 700) {
         document.querySelector("#social_left").style.transform = "translateX(-200%)"
         document.querySelector("#social_right").style.transform = "translateX(200%)"
     } else {
         document.querySelector("#social_left").style.transform = "translateX(0)"
         document.querySelector("#social_right").style.transform = "translateX(0)"
-    }
-    if (scroll > 1713 || scroll < 550) {
-        document.querySelector("#sub-picture").style.transform = "translateY(-200%)"
-        document.querySelector("#sub-list").style.transform = "translateY(200%)";
-    } else {
-        document.querySelector("#sub-picture").style.transform = "translateY(0"
-        document.querySelector("#sub-list").style.transform = "translateY(0)"
-    }
-    if (scroll > 1713 || scroll < 1200) {
-        document.querySelector("#st-content").style.transform = "translateY(200%)"
-        document.querySelector("#st-pic").style.transform = "translateY(-200%)";
-    } else {
-        document.querySelector("#st-content").style.transform = "translateY(0"
-        document.querySelector("#st-pic").style.transform = "translateY(0)"
     }
 
 }
@@ -113,6 +76,40 @@ window.onscroll = () => {
 window.onload = () => {
     document.querySelector("#box_left").style.transform = "translateX(0)"
     document.querySelector("#box_right").style.transform = "translateX(0)"
+    new Waypoint({
+        element: document.getElementById('sub-wrap'),
+        handler: function (direction) {
+            if (direction == "down") {
+                document.querySelector("#sub-picture").style.transform = "translateY(0"
+                document.querySelector("#sub-list").style.transform = "translateY(0)"
+            } else {
+                document.querySelector("#sub-picture").style.transform = "translateY(-200%)"
+                document.querySelector("#sub-list").style.transform = "translateY(200%)";
+            }
+        },
+        offset: '80%'
+    })
+    new Waypoint({
+        element: document.getElementById('standard'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                document.querySelector("#st-content").style.transform = "translateY(0)"
+                document.querySelector("#st-pic").style.transform = "translateY(0)"
+            } else {
+                document.querySelector("#st-content").style.transform = "translateY(300%)"
+                document.querySelector("#st-pic").style.transform = "translateY(-300%)";
+            }
+            pointStandart = this.triggerPoint
+        },
+        offset: '70%'
+    })
+    new Waypoint({
+        element: document.getElementById('bot'),
+        handler: function (direction) {
+            pointBot = this.triggerPoint
+        },
+        offset: '100%'
+    })
 }
 
 function scrolLoadUp() {
@@ -145,13 +142,13 @@ function scrolLoadUp() {
         })
         sub.style.color = "#f38f47"
     }
-    if (scrollCount >= 1480) {
+    if (scrollCount >= pointStandart) {
         text.forEach((e) => {
             e.style.color = "#c0c0c0"
         })
         pic.style.color = "#f38f47"
     }
-    if (scrollCount >= 1710) {
+    if (scrollCount >= pointBot) {
         text.forEach((e) => {
             e.style.color = "#c0c0c0"
         })
@@ -196,14 +193,14 @@ const people = [{
         position: "boss",
         birth_year: 1992,
         height: "1m88",
-        club: "Saigon",
+        club: "Tien Phong",
     },
     {
-        name: "Nguyen Van anh",
-        position: "boss",
+        name: "Le Thi anh",
+        position: "girl",
         birth_year: 1992,
-        height: "1m88",
-        club: "Saigon",
+        height: "1m70",
+        club: "VNPT",
     },
 ]
 
@@ -298,10 +295,10 @@ function isVietnamWin() {
 // (function () { // do not mess global space
 //     var
 //         interval, // scroll is being eased
-//         mult = 2000, // how fast do we scroll
+//         mult = 20, // how fast do we scroll
 //         dir = 0, // 1 = scroll down, -1 = scroll up
-//         steps = 20, // how many steps in animation
-//         length = 50; // how long to animate
+//         steps = 30, // how many steps in animation
+//         length = 60; // how long to animate
 //     function MouseWheelHandler(e) {
 //         e.preventDefault(); // prevent default browser scroll
 //         clearInterval(interval); // cancel previous animation
