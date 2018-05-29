@@ -57,6 +57,30 @@
         if (callNow) func.apply(context, args);
       };
     }
+    const sliderImages = document.querySelectorAll('.slide-in');
+    function checkSlide (e) {
+      // console.log(window.scrollY);
+      sliderImages.forEach(slideImage => {
+        // scrollY là trả về vị trí của viền trên viewport(khung màn hình đang nhìn) so với cạnh trên màn hình đầu tiên
+        // slideInAt là muốn slide bắt đầu xảy ra hiệu ứng ở chỗ nào. Trường hợp này là ở giữa
+        const slideInAt = (window.scrollY + window.innerHeight) - slideImage.height /2      
+        // console.log('slideInAt :', slideInAt);
+        //imageBottom of the image
+        const imageBottom = slideImage.offsetTop + slideImage.height;
+        // console.log('imageBottom :', imageBottom)
+        //offsetTop chỉ vị trí cạnh top của slideImage so với cạnh top của Window, giá trị trả về là pixell
+        //slideimage.height chiều cao của slideImage
+        const isHalfShown = slideInAt > slideImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if(isHalfShown && isNotScrolledPast){
+          slideImage.classList.add('active');
+        } else {
+          slideImage.classList.remove('active')
+        }
+      })
+      // console.count(e)
+    }
+    window.addEventListener('scroll', (checkSlide))
 
   </script>
 

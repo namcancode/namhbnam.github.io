@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>HTML Video Player</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-   <div class="player">
-     <video class="player__video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
+  <div class="player">
+    <video class="player__video viewer" src="https://r4---sn-i3belne6.googlevideo.com/videoplayback?itag=18&mime=video/mp4&dur=138.205&ms=au,rdu&ei=RrsMW6LDEY_zqQGn_aCwDg&id=o-ADOfV2i8Yepes9LrCn5HH4QETIJZe1PaxkJMK4xpv6JD&pl=25&mv=u&mt=1527560644&fvip=4&ratebypass=yes&gir=yes&expire=1527582630&mn=sn-i3belne6,sn-i3b7knld&mm=31,29&source=youtube&sparams=clen,dur,ei,gir,id,ip,ipbits,itag,lmt,mime,mm,mn,ms,mv,pl,ratebypass,requiressl,source,expire&requiressl=yes&clen=8839653&ip=43.239.221.240&lmt=1509330518513758&key=yt6&c=WEB&signature=B68CA886C42CC9D66CFDC9352CF8776EB3CE3EC9.6916C9EE0AF4CF6E50C0A3847FC8D0053B525CB1&ipbits=0&signature="></video>
 
-     <div class="player__controls">
-       <div class="progress">
+    <div class="player__controls">
+      <div class="progress">
         <div class="progress__filled"></div>
-       </div>
-       <button class="player__button toggle" title="Toggle Play">►</button>
-       <input type="range" name="volume" class="player__slider" min="0" max="1" step="0.05" value="1">
-       <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1">
-       <button data-skip="-10" class="player__button">« 10s</button>
-       <button data-skip="25" class="player__button">25s »</button>
-     </div>
-   </div>
+      </div>
+      <button class="player__button toggle" title="Toggle Play">►</button>
+      <input type="range" name="volume" class="player__slider" min="0" max="1" step="0.05" value="1">
+      <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1">
+      <button data-skip="-10" class="player__button">« 10s</button>
+      <button data-skip="25" class="player__button">25s »</button>
+    </div>
+  </div>
 
   <script src="scripts.js"></script>
 </body>
+
 </html>
