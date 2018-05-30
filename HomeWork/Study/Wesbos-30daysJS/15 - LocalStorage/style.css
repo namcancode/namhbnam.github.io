@@ -63,8 +63,8 @@
       margin-right: 10px;
     }
 
-    .plates input:checked + label:before {
-      content: '🌮';
+    .plates input:checked + label::before {
+      content: '💩';
     }
 
     .add-items {
