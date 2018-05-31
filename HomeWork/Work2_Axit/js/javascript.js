@@ -166,7 +166,7 @@ console.log("%cBạn Đang Truy Cập Trái Phép", "color: blue; font-size: 25p
 
 // -----------------------------------------------------------------------
 
-// Home JS 
+// Home JS
 const people = [{
         name: "Bui Tien Dung",
         position: "goalkeeper",
@@ -218,14 +218,15 @@ function getPlayersByBirthYear(year) {
 
 function getPlayersByClub(b) {
     people.forEach((a) => {
-        if (1 == (new RegExp(b, "gi")).test(a.club)) return console.table(a)
+        (1 == (new RegExp(b, "gi")).test(a.club)) ? console.table(a): 0
     })
 };
 
 function getTallerPlayers(b) {
-    people.forEach((a) => {
-        if (+b.match(/\d/g).join("") < +a.height.match(/\d/g).join("")) return console.table(a)
-    })
+    // people.forEach((a) => {
+    //      (+b.match(/\d/g).join("") < +a.height.match(/\d/g).join("")) ?console.table(a):0
+    // })
+    return people.filter(a =>a.height>b ?1:0)
 }
 
 function sortPlayersByName() {
