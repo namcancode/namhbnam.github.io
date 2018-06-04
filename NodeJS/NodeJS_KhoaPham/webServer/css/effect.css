@@ -1,0 +1,163 @@
+/* Nav-bar effect */
+
+body {
+    scroll-behavior: smooth;
+}
+.text p {
+    -webkit-transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
+
+.text:hover p {
+    color: #ff8b38
+}
+
+/* Banner box_left button effect */
+
+#box_left button {
+    -webkit-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+}
+
+#box_left button:hover {
+    background: #ff9b51;
+}
+
+#menu button:hover {
+    color: #ff9b51;
+}
+
+/* Banner box_right a effect */
+
+#box_right form a {
+    -webkit-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+}
+
+#box_right form a:hover {
+    background: #000;
+}
+
+#box_right form input:focus {
+    border-bottom: #ff9b51 1px solid;
+}
+
+/* Social social-right effect */
+
+#social_right a i {
+    -webkit-transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+}
+
+#social_right a:hover i {
+    color: #ff9b51;
+}
+
+/* Tab_list effect */
+
+#tab_links li a {
+    -webkit-transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+}
+
+#tab_links .active {
+    background: #ff8b38;
+}
+
+#tab_links li a:hover {
+    background: #f38f47;
+}
+
+.tab {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+@-webkit-keyframes activeEffect {
+    0% {
+       transform: rotateX(0);
+    }
+    50% {
+       transform: rotateX(90deg);
+    }
+    90% {
+       transform: rotateX(0);
+    }
+}
+
+@keyframes activeEffect {
+    0% {
+        transform: rotateX(0);
+     }
+     50% {
+        transform: rotateX(90deg);
+     }
+     90% {
+        transform: rotateX(0);
+     }
+}
+
+/* Tab_content effect */
+
+.tab_content button:hover {
+    background: #333;
+}
+
+.active2 {
+    -webkit-animation: effect 1s;
+    animation: activeEffect .5s;
+}
+
+.hide {
+    display: none;
+}
+
+/* footer effect*/
+
+.footicon:hover {
+    color: #f38f47
+}
+
+/* banner effect scroll*/
+#box{
+    overflow: hidden;
+}
+#box_left{
+    transform: translateX(-200%);
+    transition: .8s transform ease;
+}
+#box_right{
+    transform: translateX(200%);
+    transition: .8s transform ease;
+}
+
+/* Social effect scroll */
+#social_left{
+    transform: translateX(-200%);
+    transition: .5s transform ease;
+}
+#social_right{
+    transform: translateX(200%);
+    transition: .5s transform ease;
+}
+
+/* sub_list effect scroll */
+#sub-picture{
+    transition: 1s transform ease;
+    transform: translateY(-200%)
+}
+#sub-list{
+    transition: 1s transform ease;
+    transform: translateY(200%)
+}
+
+/* standart picture effect scroll */
+
+#st-content{
+    transition: 1s transform ease;
+    transform: translateY(300%)
+}
+#st-pic{
+    transition: 1s transform ease;
+    transform: translateY(-300%)
+}
