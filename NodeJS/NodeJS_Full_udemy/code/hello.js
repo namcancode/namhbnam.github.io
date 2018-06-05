@@ -1,5 +1,5 @@
 function hello (w) {
-    console.log("hello world");
+    console.log("hello module exports");
 }
 // hello()
-module.exports = hello
+module.exports = hello;
