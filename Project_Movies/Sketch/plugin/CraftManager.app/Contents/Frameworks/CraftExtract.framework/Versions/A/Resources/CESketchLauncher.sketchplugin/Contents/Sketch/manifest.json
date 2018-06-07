@@ -1,0 +1,48 @@
+{
+    "name" : "CESketchLauncher",
+    "identifier" : "com.invisionapp.sketchlauncher",
+    "version" : "1.0",
+    "description" : "Test passing context variables",
+    "authorEmail" : "jamestang@invisionapp.com",
+    "author" : "James Tang",
+    "commands" : [
+      {
+        "script" : "run.js",
+        "handler" : "onRun",
+        "name" : "onRun",
+        "identifier" : "onRun"
+      },
+      {
+          "script" : "run.js",
+          "handler" : "openDocument",
+          "name" : "openDocument",
+          "identifier" : "openDocument"
+      },
+      {
+          "script" : "run.js",
+          "handler" : "detachDocument",
+          "name" : "detachDocument",
+          "identifier" : "detachDocument"
+      },
+      {
+          "script" : "run.js",
+          "handler" : "detachDocumentAsyncStart",
+          "name" : "detachDocumentAsyncStart",
+          "identifier" : "detachDocumentAsyncStart"
+      },
+      {
+          "script" : "run.js",
+          "handler" : "detachDocumentAsyncEnd",
+          "name" : "detachDocumentAsyncEnd",
+          "identifier" : "detachDocumentAsyncEnd"
+      },
+      {
+        "script" : "run.js",
+        "handlers" : {
+          "actions" : {
+            "Startup" : "onStartup",
+          }
+        }
+      },
+    ]
+}
