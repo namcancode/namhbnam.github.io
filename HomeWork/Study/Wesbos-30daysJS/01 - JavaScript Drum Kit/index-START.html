@@ -61,6 +61,7 @@
 
   <script>
     window.addEventListener("keydown", function (e) {
+      console.log(e);
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
       const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
       // if (!audio) return
@@ -93,12 +94,12 @@
   //   a = a.split("*").join();
   //   a = a.split("/").join();
   //   a = a.split(",");
-    
+
   //   for (i in a){
   //     // console.log(a[i].indexOf("sin"));
   //     if (a[i].indexOf("sin") == 0 || a[i].indexOf("cos") == 0){
   //       b.push(a[i]);
-       
+
   //     }
   //   }
   //   console.log(b);
@@ -107,9 +108,9 @@
   //    test = item.replace(/\D/g,'');
   //   console.log('test :', test);
   //  }
- 
 
-   
+
+
   //   function sin(a){
   //     return Math.sin(a)
   //   }
