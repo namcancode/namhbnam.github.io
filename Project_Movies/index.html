@@ -7,37 +7,1197 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Xem Phim Online ||| Phim HD miễn phí || Cinema</title>
     <link rel="shortcut icon" href="img/favicon.ico" />
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="fonts/web-fonts-with-css/css/fontawesome-all.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="img/logo.png" alt="">
-            </a>
-        </div>
-        <div class="menu">
-            <p>Trang chủ</p>
-            <p>Phim lẻ</p>
-            <p>Phim bộ</p>
-            <p>Phim rạp</p>
-            <p>Phim mới</p>
-        </div>
-        <div class="login">
-            <input type="text" value="Search">
-            <button id="btnlogin">Đăng nhập</button>
-        </div>
-
-    </header>
-    <section>
-
-    </section>
-    <footer>
-
-    </footer>
+    <div class="header--wrap">
+        <header class="wrap">
+            <div class="header__logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="">
+                </a>
+            </div>
+            <div class="header__menu">
+                <a class="menu__text" href="#container_menu">
+                    <p>Trang chủ</p>
+                </a>
+                <a class="menu__text" href="#container_tab_list">
+                    <p>Phim lẻ</p>
+                </a>
+                <a class="menu__text" href="#container_sub_list">
+                    <p>Phim bộ</p>
+                </a>
+                <a class="menu__text" href="#container_picture">
+                    <p>Phim rạp</p>
+                </a>
+                <a class="menu__text" href="#container_footer">
+                    <p>Phim mới</p>
+                </a>
+            </div>
+            <div class="header__login">
+                <input type="text" placeholder="Tìm kiếm" <button id="btnlogin">Đăng nhập</button>
+            </div>
+        </header>
+    </div>
+    <div class="wrap">
+        <section class="content">
+            <div class="content__slider">
+                <div class="slide__cont">
+                    <div id="cont_images">
+                        <div id="img1">
+                            <img src="img/slide1.jpg" alt="1">
+                        </div>
+                        <div id="img2">
+                            <img src="img/slide2.jpg" alt="2">
+                        </div>
+                        <div id="img3">
+                            <img src="img/slide3.jpg" alt="3">
+                        </div>
+                        <div id="img4">
+                            <img src="img/slide4.jpg" alt="4">
+                        </div>
+                        <div id="img5">
+                            <img src="img/slide5.jpg" alt="5">
+                        </div>
+                    </div>
+                    <div class="cont_box">
+                        <div class="box_circle">
+                            <div class="c1 c"></div>
+                            <div class="c2 c"></div>
+                            <div class="c3 c"></div>
+                        </div>
+                        <div class="box_clear"></div>
+                        <div class="box_button">
+                            <div class="btn1 btn">
+                                <button class="btnLeft fas fa-angle-left" id="1"></button>
+                            </div>
+                            <div class="btn2 btn">
+                                <button class="btnRight fas fa-angle-right" id="2"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content__list">
+                <div class="list__title">
+                    <a href="#">
+                        <p>Phim Hot</p>
+                    </a>
+                    <a href="#">
+                        <p>
+                            Xem thêm
+                        </p>
+                    </a>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/1.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Biệt Đội Siêu Anh Hùng 3: Cuộc Chiến Vô Cực
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/2.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Quái nhân 2
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/3.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Tomb Raider: Huyền Thoại Bắt Đầu
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/4.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Đặc Nhiệm Siêu Anh Hùng Phần 5
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/5.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Siêu Đại Chiến Binh Thái Bình Dương 2: Cuộc Nổi Dậy
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/6.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Đấu Trường Ảo
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/7.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Siêu Thú Cuồng Nộ
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content__list">
+                <div class="list__title">
+                    <a href="#">
+                        <p>Phim Chiếu Rạp</p>
+                    </a>
+                    <a href="#">
+                        <p>
+                            Xem thêm
+                        </p>
+                    </a>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/b1.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Siêu Nhân Trở Lại
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/b2.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                50 Sắc Thái 3: Tự Do
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/b3.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Chiến Tranh Giữa Các Vì Sao 8: Jedi Cuối Cùng
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/b4.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                12 Kỵ Binh Quả Cảm
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/b5.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Coco
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/b6.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Jumanji: Trò Chơi Kỳ Ảo
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/b7.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Thor 3: Thời Khắc Tận Thế
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content__list">
+                <div class="list__title">
+                    <a href="#">
+                        <p>Phim Lẻ Mới Nhất</p>
+                    </a>
+                    <a href="#">
+                        <p>
+                            Xem thêm
+                        </p>
+                    </a>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/c1.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Thương Mến Simon
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/c2.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Cặp Song Sinh
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/c3.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Hoàng Phi Hồng: Nam Bắc Anh Hùng
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/c4.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                451 Độ F
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/c5.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Biến Đổi Kỳ Diệu
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/c6.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Giết Tôi Đi
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/c7.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Nếp Gấp Thời Gian
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content__list">
+                <div class="list__title">
+                    <a href="#">
+                        <p>Phim Bộ Mới Nhất</p>
+                    </a>
+                    <a href="#">
+                        <p>
+                            Xem thêm
+                        </p>
+                    </a>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/d1.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Siêu Nhân Build
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/d2.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Mãng Hoang Kỷ
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/d3.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Chocolate Hạnh Phúc
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/d4.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Thám Tử Conan
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/d5.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Sứ Mệnh Và Con Tim
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/d6.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Last Period
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/d7.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Khách Trọ Phòng 1006
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content__list">
+                <div class="list__title">
+                    <a href="#">
+                        <p>Phim Âu Mỹ</p>
+                    </a>
+                    <a href="#">
+                        <p>
+                            Xem thêm
+                        </p>
+                    </a>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/e1.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Nữ Siêu Nhân
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/e2.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Người Hùng Tia Chớp
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/e3.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Vụ Nổ Lớn
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/e4.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Mũi Tên Xanh
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/e5.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Xác Sống
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/e6.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Tia Chớp Đen
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/e7.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Siêu Hacker
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content__list">
+                <div class="list__title">
+                    <a href="#">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                    <a href="#">
+                        <p>
+                            Xem thêm
+                        </p>
+                    </a>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/f1.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Đấu Trí
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/f2.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Mỗi Ngày Một Bài Thơ
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/f3.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Nam Thanh Nữ Tú Thế Kỷ 20
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/f4.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Chị Em Song Sinh
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/f5.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Lang Y Lừng Danh
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/f6.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Tuổi Trẻ Muôn Màu
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/f7.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Hạnh Phúc Trời Ban
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content__list">
+                <div class="list__title">
+                    <a href="#">
+                        <p>Phim Trung Quốc</p>
+                    </a>
+                    <a href="#">
+                        <p>
+                            Xem thêm
+                        </p>
+                    </a>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/g1.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Liệt Hỏa Như Ca
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/g2.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Độc Cô Thiên Hạ
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/g3.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Nhân Sinh Nếu Như Lần Đầu Gặp Gỡ
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/g4.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Anh Hùng Xạ Điêu
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/g5.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Đại Tần Đế Quốc: Quật Khởi
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/g6.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Trường Học Uy Long 1
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/g7.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Sát Phá Lang 2
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content__list">
+                <div class="list__title">
+                    <a href="#">
+                        <p>Phim Hoạt Hình- Animal</p>
+                    </a>
+                    <a href="#">
+                        <p>
+                            Xem thêm
+                        </p>
+                    </a>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/h1.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Bảy Viên Ngọc Rồng Siêu Cấp
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/h2.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Doraemon - Chú Mèo Máy Thần Kỳ
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/h3.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Naruto Shippuden
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/h4.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                X-Men: The Animated Series
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/h5.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Đại Chiến Titan
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/h6.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Gia Đình Simprons
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/h7.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Hội Pháp Sư Movie: Dragon Cry
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content__list">
+                <div class="list__title">
+                    <a href="#">
+                        <p>Game Show Truyền HÌnh</p>
+                    </a>
+                    <a href="#">
+                        <p>
+                            Xem thêm
+                        </p>
+                    </a>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/i1.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Running Man
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/i2.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Law Of The Jungle (Luật Rừng)
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/i3.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Sự Trở Lại Của Siêu Nhân
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/i4.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Nhịp Đập Trái Tim 2
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/i5.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Nghiền Mì Ngõ
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/i6.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                Thử Thách Cực Đại
+                            </p>
+                        </a>
+                    </div>
+                </div>
+                <div class="list__card">
+                    <div class="card__pic">
+                        <a href="#">
+                            <img src="img/i7.jpg" alt="Avenger">
+                        </a>
+                    </div>
+                    <div class="card__name">
+                        <a href="#">
+                            <p>
+                                The Unit+
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer__box">
+                <div class="box__logo">
+                    <a href="#">
+                        <img src="img/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div class="box__info">
+                    <p>
+                        Đơn vị chủ quản : Công ty cổ phần trực tuyến Cinema.
+                    </p>
+                    <p>
+                        Địa chỉ đăng ký: Số nhà 14, ngõ 4, đường Nguyễn Đình Chiểu, Hà Nội.
+                    </p>
+                    <p>
+                        Email: support@nguyennam.ml
+                    </p>
+                    <p>
+                        Số điện thoại: 0988.888.888
+                    </p>
+                    <p>
+                        Copyright ©2018 Cinema. All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+            <div class="footer__link">
+                <div class="link">
+                    <span>
+                        <p>
+                            Liên Hệ
+                        </p>
+                    </span>
+                    <p>
+                        <a href="#">
+                            <i class="fab fa-facebook-f">Facebook</i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-twitter">Twitter</i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-google-plus-g">Google+</i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-youtube">Youtube</i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-tumblr">Tumblr</i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-slack-hash">Slack</i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-weixin">Wechat</i>
+                        </a>
+                    </p>
+                </div>
+                <div class="link">
+                    <span>
+                        <p>
+                            Thể Loại Phim
+                        </p>
+                    </span>
+                    <p>
+                        <a href="#">
+                            Phim Hot
+                        </a>
+                        <a href="#">
+                            Phim Chiếu Rạp
+                        </a>
+                        <a href="#">
+                            Phim Lẻ
+                        </a>
+                        <a href="#">
+                            Phim Bộ
+                        </a>
+                        <a href="#">
+                            Phim Âu Mỹ
+                        </a>
+                        <a href="#">
+                            Phim Hàn Quốc
+                        </a>
+                        <a href="#">
+                            Phim Trung Quốc
+                        </a>
+                        <a href="#">
+                            Phim Hoạt Hình
+                        </a>
+                    </p>
+                </div>
+                <div class="link">
+                    <span>
+                        <p>
+                            Diễn Viên
+                        </p>
+                    </span>
+                    <p>
+                        <a href="#">
+                            Tom Cruise
+                        </a>
+                        <a href="#">
+                            Adam Sendler
+                        </a>
+                        <a href="#">
+                            Johnny Depp
+                        </a>
+                        <a href="#">
+                            Leonardo dicaprio
+                        </a>
+                        <a href="#">
+                            Matt Damon
+                        </a>
+                        <a href="#">
+                            Brad Pitt
+                        </a>
+                        <a href="#">
+                            Robert Pattinson
+                        </a>
+                        <a href="#">
+                            Nam Nguyễn
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script src="js/javascript.js"></script>
     <!-- jQuery JS 3.1.0 -->
