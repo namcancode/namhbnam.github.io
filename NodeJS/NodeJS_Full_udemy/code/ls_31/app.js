@@ -15,4 +15,4 @@ const dialog = new Dialog()
 dialog.on("hello", function  () {
     console.log(("Co 1 loi chao"));
 })
-dialog.sayHello()
+dialog.sayHello();
