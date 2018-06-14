@@ -1,0 +1,19 @@
+/* hover nav */
+
+.title__list {
+    max-width: 100%;
+}
+
+.list__content {
+    max-width: 100%;
+    height: 100%;
+}
+
+.content__text {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 20px;
+}
+
+/* hover nav */
