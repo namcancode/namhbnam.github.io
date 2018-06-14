@@ -1,6 +1,12 @@
 .wrap {
     max-width: 1140px;
     margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+body {
+    background: #252525
 }
 
 /* CSS header */
@@ -34,6 +40,176 @@ header {
 
 .header__menu a {
     text-decoration: none;
+    color: #FFFFFF;
+    font-family: "Avenir Next";
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 25px;
+}
+
+.header__login {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header__login input {
+    height: 36px;
+    width: 217px;
+    border-radius: 10px;
+    border: 1px solid #F5A623;
+    background-color: rgba(255, 255, 255, 0.281);
+    margin-right: 20px;
+}
+
+.header__login button {
+    font-size: 15px;
+    font-weight: 500;
+    color: #FFFFFF;
+    height: 36px;
+    width: 95px;
+    border-radius: 6px;
+    border: 0;
+    background: linear-gradient(180deg, #FF9A00 0%, #D74C04 100%);
+    cursor: pointer;
 }
 
 /* CSS header */
+
+/* CSS content list*/
+
+.content__list {
+    display: grid;
+    gap: 10px;
+}
+
+.list__title {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.list__title a {
+    text-decoration: none;
+    color: #FF702D;
+    font-family: "Avenir Next";
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.43px;
+    line-height: 25px;
+}
+
+.list__title>:last-child {
+    justify-self: end;
+    color: #F5A623;
+    font-family: "Avenir Next";
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.34px;
+    line-height: 19px;
+}
+
+.list--wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    grid-column-gap: 20px;
+    padding-bottom: 25px;
+}
+
+.list__card {
+    max-width: 145px;
+}
+
+.card__pic {
+    width: 100%;
+    height: 215px;
+    padding-bottom: 8px;
+}
+
+.card__pic a img {
+    width: 100%;
+    height: 100%;
+}
+
+.card__name a {
+    width: 145px;
+    color: rgb(209, 209, 209);
+    font-family: "Avenir Next";
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.52px;
+    line-height: 19px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* CSS content list*/
+
+/* CSS footer */
+
+footer {
+    max-width: 100%;
+    background: #F5A623;
+}
+
+.footer--layout {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    width: 100%;
+    gap: 20px;
+    padding-top: 30px
+}
+
+.footer__box {
+    display: grid;
+    gap: 20px;
+}
+
+.box__logo {
+    justify-self: center;
+}
+
+.box__info {
+    padding-bottom: 30px;
+}
+
+.box__info p {
+    color: rgb(231, 229, 229);
+    font-family: "Avenir Next";
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.61px;
+    line-height: 18px;
+}
+
+.footer__link {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+}
+
+.link a {
+    display: block;
+    color: #EDEDED;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: 350;
+    letter-spacing: -0.61px;
+    line-height: 18px;
+    text-decoration: none;
+    padding: 5px 0 0 10px;
+}
+
+.link--social a {
+    display: grid;
+    grid-template-columns: 0fr 1fr;
+    gap: 10px;
+}
+
+.link span {
+    color: #EDEDED;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 450;
+}
+
+/* CSS footer */
