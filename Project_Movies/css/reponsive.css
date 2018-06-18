@@ -1,0 +1,82 @@
+@media only screen and (min-width: 768px) {
+    .desktop {
+        display: block
+    }
+    .mobile {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 968px) {
+    .header__menu {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    }
+    .menu__text p {
+        font-size: 16px;
+    }
+    .card--hide {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        grid-template-columns: 99px 1fr;
+    }
+    button[aria-hidden="true"] {
+        display: block;
+    }
+    .ws_bullets {
+        bottom: 0px !important;
+    }
+    .desktop {
+        display: none
+    }
+    .mobile {
+        display: block;
+    }
+    .card--hide {
+        display: block;
+    }
+    #mySidenav {
+        width: 0px;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .header__login input {
+        height: 36px;
+        max-width: 100px;
+        border-radius: 10px;
+        border: 1px solid #F5A623;
+        background-color: rgba(255, 255, 255, 0.281);
+        margin-right: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.100);
+    }
+    .footer__desktop {
+        display: none;
+    }
+    .footer__mobile {
+        display: block;
+    }
+    .card--hide {
+        display: none;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .header__login input {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 300px) {}

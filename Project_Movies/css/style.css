@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding-left: 15px;
     padding-right: 15px;
+    height: 100%;
 }
 
 body {
@@ -12,19 +13,29 @@ body {
 /* CSS header */
 
 .header--wrap {
-    height: 88px;
     max-width: 100%;
     background-color: #F5A623;
-}
-
-header {
-    display: grid;
-    grid-template-columns: 99px 1fr 1fr;
-    grid-gap: 20px;
+    height: 88px;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
 }
 
 .header__logo {
     max-width: 99px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+.header__button button {
+    border: 0;
+    background-color: #F5A623;
+    cursor: pointer;
 }
 
 .header__logo a img {
@@ -45,12 +56,8 @@ header {
     text-decoration: none;
 }
 
-button[aria-hidden="true"] {
-    display: block;
-}
-
 .menu__text p {
-    text-shadow: -3px 3px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: -3px 5px 5px rgba(0, 0, 0, 0.5);
     color: #FFFFFF;
     font-family: "Avenir Next";
     font-size: 18px;
@@ -62,9 +69,17 @@ button[aria-hidden="true"] {
     text-shadow: -3px 3px 5px rgba(0, 0, 0, 0.5);
     color: #FFFFFF;
     font-family: "Avenir Next";
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 25px;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 99px 1fr 1fr;
+    grid-gap: 20px;
+    height: 100%;
+    align-content: center;
 }
 
 .header__login {
@@ -94,6 +109,66 @@ button[aria-hidden="true"] {
     background: linear-gradient(180deg, #FF9A00 0%, #D74C04 100%);
     cursor: pointer;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.linebot::after {
+    content: "";
+    display: block;
+    width: 85%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.479);
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background-color: #252525;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #F5A623;
+    display: block;
+    transition: 0.3s;
+    z-index: 99;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.col p:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    z-index: 99;
+}
+
+.dropdown p {
+    padding-left: 20px;
+    font-size: 16px;
+    color: #aaaaaa
+}
+
+.sticky {
+    position: fixed;
+    width: 100%;
+    z-index: 999999;
 }
 
 /* CSS header */
@@ -134,8 +209,9 @@ button[aria-hidden="true"] {
 .list--wrap {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-    grid-column-gap: 20px;
+    grid-gap: 10px;
     padding-bottom: 25px;
+    justify-items: center;
 }
 
 .list__card {
@@ -232,6 +308,33 @@ footer {
     font-family: sans-serif;
     font-size: 16px;
     font-weight: 450;
+}
+
+.footer__desktop {
+    display: block
+}
+
+.footer__mobile {
+    display: none;
+}
+
+.social__icon {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+.social__icon i {
+    color: white;
+}
+
+.footer__info {
+    text-align: center;
+    padding-bottom: 10px;
+    color: #333333
 }
 
 /* CSS footer */

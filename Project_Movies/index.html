@@ -11,80 +11,189 @@
     <link rel="stylesheet" type="text/css" href="fonts/web-fonts-with-css/css/fontawesome-all.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/effect.css">
-
     <link rel="stylesheet" type="text/css" href="slide/engine1/style.css" />
-    <script type="text/javascript" src="slide/engine1/jquery.js"></script>
+    <link rel="stylesheet" href="css/reponsive.css">
+
 
 
 </head>
 
 <body>
-    <div class="header--wrap">
-        <header class="wrap">
-            <div class="header__logo">
-                <a href="index.html">
-                    <img src="img/logo.png" alt="">
-                </a>
+    <div class="header--wrap desktop">
+        <div class="wrap">
+            <header>
+                <div class="header__logo">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="header__menu">
+                    <a class="menu__text" href="#container_menu">
+                        <p>Trang chủ</p>
+                    </a>
+                    <a class="menu__text" href="#container_tab_list">
+                        <p>Phim lẻ</p>
+                    </a>
+                    <a class="menu__text" href="#container_sub_list">
+                        <p>Phim bộ</p>
+                    </a>
+                    <a class="menu__text" href="#container_picture">
+                        <p>Phim rạp</p>
+                    </a>
+                    <a class="menu__text" href="#container_footer">
+                        <p>Phim mới</p>
+                    </a>
+                </div>
+                <div class="header__login">
+                    <input type="text" placeholder="Tìm kiếm">
+                    <button id="btnlogin">Đăng nhập</button>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="header--wrap mobile">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn " onclick="closeNav()">&times;</a>
+            <a class="linebot" href="#">Trang chủ</a>
+            <div class="menu--mobile__list">
+                <a class="linebot" href="#">Phim lẻ</a>
+                <div class="dropdown">
+                    <a class="col" href="#container_menu">
+                        <p>Phim Hành Động</p>
+                    </a>
+                    <a class="col" href="#container_tab_list">
+                        <p>Phim Hành Động</p>
+                    </a>
+                    <a class="col" href="#container_sub_list">
+                        <p>Phim Hành Động</p>
+                    </a>
+                    <a class="col" href="#container_picture">
+                        <p>Phim Hành Động</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hành Động</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hành Động</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hành Động</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hành Động</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hành Động</p>
+                    </a>
+                </div>
             </div>
-            <div class="header__menu">
-                <a class="menu__text" href="#container_menu">
-                    <p>Trang chủ</p>
-                </a>
-                <a class="menu__text" href="#container_tab_list">
-                    <p>Phim lẻ</p>
-                </a>
-                <a class="menu__text" href="#container_sub_list">
-                    <p>Phim bộ</p>
-                </a>
-                <a class="menu__text" href="#container_picture">
-                    <p>Phim rạp</p>
-                </a>
-                <a class="menu__text" href="#container_footer">
-                    <p>Phim mới</p>
-                </a>
+            <div class="menu--mobile__list">
+                <a class="linebot" href="#">Phim bộ</a>
+                <div class="dropdown">
+                    <a class="col" href="#container_menu">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                    <a class="col" href="#container_tab_list">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                    <a class="col" href="#container_sub_list">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                    <a class="col" href="#container_picture">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                    <a class="col" href="#container_footer">
+                        <p>Phim Hàn Quốc</p>
+                    </a>
+                </div>
+            </div>
+            <a class="linebot" href="#">Phim rạp</a>
+            <a class="linebot" href="#">Phim mới</a>
+        </div>
+        <header class="wrap">
+            <div class="header__button">
+                <button href="#" onclick="openNav()" class="fas fa-bars fa-2x" aria-hidden="true"></button>
             </div>
             <div class="header__login">
                 <input type="text" placeholder="Tìm kiếm">
                 <button id="btnlogin">Đăng nhập</button>
             </div>
         </header>
-    </div>
-    <div class="title__list">
-        <div class="wrap">
-            <div class="list__content">
-                <div class="content__text text1">
-                    <a class="text__name" href="#container_menu">
-                        <p>Phim Hành Động</p>
-                    </a>
-                    <a class="text__name" href="#container_tab_list">
-                        <p>Phim Hành Động</p>
-                    </a>
-                    <a class="text__name" href="#container_sub_list">
-                        <p>Phim Hành Động</p>
-                    </a>
-                    <a class="text__name" href="#container_picture">
-                        <p>Phim Hành Động</p>
-                    </a>
-                    <a class="text__name" href="#container_footer">
-                        <p>Phim Hành Động</p>
-                    </a>
-                    <a class="text__name" href="#container_footer">
-                        <p>Phim Hành Động</p>
-                    </a>
-                    <a class="text__name" href="#container_footer">
-                        <p>Phim Hành Động</p>
-                    </a>
-                    <a class="text__name" href="#container_footer">
-                        <p>Phim Hành Động</p>
-                    </a>
-                    <a class="text__name" href="#container_footer">
-                        <p>Phim Hành Động</p>
-                    </a>
 
-                </div>
-            </div>
+    </div>
+    <div class="menu__list wrap">
+        <div class="content__text">
+            <a class="text__name" href="#container_menu">
+                <p>Phim Hành Động</p>
+            </a>
+            <a class="text__name" href="#container_tab_list">
+                <p>Phim Hành Động</p>
+            </a>
+            <a class="text__name" href="#container_sub_list">
+                <p>Phim Hành Động</p>
+            </a>
+            <a class="text__name" href="#container_picture">
+                <p>Phim Hành Động</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hành Động</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hành Động</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hành Động</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hành Động</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hành Động</p>
+            </a>
+        </div>
+        <div class="content__text">
+            <a class="text__name" href="#container_menu">
+                <p>Phim Hàn Quốc</p>
+            </a>
+            <a class="text__name" href="#container_tab_list">
+                <p>Phim Hàn Quốc</p>
+            </a>
+            <a class="text__name" href="#container_sub_list">
+                <p>Phim Hàn Quốc</p>
+            </a>
+            <a class="text__name" href="#container_picture">
+                <p>Phim Hàn Quốc</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hàn Quốc</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hàn Quốc</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hàn Quốc</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hành Động</p>
+            </a>
+            <a class="text__name" href="#container_footer">
+                <p>Phim Hành Động</p>
+            </a>
         </div>
     </div>
+
 
     <section class="content">
 
@@ -235,7 +344,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="list__card">
+                    <div class="list__card card--hide">
                         <div class="card__pic">
                             <a href="#">
                                 <img src="img/7.jpg" alt="Avenger">
@@ -348,7 +457,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="list__card">
+                    <div class="list__card card--hide">
                         <div class="card__pic">
                             <a href="#">
                                 <img src="img/b7.jpg" alt="Avenger">
@@ -461,7 +570,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="list__card">
+                    <div class="list__card card--hide">
                         <div class="card__pic">
                             <a href="#">
                                 <img src="img/c7.jpg" alt="Avenger">
@@ -574,7 +683,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="list__card">
+                    <div class="list__card card--hide">
                         <div class="card__pic">
                             <a href="#">
                                 <img src="img/d7.jpg" alt="Avenger">
@@ -687,7 +796,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="list__card">
+                    <div class="list__card card--hide">
                         <div class="card__pic">
                             <a href="#">
                                 <img src="img/e7.jpg" alt="Avenger">
@@ -800,7 +909,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="list__card">
+                    <div class="list__card card--hide">
                         <div class="card__pic">
                             <a href="#">
                                 <img src="img/f7.jpg" alt="Avenger">
@@ -913,7 +1022,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="list__card">
+                    <div class="list__card card--hide">
                         <div class="card__pic">
                             <a href="#">
                                 <img src="img/g7.jpg" alt="Avenger">
@@ -1026,7 +1135,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="list__card">
+                    <div class="list__card card--hide">
                         <div class="card__pic">
                             <a href="#">
                                 <img src="img/h7.jpg" alt="Avenger">
@@ -1139,7 +1248,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="list__card">
+                    <div class="list__card card--hide">
                         <div class="card__pic">
                             <a href="#">
                                 <img src="img/i6.jpg" alt="Avenger">
@@ -1159,7 +1268,7 @@
         </div>
 
     </section>
-    <footer>
+    <footer class="footer__desktop">
         <div class="wrap footer--layout">
             <div class="footer__box">
                 <div class="box__logo header__logo">
@@ -1307,7 +1416,36 @@
         </div>
 
     </footer>
-
+    <footer class="footer__mobile">
+        <div class="social__icon">
+            <a href="#">
+                <i class="fab fa-facebook-f"> </i>
+            </a>
+            <a href="#">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-google-plus-g"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-tumblr"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-slack-hash"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-weixin"> </i>
+            </a>
+        </div>
+        <div class="footer__info">
+            <p>
+                Copyright ©2018 Cinema. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
 
     <script src="js/javascript.js"></script>
     <!-- jQuery JS 3.1.0 -->
@@ -1315,6 +1453,7 @@
     <!-- jQuery UI JS 1.12.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <!-- slide wow -->
+    <script type="text/javascript" src="slide/engine1/jquery.js"></script>
     <script type="text/javascript" src="slide/engine1/wowslider.js"></script>
     <script type="text/javascript" src="slide/engine1/script.js"></script>
 </body>
