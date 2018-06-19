@@ -86,9 +86,22 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    position: relative;
 }
 
-.header__login input {
+.inputsearch {
+    display: none;
+}
+
+.searchicon {
+    display: none;
+    font-size: 20px;
+    color: #ffffff;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.header__login .inputtext {
     height: 36px;
     width: 217px;
     border-radius: 10px;
@@ -96,6 +109,14 @@ header {
     background-color: rgba(255, 255, 255, 0.281);
     margin-right: 20px;
     border: 1px solid rgba(0, 0, 0, 0.100);
+}
+
+.inputsearch {
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
 }
 
 .header__login button {
@@ -126,7 +147,7 @@ header {
     z-index: 99;
     top: 0;
     left: 0;
-    background-color: #252525;
+    background-color: #000;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -320,11 +341,11 @@ footer {
 
 .social__icon {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(18px, 1fr));
+    gap: 18px;
     justify-items: center;
     align-items: center;
-    padding: 15px 50px;
+    padding: 15px 40px;
 }
 
 .social__icon i {

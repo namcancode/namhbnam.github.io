@@ -1,14 +1,46 @@
 /* hover nav */
 
+.menu__list {
+    position: relative;
+}
+
 .content__text {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
-    padding-top: 15px;
-    display: none;
+    padding: 15px 20%;
+    position: absolute;
+    z-index: 2222;
+    width: 100%;
+    background-color: #252525;
+    top: 90px;
+    left: 0;
+}
+
+.list1,
+.list2 {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0.16s;
+    transition: 0.25s;
+    -webkit-transition: 0.25s;
+    -moz-transition: 0.25s;
+    -ms-transition: 0.25s;
+    -o-transition: 0.25s;
 }
 
 .list--active {
     display: grid;
+}
+
+.list--hover1:hover .list1 {
+    opacity: 1;
+    visibility: visible;
+}
+
+.list--hover2:hover .list2 {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* hover nav */

@@ -1,5 +1,12 @@
+const search = document.querySelector(".inputsearch");
+const searchIcons = document.querySelector('.searchicon');
+const HEADER = document.querySelectorAll(".header--wrap");
+let scrollLoader = 0;
 function openNav() {
     document.querySelector(".sidenav").style.width = "250px";
+    search.style.opacity = "0";
+    search.style.top = "0px";
+    search.style.visibility = "hidden"
 }
 
 function closeNav() {
@@ -7,19 +14,57 @@ function closeNav() {
 }
 window.onscroll = () => {
     let scroll = document.documentElement.scrollTop;
-    const HEADER = document.querySelectorAll(".header--wrap");
+    scrollLoader = scroll;
+    search.style.opacity = "0";
+    search.style.top = "0px";
+    search.style.visibility = "hidden"
     if (scroll >= 1) {
-        document.querySelector(".header__logo").style.width = "55px"
         HEADER.forEach(e => {
             e.classList.add("sticky")
             e.style.height = "50px";
         });
+        document.querySelector(".header__logo").style.width = "55px";
+        document.querySelectorAll('.content__text').forEach(e =>e.style.top ="50px");
     }
     else{
         HEADER.forEach(e => {
             e.classList.remove("sticky")
             e.style.height = "88px";
         });
-        document.querySelector(".header__logo").style.width = "99px"
+        document.querySelector(".header__logo").style.width = "99px";
+        document.querySelectorAll('.content__text').forEach(e =>e.style.top ="90px");
+
     }
 }
+function searchInput (e) {
+    closeNav()
+    // console.log(scrollLoader);
+    // console.log("hee");
+    if (scrollLoader >= 1) {
+        search.style.opacity = "1";
+        search.style.visibility = "visible";
+        search.style.top = "53px";
+
+    }
+    else{
+        search.style.top = "92px";
+        search.style.opacity = "1";
+        search.style.visibility = "visible";
+
+    }
+}
+function searchInputHide (arguments) {
+     search.style.opacity = "0";
+     search.style.top = "0px";
+     search.style.visibility = "hidden"
+     document.querySelector(".sidenav").style.width = "0";
+}
+
+searchIcons.addEventListener('click', searchInput);
+search.addEventListener('blur',searchInputHide);
+document.querySelector('section').addEventListener('click',searchInputHide);
+document.querySelector(".sidenav").addEventListener('click',searchInputHide);
+document.querySelector("footer").addEventListener('click',searchInputHide);
+document.querySelector("header").addEventListener('click',searchInputHide);
+
+
