@@ -91,7 +91,55 @@
         -moz-transform: translate(-6%, 0%);
         -ms-transform: translate(-6%, 0%);
         -o-transform: translate(-6%, 0%);
+    }
 }
+
+@media only screen and (max-width: 450px) {
+    .login__popup {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .form--login {
+        padding: 0px 26px 20px 50px;
+    }
+    .box__text p,
+    .box--two {
+        font-size: 14px;
+    }
+    label {
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .sub__title {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .form--login {
+        grid-row-gap: 10px;
+        grid-column-gap: 10px;
+    }
+    input[type="username"],
+    input[type="password"] {
+        font-size: 12px;
+    }
+    .sub__title {
+        font-size: 14px;
+    }
+    label {
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .popup__title {
+        font-size: 26px;
+    }
+    .box__text p,
+    .box--two {
+        font-size: 13px;
+    }
 }
 
 @media screen and (max-height: 450px) {
@@ -102,7 +150,3 @@
         font-size: 18px;
     }
 }
-
-@media only screen and (max-width: 370px) {}
-
-@media only screen and (max-width: 300px) {}

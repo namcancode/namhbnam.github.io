@@ -1,3 +1,14 @@
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
 .wrap {
     max-width: 1140px;
     margin: 0 auto;
@@ -51,7 +62,8 @@ body {
     align-items: center;
 }
 
-.header__menu a, .content__text a {
+.header__menu a,
+.content__text a {
     text-decoration: none;
 }
 
@@ -367,17 +379,28 @@ footer {
     height: 100vh;
     background: #898989;
     position: fixed;
-    z-index: 9999;
+    z-index: 20;
+    display: none;
 }
 
-input[type="username"], input[type="password"] {
-    width: 80%;
+.form--login {
+    display: grid;
+    grid-template-areas: 'name input1 input1' 'pass input2 input2' 'space text1 text2' 'space btn1 btn2';
+    padding: 0 50px 20px 50px;
+    grid-row-gap: 30px;
+    grid-column-gap: 15px;
+    align-content: end;
+    justify-items: start;
+    justify-content: center;
+}
+
+input[type="username"],
+input[type="password"] {
     padding: 12px 0px 12px 10px;
     outline: none;
     font-size: 15px;
     font-weight: 300;
     color: #fff;
-    font-family: 'Montserrat', sans-serif;
     border: 1px solid #fff;
     background: transparent;
     letter-spacing: 1px;
@@ -388,18 +411,54 @@ input[type="username"], input[type="password"] {
     -o-border-radius: 5px;
 }
 
+input[type="username"]:focus,
+input[type="password"]:focus {
+    padding: 12px 0px 12px 10px;
+    outline: none;
+    font-size: 15px;
+    font-weight: 300;
+    color: #fff;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: rgb(8, 8, 8) 0px 0px 5px 0px;
+    background: transparent;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.clickbtn input {
+    height: 36px;
+    width: 108px;
+    border: 0;
+    border-radius: 6px;
+    background-color: #373737;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.65px;
+    line-height: 23px;
+    text-align: center;
+}
+
 .login__popup {
     position: fixed;
+    width: 550px;
     top: -400px;
     left: 50%;
     z-index: 999999;
     background-color: #F5A623;
-    width: 50%;
-    transform: translate(-50%, 50%);
-    -webkit-transform: translate(-50%, 50%);
-    -moz-transform: translate(-50%, 50%);
-    -ms-transform: translate(-50%, 50%);
-    -o-transform: translate(-50%, 50%);
+    transform: translate(-50%, 40%);
+    -webkit-transform: translate(-50%, 40%);
+    -moz-transform: translate(-50%, 40%);
+    -ms-transform: translate(-50%, 40%);
+    -o-transform: translate(-50%, 40%);
     visibility: hidden;
     opacity: 0;
     transition: 0.4s;
@@ -407,7 +466,6 @@ input[type="username"], input[type="password"] {
     -moz-transition: 0.4s;
     -ms-transition: 0.4s;
     -o-transition: 0.4s;
-    width: 550px;
 }
 
 .popup__title {
@@ -451,9 +509,8 @@ input[type="username"], input[type="password"] {
 
 .sub__title {
     color: #ffffff;
-    font-family: sans-serif;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 300;
     letter-spacing: -0.61px;
     line-height: 22px;
     text-align: center;
@@ -466,18 +523,6 @@ label {
     color: #fff;
     font-family: "Avenir Next";
     font-weight: 500;
-}
-
-.form--login {
-    display: grid;
-    grid-template-areas: 'name input1 input1' 'pass input2 input2' 'space text1 text2' 'space btn1 btn2';
-    padding: 0 50px;
-    grid-row-gap: 30px;
-    grid-column-gap: 15px;
-    align-content: end;
-    justify-items: start;
-    justify-content: center;
-    padding-left: 15px;
 }
 
 .name1 {
@@ -504,17 +549,14 @@ label {
     grid-area: text1;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
-}
-
-.box__radio {
-    padding-right: 3px;
+    align-items: center;
 }
 
 .text2 {
     grid-area: text2;
-    justify-self: start;
-    align-self: end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .btn1 {
@@ -523,6 +565,27 @@ label {
 
 .btn2 {
     grid-area: btn2;
+}
+
+.box__radio {
+    padding-right: 3px;
+}
+
+.box__text p {
+    color: #EDEDED;
+    font-size: 15px;
+}
+
+.box--two a {
+    color: #444343;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: -0.65px;
+    display: flex;
+    align-items: flex-end;
+}
+
 }
 
 /* CSS poupup login */

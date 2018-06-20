@@ -63,18 +63,16 @@ function searchInputHide (arguments) {
 
 function login (e) {
     console.log("hello");
-    document.querySelector('#blurtrans').style.opacity = '0.3';
-    document.querySelector('#blurtrans').style.opacity = '0.3';
     document.querySelector('.login__popup').style.top = "0%";
     document.querySelector('.login__popup').style.visibility = "visible";
     document.querySelector('.login__popup').style.opacity = "1";
+    document.querySelector('.blurtrans').style.display = 'block';
 }
 function loginClose (e) {
+    document.querySelector('.blurtrans').style.display = 'none';
     document.querySelector('.login__popup').style.visibility = "hidden";
     document.querySelector('.login__popup').style.opacity = "0";
     document.querySelector('.login__popup').style.top = "-400px";
-    document.querySelector('#blurtrans').style.opacity = '1';
-    document.querySelector('#blurtrans').style.opacity = '1';
 
 
 }
@@ -87,6 +85,5 @@ document.querySelector("header").addEventListener('click',searchInputHide);
 document.querySelector('#btnlogin').addEventListener('click', login);
 document.querySelector('#btnloginmobile').addEventListener('click', login);
 document.querySelector('.loginclose').addEventListener('click', loginClose);
-document.querySelector(".sidenav").addEventListener('click',loginClose);
-document.querySelector('section').addEventListener('click',loginClose);
-document.querySelector("footer").addEventListener('click',loginClose);
+document.querySelector(".blurtrans").addEventListener('click',loginClose);
+document.querySelector(".blurtrans").addEventListener('click',searchInputHide);
