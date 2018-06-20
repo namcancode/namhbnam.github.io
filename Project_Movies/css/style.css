@@ -7,7 +7,7 @@
 }
 
 body {
-    background: #252525
+    background: #252525;
 }
 
 /* CSS header */
@@ -51,8 +51,7 @@ body {
     align-items: center;
 }
 
-.header__menu a,
-.content__text a {
+.header__menu a, .content__text a {
     text-decoration: none;
 }
 
@@ -359,3 +358,171 @@ footer {
 }
 
 /* CSS footer */
+
+/* CSS poupup login */
+
+.blurtrans {
+    opacity: 0.5;
+    width: 100%;
+    height: 100vh;
+    background: #898989;
+    position: fixed;
+    z-index: 9999;
+}
+
+input[type="username"], input[type="password"] {
+    width: 80%;
+    padding: 12px 0px 12px 10px;
+    outline: none;
+    font-size: 15px;
+    font-weight: 300;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #fff;
+    background: transparent;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.login__popup {
+    position: fixed;
+    top: -400px;
+    left: 50%;
+    z-index: 999999;
+    background-color: #F5A623;
+    width: 50%;
+    transform: translate(-50%, 50%);
+    -webkit-transform: translate(-50%, 50%);
+    -moz-transform: translate(-50%, 50%);
+    -ms-transform: translate(-50%, 50%);
+    -o-transform: translate(-50%, 50%);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s;
+    -webkit-transition: 0.4s;
+    -moz-transition: 0.4s;
+    -ms-transition: 0.4s;
+    -o-transition: 0.4s;
+    width: 550px;
+}
+
+.popup__title {
+    width: 100%;
+    height: 68px;
+    background-color: #252525;
+    color: #fff;
+    color: #EDEDED;
+    font-family: "Avenir Next";
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: -1.23px;
+    line-height: 44px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup__title h1 {
+    flex: 10 0 auto;
+    padding-left: 8%;
+}
+
+.popup__title i {
+    flex: 1 0 auto;
+    font-size: 20px;
+    align-self: flex-start;
+    padding-top: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+
+.popup__title i:hover {
+    color: #F5A623
+}
+
+.sub__title {
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.61px;
+    line-height: 22px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+label {
+    font-size: 20px;
+    color: #fff;
+    font-family: "Avenir Next";
+    font-weight: 500;
+}
+
+.form--login {
+    display: grid;
+    grid-template-areas: 'name input1 input1' 'pass input2 input2' 'space text1 text2' 'space btn1 btn2';
+    padding: 0 50px;
+    grid-row-gap: 30px;
+    grid-column-gap: 15px;
+    align-content: end;
+    justify-items: start;
+    justify-content: center;
+    padding-left: 15px;
+}
+
+.name1 {
+    grid-area: name;
+    justify-self: end;
+    align-self: end;
+}
+
+.pass1 {
+    grid-area: pass;
+    justify-self: end;
+    align-self: end;
+}
+
+.input1 {
+    grid-area: input1;
+}
+
+.input2 {
+    grid-area: input2;
+}
+
+.text1 {
+    grid-area: text1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.box__radio {
+    padding-right: 3px;
+}
+
+.text2 {
+    grid-area: text2;
+    justify-self: start;
+    align-self: end;
+}
+
+.btn1 {
+    grid-area: btn1;
+}
+
+.btn2 {
+    grid-area: btn2;
+}
+
+/* CSS poupup login */

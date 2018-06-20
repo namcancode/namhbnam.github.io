@@ -19,9 +19,63 @@
 </head>
 
 <body>
+    <div class="login__popup">
+        <div class="popup__title">
+            <h1>Đăng Nhập</h1>
+            <i class="fas fa-times loginclose"></i>
+        </div>
+        <div class="popup__sub">
+            <div class="sub__title">
+                <h3>
+                    Mỗi người dùng chỉ sử dụng 01 tài khoản, nếu bạn chia sẻ, tài khoản có thể bị khóa mà không thông báo trước.
+                </h3>
+            </div>
+            <form action="#" method="post">
+                <div class="form--login">
+                    <div class="name__text name1">
+                        <label for="fname">Tài Khoản</label>
+                    </div>
+                    <div class="name__text pass1">
+                        <label for="fname">Mật Khẩu</label>
+                    </div>
+                    <div class="name__input input1">
+                        <input placeholder="Username" name="Username" type="username" required="">
+                    </div>
+                    <div class="name__input input2">
+                        <input placeholder="Password" name="Password" type="password" required="">
+                    </div>
+                    <div class="box--one text1">
+                        <div class="box__radio">
+                            <input type="checkbox" name="" id="" type="checkbox">
+                        </div>
+                        <div class="box__text">
+                            <p>Nhớ tài khoản</p>
+                        </div>
+                    </div>
+                    <div class="box--two text2">
+                        <a href="#">Quên mật khẩu</a>
+                    </div>
+                    <div class="clickbtn btn1">
+                        <input type="submit" value="Login" name="login">
+                    </div>
+                    <div class="clickbtn btn2">
+                        <input type="submit" value="Đăng Ký" name="registry"></input>
+                    </div>
+
+                </div>
+        </div>
+
+
+
+
+        </form>
+    </div>
+    </div>
+    <div id="blurtrans"></div>
     <div class="header--wrap desktop">
         <div class="wrap">
             <header>
+
                 <div class="header__logo">
                     <a href="index.html">
                         <img src="img/logo.png" alt="">
@@ -192,17 +246,13 @@
             <div class="header__login">
                 <input class="inputtext" type="text" placeholder="Tìm kiếm">
                 <i class="fas fa-search searchicon"></i>
-                <button id="btnlogin">Đăng nhập</button>
+                <button id="btnloginmobile">Đăng nhập</button>
+
             </div>
 
         </header>
 
     </div>
-    <div class="menu__list wrap">
-
-
-    </div>
-
 
     <section class="content">
 

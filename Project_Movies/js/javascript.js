@@ -58,13 +58,35 @@ function searchInputHide (arguments) {
      search.style.top = "0px";
      search.style.visibility = "hidden"
      document.querySelector(".sidenav").style.width = "0";
+
 }
 
+function login (e) {
+    console.log("hello");
+    document.querySelector('#blurtrans').style.opacity = '0.3';
+    document.querySelector('#blurtrans').style.opacity = '0.3';
+    document.querySelector('.login__popup').style.top = "0%";
+    document.querySelector('.login__popup').style.visibility = "visible";
+    document.querySelector('.login__popup').style.opacity = "1";
+}
+function loginClose (e) {
+    document.querySelector('.login__popup').style.visibility = "hidden";
+    document.querySelector('.login__popup').style.opacity = "0";
+    document.querySelector('.login__popup').style.top = "-400px";
+    document.querySelector('#blurtrans').style.opacity = '1';
+    document.querySelector('#blurtrans').style.opacity = '1';
+
+
+}
 searchIcons.addEventListener('click', searchInput);
 search.addEventListener('blur',searchInputHide);
 document.querySelector('section').addEventListener('click',searchInputHide);
 document.querySelector(".sidenav").addEventListener('click',searchInputHide);
 document.querySelector("footer").addEventListener('click',searchInputHide);
 document.querySelector("header").addEventListener('click',searchInputHide);
-
-
+document.querySelector('#btnlogin').addEventListener('click', login);
+document.querySelector('#btnloginmobile').addEventListener('click', login);
+document.querySelector('.loginclose').addEventListener('click', loginClose);
+document.querySelector(".sidenav").addEventListener('click',loginClose);
+document.querySelector('section').addEventListener('click',loginClose);
+document.querySelector("footer").addEventListener('click',loginClose);
