@@ -207,7 +207,9 @@ header {
 /* CSS header */
 
 /* CSS content list*/
-
+.card--disable{
+    display: none;
+}
 .content__list {
     display: grid;
     gap: 10px;
@@ -242,7 +244,8 @@ header {
 .list--wrap {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-    grid-gap: 10px;
+   grid-column-gap: 10px;
+   grid-row-gap: 40px;
     padding-bottom: 25px;
     justify-items: center;
 }
