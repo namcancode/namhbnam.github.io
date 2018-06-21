@@ -140,6 +140,16 @@
     .box--two {
         font-size: 13px;
     }
+    .list--wrap {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        grid-gap: 20px;
+    }
+    .slide--Hide {
+        display: none !important;
+    }
+    .content__list {
+        padding-top: 10px;
+    }
 }
 
 @media screen and (max-height: 450px) {

@@ -246,7 +246,7 @@
 #wowslider-container1 a.ws_next,
 #wowslider-container1 a.ws_prev {
 	position: absolute;
-	z-index: 60;
+	z-index: 10;
 	overflow: hidden;
 	width: 15%;
 	height: 100%;
