@@ -207,9 +207,11 @@ header {
 /* CSS header */
 
 /* CSS content list*/
-.card--disable{
+
+.card--disable {
     display: none;
 }
+
 .content__list {
     display: grid;
     gap: 10px;
@@ -244,8 +246,8 @@ header {
 .list--wrap {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-   grid-column-gap: 10px;
-   grid-row-gap: 40px;
+    grid-column-gap: 10px;
+    grid-row-gap: 40px;
     padding-bottom: 25px;
     justify-items: center;
 }
@@ -278,6 +280,16 @@ header {
     line-height: 19px;
     text-align: center;
     text-decoration: none;
+}
+
+.transparent p {
+    color: #fff;
+    font-size: 15px;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    padding: 0 5px;
+    line-height: 19px;
 }
 
 /* CSS content list*/

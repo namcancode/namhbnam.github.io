@@ -482,6 +482,7 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
+        <p>${e.name}</p>
         </div>
         <div class="iconPlay">
             <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -523,6 +524,7 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
+        <p>${e.name}</p>
         </div>
         <div class="iconPlay">
             <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -564,6 +566,7 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
+        <p>${e.name}</p>
         </div>
         <div class="iconPlay">
             <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -605,6 +608,7 @@ function homePage(arguments) {
                     <img src="${e.img}" alt=" ${e.name}">
                 </a>
                 <div class="transparent">
+                <p>${e.name}</p>
                 </div>
                 <div class="iconPlay">
                     <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -646,6 +650,7 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
+        <p>${e.name}</p>
         </div>
         <div class="iconPlay">
             <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -687,6 +692,7 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
+        <p>${e.name}</p>
         </div>
         <div class="iconPlay">
             <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -728,6 +734,7 @@ function homePage(arguments) {
                     <img src="${e.img}" alt=" ${e.name}">
                 </a>
                 <div class="transparent">
+                <p>${e.name}</p>
                 </div>
                 <div class="iconPlay">
                     <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -769,6 +776,7 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
+         <p>${e.name}</p>
         </div>
         <div class="iconPlay">
             <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -810,6 +818,7 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
+        <p>${e.name}</p>
         </div>
         <div class="iconPlay">
             <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -861,6 +870,7 @@ function page1(arguments) {
         <img src="${e.img}" alt=" ${e.name}">
     </a>
     <div class="transparent">
+    <p>${e.name}</p>
     </div>
     <div class="iconPlay">
         <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
@@ -900,6 +910,11 @@ function page1(arguments) {
         a.innerText = a.innerText.slice(0, 18) + "..."
     })
 }
+
+function methodName (arguments) {
+    // body
+}
+
 searchIcons.addEventListener('click', searchInput);
 search.addEventListener('blur', searchInputHide);
 document.querySelector('section').addEventListener('click', searchInputHide);
@@ -913,12 +928,10 @@ document.querySelector(".blurtrans").addEventListener('click', loginClose);
 document.querySelector(".blurtrans").addEventListener('click', searchInputHide);
 
 window.onload = () => {
-
-    if (window.location.pathname == "/index.html") {
+    if (window.location.pathname.split("/").pop() == "index.html") {
         homePage();
         hideCard();
-    } else if (window.location.pathname == "/category1.html") {
+    } else if (window.location.pathname.split("/").pop() == "category1.html") {
         page1();
     }
-
 }
