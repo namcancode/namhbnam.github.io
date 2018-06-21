@@ -11,7 +11,6 @@ const col7 = document.querySelector(".col7");
 const col8 = document.querySelector(".col8");
 const col9 = document.querySelector(".col9");
 const col = document.querySelectorAll(".col");
-const cardPic= document.querySelectorAll('.card__pic');
 
 
 
@@ -408,8 +407,6 @@ function loginClose(e) {
     document.querySelector('.login__popup').style.top = "-400px";
 }
 
-
-
 function movies(arguments) {
     DATA.forEach(e => {
         if (e.tag == "Phim Hot") {
@@ -452,10 +449,10 @@ function movies(arguments) {
             </p>
         </a>
     </div>
-</div>`        }
-        else if (e.tag == "Phim Chiếu Rạp"){
+</div>`
+        } else if (e.tag == "Phim Chiếu Rạp") {
             col2.innerHTML +=
-            `<div class="list__card">
+                `<div class="list__card">
     <div class="card__pic">
         <a href="#">
             <img src="${e.img}" alt="Avenger">
@@ -494,10 +491,9 @@ function movies(arguments) {
         </a>
     </div>
 </div>`
-        }
-        else if (e.tag == "Phim Lẻ Mới Nhất"){
+        } else if (e.tag == "Phim Lẻ Mới Nhất") {
             col3.innerHTML +=
-            `<div class="list__card">
+                `<div class="list__card">
     <div class="card__pic">
         <a href="#">
             <img src="${e.img}" alt="Avenger">
@@ -536,10 +532,9 @@ function movies(arguments) {
         </a>
     </div>
 </div>`
-        }
-        else if (e.tag == "Phim Bộ Mới Nhất"){
+        } else if (e.tag == "Phim Bộ Mới Nhất") {
             col4.innerHTML +=
-            `<div class="list__card">
+                `<div class="list__card">
             <div class="card__pic">
                 <a href="#">
                     <img src="${e.img}" alt="Avenger">
@@ -578,10 +573,9 @@ function movies(arguments) {
                 </a>
             </div>
         </div>`
-        }
-        else if (e.tag == "Phim Âu Mỹ"){
+        } else if (e.tag == "Phim Âu Mỹ") {
             col5.innerHTML +=
-            `<div class="list__card">
+                `<div class="list__card">
     <div class="card__pic">
         <a href="#">
             <img src="${e.img}" alt="Avenger">
@@ -620,10 +614,9 @@ function movies(arguments) {
         </a>
     </div>
 </div>`
-        }
-        else if (e.tag == "Phim Hàn Quốc"){
+        } else if (e.tag == "Phim Hàn Quốc") {
             col6.innerHTML +=
-            `<div class="list__card">
+                `<div class="list__card">
     <div class="card__pic">
         <a href="#">
             <img src="${e.img}" alt="Avenger">
@@ -662,10 +655,9 @@ function movies(arguments) {
         </a>
     </div>
 </div>`
-        }
-        else if (e.tag == "Phim Trung Quốc"){
+        } else if (e.tag == "Phim Trung Quốc") {
             col7.innerHTML +=
-            `<div class="list__card">
+                `<div class="list__card">
             <div class="card__pic">
                 <a href="#">
                     <img src="${e.img}" alt="Avenger">
@@ -704,10 +696,9 @@ function movies(arguments) {
                 </a>
             </div>
         </div>`
-        }
-        else if (e.tag == "Phim Hoạt Hình- Animal"){
+        } else if (e.tag == "Phim Hoạt Hình- Animal") {
             col8.innerHTML +=
-            `<div class="list__card">
+                `<div class="list__card">
     <div class="card__pic">
         <a href="#">
             <img src="${e.img}" alt="Avenger">
@@ -746,10 +737,9 @@ function movies(arguments) {
         </a>
     </div>
 </div>`
-        }
-        else if (e.tag == "Game Show Truyền Hình"){
+        } else if (e.tag == "Game Show Truyền Hình") {
             col9.innerHTML +=
-            `<div class="list__card">
+                `<div class="list__card">
     <div class="card__pic">
         <a href="#">
             <img src="${e.img}" alt="Avenger">
@@ -794,44 +784,10 @@ function movies(arguments) {
     [...nameMovies].filter(e => (e.innerText.length > 18)).map(a => {
         a.innerText = a.innerText.slice(0, 18) + "..."
     })
-col.forEach(child=>{
-    child.lastElementChild.classList.add("card--hide")
-})
-let iconPlay = document.querySelectorAll('.iconPlay');
-
-iconPlay.forEach(iconn=>{
-    iconn.addEventListener('mouseover', function () {
-        iconPlay.innerHTML= `<svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-        <!-- Hello My Name is Nam. -->
-        <desc>Created by Nam.</desc>
-        <defs>
-            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                <stop stop-color="#FAD961" offset="0%"></stop>
-                <stop stop-color="#F76B1C" offset="100%"></stop>
-            </linearGradient>
-        </defs>
-        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-            <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                <g id="detail" transform="translate(165.000000, 111.000000)">
-                    <g id="play" transform="translate(508.000000, 223.000000)">
-                        <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                        <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                            points="52.5 28 77 67 28 67"></polygon>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </svg>
-    `
-     })
+    col.forEach(child => {
+        child.lastElementChild.classList.add("card--hide")
     })
-
-
-
-
 }
-
-
 
 window.onload = () => {
     movies();
