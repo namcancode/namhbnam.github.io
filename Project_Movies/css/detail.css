@@ -109,7 +109,7 @@ button.bot__report, button.bot__block-ads {
     padding-bottom: 10px;
 }
 
-.info__left h1 {
+.info__left h1, .episode h1 {
     color: #F5A623;
     font-size: 16px;
     font-weight: 500;
@@ -183,6 +183,40 @@ button.bot__report, button.bot__block-ads {
 
 .content__list {
     padding: 25px 0;
+}
+
+.info__right {
+    display: grid;
+    gap: 20px;
+}
+
+.episode__icon {
+    position: relative;
+    height: 31px;
+    width: 31px;
+    border-radius: 100%;
+    background-color: #F5A623;
+    cursor: pointer;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+
+.episode__icon p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.53px;
+    line-height: 22px;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 /* CSS movies info */
