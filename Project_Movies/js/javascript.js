@@ -79,15 +79,20 @@ function loginClose(e) {
 }
 
 function hideCard(e) {
-    col.forEach(child => {
-        child.childNodes[7].classList.add("card--hide");
-    })
     col.forEach(child2 => {
         let test = child2.childNodes;
-            for (let i = 8; i <= test.length; i++) {
+            for (let i = 8; i < test.length; i++) {
                 test[i].classList.add("card--disable")
             }
     })
+    col.forEach(child => {
+        // console.log(child);
+       if(child.childNodes[1]==undefined){
+           return
+       }
+        child.childNodes[1].classList.add("card--hide");
+    })
+
 }
 
 
