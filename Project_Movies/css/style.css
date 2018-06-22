@@ -5,7 +5,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+span {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -603,8 +604,6 @@ label {
     letter-spacing: -0.65px;
     display: flex;
     align-items: flex-end;
-}
-
 }
 
 /* CSS poupup login */
