@@ -21,7 +21,7 @@
 }
 
 .text__top h2 {
-    width: 681.47px;
+    max-width: 681.47px;
     color: #F6B03D;
     font-size: 31px;
     font-weight: 600;
@@ -58,7 +58,8 @@
     -o-transition: 0.3s;
 }
 
-button.bot__report, button.bot__block-ads {
+button.bot__report,
+button.bot__block-ads {
     color: #fff;
     font-weight: 100;
     font-size: 14px;
@@ -109,7 +110,8 @@ button.bot__report, button.bot__block-ads {
     padding-bottom: 10px;
 }
 
-.info__left h1, .episode h1 {
+.info__left h1,
+.episode h1 {
     color: #F5A623;
     font-size: 16px;
     font-weight: 500;
@@ -173,7 +175,8 @@ button.bot__report, button.bot__block-ads {
     display: grid;
 }
 
-.directors-film, .country-film {
+.directors-film,
+.country-film {
     margin-top: -12px;
 }
 

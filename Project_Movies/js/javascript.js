@@ -79,18 +79,15 @@ function loginClose(e) {
 }
 
 function hideCard(e) {
+    const randomNumber = Math.floor((Math.random() * 7) + 1);
     col.forEach(child2 => {
         let test = child2.childNodes;
-            for (let i = 8; i < test.length; i++) {
-                test[i].classList.add("card--disable")
-            }
-    })
+        for (let i = 8; i < test.length; i++) {
+            test[i].classList.add("card--disable")
+        }
+    });
     col.forEach(child => {
-        // console.log(child);
-       if(child.childNodes[1]==undefined){
-           return
-       }
-        child.childNodes[1].classList.add("card--hide");
+        child.childNodes[1] == undefined ? 0 : child.childNodes[randomNumber].classList.add("card--hide");
     })
 
 }

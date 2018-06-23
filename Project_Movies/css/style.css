@@ -71,7 +71,6 @@ body {
 .menu__text p {
     text-shadow: -3px 5px 5px rgba(0, 0, 0, 0.5);
     color: #FFFFFF;
-    font-family: "Avenir Next";
     font-size: 18px;
     font-weight: 600;
     line-height: 25px;
@@ -80,7 +79,6 @@ body {
 .text__name p {
     text-shadow: -3px 3px 5px rgba(0, 0, 0, 0.5);
     color: #FFFFFF;
-    font-family: "Avenir Next";
     font-size: 16px;
     font-weight: 600;
     line-height: 25px;
@@ -227,17 +225,20 @@ header {
 .list__title a {
     text-decoration: none;
     color: #FF702D;
-    font-family: "Avenir Next";
     font-size: 18px;
     font-weight: 500;
     letter-spacing: -0.43px;
     line-height: 25px;
+    cursor: pointer;
+    padding: 0 5px;
 }
 
-.list__title>:last-child {
+.more {
     justify-self: end;
+}
+
+.more p {
     color: #F5A623;
-    font-family: "Avenir Next";
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.34px;
@@ -274,7 +275,6 @@ header {
 .card__name a {
     width: 145px;
     color: rgb(209, 209, 209);
-    font-family: "Avenir Next";
     font-size: 14px;
     font-weight: 500;
     letter-spacing: -0.52px;
@@ -325,7 +325,6 @@ footer {
 
 .box__info p {
     color: rgb(231, 229, 229);
-    font-family: "Avenir Next";
     font-size: 15px;
     font-weight: 500;
     letter-spacing: -0.61px;
@@ -494,7 +493,6 @@ input[type="password"]:focus {
     background-color: #252525;
     color: #fff;
     color: #EDEDED;
-    font-family: "Avenir Next";
     font-size: 32px;
     font-weight: bold;
     letter-spacing: -1.23px;
@@ -541,7 +539,6 @@ input[type="password"]:focus {
 label {
     font-size: 20px;
     color: #fff;
-    font-family: "Avenir Next";
     font-weight: 500;
 }
 

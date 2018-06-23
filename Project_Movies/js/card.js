@@ -1,3 +1,4 @@
+const here = document.querySelector("#here");
 const col1 = document.querySelector(".col1");
 const col2 = document.querySelector(".col2");
 const col3 = document.querySelector(".col3");
@@ -7,15 +8,6 @@ const col6 = document.querySelector(".col6");
 const col7 = document.querySelector(".col7");
 const col8 = document.querySelector(".col8");
 const col9 = document.querySelector(".col9");
-const category1 = document.querySelector(".category1");
-const category2 = document.querySelector(".category2");
-const category3 = document.querySelector(".category3");
-const category4 = document.querySelector(".category4");
-const category5 = document.querySelector(".category5");
-const category6 = document.querySelector(".category6");
-const category7 = document.querySelector(".category7");
-const category8 = document.querySelector(".category8");
-const category9 = document.querySelector(".category9");
 const col = document.querySelectorAll(".col");
 const contentMovies = document.querySelector(".content__movies");
 const DATACURENT = [{
@@ -388,7 +380,7 @@ const DATACURENT = [{
 const DATANEW = [
     {
         name:"Siêu Thú Cuồng Nộ",
-        review:"6.5 / 10 (6837)",
+        rate:"6.5 / 10 (6837)",
         link:"https://api.banhtv.com/getfb/play.php?q=U2FsdGVkX1%2FdhxfI1oKqSKqaJgpB2a6X%2B3FiOkuhs7Yca3fe17BbvSFzra7fQ5entfGrZk338Z3vxwSmi1ECDXTjNNgG9d%2F3IWlCaZoMQLFK%2Be0iE4nU%2Bco8LefE2j0E",
         img:"http://s.aphim.co/uploads/film/images/modsz/20180416/tt2231461_216_320.jpg",
         season:"1",
@@ -396,12 +388,13 @@ const DATANEW = [
         content:"Rampage - Siêu Thú Cuồng Nộ nói về nhà sinh vật học Davis Okoye (Dwayne Johnson) đã kết bạn với George, một con khỉ đột thông minh, người đã được chăm sóc từ khi sinh ra. Tuy nhiên, một thí nghiệm di truyền giả mạo đã biến đổi con khỉ nhuyễn thành một con quái vật. Khi các con quái vật mới được tạo ra này tràn ngập khắp Bắc Mỹ, phá hủy mọi thứ trên con đường của họ, Okoye đã làm việc với một kỹ sư di truyền bị để tìm ra thuốc giải độc, chiến đấu để vượt qua một chiến trường luôn thay đổi, không chỉ để ngăn chặn một thảm hoạ toàn cầu mà còn cứu được sinh vật đã từng là bạn của mình. ",
         actor:"Dwayne Johnson, Jeffrey Dean Morgan, Malin Akerman, Joe Manganiello",
         director:"Brad Peyton",
-        category:"Phim Hot",
+        category:"Phim Viễn Tưởng, Phim Phiêu Lưu, Phim Hành Động",
         country:"Mỹ",
+        tag:"Phim Hot",
     },
     {
-        name:"Biệt Đội Siêu Anh Hùng 3: Cuộc Chiến Vô Cực ",
-        review:"8.9 / 10 (301401)",
+        name:"Biệt Đội Siêu Anh Hùng 3: Cuộc Chiến Vô Cực",
+        rate:"8.9 / 10 (301401)",
         link:"https://video.fhan5-3.fna.fbcdn.net/v/t42.9040-2/10000000_107191213478417_7480688158854610944_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=781&oh=efa25e3888d3e3ec8042ffc67f036b83&oe=5B2E8FB0",
         img:"http://image.phimmoi.net/film/3244/poster.medium.jpg",
         season:"1",
@@ -409,12 +402,13 @@ const DATANEW = [
         content:"Sau chuyến hành trình độc nhất vô nhị không ngừng mở rộng và phát triển vụ trũ điện ảnh Marvel, bộ phim Avengers: Cuộc Chiến Vô Cực sẽ mang đến màn ảnh trận chiến cuối cùng khốc liệt nhất mọi thời đại. Biệt đội Avengers và các đồng minh siêu anh hùng của họ phải chấp nhận hy sinh tất cả để có thể chống lại kẻ thù hùng mạnh Thanos trước tham vọng hủy diệt toàn bộ vũ trụ của hắn.",
         actor:"Tessa Thompson, Chris Hemsworth, Tom Hiddleston, Scarlett Johansson",
         director:"Anthony Russo, Joe Russo",
-        category:"Phim Hot",
+        category:"Phim Phiêu Lưu, Phim Thần Thoại, Phim Hành Động",
         country:"Mỹ",
+        tag:"Phim Hot",
     },
     {
-        name:"Quái Nhân 2 ",
-        review:"8.1 / 10 (132) ",
+        name:"Quái Nhân 2",
+        rate:"8.1 / 10 (132) ",
         link:"https:video.xx.fbcdn.net/v/t42.9040-2/10000000_1026051590893078_3837080471796187136_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=716&oh=6a5ec91dc6010298fae09b1e594ff770&oe=5B2F3E0F",
         img:"http://image.phimmoi.net/film/5001/poster.medium.jpg",
         season:"1",
@@ -422,12 +416,13 @@ const DATANEW = [
         content:"Phim Quái Nhân 2 - Deadpool 2: Sau khi sống sót khỏi pha tấn công chí mạng của bò tót, một đầu bếp dị dạng (Wade Wilson) chật vật để hoàn thành ước mơ trở thành người pha chế nóng bỏng nhất của Mayberry trong khi phải quen với việc mất đi vị giác. Trong hành trình tìm lại niềm vui cuộc sống và công tắc du hành thời gian, Wade phải chiến đấu với đám ninja, Yakuza và bầy chó quyến rũ. Hắn chu du vòng quanh thế giới để khám phá tầm quan trọng của gia đình, tình bạn và mùi vị - trải nghiệm chuyến phiêu lưu mới và giành danh hiệu hằng mơ ước bấy lâu - Người Tình Tuyệt Nhất Thế GIới.",
         actor:"Morena Baccarin, Ryan Reynolds, Josh Brolin, T.J. Miller",
         director:"David Leitch",
-        category:"Phim Hot",
+        category:"Phim Phiêu Lưu, Phim Hài Hước, Phim Hành Động",
         country:"Mỹ",
+        tag:"Phim Hot",
     },
     {
         name:"Tomb Raider: Huyền Thoại Bắt Đầu",
-        review:"6.8 / 10 (36672) ",
+        rate:"6.8 / 10 (36672) ",
         link:"https://api.phimbathu.com/getfb/play.php?q=U2FsdGVkX181Tfvfsrnb28LzPGDSPqzp1DoybbRJ5YWNwIHXGyh6jSA3dgWL3EAfBRx%2FyXZwY%2FCWKurxmNCJaQu1pgkVwUo5YYTXI2l1s3Y3mm6CJ1QNYEVEfF4s5AMR",
         img:"http://image.phimmoi.net/film/6605/poster.medium.jpg",
         season:"1",
@@ -435,12 +430,13 @@ const DATANEW = [
         content:"Tomb Raider: Huyền Thoại Bắt Đầu 2018 là cuộc hành trình trở thành huyền thoại của Lara Croft - con gái của nhà khảo cổ học & doanh nhân Richard Croft. Trước khi mất tích, Richard đã để lại lời nhắn cho con gái mình về hòn đảo bí ấn & tổ chức Trinity với kế hoạch hủy diệt thế giới. Hãy cùng Lara Croft vén bức màn bí mật & cứu thế giới. ",
         actor:"Alicia Vikander, Dominic West, Walton Goggins, Daniel Wu",
         director:"Roar Uthaug",
-        category:"Phim Hot",
+        category:"Phim Phiêu Lưu, Phim Hành Động",
         country:"Mỹ",
+        tag:"Phim Hot",
     },
     {
         name:"Đặc Nhiệm Siêu Anh Hùng Phần 5 ",
-        review:"7.5 / 10 (60)",
+        rate:"7.5 / 10 (60)",
         link:"https://api.bilutv.com/getfb/play.php?q=U2FsdGVkX18N%2BoJXGLWbXwk0nesTv6gVRsaNmeTUJms4KFfXclcebOe1qeWK%2FwzZSED2EhxsYd6rfXWVyLiSo0NUzaTWGKTaYNC8Q0rvh7gMAhA%2FtGLtR5jjnyCKH%2FiD",
         img:"http://s.aphim.co/uploads/film/images/modsz/20171203/17c48fa5a7d0b7b753c5cb27ada1956e_218_320.jpg",
         season:"1",
@@ -448,12 +444,13 @@ const DATANEW = [
         content:"Phim Đặc Vụ S.H.I.E.L.D - Đặc Nhiệm Siêu Anh Hùng Phần 5 (2017): Lần này, Phil Coulson và nhóm của anh tỉnh dậy trên một chiếc phi thuyền đang bay ở ngoài vũ trụ. Chuyện gì đã xảy ra với họ? ",
         actor:"Clark Gregg, Chloe Bennet, Ming-Na Wen, Jason O'Mara",
         director:"Sharla Oliver",
-        category:"Phim Hot",
+        category:"Phim Hành Động, Phim Phiêu Lưu",
         country:"Mỹ",
+        tag:"Phim Hot",
     },
     {
         name:"Siêu Đại Chiến Thái Bình Dương 2: Cuộc Nổi Dậy ",
-        review:"8.3 / 10 (50) ",
+        rate:"8.3 / 10 (50) ",
         link:"https://api.phimbathu.com/getfb/play.php?q=U2FsdGVkX189JJyKIbROiUd28vx6HcDEfFLHhl5MrTvWEKpO8pwBQc4Y2FdXFQJRtb5J3%2B2GOKYcbaT1P61dW%2F247L9eABiomyDjFcceSYtcXZ7rj%2FVjub3Mz%2BGCnBuN",
         img:"http://s.aphim.co/uploads/film/images/modsz/20171011/10358fbebd4ffffb827f30074ce0a221_202_320.jpg",
         season:"1",
@@ -461,12 +458,13 @@ const DATANEW = [
         content:"Bối cảnh phim Siêu Đại Chiến Thái Bình Dương phần 2: Đã 10 năm kể từ trận chiến ở Breach nhưng các trận chiến trên đại dương vẫn không ngừng. Được chứng minh bằng chiến thắng tại Breach, chương tình Jaeger đã phát triển thành lực lượng phòng thủ toàn cầu mạnh nhất trong lịch sử nhân loại. PPDC hiện đang kêu gọi những người lính giỏi nhất và thông minh nhất để vươn lên trở thành thế hệ anh hùng kế tiếp. Khi mối đe dọa của Kaiju trở lại, chúng tôi sẽ sẵn sàng. ",
         actor:"Scott Eastwood, Burn Gorman, Adria Arjona, Tian Jing",
         director:" Steven S. DeKnight",
-        category:"Phim Hot",
+        category:"Phim Hành Động, Phim Phiêu Lưu, Phim Viễn Tưởng",
         country:"Mỹ",
+        tag:"Phim Hot",
     },
     {
         name:"Đấu Trường Ảo ",
-        review:"9 / 10 (900) ",
+        rate:"9 / 10 (900) ",
         link:"https://api.phimbathu.com/getfb/play.php?q=U2FsdGVkX1%2F5sdtYjXdC4AwMJKU6hdyyKDbfCMIxIr3UPRCINF7d0jKWfMriTrM%2FXiJASythdFFBcjTgk%2BO7I29Ez3PvtgejuJW0dbU8GEbEU2%2BPvwEJH1ZtbgcSguNq",
         img:"http://s.aphim.co/uploads/film/images/modsz/20171223/tt1677720_216_320.jpg",
         season:"1",
@@ -474,12 +472,13 @@ const DATANEW = [
         content:"Ready Player One - Đấu Trường Ảo được dựng thành phim dựa trên tiểu thuyết cùng tên của tác giả Ernest Cline. Bộ phim lấy bối cảnh năm 2044, khi người sáng lập ra Oasis - một tựa game online, mất mạng. Khi đó, ông thách thức tất cả những người chơi Oasis đi tìm Easter Eggs - Trứng phục sinh. Phần thưởng dành cho người chiến thắng là những tài sản vô cùng quý báu mà ông để lại. Một chàng trai mang tên Wade Watts đã tìm ra được những gợi ý đầu tiên trong cuộc tìm kiếm và bắt đầu hành trình của mình. ",
         actor:"Olivia Cooke, Hannah John-Kamen, T.J. Miller, Ben Mendelsohn",
         director:"Steven Spielberg",
-        category:"Phim Hot",
+        category:"Phim Viễn Tưởng, Phim Phiêu Lưu, Phim Hành Động",
         country:"Mỹ",
+        tag:"Phim Hot",
     },
     {
         name:"Cuộc Di Tản",
-        review:"8.3 / 10 (259800) ",
+        rate:"8.3 / 10 (259800) ",
         link:"https://video.fhan5-6.fna.fbcdn.net/v/t42.9040-2/10000000_212444919522402_4490990990663876608_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1NDYsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1546&vabr=1031&oh=a65a1a1b5dc70406fbd74b471c2e323e&oe=5B2FF7B3",
         img:"http://image.phimmoi.net/film/4851/poster.medium.jpg",
         season:"1",
@@ -487,12 +486,13 @@ const DATANEW = [
         content:"Bối cảnh trong phim Cuộc Di Tản nói về trận chiến Dunkirk diễn ra từ ngày 26/5 - 4/6/1940 ở thành phố Dunkirk (hoặc Dunkerque) của nước Pháp, là một trong những trận chiến ác liệt nhất thời điểm này, giữa quân Đồng Minh và Đức Quốc Xã, do đó đây còn gọi là Trận Chiến nước Pháp. Ở trận này, quân Đức đã chiếm đóng nước Pháp và vây hãm liên quân của Bỉ, Canada, Anh và Pháp, đánh cho quân Đồng Minh thua tơi tả và phải mở đường máu theo phía eo biển để rút về nước Anh. ",
         actor:"Tom Hardy, Cillian Murphy, Mark Rylance, Kenneth Branagh",
         director:"Christopher Nolan",
-        category:"Phim Hot",
+        category:"Phim Hành Động, Phim Kịch Tính, Phim Kinh Dị",
         country:"Mỹ",
+        tag:"Phim Hot",
     },
     {
         name:"Ba Biển Quảng Cáo Ngoài Trời ở Missouri ",
-        review:" 8.3 / 10 (62375) ",
+        rate:" 8.3 / 10 (62375) ",
         link:"https://video.fsgn5-5.fna.fbcdn.net/v/t42.9040-2/10000000_164344240948609_8360042262708617216_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=517&oh=8800df340b871ea59871f16df9992ae3&oe=5B2EC603",
         img:"http://s.aphim.co/uploads/film/images/modsz/20180126/tt5027774_216_320.jpg",
         season:"1",
@@ -500,12 +500,14 @@ const DATANEW = [
         content:"Three Billboards Outside Ebbing, Missouri là tác phẩm thuộc thể loại hình sự pha hài do Martin McDonagh đạo diễn, kể về hành trình của một người mẹ đòi lại công lý sau khi cảnh sát không tìm được nghi phạm trong vụ sát hại con cô. Cô thuê ba tấm bảng quảng cáo trên đường để ghi nội dung bày tỏ sự phẫn uất với chính quyền. Phim nhận 93% đánh giá tích cực trên Rotten Tomatoes với điểm trung bình 8,6. ",
         actor:"Frances McDormand, Caleb Landry Jones, Kerry Condon, Sam Rockwell",
         director:"Martin McDonagh",
-        category:"Phim Hot",
+        category:"Phim Kịch Tính, Phim Tội Phạm - Hình Sự",
         country:"Mỹ",
+        tag:"Phim Hot",
+
      },
      {
         name:"Law Of the Jungle (Luật Rừng)",
-        review:"8.4 / 10 (7239)",
+        rate:"8.4 / 10 (7239)",
         link:"https://i.rmbl.ws/s8/2/d/o/V/z/doVza.caa.1.mp4",
         img:"http://s.aphim.co/uploads/film/images/modsz/20160130/c8cabbdee92d3fb29ee0798373ec960e_252_320.jpg",
         season:"2",
@@ -513,12 +515,13 @@ const DATANEW = [
         content:"Law of the Jungle hay Luật Rừng là một chương trình tài liệu thực tế của diễn viên hài Kim Byung-man cùng bộ tộc của mình. Họ sẽ đến những vùng đất lẻo lánh trong tự nhiên để khám phá và cố gắng sống sót. Khách mời là những ca sĩ, diễn viên nhóm nhạc nổi tiếng như Mino, Lee Taegon, HAHA, Seo Hyorim, EXO Chanyeol...",
         actor:" Kim Byung Man, Ryu Dam, Noh Woo Jin, Kim Seung Soo",
         director:" Byun Jin Seon, Park Mi yeon",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện, Phim Hàn Quốc",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"2 Ngày 1 Đêm Mùa 3",
-        review:"8 / 10 (80)",
+        rate:"8 / 10 (80)",
         link:"https://vredir.nixcdn.com/SongClip23/2Days1NightSeason3Ep1Vietsub-V.A-2991834.mp4?st=q-zXwVygGCY_0aIOyGqyBg&e=1529767036&t=1529680597776",
         img:"http://s.aphim.co/uploads/film/images/modsz/20160108/8db26632ad8e59671b1a7a72cf4d0220_218_320.jpg",
         season:"1",
@@ -526,12 +529,13 @@ const DATANEW = [
         content:"Truyền hình thực tế của đài KBS2: 2 Ngày 1 Đêm Mùa 3, trong đó các thành viên cùng nhau du lịch về vùng làng quê và cố gắng để sống sót qua chuyến đi. Trong suốt chương trình, các thành viên sẽ chơi các trò chơi nhỏ để quyết định ai sẽ được ăn bữa tối, ai sẽ phải lao động “khổ sai” trong suốt chuyến đi, và ai sẽ may mắn giành được chỗ ngủ thoải mái.",
         actor:"Kim Jong Min, Cha Tae Hyun, Kim Joo Hyuk, Kim Jun Ho, Defconn, Jung Joon Young",
         director:"KBS2",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện, Phim Hàn Quốc",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"Running man",
-        review:" 7 / 10 (70)",
+        rate:" 7 / 10 (70)",
         link:"https://api.phimbathu.com/getfb/play.php?q=U2FsdGVkX18K0KIX1cvINkqCuZ4hnFQLmq8i6HQC5dB5rgE4cpRaeUsnZIZTAZmdCGQykf5xCF3S4OLlMy81x0JHx4sgz34bBDGayXxlhYWMHTGhqqZKoC0iBML3%2FOB5",
         img:"http://s.aphim.co/uploads/film/images/modsz/20150526/28e4270d6505d8bad35e7c91c4130ab4_224_320.jpg",
         season:"1",
@@ -539,12 +543,13 @@ const DATANEW = [
         content:"Nếu bạn là fan của các show truyền hình Hàn Quốc, bạn không thể bỏ qua tv show Running Man đầy thú vị này. Không những vậy, qua Running Man, bạn có thể gặp rất nhiều các khách mời đặc biệt và các ngôi sao nổi tiếng. Tất cả là Running Man- đừng đi mà hãy chạy...",
         actor:" Jae-Suk Yoo, Jong-Kook Kim, Suk-Jin Ji, Dong-hoon Ha",
         director:"N/A",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện, Phim Hành Động, Phim Thể Thao",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"Happy Together",
-        review:"7 / 10 (70)",
+        rate:"7 / 10 (70)",
         link:"https://vredir.nixcdn.com/SongClip24/HappyTogetherSeason3Tap295Phan1Vietsub-V.A-3129529.mp4?st=w91z1cdimZeWFvifoiTjag&e=1529769671&t=1529683272392",
         img:"http://s.aphim.co/uploads/film/images/modsz/20160423/3a45b339f824e3837fa0fc2d3b5d3fb7_226_320.jpg",
         season:"1",
@@ -552,12 +557,13 @@ const DATANEW = [
         content:"Happy Together bắt đầu phát sóng trên kênh KBS từ tháng 5/2007. Hiện tại, Happy Together được dẫn dắt bởi MC quốc dân nổi tiếng - Yoo Jae Suk cùng với Park Mi Sun, Park Myung Soo, sau đó có thêm Jo Se Ho và Kim Shin Yong tham gia kể từ tháng 8/2014. Đây là một trong những chương trình nổi tiếng của Hàn Quốc trong nhiều năm, có bối cảnh trường quay là một phòng tắm hơi. Happy Together đơn giản là cuộc trò chuyện với các khách mời, ngoài ra còn có thêm một số trò chơi nhỏ.",
         actor:" Yoo Jae Suk, Park Myung Soo, Shin Bong Seon, Park Mi Sun",
         director:" N/A",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"Sự Trở Lại Của Siêu Nhân",
-        review:" 6 / 10 (60)",
+        rate:" 6 / 10 (60)",
         link:"https://archive.org/download/1000000025575589978027246930553073584570368Nsieunhan237/10000000_2557558997802724_6930553073584570368_nsieunhan237.mp4",
         img:"http://s.aphim.co/uploads/film/images/modsz/20160108/34bd5381f1b4ad70c62733c21a1e9282_268_320.jpg",
         season:"1",
@@ -565,12 +571,13 @@ const DATANEW = [
         content:"Series Sự Trở Lại Của Siêu Nhân nói về những người cha luôn dành hết thời gian cho công việc, nay họ đã trở về nhà. Chương trình The Return of Superman kể về những ông bố dành hết yêu thương chăm sóc cho con cái của mình. Trong 48h không có mẹ bên cạnh, trải qua nhiều rắc rối cùng với những đứa con thân yêu. Các ông bố sẽ ra sao đây với những tình huống dở khóc dở cười. Đối với chung ta mẹ là người thân yêu và gần gũi nhất, mẹ có đủ bao dung để tha thứ mọi lổi lầm cho con cái. Còn bố thì có bờ vai vững chất, dù bạn có vấp ngả bao nhiêu thì bố luôn sẳn sàng đón nhận bạn, giúp đở bạn và luôn yêu quý bạn đến suốt cuộc đời. Tình thương của bố giống như biển trời bao la. Không có người cha nào hoàn hảo, nhưng tình thương người cha dành cho con cái luôn hoàn hảo và duy nhất.Chúc các bạn xem phim vui vẻ!",
         actor:"Lee Hwi Jae, Choo Sung Hoon, Song Il Kook, Uhm Tae Woong",
         director:"KBS, Kang Bong Gyu",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện, Phim Hàn Quốc",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"Quản Gia",
-        review:"8 / 10 (80)",
+        rate:"8 / 10 (80)",
         link:"https://api.banhtv.com/getfb/play.php?q=U2FsdGVkX1%2B6tWD%2Fm9ZwADimqVAiRTd9Q9lp5NbHwTViBacFS6jl178LOws8Wn7Hrko360L%2BQ512tz%2Bxb8i8nwO9Q3xIMmPFhavGGgjBLC%2BA0NE3D8Ml6C8R7HXlwYqf",
         img:"http://s.aphim.co/uploads/film/images/modsz/20180116/e216e4b51dffcf36b3501f7d38b143bf_213_320.jpg",
         season:"1",
@@ -578,12 +585,13 @@ const DATANEW = [
         content:"Quản Gia mùa 1 Hàn Quốc là một chương trình truyền hình thực tế của đài SBS. Trong đó: Lee Seung Gi, Lee Sang Yoon, Yang Se Hyung, Yook Sung Jae tìm đến nhà những người thầy và học hỏi",
         actor:"Lee Seung Gi, Lee Sang Yoon, Yang Se Hyung, Yook Sung Jae",
         director:"Lee Se-young, Kim Jung Wook",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"Knowing Brothers",
-        review:"6.8 / 10 (1043)",
+        rate:"6.8 / 10 (1043)",
         link:"https://www3584.playercdn.net/185/0/_bonKkuHMBW5H7kHUiWWfA/1529706878/180603/bwdlNzyjO50rHVl.mp4",
         img:"http://s.aphim.co/uploads/film/images/modsz/20170118/49539a3d02b619c4753e4085cd4ab163_229_320.jpg",
         season:"1",
@@ -591,25 +599,27 @@ const DATANEW = [
         content:"Sau gần ba năm phát sóng, Knowing Brothers đã trở thành một trong những chương trình tạp kỹ nổi tiếng nhất Hàn Quốc.",
         actor:"Kang Ho Dong, Seo Jang Hoon, Kim Young Chul, Lee Soo Geun, Min Kyung Hoon, Kim Hee Chul, Lee Sang Min",
         director:"Yeo Un Hyeong",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện, Phim Hàn Quốc",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"I Can See Your Voice 5",
-        review:"5 / 10 (50)",
-        link:"https://video.fhan3-3.fna.fbcdn.net/v/t42.9040-2/10000000_132199404291612_315424292298817536_n.mp4?_nc_cat=0&efg=eyJybHIiOjIwODUsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&_nc_eui2=AeG8NGknaKL-VarNP-xDIYexWFWfNJTqxELye8NNg9V7RrR7EA4HRr4oAx_laUxUPuV9jGSXBleLwR_Olm434NMg6mp2fUQnLK5t2LcYHord3Q&rl=2085&vabr=1390&oh=86a34a7b00ee499e1d8b21f454d7962c&oe=5B2D56AD",
+        rate:"5 / 10 (50)",
+        link:"https://video.fhan3-3.fna.fbcdn.net/v/t42.9040-2/10000000_132199404291612_315424292298817536_n.mp4?_nc_cat=0&efg=eyJybHIiOjIwODUsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&_nc_eui2=AeG8NGknaKL-VarNP-xDIYexWFWfNJTqxELye8NNg9V7RrR7EA4HRr4oAx_laUxUPuV9jGSXBleLwR_Olm434NMg6mp2fUQnLK5t2LcYHord3Q&rl=2085&vabr=1390&oh=21e77482cc502d352dbae502eb40ef1d&oe=5B2DB91D",
         img:"http://s.aphim.co/uploads/film/images/modsz/20180130/b11ba14d4d62060178e84e103d859a57_220_320.jpg",
         season:"1",
         eps:"1",
         content:"Mùa thứ 5 của I Can See Your Voice: Một Music Show mang tới các giọng hát tài năng có cơ hội để thực hiện ước mơ của họ trở thành ngôi sao thành hiện thực. I Can See Your Voice mùa thứ 5 sẽ tiếp tục lên sóng với sự dẫn dắt của 3 MC chính: Leeteuk, Yoo Se-yoon, Kim Jong-kook.",
         actor:"Leeteuk, Yoo Se Yoon, Kim Jong Kook",
         director:" Mnet",
-        category:"Game Show Truyền Hình",
+        category:"Phim Âm Nhạc, Phim Giải Trí-Sự Kiện",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"Dunia: Thế Giới Ảo",
-        review:"5 / 10 (50)",
+        rate:"5 / 10 (50)",
         link:"https://r2---sn-i3b7kn7s.c.drive.google.com/videoplayback?id=1350225b5dc43c4b&itag=59&source=webdrive&requiressl=yes&mm=30&mn=sn-i3b7kn7s&ms=nxu&mv=m&pl=20&ttl=transient&ei=hCYtW8S9EoHYugW6l6LQCQ&susc=dr&driveid=1fr50taq5aIEDQSq9u5VkYeCXm3G88YqL&app=explorer&mime=video/mp4&lmt=1529274479659749&mt=1529685563&ip=117.0.5.25&ipbits=0&expire=1529689236&cp=QVNHQUdfWFJRR1hOOkFmN0FXZldDMHRK&sparams=ip,ipbits,expire,id,itag,source,requiressl,mm,mn,ms,mv,pl,ttl,ei,susc,driveid,app,mime,lmt,cp&signature=A9E17429C8A8B0CB894DF1E2A584AC389E98E682.2EDCBF4321505C9D7D20D0EB3986049C5E9913D3&key=ck2&cpn=uMt7lGmRwZsv88Qv&c=WEB_EMBEDDED_PLAYER&cver=20180621",
         img:"http://s.aphim.co/uploads/film/images/modsz/20180614/f31ac54980bdf940cc74ff8f45cba841_223_320.jpg",
         season:"1",
@@ -617,12 +627,13 @@ const DATANEW = [
         content:"TV show mới của đài MBC, những nhân vật nổi tiếng sẽ phải tìm cách sinh tồn trong rừng sâu",
         actor:"Yunho (TVXQ), Jung Hye Sung, Kwon Hyun Bin, Koo Ja Sung, Luda (WJSN), Sam Okyere, DinDin, Don Spike, Hansel, Austin Kang",
         director:"Park Jin Kyung, Lee Jae Suk",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"Oppa Thinking",
-        review:"7 / 10 (70)",
+        rate:"7 / 10 (70)",
         link:"https://i.rmbl.ws/s8/2/x/M/v/z/xMvza.caa.2.mp4",
         img:"http://s.aphim.co/uploads/film/images/modsz/20170620/2e9f8a4e2b1913c3b3082bc1e8f5e65a_220_320.jpg",
         season:"1",
@@ -630,12 +641,13 @@ const DATANEW = [
         content:"Tv show mới của đài MBC.",
         actor:"Yang Se Hyung, Tak Jae Hoon, Yoo Se Yoon, Solbi, Kang Nam, Heo Kyung Hwan, Lee Sang Min, Lee Hyu Han",
         director:"Oh Mi Kyung",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện, Phim Hàn Quốc",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"Nhịp Đập Trái Tim 2",
-        review:"90 / 10 (90)",
+        rate:"90 / 10 (90)",
         link:"https://api.banhtv.com/getfb/play.php?q=U2FsdGVkX1%2FEx%2FaEGLKoTTwOM1bclygNWUYyq40l%2FYLQpK1lX43%2BeaXzXhggfQGINT1vtprnDMfHsXcyEcRAOnF7E%2FRaME2YsE%2BhCPtHwIm%2FUwrEhTi6M0Efzrms0mfq",
         img:"http://s.aphim.co/uploads/film/images/modsz/20180327/45a3e1b2ec86e95b012620ff876974af_226_320.jpg",
         season:"1",
@@ -643,12 +655,13 @@ const DATANEW = [
         content:"Tv show Heart Signal Season 2 Nhịp Đập Trái Tim của đài Chanel A mùa 2: Cuộc sống chung của những người đàn ông trung niên và đàn ông trẻ tuổi bắt đầu tại Signal House, nơi đầy những kỳ vọng về tình yêu và sự lãng mạn. Người tiên đoán với kinh nghiệm phong phú trong việc hẹn hò và yêu đương sẽ phát hiện ra những cặp tiềm năng trong Signal House.",
         actor:"Yoon Jong-shin, Lee Sang-min, Kim Eana, Yang Jae-woong, Soyu, ONE",
         director:"N/A",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
      },
      {
         name:"Nhịp Đập Trái Tim",
-        review:"8 / 10 (80)",
+        rate:"8 / 10 (80)",
         link:"https://api.banhtv.com/getfb/play.php?q=U2FsdGVkX1%2BSoGNkd0tfHspE2befdWDhNwStZrwcGyBfdMu%2Fl2ERn3Nc1BjpzVCwGbN9XtWMklmq1j0w%2B6PGhfDZ9XD0toHu21Vxy2udnGhmZyZ613n1DireK0YU7S87",
         img:"http://s.aphim.co/uploads/film/images/modsz/20170718/b9da010024bd572cae4c06c07797b977_220_320.jpg",
         season:"1",
@@ -656,8 +669,303 @@ const DATANEW = [
         content:"Nhịp Đập Trái Tim nói về cuộc sống chung của những người đàn ông trung niên và đàn ông trẻ tuổi bắt đầu tại Signal House, nơi đầy những kỳ vọng về tình yêu và sự lãng mạn. Người tiên đoán với kinh nghiệm phong phú trong việc hẹn hò và yêu đương sẽ phát hiện ra những cặp tiềm năng trong Signal House. Trò chơi tình cảm phấn khích bắt đầu ngay bây giờ..",
         actor:"Yoon Jong Shin, Lee Sang Min, Shindong, Kim Eana, Shim So Young, Yang Jae Woong",
         director:"Chanel A",
-        category:"Game Show Truyền Hình",
+        category:"Phim Giải Trí-Sự Kiện",
         country:"Hàn Quốc",
+        tag:"Game Show Truyền Hình",
+     },
+     {
+        name:"12 Kỵ Binh Quả Cảm",
+        rate:"9 / 10 (845) ",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20171229/tt1413492_216_320.jpg",
+        actor:"Chris Hemsworth, Elsa Pataky, Taylor Sheridan, Michael Shannon",
+        director:"Nicolai Fuglsig",
+        category:"Phim Hành Động, Phim Kịch Tính, Phim Cổ Trang",
+        country:"Mỹ",
+        content:"12 Strong - 12 Kỵ Binh Quả Cảm kể về câu chuyện của đội quân đặc biệt đầu tiên được triển khai tới Afghanistan sau ngày 9 tháng 11 dưới sự lãnh đạo của một đội trưởng mới... ",
+        link:"https://video.fsgn5-3.fna.fbcdn.net/v/t42.9040-2/10000000_598766563809252_7461713117894934528_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=840&oh=3e61eed1a0eba4ee954d8f1fdb62d5bb&oe=5B2E3CE3",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Điều Kỳ Diệu Của Tiệm Tạp Hóa Namiya",
+        rate:"7 / 10 (420)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180322/tt6298600_226_320.jpg",
+        actor:"Masato Hagiwara, Kento Hayashi, Mugi Kadowaki, Nijirô Murakami",
+        director:"Ryuichi Hiroki",
+        category:"Phim Kịch Tính",
+        country:"Nhật Bản",
+        content:"Một tác phẩm với tình tiết hấp dẫn, cách kể chuyện khéo léo và đầy tính nhân văn. Mọi lời nhận xét trước khi xem đều không thể diễn tả được, vì vậy, mời mọi người thưởng thức. ",
+        link:"https://video.fsgn5-5.fna.fbcdn.net/v/t42.9040-2/10000000_2062722103994581_6339212492983500800_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=542&oh=a497ac66cf8f2dbaba48d85dfac95f03&oe=5B2F1942",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Bí Mật Lầu Năm Góc",
+        rate:"7.5 / 10 (15608)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180126/tt6294822_216_320.jpg",
+        actor:"Meryl Streep, Tom Hanks, Sarah Paulson, Bob Odenkirk",
+        director:"Steven Spielberg",
+        category:"Phim Tiểu Sử, Phim Kịch Tính, Phim Cổ Trang",
+        country:"Mỹ",
+        content:"Việc che giấu bốn vị Tổng thống Hoa Kỳ đã thúc đẩy nhà xuất bản báo nữ đầu tiên của nước này và một biên tập viên lái xe khó khăn tham gia một cuộc chiến chưa từng có giữa báo chí và chính phủ. ",
+        link:"https://video.fsgn5-5.fna.fbcdn.net/v/t42.9040-2/10000000_236486633593845_3512075151137046528_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=821&oh=191bf499cdd6db4d1358f7ce6828b2f3&oe=5B2F70DA",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"50 Sắc Thái 3: Tự Do",
+        rate:"4.4 / 10 (19437)",
+        img:"http://image.phimmoi.net/film/6367/poster.medium.jpg",
+        actor:"Dakota Johnson, Jamie Dornan, Eric Johnson, Eloise Mumford",
+        director:"James Foley",
+        category:"Phim Kịch Tính, Phim Tình Cảm",
+        country:"Mỹ",
+        content:"Phim 50 Sắc Thái Tự Do phần 3 nói về Anastasia đã trở thành bà Grey, lấy được anh chồng Christian đẹp trai và sống trong ngôi nhà mới nguy nga tráng lệ. Thế nhưng, những bóng ma quá khứ vẫn ám ảnh gia đình hạnh phúc của họ. Người đàn bà đã dẫn Christian Grey vào con đường đen tối và gã sếp cũ Jack Hyde liên tục tìm cách quấy phá đôi vợ chồng trẻ. Họ phải làm thế nào để giữ được hạnh phúc vừa được tạo dựng.",
+        link:"https://api.banhtv.com/getfb/play.php?q=U2FsdGVkX1%2B33L9NI89NoTXR1kUU2VUgPyqvy1R0ft0QOXa3tGGGs14uu8opWn%2FWNiaX4%2BgEY1XKf6Tj0hNr%2B4DNuKeNYDkrnO1wZ7cr0VIctk3xKJ2aeNZtvSvVfaBH",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Trò Chơi Vương Quyền ",
+        rate:"9.5 / 10 (1151164) ",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20170717/758a6aef3f712cfaec88d534f716146c_231_320.jpg",
+        actor:"Lena Headey, Peter Dinklage, Kit Harington, Emilia Clarke",
+        director:"N/A",
+        category:"Phim Kịch Tính, Phim Phiêu Lưu, Phim Thần Thoại",
+        country:"Anh, Mỹ",
+        content:"Game of Throne - Trò Chơi Vương Quyền (phần 8 sẽ được chiếu năm 2019) kể về bảy gia tộc chiến đấu để làm chủ vùng đất thần thoại Westeros. Những gia tộc thống trị là Houses Stark, Lannister, và Baratheon. Vị vua của Westeros, Robert Baratheon, yêu cầu người bạn cũ của ông là Eddard – lãnh chúa Stark giữ chức vụ cao, Eddard miễn cưỡng chấp nhận mệnh lệnh để tìm ra sự thật đằng sau. Trong lúc ấy, gia tộc của Nữ hoàng, Lannisters, có lẽ đang dự tính mưu đồ để tước đoạt quyền lực. Ở phía bên kia biển khơi, những thành viên cuối cùng của dòng tộc trước đây đã bị truất phế quyền thống trị ,Targaryens, cũng đang sắp đặt kế hoạch giành lại ngai vàng. Còn ở phía cực Bắc, Bóng Trắng – loài quỷ vốn chìm trong giấc ngủ rất dài, nay đã thức giấc,… ",
+        link:"https://video.fsgn5-7.fna.fbcdn.net/v/t42.9040-2/10000000_555879464795128_3083731968148373504_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=590&oh=edfe69f87aff48e339367c748dd395a1&oe=5B2FED5D",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Xác Sống ",
+        rate:"8.5 / 10 (692366)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20171023/ce585bdf103f10ad28cc288ab08eb306_240_320.jpg",
+        actor:"Andrew Lincoln, Steven Yeun, Chandler Riggs, Norman Reedus",
+        director:" N/A",
+        category:"Phim Kịch Tính, Phim Rùng Rợn",
+        country:"Mỹ",
+        content:'The Walking Dead - Xác Sống nói về cuộc sống sau thảm họa dịch bệnh thây ma, về một nhóm nhỏ những người sống sót sau sự bùng nổ của đại dịch. Phần lớn câu chuyện diễn ra ở trung tâm Atlanta, những người sống sót cố sức tìm một nơi trú thân mới, chạy trốn những thây ma ăn thịt sống (trong phim còn gọi là những "walker"). Cốt truyện tập trung chủ yếu vào tính nhân văn sau tận thế và cách con người tranh đấu để sống còn. Nhóm người này được dẫn đầu bởi Rick Grimes - cựu phó quận trưởng cảnh sát ở một thị trấn nhỏ tại Georgia. Khi tình hình ngày càng trở nên hiểm nghèo, sự tuyệt vọng của nhóm người này đã đẩy họ đến bờ vực của sự mất trí. Dù đi đến đâu, họ cũng phải đối mặt với nỗi kinh hãi từ những thây ma, sự mất đoàn kết, cũng như sự đối địch của số nhỏ những người còn sống rải rác ở nơi khác chỉ quan tâm đến sự sống còn của riêng mình, khi mà trật tự xã hội trên toàn cầu đã sụp đổ...',
+        link:"Episode Info: Default media => https://video.fsgn5-5.fna.fbcdn.net/v/t42.9040-2/10000000_163555074354856_4584371860375863296_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MTUsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1515&vabr=1010&oh=149446b0a41b56049e2c92c337b1d9ce&oe=5B301092",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Giải Mã Mê Cung 3: Lối Thoát Tử Thần",
+        rate:"6.8 / 10 (26500) ",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20170926/feee6cbf6a87d01de956167f26c13f13_203_320.jpg",
+        actor:"Kaya Scodelario, Dylan O'Brien, Nathalie Emmanuel, Katherine McNamara",
+        director:"Wes Ball",
+        category:"Phim Hành Động, Phim Viễn Tưởng, Phim Kinh Dị",
+        country:"Mỹ",
+        content:"Phim Giải Mã Mê Cung 3: Lối Thoát Tử Thần tiếp tục câu chuyện Thomas biết rằng Wicked không thể tin tưởng, nhưng họ nói rằng thời gian cho những lời nói dối đã qua, họ đã thu thập tất cả họ có thể từ các thử nghiệm và bây giờ phải dựa vào Gladers, với những kỷ niệm đầy đủ phục hồi, để giúp họ với cuối cùng của họ nhiệm vụ. Nó thuộc vào các Gladers để hoàn thành các kế hoạch chi tiết cho việc chữa bệnh cho Flare với một xét nghiệm tự nguyện thức.Có gì Wicked không biết là cái gì đó đã xảy ra mà không dùng thử hoặc biến có thể đoán trước. Thomas đã nhớ nhiều hơn so với họ nghĩ. Và ông biết rằng ông không thể tin rằng một lời gì Wicked nói. Thời gian dối là hơn. Nhưng sự thật là nguy hiểm hơn Thomas bao giờ có thể tưởng tượng. ai sẽ sống sót Cure Death? Mời các bạn đón xem diễn biến của tập phim sẽ diễn ra như thế nào nhé! Chúc các bạn một ngày vui vẻ ^^!",
+        link:"https://video.fhan5-1.fna.fbcdn.net/v/t42.9040-2/10000000_584753688545856_3342548144809312256_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=893&oh=a611a1246a5c88fbd1b75b3b2eb20f36&oe=5B2F5167",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Bác Sĩ Thiên Tài",
+        rate:"8.5 / 10 (1361)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20170928/tt6470478_216_320.jpg",
+        actor:"Freddie Highmore, Richard Schiff, Hill Harper, Nicholas Gonzalez",
+        director:"N/A",
+        category:"Phim Kịch Tính",
+        country:"Mỹ",
+        content:"Trong phim Bác Sĩ Thiên Tài nói về một bác sĩ trẻ mắc hội chứng bác học được nhận vào khoa phẫu thuật tim của một bệnh viện danh tiếng. Liệu một người bị tự kỷ có thể cứu người? Mời các bạn xem ngay phim Bác Sỹ Thiên Tài - The Good Doctor nhé.",
+        link:"https://video.fhan5-6.fna.fbcdn.net/v/t42.9040-2/10000000_185324868936014_6645350322959024128_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=925&oh=9808d74e64a95de5e24b2d71307a874a&oe=5B30BC96",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Vụ Bắt Cóc Triệu Đô",
+        rate:"7 / 10 (18454)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180326/tt5294550_216_320.jpg",
+        actor:"Michelle Williams, Christopher Plummer, Mark Wahlberg, Romain Duris",
+        director:"Ridley Scott",
+        category:"Phim Tiểu Sử, Phim Kịch Tính, Phim Tội Phạm - Hình Sự",
+        country:"Mỹ",
+        content:"Bối cảnh phim Vụ Bắt Cóc Triệu Đô vào mùa hè năm 1973, cháu trai của ông trùm dầu hoả J.P. Getty bị bắt cóc ở Rome bởi một băng đảng mafia Ý. Những kẻ bắt cóc đòi số tiền chuộc lên đến 17 triệu đô la, thế nhưng Getty keo kiệt từ chối trả khoản tiền chuộc. Khi ấy một bức thư cảnh báo đã được gửi đến: Đó là chiếc tai bị cắt lìa của cậu cháu trai. Với khao khát tột cùng muốn cứu lấy cậu con trai trước khi cậu bé chết không toàn thây. Người mẹ không đồng xu dính túi nhưng giàu lòng yêu thương cầu cứu sự giúp đỡ từ một cựu nhân viên đàm phán của CIA. Từ đó bà ấy bắt đầu một cuộc đua gấp gáp để cứu lấy con trai mình.",
+        link:"https://video.fsgn5-6.fna.fbcdn.net/v/t42.9040-2/10000000_199651757505656_1312300486761644032_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=626&oh=5050728adb02f4d2c410b3ec6380bdec&oe=5B300454",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Bậc Thầy Của Những Ước Mơ",
+        rate:"8 / 10 (74496)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180305/tt1485796_216_320.jpg",
+        actor:"Hugh Jackman, Michelle Williams, Zac Efron, Zendaya",
+        director:"Michael Gracey",
+        category:"Phim Tiểu Sử, Phim Kịch Tính",
+        country:"Mỹ",
+        content:"The Greatest Showman là tác phẩm nhạc kịch thứ 2 mà Hugh Jackman tham gia. Cách đây 5 năm, anh từng thủ vai chính trong bộ phim nhạc kịch Les Misérables (2012) và nhận được một đề cử Oscar danh giá ở hạng mục Nam diễn viên chính xuất sắc.",
+        link:"https://video.fhan5-7.fna.fbcdn.net/v/t42.9040-2/10000000_164548120880286_937402313436299264_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=683&oh=0e2eac357fec42c35cdbb21ad5ea0089&oe=5B2F05F2",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Yêu Miêu Truyện",
+        rate:"6.5 / 10 (259)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180112/1ef5de25a728d5da9ecf9e0cb5cfab58_213_320.jpg",
+        actor:"Shôta Sometani, Xuan Huang, Yuqi Zhang, Hao Qin",
+        director:"Kaige Chen",
+        category:"Phim Tiểu Sử, Phim Kịch Tính, Phim Cổ Trang",
+        country:"Trung Quốc",
+        content:"Mùa hè ở Thành Trường An, phu nhân của tể tướng Trần Vân Tiều, Xuân Cầm bị ám bởi một con yêu miêu. Xuân Cầm bị kiểm soát hoàn toàn bởi con yêu quái và hành động càng ngày càng kỳ lạ. Cùng thời điểm đó, Hoàng đế Đường Huyền Tông đang hấp hối trong cung điện. Nhà sư Không Hải người Nhật được mời đến để trục xuất yêu ma khỏi nhà vua. Ông cảm nhận được sự hiện diện của yêu miêu và cái chết của nhà vua có liên quan đến nó",
+        link:"https://video.fsgn5-1.fna.fbcdn.net/v/t42.9040-2/10000000_1966486753680774_1092954587104542720_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=571&oh=02f8f0214cb56c8a6202e919c87308d3&oe=5B2E454C",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"Chiến Tranh Giữa Các Vì Sao 8: Jedi Cuối Cùng",
+        rate:"7.6 / 10 (261586)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180105/tt2527336_216_320.jpg",
+        actor:"Mark Hamill, Carrie Fisher, Adam Driver, Daisy Ridley",
+        director:"Rian Johnson",
+        category:"Phim Hành Động, Phim Phiêu Lưu, Phim Thần Thoại",
+        country:"Mỹ",
+        content:"Phim Chiến Tranh Giữa Các Vì Sao 8: Jedi Cuối Cùng - Star Wars: The Last Jedi là một bộ phim sử thi không gian sắp tới của Mỹ viết kịch bản và đạo diễn bởi Rian Johnson. Nó sẽ là bộ phim thứ 2 trong bộ ba phần sequel tiếp sau Star Wars: The Force Awakens.",
+        link:"http://ok2.cdn.phimmoi.net/72607cc052a211937d1dbebeed82ff701529748000/PhimMoi.Net--[@6737226c][360p][T1524140119]Star.Wars.The.Last.Jedi.2017.1080p.BluRay.x264-Vietsub.mp4",
+        season:"1",
+        eps:"1",
+        tag:"Phim Hot",
+     },
+     {
+        name:"My Daughter's Men 3",
+        rate:"0 / 10 (0)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180423/c3a1d23daea32f25e50cec81f85436b8_220_320.jpg",
+        actor:"Shin Hyun Joon, Lee Soo Geun, Kim Hee Chul (Super Junior), Sojin (Girl's Day), Jang Gwang, Lee Kwang Gi, Hong Seo Beom",
+        director:"N/A",
+        category:"Phim Giải Trí-Sự Kiện",
+        country:"Hàn Quốc",
+        content:"Mùa 3 của My Daughter's Men: Bốn người cha nổi tiếng theo dõi cuộc hẹn hò con gái của họ với bạn trai. Những người cha sẽ nói gì, và họ sẽ phản ứng thế nào khi họ quan sát.",
+        link:"https://video.xx.fbcdn.net/v/t42.9040-2/10000000_1720079284695779_7116332893290364928_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ==&rl=1500&vabr=858&oh=23d42724772afb5e64a7f2fc002cb9ec&oe=5B2EA1E2",
+        season:"1",
+        eps:"1",
+        tag:"Game Show Truyền Hình",
+     },
+     {
+        name:"Nhà Trọ Của Hyori 2",
+        rate:"0 / 10 (0)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180208/689eea4748cb81e247050df398bedd15_220_320.jpg",
+        actor:"Park Bo Gum, SNSD YoonA, Lee Sang Soon, Lee Hyori",
+        director:"JTBC",
+        category:"Phim Giải Trí-Sự Kiện",
+        country:"Hàn Quốc",
+        content:'Nhà Trọ Của Hyori mùa thứ 2 - 2018 là show kể về cặp vợ chồng ca sỹ nổi tiếng Lee Hyori và chồng Lee Sang Hoon mở Bed& Breakfast tại đảo Jeju Nhà Trọ của Hyori là chương trình thực tế về cuộc sống hôn nhân của Gia đinh Hyori với sự tham gia giúp sức của cô nàng IU.',
+        link:"https://archive.org/download/100000007823974786368325587835190345990144Nnhatro16/10000000_782397478636832_5587835190345990144_nnhatro16.mp4",
+        season:"1",
+        eps:"1",
+        tag:"Game Show Truyền Hình",
+     },
+     {
+        name:"1% Tình Bạn",
+        rate:"0 / 10 (0)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180403/14b05cc29eb679e9dee57100565cc283_220_320.jpg  ",
+        actor:"Kim Hee Chul, Jeong Hyung Don, Bae Chul Soo",
+        director:"N/A",
+        category:"Phim Giải Trí-Sự Kiện",
+        country:"Hàn Quốc",
+        content:'1% Tình Bạn là 1 show thực tế nơi mà 2 người có tính cách đối lập nhau, dành thời gian cho nhau để xây dựng một tình bạn',
+        link:"https://api.banhtv.com/getfb/play.php?q=U2FsdGVkX19ihKo%2BMfNDB5hRbVsVjNgf%2BwhWMsWgm6fpGPL%2BxNcwVyGMy1M49ctPU2xCtmdl6eSF6I4lf0W%2BspUSHIT3NGaixEaUU440sj1U%2FZM5fC8reyKYR6DeKJmv",
+        season:"1",
+        eps:"1",
+        tag:"Game Show Truyền Hình",
+     },
+     {
+        name:"My Daughter's Men 2",
+        rate:"0 / 10 (0)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180124/5d353508c70e1a419beed94e07c6c7ef_220_320.jpg",
+        actor:"Lee Su Geun, Kim Hee Chul, So Jin, Kim Tae Won, Jang Gwang, Park Jeong Hak, Bae Dong Sung",
+        director:"JTBC",
+        category:"Phim Giải Trí-Sự Kiện ",
+        country:"Hàn Quốc",
+        content:"Mùa 2 của My Daughter's Men: Bốn người cha nổi tiếng theo dõi cuộc hẹn hò con gái của họ với bạn trai. Những người cha sẽ nói gì, và họ sẽ phản ứng thế nào khi họ quan sát.",
+        link:"https://video.fsgn5-7.fna.fbcdn.net/v/t42.9040-2/10000000_159048204797151_7230674109644931072_n.mp4?_nc_cat=0&efg=eyJ2ZW5jb2RlX3RhZyI6InN2ZV9oZCJ9&oh=51b6a57c0f8fe3c26669dc9fee665af4&oe=5B2E022D",
+        season:"1",
+        eps:"1",
+        tag:"Game Show Truyền Hình",
+     },
+     {
+        name:"Youn's Kitchen 2",
+        rate:"0 / 10 (0)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180124/2f4687f9af3783b346c4c3a71aed24f8_220_320.jpg",
+        actor:"N/A",
+        director:"N/A",
+        category:"Phim Giải Trí-Sự Kiện",
+        country:"Hàn Quốc",
+        content:'Show về ẩm thực',
+        link:"https://video.fsgn5-7.fna.fbcdn.net/v/t42.9040-2/10000000_2077326242551194_8094336803886071808_n.mp4?_nc_cat=0&efg=eyJ2ZW5jb2RlX3RhZyI6InN2ZV9oZCJ9&oh=8e9d0391b641f756317fa9822d73b190&oe=5B2E0604",
+        season:"1",
+        eps:"1",
+        tag:"Game Show Truyền Hình",
+     },
+     {
+        name:"Thử Thách Cực Đại",
+        rate:"4.9 / 10 (1398)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20150526/7a23c6e539dd761a41fb3ab067a377bc_224_320.png",
+        actor:"ark Myeong Su, Jeong Jun Ha, Noh Hong Chul",
+        director:"N/A",
+        category:"Phim Âm Nhạc, Phim Kịch Tính, Phim Giải Trí-Sự Kiện   ",
+        country:"Hàn Quốc",
+        content:'Thử Thách Cực Đại (Hàn Quốc) lấy chủ đề là thử thách bất kì công việc gì, bất kì lúc nào, bất kể thời tiết và tình huống, Infinity Challenge giới thiệu đến khán giả yêu thích chương trình thực tế nhiều tình huống vui nhộn và luôn mang lại tiếng cười trong suốt chương trình. Đặc biệt thú vị hơn với sự đồng hành của nhiều nghệ sĩ nổi tiếng của Hàn Quốc.',
+        link:"http://cloud3.cdngooqle.stream/videos/yr9t6hf797b9zyk7ad5qbygube.mp4",
+        season:"1",
+        eps:"1",
+        tag:"Game Show Truyền Hình",
+     },
+     {
+        name:"Thực Tập Sinh Thần Tượng",
+        rate:"0 / 10 (0)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20180125/77726c85368e2a6de0f6f015c0c379a6_213_320.jpg",
+        actor:"Trương Nghệ Hưng, Vương Gia Nhĩ, Lý Vinh Hạo",
+        director:"N/A",
+        category:"Phim Âm Nhạc, Phim Giải Trí-Sự Kiện",
+        country:"Trung Quốc",
+        content:'Produce 101 Bản Trung. Thực Tập Sinh Thần Tượng là một chương trình thực tế được phát song trên iQiyi. Đây là một chương trình mà khán giả sẽ lựa chọn ra 9 trong số 100 thực tập sinh đến từ các công ty giải trí khắp Trung Quốc, để tạo ra một nhóm nhạc thần tượng nam hoàn toàn mới.',
+        link:"http://cloud3.cdngooqle.stream/videos/wfuuhbmm17ghbg7idqg6m6jfyy.mp4",
+        season:"1",
+        eps:"1",
+        tag:"Game Show Truyền Hình",
+     },
+     {
+        name:"We Got Married Lee Jong Hyun & Seung Yeon",
+        rate:"0 / 10 (0)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20150526/4a1b6b2159bf30feca4b8509e6f153f4_240_320.png",
+        actor:"So-eun Kim, Jae-rim Song, Jin-Young Hong, Jong-Hyun Hong",
+        director:"N/A",
+        category:"Phim Âm Nhạc, Phim Kịch Tính, Phim Giải Trí-Sự Kiện",
+        country:"Hàn Quốc",
+        content:'We Got Married là một chương trình giải trí Hàn Quốc, bắt đầu lên sóng từ 2008. Chương trình sẽ xếp cặp cho các nghệ sĩ Hàn để họ có thể trải nghiệm cuộc sống sau kết hôn. Mỗi tuần sẽ có 1 nhiệm vụ dành cho các cặp, xen vào đó là phần phóng vấn suy nghĩ và cảm xúc của họ về nhau. Jong Hyun của nhóm nhạc Rock CNBLUE đóng vai người chồng còn Gong Seung Yeon (nữ diên viên trẻ) sẽ là người vợ.',
+        link:"https://videos.files.wordpress.com/kvL9Du1i/02-we-got-married-284_hd.mp4",
+        season:"1",
+        eps:"1",
+        tag:"Game Show Truyền Hình",
+     },
+     {
+        name:"The Unit",
+        rate:"0 / 10 (0)",
+        img:"http://s.aphim.co/uploads/film/images/modsz/20171120/1e008bf78baded4c2b95e37eaae97b86_220_320.jpg  ",
+        actor:"SHINee Taemin, Urban Zakapa Jo Hyun Ah, San E, HyunA, Hwang Chi Yeol, Rain",
+        director:"KBS2",
+        category:"Phim Âm Nhạc, Phim Giải Trí-Sự Kiện",
+        country:"Hàn Quốc",
+        content:'The Unit là một chương trình truyền hình thực tế sống còn của Hàn Quốc sắp được phát sóng bắt đầu từ ngày 28 tháng 10 năm 2017 trên kênh KBS2. Chương trình tạo cơ hội cho những thần tượng đã ra mắt nhưng không nhận được sự chú ý của công chúng tỏa sáng một lần nữa.',
+        link:"https://vredir.nixcdn.com/SongClip33/TheUnitTap1Vietsub-VA-5261104.mp4?st=i9cnBXlnmYCLDsjCio1_gA&e=1529816430&t=1529730030839",
+        season:"1",
+        eps:"1",
+        tag:"Game Show Truyền Hình",
      },
 
 ]
@@ -667,7 +975,7 @@ let data = DATANEW.sort(function() {
 
 function homePage(arguments) {
     data.forEach(e => {
-        if (e.category == "Phim Hot") {
+        if (e.tag == "Phim Hot") {
             col1.innerHTML +=
                 `<div class="list__card" onclick="movies(this)"  data-name="${e.name}">
     <div class="card__pic">
@@ -709,7 +1017,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.category == "Phim Chiếu Rạp") {
+        } else if (e.tag == "Phim Chiếu Rạp") {
             col2.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -751,7 +1059,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.category == "Phim Lẻ Mới Nhất") {
+        } else if (e.tag == "Phim Lẻ Mới Nhất") {
             col3.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -793,7 +1101,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.category == "Phim Bộ Mới Nhất") {
+        } else if (e.tag == "Phim Bộ Mới Nhất") {
             col4.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
             <div class="card__pic">
@@ -835,7 +1143,7 @@ function homePage(arguments) {
                 </a>
             </div>
         </div>`
-        } else if (e.category == "Phim Âu Mỹ") {
+        } else if (e.tag == "Phim Âu Mỹ") {
             col5.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -877,7 +1185,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.category == "Phim Hàn Quốc") {
+        } else if (e.tag == "Phim Hàn Quốc") {
             col6.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -919,7 +1227,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.category == "Phim Trung Quốc") {
+        } else if (e.tag == "Phim Trung Quốc") {
             col7.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
             <div class="card__pic">
@@ -961,7 +1269,7 @@ function homePage(arguments) {
                 </a>
             </div>
         </div>`
-        } else if (e.category == "Phim Hoạt Hình- Animal") {
+        } else if (e.tag == "Phim Hoạt Hình- Animal") {
             col8.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -1003,7 +1311,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else  if (e.category == "Game Show Truyền Hình") {
+        } else  if (e.tag == "Game Show Truyền Hình") {
             col9.innerHTML +=
                 `<div class="list__card" onclick="movies(this)"  data-name="${e.name}">
     <div class="card__pic">
@@ -1052,74 +1360,11 @@ function homePage(arguments) {
         a.innerText = a.innerText.slice(0, 18) + "..."
     })
 
-    // const hideMe = document.querySelector(".list__card");
-    // const disableMe = document.querySelectorAll('.col');
-    // hideMe.classList.add("card--hide");
-    // disableMe.forEach(child2 => {
-    //     console.log(child2.children);
-    //     const test = child2.children;
-    //     for (let i = 7; i < test.length; i++) {
-    //                     test[i].classList.add("card--disable")
-    //           }
-
-    // })
 }
 
-function page1(arguments) {
-
-    data.filter(a => (a.category == "Phim Hot")).forEach(e => {
-        category1.innerHTML +=
-            `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
-    <div class="card__pic">
-        <a onclick="movies(this)" data-name="${e.name}">
-            <img src="${e.img}" alt=" ${e.name}">
-        </a>
-        <div class="transparent">
-            <p>${e.name}</p>
-        </div>
-        <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-        </div>
-    </div>
-    <div class="card__name">
-        <a onclick="movies(this)" data-name="${e.name}">
-            <p>
-                ${e.name}
-            </p>
-        </a>
-    </div>
-</div>`
-    })
-    let nameMovies = document.querySelectorAll('.card__name a p');
-    [...nameMovies].filter(e => (e.innerText.length > 18)).map(a => {
-        a.innerText = a.innerText.slice(0, 18) + "..."
-    })
-
-
-}
 function detail(arguments) {
     data.forEach(e => {
-        if (e.category == "Phim Hot") {
+        if (e.tag == "Phim Hot") {
             col1.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -1161,7 +1406,7 @@ function detail(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.category == "Phim Chiếu Rạp") {
+        } else if (e.tag == "Phim Chiếu Rạp") {
             col2.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -1215,8 +1460,9 @@ function movies (e) {
     sessionStorage.clear();
     let nameFilm = e.dataset.name;
     data.filter(a=>(a.name == nameFilm)).map(b=>sessionStorage.setItem("data", JSON.stringify(b)))
-    window.open("detail.html");
+    window.open("detail.html","_self");
 }
+
 function showMovies (arguments) {
     const dataStorage = JSON.parse(sessionStorage.data)
         contentMovies.innerHTML +=
@@ -1326,13 +1572,13 @@ function showMovies (arguments) {
                 </div>
                 <div class="tag-film">
                     <span>Tags:</span>
-                    <p>${dataStorage.categorys}</p>
+                    <p>${dataStorage.tag}</p>
                 </div>
             </div>
             <div class="revies__right">
                 <div class="imdb-film">
                     <h1>Đánh giá</h1>
-                    <h2>${dataStorage.category}</h2>
+                    <h2>${dataStorage.rate}</h2>
                 </div>
                 <div class="directors-film">
                     <h1>Đạo diễn</h1>
@@ -1365,12 +1611,72 @@ function showMovies (arguments) {
 
 }
 
+function categoryMovies (e) {
+     sessionStorage.clear();
+    let categoryFilm = e.dataset.name;
+    let storageCategory = [];
+    for(let value of data){
+        value.tag == categoryFilm ?storageCategory.push(value):0
+    }
+    sessionStorage.setItem("dataCategory", JSON.stringify(storageCategory));
+    window.open("category.html","_self");
+}
+
+function showMoviesCategory (arguments) {
+    const dataStorage = JSON.parse(sessionStorage.dataCategory);
+    dataStorage.forEach(e=>{
+        here.innerHTML +=
+        `<div class="list--wrap col">
+        <div class="list__card" onclick="movies(this)" data-name="${e.name}">
+            <div class="card__pic">
+                <a onclick="movies(this)" data-name="${e.name}">
+                    <img src="${e.img}" alt=" ${e.name}">
+                </a>
+                <div class="transparent">
+                    <p>${e.name}</p>
+                </div>
+                <div class="iconPlay">
+                    <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                        <!-- Hello My Name is Nam. -->
+                        <desc>Created by Nam.</desc>
+                        <defs>
+                            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                                <stop stop-color="#FAD961" offset="0%"></stop>
+                                <stop stop-color="#F76B1C" offset="100%"></stop>
+                            </linearGradient>
+                        </defs>
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                            <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                                <g id="detail" transform="translate(165.000000, 111.000000)">
+                                    <g id="play" transform="translate(508.000000, 223.000000)">
+                                        <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                        <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                            points="52.5 28 77 67 28 67"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div class="card__name">
+                <a onclick="movies(this)" data-name="${e.name}">
+                    <p>
+                        ${e.name}
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>`
+    })
+}
+
 window.onload = () => {
     if (window.location.pathname.split("/").pop() == "index.html" ||window.location.pathname.split("/").pop() == "") {
         homePage();
         hideCard();
-    } else if (window.location.pathname.split("/").pop() == "category1.html") {
-        page1();
+    } else if (window.location.pathname.split("/").pop() == "category.html") {
+       showMoviesCategory();
     }
     else if (window.location.pathname.split("/").pop() == "detail.html") {
         showMovies();
@@ -1380,3 +1686,4 @@ window.onload = () => {
 
 
 }
+

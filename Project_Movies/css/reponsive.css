@@ -20,20 +20,14 @@
     .menu__text p {
         font-size: 16px;
     }
-    .card--hide {
-        display: none;
-    }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 834px) {
     header {
         grid-template-columns: 99px 1fr;
     }
     button[aria-hidden="true"] {
         display: block;
-    }
-    .ws_bullets {
-        bottom: 0px !important;
     }
     .desktop {
         display: none
@@ -41,8 +35,11 @@
     .mobile {
         display: block;
     }
-    .card--hide {
-        display: block;
+}
+
+@media only screen and (max-width: 768px) {
+    .ws_bullets {
+        bottom: 0px !important;
     }
     #mySidenav {
         width: 0px;
@@ -58,9 +55,6 @@
     }
     .footer__mobile {
         display: block;
-    }
-    .card--hide {
-        display: none;
     }
     .inputtext {
         display: none;
@@ -91,6 +85,21 @@
         -moz-transform: translate(-6%, 0%);
         -ms-transform: translate(-6%, 0%);
         -o-transform: translate(-6%, 0%);
+    }
+    .text__top h2 {
+        font-size: 24px;
+    }
+    .title__icon {
+        display: none;
+    }
+    .text__bot {
+        grid-template-columns: 0.6fr 1fr 1fr;
+    }
+    .text__bot button {
+        max-width: 119px;
+    }
+    .info__right {
+        grid-template-rows: 0.1fr 1fr;
     }
 }
 
