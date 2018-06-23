@@ -3274,7 +3274,7 @@ function showMovies(arguments) {
         </div>
         <div class="comment">
             <!-- comment facebook -->
-            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="4"
+            <div class="fb-comments" data-href="http://phimdayroi.ga/" data-numposts="4"
                 data-width='100%'></div>
             <!-- main -->
         </div>
