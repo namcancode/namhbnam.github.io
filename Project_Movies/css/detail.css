@@ -32,7 +32,7 @@
 
 .text__bot {
     display: grid;
-    grid-template-columns: 0.21fr 0.3fr 1fr;
+    grid-template-columns: 0.5fr 0.8fr 1fr;
     grid-column-gap: 20px;
     align-items: center;
 }
@@ -58,8 +58,7 @@
     -o-transition: 0.3s;
 }
 
-button.bot__report,
-button.bot__block-ads {
+button.bot__report, button.bot__block-ads {
     color: #fff;
     font-weight: 100;
     font-size: 14px;
@@ -110,8 +109,7 @@ button.bot__block-ads {
     padding-bottom: 10px;
 }
 
-.info__left h1,
-.episode h1 {
+.info__left h1, .episode h1 {
     color: #F5A623;
     font-size: 16px;
     font-weight: 500;
@@ -175,8 +173,7 @@ button.bot__block-ads {
     display: grid;
 }
 
-.directors-film,
-.country-film {
+.directors-film, .country-film {
     margin-top: -12px;
 }
 
