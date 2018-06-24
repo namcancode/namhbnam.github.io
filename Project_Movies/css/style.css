@@ -1,12 +1,4 @@
-a,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-span {
+a, p, h1, h2, h3, h4, h5, h6, span {
     font-family: 'Roboto', sans-serif;
 }
 
@@ -63,8 +55,7 @@ body {
     align-items: center;
 }
 
-.header__menu a,
-.content__text a {
+.header__menu a, .content__text a {
     text-decoration: none;
 }
 
@@ -413,8 +404,7 @@ footer {
     justify-content: center;
 }
 
-input[type="username"],
-input[type="password"] {
+input[type="username"], input[type="password"] {
     padding: 12px 0px 12px 10px;
     outline: none;
     font-size: 15px;
@@ -430,8 +420,7 @@ input[type="password"] {
     -o-border-radius: 5px;
 }
 
-input[type="username"]:focus,
-input[type="password"]:focus {
+input[type="username"]:focus, input[type="password"]:focus {
     padding: 12px 0px 12px 10px;
     outline: none;
     font-size: 15px;
@@ -621,7 +610,7 @@ label {
     position: absolute;
     top: 62px;
     right: 0;
-    z-index: 10;
+    z-index: 20;
     max-width: 100%;
     background: #252525;
     padding: 0 10px;
