@@ -81,15 +81,15 @@
     top: 15%;
     left: 30%;
     transition: 0.4s;
-    transform:scale(0);
+    transform: scale(0);
     -webkit-transition: 0.4s;
     -moz-transition: 0.4s;
     -ms-transition: 0.4s;
     -o-transition: 0.4s;
-    -webkit-transform:scale(0);
-    -moz-transform:scale(0);
-    -ms-transform:scale(0);
-    -o-transform:scale(0);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
 }
 
 .list__card:hover .transparent {
@@ -99,11 +99,19 @@
 
 .list__card:hover .iconPlay {
     visibility: visible;
-    transform:scale(1);
-    -webkit-transform:scale(1);
-    -moz-transform:scale(1);
-    -ms-transform:scale(1);
-    -o-transform:scale(1);
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
 }
 
 /* hover card */
+
+/* hover input search */
+
+.result--film:hover {
+    background: #000c
+}
+
+/* hover input search */

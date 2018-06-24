@@ -28,6 +28,7 @@ window.onscroll = () => {
         });
         document.querySelector(".header__logo").style.width = "55px";
         document.querySelectorAll('.content__text').forEach(e => e.style.top = "50px");
+        document.querySelector('.input__result').style.top = "43px";
     } else {
         HEADER.forEach(e => {
             e.classList.remove("sticky")
@@ -35,6 +36,7 @@ window.onscroll = () => {
         });
         document.querySelector(".header__logo").style.width = "99px";
         document.querySelectorAll('.content__text').forEach(e => e.style.top = "90px");
+        document.querySelector('.input__result').style.top = "62px";
 
     }
 }
@@ -48,10 +50,12 @@ function searchInput(e) {
         search.style.visibility = "visible";
         search.style.top = "53px";
 
+
     } else {
         search.style.top = "92px";
         search.style.opacity = "1";
         search.style.visibility = "visible";
+
 
     }
 }
@@ -61,6 +65,7 @@ function searchInputHide(arguments) {
     search.style.top = "0px";
     search.style.visibility = "hidden"
     document.querySelector(".sidenav").style.width = "0";
+    document.querySelector('.input__result').style.visibility = "hidden";
 
 }
 
@@ -93,6 +98,36 @@ function hideCard(e) {
 }
 
 
+function findMatches(wordToMatch, movies) {
+    return data.filter(movie => {
+        // here we need to figure out if the city or state matches what was searched
+        const regex = new RegExp(wordToMatch, 'gi');
+        return movie.name.match(regex) || movie.img.match(regex)
+    });
+}
+
+function displayMatches() {
+    document.querySelector('.input__result').style.visibility = "visible";
+    const matchArray = findMatches(this.value, data);
+    const html = matchArray.map(movie => {
+        return `
+        <div class="result--film" data-name="${movie.name}" onclick="movies(this)">
+            <div class="result__img">
+                <a data-name="${movie.name}" onclick="movies(this)">
+                    <img src="${movie.img}" alt="${movie.name}">
+                </a>
+            </div>
+            <div class="result__text" data-name="${movie.name}" onclick="movies(this)">
+                <h1>
+                   ${movie.name}
+                </h1>
+            </div>
+        </div>
+      `;
+    }).join('');
+    document.querySelector('.result__content').innerHTML = html;
+}
+
 searchIcons.addEventListener('click', searchInput);
 search.addEventListener('blur', searchInputHide);
 document.querySelector('section').addEventListener('click', searchInputHide);
@@ -104,3 +139,4 @@ document.querySelector('#btnloginmobile').addEventListener('click', login);
 document.querySelector('.loginclose').addEventListener('click', loginClose);
 document.querySelector(".blurtrans").addEventListener('click', loginClose);
 document.querySelector(".blurtrans").addEventListener('click', searchInputHide);
+document.querySelector('.inputtext').addEventListener('input', displayMatches)

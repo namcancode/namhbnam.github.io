@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta content='180527869281283' property='fb:app_id'/>
-<meta content='100002686640082' property='fb:admins'/>
+    <meta content='180527869281283' property='fb:app_id' />
+    <meta content='100002686640082' property='fb:admins' />
     <title>Xem Phim Online ||| Phim HD miễn phí || Cinema</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico" />
@@ -19,13 +19,17 @@
     <link rel="stylesheet" href="css/reponsive.css" />
 </head>
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=180527869281283&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src =
+            'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=180527869281283&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <body>
     <div class="login__popup">
@@ -160,7 +164,33 @@
                     </a>
                 </div>
                 <div class="header__login">
-                    <input class="inputtext" type="text" placeholder="Tìm kiếm">
+                    <div class="login__input">
+                        <input class="inputtext" type="text" placeholder="Tìm kiếm">
+                        <div class="input__result">
+                            <div class="result__title">
+                                <h1>
+                                    Kết quả tìm kiếm cho từ khóa:
+                                    <span>Hello</span>
+                                </h1>
+                            </div>
+                            <div class="result__content">
+                                <!-- <div class="result--film">
+                                    <div class="result__img">
+                                        <a href="#">
+                                            <img src="img/1.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="result__text">
+                                        <h1>
+                                            Biệt Đội Siêu Anh Hùng
+                                        </h1>
+                                    </div>
+                                </div> -->
+                            </div>
+
+                        </div>
+                    </div>
+
                     <button id="btnlogin">Đăng nhập</button>
                 </div>
             </header>
@@ -467,10 +497,9 @@
             </p>
         </div>
     </footer>
-
+    <script src="js/data.js"></script>
     <script src="js/javascript.js"></script>
     <script src="js/card.js"></script>
-    <script src="js/movies.js"></script>
     <!-- jQuery JS 3.1.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <!-- jQuery UI JS 1.12.0 -->
