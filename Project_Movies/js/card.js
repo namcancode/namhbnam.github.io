@@ -716,17 +716,42 @@ function showMoviesCategory(arguments) {
         a.innerText = a.innerText.slice(0, 18) + "..."
     })
 }
+function checkFirstVisit() {
+    Element.prototype.remove = function() {
+        this.parentElement.removeChild(this);
+    }
+    NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+        for(var i = this.length - 1; i >= 0; i--) {
+            if(this[i] && this[i].parentElement) {
+                this[i].parentElement.removeChild(this[i]);
+            }
+        }
+    }
+    spin.forEach(a=>{
+        a.remove();
+    })
+  }
+
+
+
 
 window.onload = () => {
-    spin.forEach(a=>{
-        a.style.display = "none"
-    })
+
+    // if(sessionStorage.getItem('loaded')){
+    //     console.log("da tai trang");
+    // }
+    // else sessionStorage.setItem('loaded', true)
+
     if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "") {
+        checkFirstVisit();
         homePage();
         hideCard();
+
     } else if (window.location.pathname.split("/").pop() == "category.html") {
+        checkFirstVisit();
         showMoviesCategory();
     } else if (window.location.pathname.split("/").pop() == "detail.html") {
+        checkFirstVisit();
         showMovies();
         detail();
         hideCard();

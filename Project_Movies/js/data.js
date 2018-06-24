@@ -15,7 +15,7 @@ const DATANEW = [{
 {
     name: "Biệt Đội Siêu Anh Hùng 3: Cuộc Chiến Vô Cực",
     rate: "8.9 / 10 (301401)",
-    link: "streamango.com/v/d/sstnsrctcnerafbk~1529913856~117.0.0.0~VZSACPGu/536",
+    link: "https://www3530.playercdn.net/187/2/-VSHLpB6Qedt8gWER3d0jA/1529869982/180613/VOuQ3TFPvx9ZASI.mp4",
     img: "http://image.phimmoi.net/film/3244/poster.medium.jpg",
     season: "1",
     eps: "1",
@@ -674,7 +674,7 @@ const DATANEW = [{
 {
     name: "Biệt Đội Siêu Anh Hùng 3: Cuộc Chiến Vô Cực",
     rate: "8.9 / 10 (301401)",
-    link: "streamango.com/v/d/sstnsrctcnerafbk~1529913856~117.0.0.0~VZSACPGu/536",
+    link: "https://www3530.playercdn.net/187/2/-VSHLpB6Qedt8gWER3d0jA/1529869982/180613/VOuQ3TFPvx9ZASI.mp4",
     img: "http://image.phimmoi.net/film/3244/poster.medium.jpg",
     season: "1",
     eps: "1",
@@ -764,7 +764,7 @@ const DATANEW = [{
     category: "Phim Tội Phạm - Hình Sự, Phim Hài Hước, Phim Hành Động",
     country: "Mỹ",
     content: "Phim Nhọ Gặp Hên: là sự kết hợp giữa yếu tố hài hước và những mưu đồ kịch tính khi Gringo (một kiều dân Mỹ) vượt biên từ Mỹ sang Mexico. Vượt qua ranh giới từ một công dân lương thiện trở thành kẻ tội phạm, Harold rơi vào vòng xoáy của các đối tác kinh doanh láng giềng đầy mưu mô, các trùm ma tuý Mexico xảo quyệt và cả lính đánh thuê quốc tế,… Harold sẽ phải vượt qua và sống sót ra sao ở nơi được xem là nguy hiểm nhất hành tinh này?",
-    link: "https://video.fhan5-7.fna.fbcdn.net/v/t42.9040-2/10000000_1020803964733670_149320576769458176_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=495&oh=f09361c0d9a9dc998621fb49663def01&oe=5B2F3305",
+    link: "https://www3627.playercdn.net/187/2/EMWe8iNdhekE0eLviYj8Kg/1529870099/180526/qKmQ2wrlny8Ytu9.mp4",
     season: "1",
     eps: "1",
     tag: "Phim Chiếu Rạp",
@@ -2631,3 +2631,4 @@ const DATANEW = [{
 let data = DATANEW.sort(function () {
     return .5 - Math.random();
 });
+

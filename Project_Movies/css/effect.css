@@ -17,7 +17,8 @@
     flex-wrap: wrap;
 }
 
-.list1, .list2 {
+.list1,
+.list2 {
     opacity: 0;
     visibility: hidden;
     -webkit-transition-delay: 0.16s;
@@ -450,3 +451,5 @@
 }
 
 /* spinner */
+
+/* preload */
