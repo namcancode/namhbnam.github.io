@@ -621,7 +621,7 @@ label {
     position: absolute;
     top: 62px;
     right: 0;
-    z-index: 5;
+    z-index: 10;
     max-width: 100%;
     background: #252525;
     padding: 0 10px;
@@ -686,7 +686,5 @@ label {
     color: #fff;
     cursor: pointer;
 }
-
-
 
 /* CSS search */
