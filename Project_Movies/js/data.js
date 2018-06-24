@@ -316,7 +316,7 @@ const DATANEW = [{
     category: "Phim Kịch Tính",
     country: "Nhật Bản",
     content: "Một tác phẩm với tình tiết hấp dẫn, cách kể chuyện khéo léo và đầy tính nhân văn. Mọi lời nhận xét trước khi xem đều không thể diễn tả được, vì vậy, mời mọi người thưởng thức. ",
-    link: "https://video.fsgn5-5.fna.fbcdn.net/v/t42.9040-2/10000000_2062722103994581_6339212492983500800_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=542&oh=a497ac66cf8f2dbaba48d85dfac95f03&oe=5B2F1942",
+    link: "https://video.fhan5-7.fna.fbcdn.net/v/t42.9040-2/10000000_2062722103994581_6339212492983500800_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=542&oh=6c08843d4bcbd5334a6c743f7b46f424&oe=5B311382",
     season: "1",
     eps: "1",
     tag: "Phim Hot",

@@ -4,9 +4,22 @@
     position: relative;
 }
 
+.list-center {
+    height: 79px;
+    display: grid;
+    justify-items: center;
+}
+
+.menu__text {
+    height: 79px;
+    padding-top: 28px;
+}
+
 .content__text {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-content: start;
+    gap: 20px;
     padding: 15px 25%;
     position: absolute;
     z-index: 22;

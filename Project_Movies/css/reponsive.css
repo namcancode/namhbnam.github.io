@@ -11,14 +11,23 @@
     .card--hide {
         display: none;
     }
+    .menu__text p {
+        font-size: 15px;
+    }
+    .text__name p {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 12px;
+    }
+    .content__text {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
 }
 
 @media only screen and (max-width: 968px) {
     .header__menu {
         grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    }
-    .menu__text p {
-        font-size: 16px;
     }
     .header__login button {
         width: 120px;
