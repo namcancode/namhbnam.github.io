@@ -151,7 +151,7 @@
                 <div class="header__login">
                     <div class="login__input">
                         <input class="inputtext" type="text" placeholder="Tìm kiếm">
-                        <div class="input__result">
+                        <div class="input__result desktop-input__result">
                             <div class="result__title">
                                 <h1>
                                     Kết quả tìm kiếm cho từ khóa:
@@ -175,7 +175,6 @@
 
                         </div>
                     </div>
-
                     <button id="btnlogin">Đăng nhập</button>
                 </div>
             </header>
@@ -183,6 +182,16 @@
     </div>
     <div class="header--wrap mobile">
         <input type="text" class="inputsearch" placeholder="Tìm kiếm">
+        <div class="input__result super-input__result">
+            <div class="result__title">
+                <h1>
+                    Kết quả tìm kiếm cho từ khóa:
+                    <span>Hello</span>
+                </h1>
+            </div>
+            <div class="result__content">
+            </div>
+        </div>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn " onclick="closeNav()">&times;</a>
             <a class="linebot" href="index.html">Trang chủ</a>
@@ -256,9 +265,23 @@
         <header class="wrap">
             <div class="header__button">
                 <button href="#" onclick="openNav()" class="fas fa-bars fa-2x" aria-hidden="true"></button>
+
             </div>
             <div class="header__login">
-                <input class="inputtext" type="text" placeholder="Tìm kiếm">
+
+                <div class="login__input">
+                    <input class="inputtext mobile-input-text" type="text" placeholder="Tìm kiếm">
+                    <div class="input__result mobile-input__result">
+                        <div class="result__title">
+                            <h1>
+                                Kết quả tìm kiếm cho từ khóa:
+                                <span>Hello</span>
+                            </h1>
+                        </div>
+                        <div class="result__content">
+                        </div>
+                    </div>
+                </div>
                 <i class="fas fa-search searchicon"></i>
                 <button id="btnloginmobile">Đăng nhập</button>
             </div>
