@@ -117,6 +117,14 @@
     }
     .super-input__result {
         display: block;
+        width: 90%;
+        top: 130px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0);
     }
     .login__input {
         display: none;

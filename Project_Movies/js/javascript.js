@@ -74,7 +74,6 @@ function searchInputHide(arguments) {
     document.querySelector('.input__result').style.visibility = "hidden";
     document.querySelector('.mobile-input__result').style.visibility = "hidden";
     document.querySelector('.super-input__result').style.visibility = "hidden";
-
 }
 
 function login(e) {
