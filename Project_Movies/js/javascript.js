@@ -1,6 +1,7 @@
 const search = document.querySelector(".inputsearch");
 const searchIcons = document.querySelector('.searchicon');
 const HEADER = document.querySelectorAll(".header--wrap");
+const spin = document.querySelectorAll('.spinner');
 let scrollLoader = 0;
 let result = "";
 

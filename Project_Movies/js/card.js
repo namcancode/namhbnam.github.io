@@ -718,6 +718,9 @@ function showMoviesCategory(arguments) {
 }
 
 window.onload = () => {
+    spin.forEach(a=>{
+        a.style.display = "none"
+    })
     if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "") {
         homePage();
         hideCard();
@@ -728,6 +731,4 @@ window.onload = () => {
         detail();
         hideCard();
     }
-
-
 }
