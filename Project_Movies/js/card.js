@@ -10,9 +10,18 @@ const col8 = document.querySelector(".col8");
 const col9 = document.querySelector(".col9");
 const col = document.querySelectorAll(".col");
 const contentMovies = document.querySelector(".content__movies");
+Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
 
 function homePage(arguments) {
-    sessionStorage.clear();
     data.forEach(e => {
         if (e.tag == "Phim Hot") {
             col1.innerHTML +=
@@ -398,7 +407,6 @@ function homePage(arguments) {
     [...nameMovies].filter(e => (e.innerText.length > 18)).map(a => {
         a.innerText = a.innerText.slice(0, 18) + "..."
     })
-
 }
 
 function detail(arguments) {
@@ -651,6 +659,7 @@ function showMovies(arguments) {
     [...nameMovies].filter(e => (e.innerText.length > 18)).map(a => {
         a.innerText = a.innerText.slice(0, 18) + "..."
     })
+
 }
 
 function categoryMovies(e) {
@@ -715,32 +724,27 @@ function showMoviesCategory(arguments) {
     [...nameMovies].filter(e => (e.innerText.length > 18)).map(a => {
         a.innerText = a.innerText.slice(0, 18) + "..."
     })
+    sessionStorage.setItem('loaded', true);
 }
 function checkFirstVisit() {
-    Element.prototype.remove = function() {
-        this.parentElement.removeChild(this);
-    }
-    NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-        for(var i = this.length - 1; i >= 0; i--) {
-            if(this[i] && this[i].parentElement) {
-                this[i].parentElement.removeChild(this[i]);
-            }
-        }
-    }
     spin.forEach(a=>{
         a.remove();
     })
   }
-
-
+function preload (arguments) {
+    if(sessionStorage.getItem('loaded')=='true'){
+        setTimeout(function (arguments) {
+            console.log("hello preload");
+            document.querySelector('body').classList.remove('preloading')
+           document.querySelector('.loading').remove();
+        },1000)
+    }
+        // sessionStorage.setItem('loaded', true);
+}
 
 
 window.onload = () => {
-
-    // if(sessionStorage.getItem('loaded')){
-    //     console.log("da tai trang");
-    // }
-    // else sessionStorage.setItem('loaded', true)
+    // preload();
 
     if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "") {
         checkFirstVisit();

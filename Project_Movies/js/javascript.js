@@ -106,6 +106,8 @@ function hideCard(e) {
         child.childNodes[1] == undefined ? 0 : child.childNodes[randomNumber].classList.add("card--hide");
     })
 
+    sessionStorage.setItem('loaded', true);
+    preload();
 }
 
 
