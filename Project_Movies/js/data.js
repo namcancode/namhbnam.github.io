@@ -15,7 +15,7 @@ const DATANEW = [{
 {
     name: "Biệt Đội Siêu Anh Hùng 3: Cuộc Chiến Vô Cực",
     rate: "8.9 / 10 (301401)",
-    link: "https://video.fhan5-3.fna.fbcdn.net/v/t42.9040-2/10000000_107191213478417_7480688158854610944_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=781&oh=efa25e3888d3e3ec8042ffc67f036b83&oe=5B2E8FB0",
+    link: "streamango.com/v/d/sstnsrctcnerafbk~1529913856~117.0.0.0~VZSACPGu/536",
     img: "http://image.phimmoi.net/film/3244/poster.medium.jpg",
     season: "1",
     eps: "1",
@@ -29,7 +29,7 @@ const DATANEW = [{
 {
     name: "Quái Nhân 2",
     rate: "8.1 / 10 (132) ",
-    link: "https:video.xx.fbcdn.net/v/t42.9040-2/10000000_1026051590893078_3837080471796187136_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=716&oh=6a5ec91dc6010298fae09b1e594ff770&oe=5B2F3E0F",
+    link: "streamango.com/v/d/erelpmoonsrokbmq~1529914126~117.0.0.0~FXczau55/548",
     img: "http://image.phimmoi.net/film/5001/poster.medium.jpg",
     season: "1",
     eps: "1",
@@ -302,7 +302,7 @@ const DATANEW = [{
     category: "Phim Hành Động, Phim Kịch Tính, Phim Cổ Trang",
     country: "Mỹ",
     content: "12 Strong - 12 Kỵ Binh Quả Cảm kể về câu chuyện của đội quân đặc biệt đầu tiên được triển khai tới Afghanistan sau ngày 9 tháng 11 dưới sự lãnh đạo của một đội trưởng mới... ",
-    link: "https://video.fsgn5-3.fna.fbcdn.net/v/t42.9040-2/10000000_598766563809252_7461713117894934528_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=840&oh=3e61eed1a0eba4ee954d8f1fdb62d5bb&oe=5B2E3CE3",
+    link: "https://www3321.playercdn.net/185/1/WzhjdEdKP8-GHrcwoMJC7Q/1529849839/180418/543FQH29MF25WAHJQWITR.mp4",
     season: "1",
     eps: "1",
     tag: "Phim Hot",
@@ -442,7 +442,7 @@ const DATANEW = [{
     category: "Phim Tiểu Sử, Phim Kịch Tính, Phim Cổ Trang",
     country: "Trung Quốc",
     content: "Mùa hè ở Thành Trường An, phu nhân của tể tướng Trần Vân Tiều, Xuân Cầm bị ám bởi một con yêu miêu. Xuân Cầm bị kiểm soát hoàn toàn bởi con yêu quái và hành động càng ngày càng kỳ lạ. Cùng thời điểm đó, Hoàng đế Đường Huyền Tông đang hấp hối trong cung điện. Nhà sư Không Hải người Nhật được mời đến để trục xuất yêu ma khỏi nhà vua. Ông cảm nhận được sự hiện diện của yêu miêu và cái chết của nhà vua có liên quan đến nó",
-    link: "https://video.fsgn5-1.fna.fbcdn.net/v/t42.9040-2/10000000_1966486753680774_1092954587104542720_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=571&oh=02f8f0214cb56c8a6202e919c87308d3&oe=5B2E454C",
+    link: "https://video.fhan5-1.fna.fbcdn.net/v/t42.9040-2/10000000_1966486753680774_1092954587104542720_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=571&oh=c3a028d665837fb845a84ae78eadbf13&oe=5B30E84C",
     season: "1",
     eps: "1",
     tag: "Phim Hot",
@@ -660,7 +660,7 @@ const DATANEW = [{
 {
     name: "Quái Nhân 2",
     rate: "8.1 / 10 (132) ",
-    link: "https:video.xx.fbcdn.net/v/t42.9040-2/10000000_1026051590893078_3837080471796187136_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=716&oh=6a5ec91dc6010298fae09b1e594ff770&oe=5B2F3E0F",
+    link: "streamango.com/v/d/erelpmoonsrokbmq~1529914126~117.0.0.0~FXczau55/548",
     img: "http://image.phimmoi.net/film/5001/poster.medium.jpg",
     season: "1",
     eps: "1",
@@ -674,7 +674,7 @@ const DATANEW = [{
 {
     name: "Biệt Đội Siêu Anh Hùng 3: Cuộc Chiến Vô Cực",
     rate: "8.9 / 10 (301401)",
-    link: "https://video.fhan5-3.fna.fbcdn.net/v/t42.9040-2/10000000_107191213478417_7480688158854610944_n.mp4?_nc_cat=0&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=781&oh=efa25e3888d3e3ec8042ffc67f036b83&oe=5B2E8FB0",
+    link: "streamango.com/v/d/sstnsrctcnerafbk~1529913856~117.0.0.0~VZSACPGu/536",
     img: "http://image.phimmoi.net/film/3244/poster.medium.jpg",
     season: "1",
     eps: "1",

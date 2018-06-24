@@ -108,7 +108,7 @@
 #wowslider-container1 .ws_bullets {
 	float: left;
 	position: absolute;
-	z-index: 70;
+	z-index: 1;
 }
 
 #wowslider-container1 .ws_bullets div {

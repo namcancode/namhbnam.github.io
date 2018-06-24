@@ -621,7 +621,7 @@ label {
     position: absolute;
     top: 62px;
     right: 0;
-    z-index: 99999;
+    z-index: 5;
     max-width: 100%;
     background: #252525;
     padding: 0 10px;
@@ -631,7 +631,7 @@ label {
     -ms-transition: 0.3s;
     -o-transition: 0.3s;
     visibility: hidden;
-    max-height: 380px;
+    max-height: 412px;
     overflow: hidden;
 }
 
