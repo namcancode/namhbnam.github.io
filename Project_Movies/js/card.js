@@ -732,29 +732,27 @@ function checkFirstVisit() {
     })
   }
 function preload (arguments) {
-    if(sessionStorage.getItem('loaded')=='true'){
+    if(sessionStorage.getItem('loaded')=='true' &&  document.querySelector('body').classList.contains('preloading')==true ){
         setTimeout(function (arguments) {
-            console.log("hello preload");
-            document.querySelector('body').classList.remove('preloading')
+           document.querySelector('body').classList.remove('preloading')
            document.querySelector('.loading').remove();
         },1000)
     }
-        // sessionStorage.setItem('loaded', true);
 }
 
 
 window.onload = () => {
     // preload();
 
-    if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "") {
+    if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "" ||window.location.pathname.split("/").pop() == "index.php") {
         checkFirstVisit();
         homePage();
         hideCard();
 
-    } else if (window.location.pathname.split("/").pop() == "category.html") {
+    } else if (window.location.pathname.split("/").pop() == "category.html" || window.location.pathname.split("/").pop() == "category.php") {
         checkFirstVisit();
         showMoviesCategory();
-    } else if (window.location.pathname.split("/").pop() == "detail.html") {
+    } else if (window.location.pathname.split("/").pop() == "detail.html" ||window.location.pathname.split("/").pop() == "detail.php") {
         checkFirstVisit();
         showMovies();
         detail();

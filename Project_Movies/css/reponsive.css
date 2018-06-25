@@ -7,6 +7,18 @@
     }
 }
 
+@media only screen and (max-width: 1200px) {
+    .content__text {
+        padding: 15px 8%;
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+    .menu__text p {
+        font-size: 17px;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     .card--hide {
         display: none;
@@ -26,9 +38,9 @@
 }
 
 @media only screen and (max-width: 968px) {
-    .header__menu {
+    /* .header__menu {
         grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
-    }
+    } */
     .header__login button {
         width: 120px;
     }

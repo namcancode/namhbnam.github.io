@@ -6,8 +6,10 @@ h3,
 h4,
 h5,
 h6,
-span {
+span,
+label {
     font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.25px;
 }
 
 .wrap {
@@ -64,9 +66,10 @@ body {
 }
 
 .header__menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    justify-items: center;
+    display: flex;
+    /* grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); */
+    /* justify-items: center; */
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -80,12 +83,21 @@ body {
     color: #FF702D;
 }
 
+.list-center i {
+    font-size: 0.9vw;
+}
+
 .menu__text p {
     text-shadow: -3px 5px 5px rgba(0, 0, 0, 0.5);
     color: #FFFFFF;
     font-size: 18px;
     font-weight: 600;
     line-height: 25px;
+}
+
+.menu__text i {
+    text-shadow: -3px 5px 5px rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
 }
 
 .text__name p {

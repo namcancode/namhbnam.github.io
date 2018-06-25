@@ -46,7 +46,7 @@ window.onscroll = () => {
             e.style.height = "88px";
         });
         document.querySelector(".header__logo").style.width = "99px";
-        document.querySelectorAll('.content__text').forEach(e => e.style.top = "90px");
+        document.querySelectorAll('.content__text').forEach(e => e.style.top = "87px");
         document.querySelector('.input__result').style.top = "62px";
         document.querySelector('.mobile-input__result').style.top = "62px";
         document.querySelector('.super-input__result').setAttribute("style", "width:90%; top: 130px; left:50%; transform: translate(-50%,0);");

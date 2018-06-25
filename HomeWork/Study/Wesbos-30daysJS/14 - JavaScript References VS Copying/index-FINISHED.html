@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Reference VS Copy</title>
 </head>
+
 <body>
 
   <script>
@@ -68,7 +70,10 @@
     // captain.number = 99;
 
     // how do we take a copy instead?
-    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    const cap2 = Object.assign({}, person, {
+      number: 99,
+      age: 12
+    });
     console.log(cap2);
 
     // We will hopefully soon see the object ...spread
@@ -89,11 +94,11 @@
     console.log(wes);
 
     const dev = Object.assign({}, wes);
+    console.log(dev);
 
     const dev2 = JSON.parse(JSON.stringify(wes));
-
-
   </script>
 
 </body>
+
 </html>
