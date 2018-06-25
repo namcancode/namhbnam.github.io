@@ -307,9 +307,7 @@ if (isset($_SESSION['username']) && $_SESSION['username']) {
                         <img src="slide/data1/images/slide3.jpg" alt="" title="" id="wows1_2" />
                     </li>
                     <li>
-                        <a href="#">
-                            <img src="slide/data1/images/slide4.jpg" alt="slideshow javascript" title="" id="wows1_3" />
-                        </a>
+                        <img src="slide/data1/images/slide4.jpg" alt="" title="" id="wows1_3" />
                     </li>
                     <li>
                         <img src="slide/data1/images/slide5.jpg" alt="" title="" id="wows1_4" />
