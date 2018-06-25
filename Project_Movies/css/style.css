@@ -159,7 +159,6 @@ header {
     font-weight: 500;
     color: #FFFFFF;
     height: 36px;
-    width: 115px;
     border-radius: 6px;
     border: 0;
     background: linear-gradient(180deg, #FF9A00 0%, #D74C04 100%);
@@ -638,7 +637,6 @@ label {
 .login__input {
     display: grid;
     position: relative;
-    width: 100%;
 }
 
 .login__input input {

@@ -144,14 +144,45 @@ function displayMatches() {
     document.querySelector('.super-input__result').innerHTML = html;
 
 }
-function logout () {
-    // body
-console.log("logout");
-$.ajax({
-    type:'GET',
-    url:'unset_var.php'
-});
 
+function logout() {
+    // body
+    console.log("logout");
+    // Tạo một biến lưu trữ đối tượng XML HTTP. Đối tượng này
+    // tùy thuộc vào trình duyệt browser ta sử dụng nên phải kiểm
+    // tra như bước bên dưới
+    let xmlhttp;
+
+    // Nếu trình duyệt là  IE7+, Firefox, Chrome, Opera, Safari
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    }
+    // Nếu trình duyệt là IE6, IE5
+    else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    // Khởi tạo một hàm gửi ajax
+    xmlhttp.onreadystatechange = function () {
+        // Nếu đối tượng XML HTTP trả về với hai thông số bên dưới thì mọi chuyện
+        // coi như thành công
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            // Sau khi thành công tiến hành thay đổi nội dung của thẻ div, nội dung
+            // ở đây chính là
+            location.reload();
+        }
+    };
+
+    // Khai báo với phương thức GET, và url chính là file result.php
+    xmlhttp.open("GET", "logout.php", true);
+
+    // Cuối cùng là Gửi ajax, sau khi gọi hàm send thì function vừa tạo ở
+    // trên (onreadystatechange) sẽ được chạy
+    xmlhttp.send();
+}
+function register (arguments) {
+    // body
+    Window.open('dangky.php', '_self')
 }
 
 searchIcons.addEventListener('click', searchInput);
@@ -167,7 +198,10 @@ document.querySelector(".blurtrans").addEventListener('click', searchInputHide);
 document.querySelector('.inputtext').addEventListener('input', displayMatches);
 document.querySelector('.inputsearch').addEventListener('input', displayMatches);
 document.querySelector('.mobile-input-text').addEventListener('input', displayMatches);
-document.querySelector('.logout').addEventListener('click',logout);
-if(document.querySelector('#btnlogin')){
-    document.querySelector('#btnlogin').addEventListener('click', login);
+
+if (document.querySelector('.logout')) {
+    document.querySelector('.logout').addEventListener('click', logout)
+}
+if (document.querySelector('#btnlogin')) {
+    document.querySelector('#btnlogin').addEventListener('click', login)
 }

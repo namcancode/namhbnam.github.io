@@ -59,7 +59,7 @@
                         <input type="submit" value="Đăng Nhập" name="login">
                     </div>
                     <div class="clickbtn btn2">
-                        <input type="submit" value="Đăng Ký" name="registry"></input>
+                        <input type="submit" value="Đăng Ký" name="registry" onclick='register()'></input>
                     </div>
                 </div>
         </div>
@@ -169,12 +169,15 @@
                             </div>
                         </div>
                     </div>
-
                     <?php
 if (isset($_SESSION['username']) && $_SESSION['username']) {
-    echo $_SESSION['username'];
-    echo '<div class="logout">
-<p>Thoát ra</p>
+    echo '<div class="account">
+    <div class="account__name">
+    <p>' . $_SESSION['username'] . '</p>
+</div>
+    <div class="logout">
+    <p>Đăng Xuất</p>
+        </div>
     </div>';
 } else {
     echo '<button id="btnlogin">Đăng nhập</button>';
