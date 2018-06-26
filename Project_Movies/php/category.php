@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Xem Phim Online ||| Phim HD miễn phí || Cinema</title>
+    <title>Phim Đây Rồi || Xem Phim Online || Phim HD miễn phí || Cinema</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="css/reset.css" />
@@ -18,7 +19,7 @@
 </head>
 
 <body>
-    <div class="login__popup">
+<div class="login__popup">
         <div class="popup__title">
             <h1>Đăng Nhập</h1>
             <i class="fas fa-times loginclose"></i>
@@ -29,7 +30,7 @@
                     Mỗi người dùng chỉ sử dụng 01 tài khoản, nếu bạn chia sẻ, tài khoản có thể bị khóa mà không thông báo trước.
                 </h3>
             </div>
-            <form action="#" method="post">
+            <form action='dangnhap.php?do=login' method="post"  id="registry">
                 <div class="form--login">
                     <div class="name__text name1">
                         <label for="fname">Tài Khoản</label>
@@ -38,10 +39,10 @@
                         <label for="fname">Mật Khẩu</label>
                     </div>
                     <div class="name__input input1">
-                        <input placeholder="Username" name="Username" type="username" required="">
+                        <input placeholder="Username" name="Username" type="username">
                     </div>
                     <div class="name__input input2">
-                        <input placeholder="Password" name="Password" type="password" required="">
+                        <input placeholder="Password" name="Password" type="password">
                     </div>
                     <div class="box--one text1">
                         <div class="box__radio">
@@ -57,29 +58,28 @@
                     <div class="clickbtn btn1">
                         <input type="submit" value="Đăng Nhập" name="login">
                     </div>
-                    <div class="clickbtn btn2">
-                        <input type="submit" value="Đăng Ký" name="registry"></input>
-                    </div>
+                    <div class="clickbtn btn2 btn--register">
+                        <input type="button" value="Đăng Ký" name="registry" onclick='javascript:register();'></input>
+                  </div>
                 </div>
+             </form>
+
         </div>
-        </form>
     </div>
     <div class="blurtrans"></div>
     <div class="header--wrap desktop">
         <div class="wrap">
             <header>
                 <div class="header__logo">
-                    <a href="index.html">
+                    <a href="index.php">
                         <img src="img/logo.png" alt="">
                     </a>
                 </div>
                 <div class="header__menu">
-                    <a class="menu__text" href="index.html">
-
+                    <a class="menu__text" href="index.php">
                         <i class="material-icons md-24">
                             home
                         </i>
-
                     </a>
                     <div class="list--hover1 list-center">
                         <a class="menu__text">
@@ -168,10 +168,38 @@
                             </div>
                         </div>
                     </div>
-                    <button id="btnlogin">Đăng nhập</button>
+
+                    <?php
+if (isset($_SESSION['username']) && $_SESSION['username']) {
+    echo '
+    <div class="login__account">
+    <div class="account__avatar">
+         <img src="' . $_SESSION['avatar'] . '" alt="' . $_SESSION['username'] . '">
+    </div>
+    <div class="account__info">
+    <span class="arrow"></span>
+    <div class="info__user">
+        <a href="#">
+            <i class="fas fa-user-circle"></i>
+            <p>' . $_SESSION['username'] . '</p>
+        </a>
+    </div>
+    <div class="info__logout">
+        <i class="fas fa-power-off"></i>
+        <p>
+            Đăng Xuất
+        </p>
+    </div>
+</div>';
+} else {
+    echo '<button id="btnlogin">Đăng nhập</button>';
+}
+?>
+
                 </div>
-            </header>
         </div>
+        </header>
+    </div>
     </div>
     <div class="header--wrap mobile">
         <input type="text" class="inputsearch" placeholder="Tìm kiếm">
@@ -187,7 +215,7 @@
         </div>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn " onclick="closeNav()">&times;</a>
-            <a class="linebot" href="index.html">Trang chủ</a>
+            <a class="linebot" href="index.php">Trang chủ</a>
             <div class="menu--mobile__list">
                 <a class="linebot" href="#">Thể Loại</a>
                 <div class="dropdown">
@@ -253,7 +281,7 @@
             <div class="header__button">
                 <button href="#" onclick="openNav()" class="fas fa-bars fa-2x" aria-hidden="true"></button>
                 <div class="header__logo">
-                    <a href="index.html">
+                    <a href="index.php">
                         <img src="img/logo.png" alt="">
                     </a>
                 </div>
@@ -275,7 +303,32 @@
                     </div>
                 </div>
                 <i class="fas fa-search searchicon"></i>
-                <button id="btnloginmobile">Đăng nhập</button>
+                <?php
+if (isset($_SESSION['username']) && $_SESSION['username']) {
+    echo '
+    <div class="login__account">
+    <div class="account__avatar">
+         <img src="' . $_SESSION['avatar'] . '" alt="' . $_SESSION['username'] . '">
+    </div>
+    <div class="account__info">
+    <span class="arrow"></span>
+    <div class="info__user">
+        <a href="#">
+            <i class="fas fa-user-circle"></i>
+            <p>' . $_SESSION['username'] . '</p>
+        </a>
+    </div>
+    <div class="info__logout">
+        <i class="fas fa-power-off"></i>
+        <p>
+            Đăng Xuất
+        </p>
+    </div>
+</div>';
+} else {
+    echo '<button id="btnloginmobile">Đăng nhập</button>';
+}
+?>
             </div>
         </header>
     </div>
@@ -328,7 +381,7 @@
         <div class="wrap">
             <div class="content__list">
                 <div class="list__title">
-                    <a href="index.html">
+                    <a href="index.php">
                         <p>Trang Chủ</p>
                     </a>
                 </div>

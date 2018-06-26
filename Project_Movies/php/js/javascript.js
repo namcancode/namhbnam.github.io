@@ -1,9 +1,18 @@
 const search = document.querySelector(".inputsearch");
 const searchIcons = document.querySelector('.searchicon');
 const HEADER = document.querySelectorAll(".header--wrap");
-const spin = document.querySelectorAll('.spinner');
 let scrollLoader = 0;
 let result = "";
+Element.prototype.remove = function () {
+    this.parentElement.removeChild(this);
+}
+NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
+    for (var i = this.length - 1; i >= 0; i--) {
+        if (this[i] && this[i].parentElement) {
+            this[i].parentElement.removeChild(this[i]);
+        }
+    }
+}
 
 function openNav() {
     document.querySelector(".sidenav").style.width = "250px";
@@ -76,8 +85,105 @@ function searchInputHide(arguments) {
     document.querySelector('.mobile-input__result').style.visibility = "hidden";
     document.querySelector('.super-input__result').style.visibility = "hidden";
 }
+function loginpopup (arguments) {
+    document.querySelector('#btnlogin').innerHTML=`
+    <div class="popup__title">
+    <h1>Đăng Nhập</h1>
+    <i class="fas fa-times loginclose"></i>
+    </div>
+    <div class="popup__sub">
+    <div class="sub__title">
+        <h3>
+            Mỗi người dùng chỉ sử dụng 01 tài khoản, nếu bạn chia sẻ, tài khoản có thể bị khóa mà không thông báo trước.
+        </h3>
+    </div>
+    <form action='dangnhap.php?do=login' method="post"  id="registry">
+        <div class="form--login">
+            <div class="name__text name1">
+                <label for="fname">Tài Khoản</label>
+            </div>
+            <div class="name__text pass1">
+                <label for="fname">Mật Khẩu</label>
+            </div>
+            <div class="name__input input1">
+                <input placeholder="Username" name="Username" type="username">
+            </div>
+            <div class="name__input input2">
+                <input placeholder="Password" name="Password" type="password">
+            </div>
+            <div class="box--one text1">
+                <div class="box__radio">
+                    <input type="checkbox" name="" id="" type="checkbox">
+                </div>
+                <div class="box__text">
+                    <p>Nhớ tài khoản</p>
+                </div>
+            </div>
+            <div class="box--two text2">
+                <a href="#">Quên mật khẩu</a>
+            </div>
+            <div class="clickbtn btn1">
+                <input type="submit" value="Đăng Nhập" name="login">
+            </div>
+            <div class="clickbtn btn2 btn--register">
+                <input type="button" value="Đăng Ký" name="registry" onclick='javascript:register();'></input>
+          </div>
+        </div>
+     </form>
 
+    </div>
+    `;
+    document.querySelector('#btnloginmobile').innerHTML=`
+    <div class="popup__title">
+    <h1>Đăng Nhập</h1>
+    <i class="fas fa-times loginclose"></i>
+    </div>
+    <div class="popup__sub">
+    <div class="sub__title">
+        <h3>
+            Mỗi người dùng chỉ sử dụng 01 tài khoản, nếu bạn chia sẻ, tài khoản có thể bị khóa mà không thông báo trước.
+        </h3>
+    </div>
+    <form action='dangnhap.php?do=login' method="post"  id="registry">
+        <div class="form--login">
+            <div class="name__text name1">
+                <label for="fname">Tài Khoản</label>
+            </div>
+            <div class="name__text pass1">
+                <label for="fname">Mật Khẩu</label>
+            </div>
+            <div class="name__input input1">
+                <input placeholder="Username" name="Username" type="username">
+            </div>
+            <div class="name__input input2">
+                <input placeholder="Password" name="Password" type="password">
+            </div>
+            <div class="box--one text1">
+                <div class="box__radio">
+                    <input type="checkbox" name="" id="" type="checkbox">
+                </div>
+                <div class="box__text">
+                    <p>Nhớ tài khoản</p>
+                </div>
+            </div>
+            <div class="box--two text2">
+                <a href="#">Quên mật khẩu</a>
+            </div>
+            <div class="clickbtn btn1">
+                <input type="submit" value="Đăng Nhập" name="login">
+            </div>
+            <div class="clickbtn btn2 btn--register">
+                <input type="button" value="Đăng Ký" name="registry" onclick='javascript:register();'></input>
+          </div>
+        </div>
+     </form>
+
+    </div>
+    `;
+}
 function login(e) {
+    // loginpopup();
+
     document.querySelector('.login__popup').style.top = "50%";
     document.querySelector('.login__popup').style.visibility = "visible";
     document.querySelector('.login__popup').style.opacity = "1";
@@ -180,9 +286,44 @@ function logout() {
     // trên (onreadystatechange) sẽ được chạy
     xmlhttp.send();
 }
-function register (arguments) {
-    // body
-    Window.open('dangky.php', '_self')
+
+function register(arguments) {
+    document.querySelectorAll('.clickbtn').forEach(a => {
+        a.remove()
+    });
+    document.querySelectorAll('.popup__title').forEach(a => {
+        a.innerHTML = `
+        <h1>Đăng Ký</h1>
+        `
+    });
+    document.querySelectorAll('.box__text').forEach(a => {
+        a.innerHTML = `
+        <p>Đồng ý điều khoản</p>
+        `
+    });
+    document.querySelectorAll('.sub__title').forEach(a => {
+        a.innerHTML = `
+        <h3>Ấn đồng ý là người dùng chấp nhận các điều khoản của Phim Đây Rồi</h3>
+        `
+    });
+    document.getElementById('registry').action = "xuly.php";
+    document.querySelectorAll('.form--login').forEach(a => {
+        a.classList.add('form--register');
+        a.innerHTML += `
+        <div class="name__text avatar">
+        <label for="fname">Link Avatar</label>
+    </div>
+    <div class="name__input input3">
+        <input placeholder="Link ảnh online" name="Avatar" type="username">
+    </div>
+    <div class="clickbtn btn1">
+          <input type="submit" value="Đồng Ý" name="login">
+    </div>
+        `
+    });
+
+
+
 }
 
 searchIcons.addEventListener('click', searchInput);
@@ -191,7 +332,7 @@ document.querySelector('section').addEventListener('click', searchInputHide);
 document.querySelector(".sidenav").addEventListener('click', searchInputHide);
 document.querySelector("footer").addEventListener('click', searchInputHide);
 document.querySelector("header").addEventListener('click', searchInputHide);
-document.querySelector('#btnloginmobile').addEventListener('click', login);
+
 document.querySelector('.loginclose').addEventListener('click', loginClose);
 document.querySelector(".blurtrans").addEventListener('click', loginClose);
 document.querySelector(".blurtrans").addEventListener('click', searchInputHide);
@@ -199,9 +340,12 @@ document.querySelector('.inputtext').addEventListener('input', displayMatches);
 document.querySelector('.inputsearch').addEventListener('input', displayMatches);
 document.querySelector('.mobile-input-text').addEventListener('input', displayMatches);
 
-if (document.querySelector('.logout')) {
-    document.querySelector('.logout').addEventListener('click', logout)
+if (document.querySelector('.info__logout')) {
+    document.querySelectorAll('.info__logout').forEach(a => a.addEventListener('click', logout))
 }
 if (document.querySelector('#btnlogin')) {
     document.querySelector('#btnlogin').addEventListener('click', login)
+}
+if (document.querySelector('#btnloginmobile')) {
+    document.querySelector('#btnloginmobile').addEventListener('click', login);
 }

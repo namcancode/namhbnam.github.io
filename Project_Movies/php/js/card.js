@@ -10,16 +10,7 @@ const col8 = document.querySelector(".col8");
 const col9 = document.querySelector(".col9");
 const col = document.querySelectorAll(".col");
 const contentMovies = document.querySelector(".content__movies");
-Element.prototype.remove = function() {
-    this.parentElement.removeChild(this);
-}
-NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for(var i = this.length - 1; i >= 0; i--) {
-        if(this[i] && this[i].parentElement) {
-            this[i].parentElement.removeChild(this[i]);
-        }
-    }
-}
+
 
 function homePage(arguments) {
     data.forEach(e => {
@@ -507,7 +498,7 @@ function movies(e) {
     sessionStorage.clear();
     let nameFilm = e.dataset.name;
     data.filter(a => (a.name == nameFilm)).map(b => sessionStorage.setItem("data", JSON.stringify(b)))
-    window.open("detail.html", "_self");
+    window.open("detail.php", "_self");
 }
 
 function showMovies(arguments) {
@@ -670,7 +661,7 @@ function categoryMovies(e) {
         value.tag == categoryFilm ? storageCategory.push(value) : 0
     }
     sessionStorage.setItem("dataCategory", JSON.stringify(storageCategory));
-    window.open("category.html", "_self");
+    window.open("category.php", "_self");
 }
 
 function showMoviesCategory(arguments) {
@@ -727,6 +718,7 @@ function showMoviesCategory(arguments) {
     sessionStorage.setItem('loaded', true);
 }
 function checkFirstVisit() {
+    const spin = document.querySelectorAll('.spinner');
     spin.forEach(a=>{
         a.remove();
     })
@@ -742,8 +734,6 @@ function preload (arguments) {
 
 
 window.onload = () => {
-    // preload();
-
     if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "" ||window.location.pathname.split("/").pop() == "index.php") {
         checkFirstVisit();
         homePage();

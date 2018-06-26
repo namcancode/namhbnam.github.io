@@ -41,9 +41,6 @@
     /* .header__menu {
         grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     } */
-    .header__login button {
-        width: 120px;
-    }
     .super-input__result {
         display: none;
     }
@@ -149,6 +146,9 @@
     }
     .login__input {
         display: none;
+    }
+    .header__login button {
+        max-width: 100px;
     }
 }
 
