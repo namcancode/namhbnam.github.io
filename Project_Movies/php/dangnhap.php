@@ -43,5 +43,6 @@ if (isset($_POST['login'])) {
     $_SESSION['avatar'] = $row['avatar'];
     $_SESSION['username'] = $username;
     echo "Xin chào " . $username . ". Bạn đã đăng nhập thành công. <a href='/'>Về trang chủ</a>";
+    header('Location:index.php');
     die();
 }

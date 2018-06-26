@@ -332,7 +332,6 @@ document.querySelector('section').addEventListener('click', searchInputHide);
 document.querySelector(".sidenav").addEventListener('click', searchInputHide);
 document.querySelector("footer").addEventListener('click', searchInputHide);
 document.querySelector("header").addEventListener('click', searchInputHide);
-
 document.querySelector('.loginclose').addEventListener('click', loginClose);
 document.querySelector(".blurtrans").addEventListener('click', loginClose);
 document.querySelector(".blurtrans").addEventListener('click', searchInputHide);
