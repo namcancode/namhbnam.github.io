@@ -106,7 +106,6 @@ include 'header.php';
     <?php
 include 'footer.php';
 ?>
-    <script src="js/data.js"></script>
     <script src="js/javascript.js"></script>
     <script src="js/card.js"></script>
     <!-- jQuery JS 3.1.0 -->

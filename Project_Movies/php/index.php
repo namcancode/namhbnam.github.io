@@ -460,12 +460,12 @@ include 'header.php';
  <?php
 include 'footer.php';
 ?>
-    <script src="js/data.js"></script>
+
+  <!-- jQuery JS 3.1.0 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+     <!-- jQuery JS 3.1.0 -->
     <script src="js/javascript.js"></script>
     <script src="js/card.js"></script>
-    <!-- jQuery JS 3.1.0 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!-- jQuery UI JS 1.12.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <!-- slide wow -->
     <script type="text/javascript" src="slide/engine1/wowslider.js"></script>

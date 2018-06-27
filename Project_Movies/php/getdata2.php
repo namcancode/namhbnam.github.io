@@ -9,14 +9,4 @@ while ($row = mysql_fetch_assoc($result)) {
     $result_array[] = $row;
 }
 $json_array = json_encode($result_array);
-// echo $json_array;
-?>
-
-
-
-
-
-<script type="text/javascript">
-let database =<?php echo $json_array; ?>
-</script>
-
+echo $json_array;

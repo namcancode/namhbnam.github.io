@@ -10,8 +10,6 @@ const col8 = document.querySelector(".col8");
 const col9 = document.querySelector(".col9");
 const col = document.querySelectorAll(".col");
 const contentMovies = document.querySelector(".content__movies");
-
-
 function homePage(arguments) {
     data.forEach(e => {
         if (e.tag == "Phim Hot") {
@@ -717,35 +715,40 @@ function showMoviesCategory(arguments) {
     })
     sessionStorage.setItem('loaded', true);
 }
+
 function checkFirstVisit() {
     const spin = document.querySelectorAll('.spinner');
-    spin.forEach(a=>{
+    spin.forEach(a => {
         a.remove();
     })
-  }
-function preload (arguments) {
-    if(sessionStorage.getItem('loaded')=='true' &&  document.querySelector('body').classList.contains('preloading')==true ){
+}
+
+function preload(arguments) {
+    if (sessionStorage.getItem('loaded') == 'true' && document.querySelector('body').classList.contains('preloading') == true) {
         setTimeout(function (arguments) {
-           document.querySelector('body').classList.remove('preloading')
-           document.querySelector('.loading').remove();
-        },1000)
+            document.querySelector('body').classList.remove('preloading')
+            document.querySelector('.loading').remove();
+        }, 500)
     }
 }
 
-
 window.onload = () => {
-    if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "" ||window.location.pathname.split("/").pop() == "index.php") {
-        checkFirstVisit();
-        homePage();
-        hideCard();
-
+    loadData();
+    if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "" || window.location.pathname.split("/").pop() == "index.php") {
+        setTimeout(function  () {
+            homePage();
+            checkFirstVisit();
+            hideCard();
+        },1000)
     } else if (window.location.pathname.split("/").pop() == "category.html" || window.location.pathname.split("/").pop() == "category.php") {
         checkFirstVisit();
         showMoviesCategory();
-    } else if (window.location.pathname.split("/").pop() == "detail.html" ||window.location.pathname.split("/").pop() == "detail.php") {
-        checkFirstVisit();
-        showMovies();
-        detail();
-        hideCard();
+    } else if (window.location.pathname.split("/").pop() == "detail.html" || window.location.pathname.split("/").pop() == "detail.php") {
+        setTimeout(function  () {
+            checkFirstVisit();
+            showMovies();
+            detail();
+            hideCard();
+        },500)
     }
 }

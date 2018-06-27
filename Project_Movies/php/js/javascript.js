@@ -3,6 +3,9 @@ const searchIcons = document.querySelector('.searchicon');
 const HEADER = document.querySelectorAll(".header--wrap");
 let scrollLoader = 0;
 let result = "";
+let data = [];
+let database = [];
+
 Element.prototype.remove = function () {
     this.parentElement.removeChild(this);
 }
@@ -13,6 +16,7 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function () {
         }
     }
 }
+
 
 function openNav() {
     document.querySelector(".sidenav").style.width = "250px";
@@ -85,8 +89,9 @@ function searchInputHide(arguments) {
     document.querySelector('.mobile-input__result').style.visibility = "hidden";
     document.querySelector('.super-input__result').style.visibility = "hidden";
 }
-function loginpopup (arguments) {
-    document.querySelector('#btnlogin').innerHTML=`
+
+function loginpopup(arguments) {
+    document.querySelector('#btnlogin').innerHTML = `
     <div class="popup__title">
     <h1>Đăng Nhập</h1>
     <i class="fas fa-times loginclose"></i>
@@ -133,7 +138,7 @@ function loginpopup (arguments) {
 
     </div>
     `;
-    document.querySelector('#btnloginmobile').innerHTML=`
+    document.querySelector('#btnloginmobile').innerHTML = `
     <div class="popup__title">
     <h1>Đăng Nhập</h1>
     <i class="fas fa-times loginclose"></i>
@@ -181,6 +186,7 @@ function loginpopup (arguments) {
     </div>
     `;
 }
+
 function login(e) {
     // loginpopup();
 
@@ -204,7 +210,7 @@ function hideCard(e) {
     const randomNumber = Math.floor((Math.random() * 7) + 1);
     col.forEach(child2 => {
         let test = child2.childNodes;
-        for (let i = 8; i < test.length; i++) {
+        for (let i = 9; i < test.length; i++) {
             test[i].classList.add("card--disable")
         }
     });
@@ -252,8 +258,6 @@ function displayMatches() {
 }
 
 function logout() {
-    // body
-    // console.log("logout");
     // Tạo một biến lưu trữ đối tượng XML HTTP. Đối tượng này
     // tùy thuộc vào trình duyệt browser ta sử dụng nên phải kiểm
     // tra như bước bên dưới
@@ -324,6 +328,23 @@ function register(arguments) {
 
 
 
+}
+
+function loadData() {
+    let ajax = new XMLHttpRequest();
+    let method = "GET";
+    let url = "getdata2.php";
+    let asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            database.push(...JSON.parse(this.responseText));
+        }
+    }
+    data = (database.sort(function () {
+        return .5 - Math.random();
+    }))
 }
 
 searchIcons.addEventListener('click', searchInput);
