@@ -7,18 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Phim Đây Rồi || Xem Phim Online || Phim HD miễn phí || Cinema</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="fonts/web-fonts-with-css/css/fontawesome-all.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/effect.css" />
     <link rel="stylesheet" type="text/css" href="slide/engine1/style.css" />
     <link rel="stylesheet" href="css/reponsive.css" />
 </head>
-
 <body class="preloading">
-
 <div class="loading">
     <div class='load__body'>
         <span>
@@ -40,7 +38,6 @@
     </div>
     <h1>Đang tải trang đợi xíu nhé!</h1>
 </div>
-
 <?php
 include 'header.php';
 ?>
@@ -460,7 +457,6 @@ include 'header.php';
             </div>
         </div>
     </section>
-
  <?php
 include 'footer.php';
 ?>
@@ -472,10 +468,7 @@ include 'footer.php';
     <!-- jQuery UI JS 1.12.0 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <!-- slide wow -->
-    <!-- <script type="text/javascript" src="slide/engine1/jquery.js"></script> -->
     <script type="text/javascript" src="slide/engine1/wowslider.js"></script>
     <script type="text/javascript" src="slide/engine1/script.js"></script>
-
 </body>
-
 </html>

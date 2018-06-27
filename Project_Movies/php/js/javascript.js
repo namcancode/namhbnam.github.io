@@ -253,7 +253,7 @@ function displayMatches() {
 
 function logout() {
     // body
-    console.log("logout");
+    // console.log("logout");
     // Tạo một biến lưu trữ đối tượng XML HTTP. Đối tượng này
     // tùy thuộc vào trình duyệt browser ta sử dụng nên phải kiểm
     // tra như bước bên dưới

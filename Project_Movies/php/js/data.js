@@ -5,7 +5,7 @@ const DATANEW = [{
     img: "http://s.aphim.co/uploads/film/images/modsz/20180416/tt2231461_216_320.jpg",
     season: "1",
     eps: "1",
-    content: "Rampage - Siêu Thú Cuồng Nộ nói về nhà sinh vật học Davis Okoye (Dwayne Johnson) đã kết bạn với George, một con khỉ đột thông minh, người đã được chăm sóc từ khi sinh ra. Tuy nhiên, một thí nghiệm di truyền giả mạo đã biến đổi con khỉ nhuyễn thành một con quái vật. Khi các con quái vật mới được tạo ra này tràn ngập khắp Bắc Mỹ, phá hủy mọi thứ trên con đường của họ, Okoye đã làm việc với một kỹ sư di truyền bị để tìm ra thuốc giải độc, chiến đấu để vượt qua một chiến trường luôn thay đổi, không chỉ để ngăn chặn một thảm hoạ toàn cầu mà còn cứu được sinh vật đã từng là bạn của mình. ",
+    content: "Rampage - Siêu Thú Cuồng Nộ nói về nhà sinh vật học Davis Okoye (Dwayne Johnson) đã kết bạn với George, một con khỉ đột thông minh, người đã được chăm sóc từ khi sinh ra. Tuy nhiên, một thí nghiệm di truyền giả mạo đã biến đổi con khỉ nhuyễn thành một con quái vật. Khi các con quái vật mới được tạo ra này tràn ngập khắp Bắc Mỹ, phá hủy mọi thứ trên con đường của họ, Okoye đã làm việc với một kỹ sư di truyền bị để tìm ra thuốc giải độc, chiến đấu để vượt qua một chiến trường luôn thay đổi, không chỉ để ngăn chặn một thảm hoạ toàn cầu mà còn cứu được sinh vật đã từng là bạn của mình.",
     actor: "Dwayne Johnson, Jeffrey Dean Morgan, Malin Akerman, Joe Manganiello",
     director: "Brad Peyton",
     category: "Phim Viễn Tưởng, Phim Phiêu Lưu, Phim Hành Động",
@@ -28,7 +28,7 @@ const DATANEW = [{
 },
 {
     name: "Quái Nhân 2",
-    rate: "8.1 / 10 (132) ",
+    rate: "8.1 / 10 (132)",
     link: "http://phimdayroi.ga/img/phimdayroi.mp4",
     img: "http://image.phimmoi.net/film/5001/poster.medium.jpg",
     season: "1",
