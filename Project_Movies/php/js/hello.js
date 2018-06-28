@@ -1,30 +1,28 @@
-const transparent =  document.querySelector('.transparent-1');
+const transparent = document.querySelector('.transparent-1');
+const listCard = document.querySelector('.list__card')
+
 function tooltip(e) {
-// console.log(e.target);
-    let coorW = window.innerHeight - e.screenY +document.querySelector('.list__card').offsetTop -20;
-    let coorH = window.innerWidth - e.screenX;
-  if(coorW > transparent.offsetHeight){
-    transparent.setAttribute("style",`opacity:1; visibility:visible;top:${e.clientY+20}px; left:${e.clientX+20}px;`);
-    console.log('coorW :', coorW);
- console.log('transparent.offsetHeight :', transparent.offsetHeight);;
-  }else if(coorW < transparent.offsetHeight){
-    transparent.setAttribute("style",`opacity:1; visibility:visible;top:${e.clientY-20-transparent.offsetHeight}px; left:${e.clientX-230 -transparent.offsetHeight}px;`);
-  }
-//    if(coorH<transparent.offsetWidth){
-//     transparent.setAttribute("style",`opacity:1; visibility:visible;top:${e.clientY+20}px; left:${e.clientX-20}px;transform: translateX(-100%)`);
-// //     console.log('coorH :', coorH);
-// //    console.log('transparent.offsetWidth :', transparent.offsetWidth);
-//     }else{
-//       transparent.setAttribute("style",`opacity:1; visibility:visible;top:${e.clientY+20}px; left:${e.clientX+20}px`);
-//     }
-
-
-
-
+  // console.log(e.target);
+  let heightTransparent = transparent.offsetHeight;
+  let widthTransparent = transparent.offsetWidth;
+  let coorH = window.innerHeight - e.clientY -20;
+  let coorW = window.innerWidth -  e.clientX -28;
+  // console.log('window :',window.innerHeight, heightTransparent);
+  // console.log('coorH :', coorH);
+  if (coorH >= heightTransparent) {
+    transparent.setAttribute("style", `display: grid;opacity:1; visibility:visible;top:${e.clientY+20}px; left:${e.clientX+20}px;`);
+  } else{
+    transparent.setAttribute("style", `display: grid;opacity:1; visibility:visible;top:${e.clientY-20-heightTransparent}px; left:${e.clientX-230 -heightTransparent}px;`);
+  };
+  if(coorW < widthTransparent){
+    transparent.setAttribute("style",`display: grid;opacity:1; visibility:visible;top:${e.clientY+20}px; left:${e.clientX-20}px;transform: translateX(-100%)`);
+    }
 }
+
 function tooltip2(e) {
-    transparent.setAttribute("style",`top:0px; left:0px; opacity:0; visibility:hidden`)
+  transparent.removeAttribute("style");
+  // console.clear();
 }
 
-document.querySelector('.list__card').addEventListener('mousemove', tooltip);
-document.querySelector('.list__card').addEventListener('mouseout', tooltip2);
+document.querySelectorAll('.card__pic').forEach(a=>a.addEventListener('mousemove', tooltip));
+document.querySelectorAll('.card__pic').forEach(a=>a.addEventListener('mouseout', tooltip2));

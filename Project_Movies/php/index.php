@@ -101,7 +101,38 @@ include 'header.php';
                         </p>
                     </a>
                 </div>
-                <div class="list--wrap col1 col"></div>
+                <div class="list--wrap col1 col">
+                <div class="transparent-1">
+        <div class="transparent__name">
+         <h3>Siêu thú cuồng nộ</h3>
+        </div>
+        <div class="transparent__imdb">
+            <span>Điểm IMDB:
+            </span>
+            <div class="imdb">
+                6.4
+            </div>
+        </div>
+        <div class="transparent__actor">
+            <span> Diễn Viên: </span>Lucy
+        </div>
+        <div class="transparent__country">
+            <span>Quốc Gia:
+            </span>Mỹ
+        </div>
+        <div class="transparent__category">
+            <span>Thể Loại: </span>Phim hot
+        </div>
+        <div class="transparent__content">
+            <span>Nội Dung: </span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id molestias sed nesciunt nostrum
+            necessitatibus aut animi veniam tempora, qui laboriosam doloribus! Aperiam quam eos similique ratione odit amet,
+            velit perferendis doloremque cupiditate? Accusantium voluptas laboriosam veniam, sit asperiores eligendi nobis.
+            Culpa aspernatur ex architecto. Iusto dignissimos placeat dolorum maxime ipsam.
+        </div>
+
+    </div>
+                </div>
+            </div>
             <div class="content__list">
                 <div class="list__title">
                     <a data-name="Phim Chiếu Rạp" onclick="categoryMovies(this)">
