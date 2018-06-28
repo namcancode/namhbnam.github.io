@@ -6,18 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta content='180527869281283' property='fb:app_id' />
-    <meta content='100002686640082' property='fb:admins' />
     <title>Phim Đây Rồi || Xem Phim Online || Phim HD miễn phí || Cinema</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="fonts/web-fonts-with-css/css/fontawesome-all.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/effect.css" />
-    <link rel="stylesheet" type="text/css" href="slide/engine1/style.css" />
     <link rel="stylesheet" href="css/detail.css" />
+    <link rel="stylesheet" type="text/css" href="slide/engine1/style.css" />
     <link rel="stylesheet" href="css/reponsive.css" />
 </head>
 <div id="fb-root"></div>
@@ -48,7 +46,7 @@ include 'header.php';
                 <div class="content__list">
                     <div class="list__title">
                         <a data-name="Phim Hot" onclick="categoryMovies(this)">
-                            <p>Phim Hot</p>
+                            <p>Phim Liên Quan</p>
                         </a>
                         <a data-name="Phim Hot" onclick="categoryMovies(this)" class="more">
                             <p>
@@ -83,14 +81,13 @@ include 'header.php';
                             </svg>
                         </div>
                     </div>
-
                 </div>
                 <div class="content__list">
                     <div class="list__title">
-                        <a data-name="Phim Chiếu Rạp" onclick="categoryMovies(this)">
-                            <p>Phim Chiếu Rạp</p>
+                        <a data-name="Phim Hot" onclick="categoryMovies(this)">
+                            <p>Phim Hot</p>
                         </a>
-                        <a data-name="Phim Chiếu Rạp" onclick="categoryMovies(this)" class="more">
+                        <a data-name="Phim Hot" onclick="categoryMovies(this)" class="more">
                             <p>
                                 Xem thêm
                             </p>
@@ -106,13 +103,10 @@ include 'header.php';
     <?php
 include 'footer.php';
 ?>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <script src="js/javascript.js"></script>
     <script src="js/card.js"></script>
-    <!-- jQuery JS 3.1.0 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!-- jQuery UI JS 1.12.0 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
-    <!-- slide wow -->
 
 </body>
 

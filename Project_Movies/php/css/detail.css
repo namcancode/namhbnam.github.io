@@ -13,6 +13,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     justify-items: end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -34,6 +36,8 @@
     display: grid;
     grid-template-columns: 0.5fr 0.8fr 1fr;
     grid-column-gap: 20px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -44,8 +48,13 @@
     border: 0;
     border-radius: 6px;
     background-color: #F5A623;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-pack: distribute;
     justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
@@ -58,7 +67,8 @@
     -o-transition: 0.3s;
 }
 
-button.bot__report, button.bot__block-ads {
+button.bot__report,
+button.bot__block-ads {
     color: #fff;
     font-weight: 100;
     font-size: 14px;
@@ -68,11 +78,15 @@ button.bot__report, button.bot__block-ads {
 .bot__add-list {
     display: grid;
     grid-auto-flow: column;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: start;
     grid-column-gap: 5px;
     color: #fff;
     font-weight: 100;
     font-size: 20px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     cursor: pointer;
     transition: 0.3s;
@@ -102,14 +116,15 @@ button.bot__report, button.bot__block-ads {
     grid-template-columns: 1fr 1fr;
     background-color: #000000;
     gap: 20px;
-    padding: 5px;
+    padding: 10px;
 }
 
 .movies-season {
     padding-bottom: 10px;
 }
 
-.info__left h1, .episode h1 {
+.info__left h1,
+.episode h1 {
     color: #F5A623;
     font-size: 16px;
     font-weight: 500;
@@ -173,7 +188,8 @@ button.bot__report, button.bot__block-ads {
     display: grid;
 }
 
-.directors-film, .country-film {
+.directors-film,
+.country-film {
     margin-top: -12px;
 }
 
@@ -187,6 +203,7 @@ button.bot__report, button.bot__block-ads {
 
 .info__right {
     display: grid;
+    grid-template-rows: 0.1fr 1fr;
     gap: 20px;
 }
 

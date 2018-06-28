@@ -8,10 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Phim Đây Rồi || Xem Phim Online || Phim HD miễn phí || Cinema</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <link rel="shortcut icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="fonts/web-fonts-with-css/css/fontawesome-all.css" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/effect.css" />
     <link rel="stylesheet" type="text/css" href="slide/engine1/style.css" />
@@ -91,7 +93,6 @@ include 'header.php';
                             <div class="dot"></div>
                             <div class="dot"></div>
                         </div>
-
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <defs>
                                 <filter id="goo">
@@ -104,7 +105,6 @@ include 'header.php';
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
     <?php
@@ -112,12 +112,7 @@ include 'footer.php';
 ?>
     <script src="js/javascript.js"></script>
     <script src="js/card.js"></script>
-    <!-- jQuery JS 3.1.0 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!-- jQuery UI JS 1.12.0 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <!-- slide wow -->
-    <!-- <script type="text/javascript" src="slide/engine1/jquery.js"></script> -->
     <script type="text/javascript" src="slide/engine1/wowslider.js"></script>
     <script type="text/javascript" src="slide/engine1/script.js"></script>
 

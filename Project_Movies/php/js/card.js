@@ -11,8 +11,19 @@ const col9 = document.querySelector(".col9");
 const col = document.querySelectorAll(".col");
 const contentMovies = document.querySelector(".content__movies");
 function homePage(arguments) {
+    let i1 =0;
+    let i2 =0;
+    let i3 =0;
+    let i4 =0;
+    let i5 =0;
+    let i6 =0;
+    let i7 =0;
+    let i8 =0;
+    let i9 =0;
     data.forEach(e => {
-        if (e.tag == "Phim Hot") {
+        if (e.tag == "Phim Hot" && i1<7) {
+            i1++;
+            // console.log(i);
             col1.innerHTML +=
                 `<div class="list__card" onclick="movies(this)"  data-name="${e.name}">
     <div class="card__pic">
@@ -20,30 +31,30 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
-        <p>${e.name}</p>
-        </div>
-        <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
+                <div class="iconPlay">
+                        <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                            <!-- Hello My Name is Nam. -->
+                            <desc>Created by Nam.</desc>
+                            <defs>
+                                <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                                    <stop stop-color="#FAD961" offset="0%"></stop>
+                                    <stop stop-color="#F76B1C" offset="100%"></stop>
+                                </linearGradient>
+                            </defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                                <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                                    <g id="detail" transform="translate(165.000000, 111.000000)">
+                                        <g id="play" transform="translate(508.000000, 223.000000)">
+                                            <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                            <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                                points="52.5 28 77 67 28 67"></polygon>
+                                        </g>
+                                    </g>
+                                </g>
                             </g>
-                        </g>
-                    </g>
-                </g>
-            </svg>
+                        </svg>
+                    </div>
+        <p>${e.name}</p>
         </div>
     </div>
     <div class="card__name">
@@ -54,7 +65,8 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Chiếu Rạp") {
+        } else if (e.tag == "Phim Chiếu Rạp" && i2<7) {
+            i2++;
             col2.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -62,30 +74,30 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
-        <p>${e.name}</p>
-        </div>
-        <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
+                <div class="iconPlay">
+                        <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                            <!-- Hello My Name is Nam. -->
+                            <desc>Created by Nam.</desc>
+                            <defs>
+                                <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                                    <stop stop-color="#FAD961" offset="0%"></stop>
+                                    <stop stop-color="#F76B1C" offset="100%"></stop>
+                                </linearGradient>
+                            </defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                                <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                                    <g id="detail" transform="translate(165.000000, 111.000000)">
+                                        <g id="play" transform="translate(508.000000, 223.000000)">
+                                            <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                            <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                                points="52.5 28 77 67 28 67"></polygon>
+                                        </g>
+                                    </g>
+                                </g>
                             </g>
-                        </g>
-                    </g>
-                </g>
-            </svg>
+                        </svg>
+                    </div>
+        <p>${e.name}</p>
         </div>
     </div>
     <div class="card__name">
@@ -96,7 +108,8 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Lẻ Mới Nhất") {
+        } else if (e.tag == "Phim Lẻ Mới Nhất" && i3<7) {
+            i3++;
             col3.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -104,30 +117,30 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
-        <p>${e.name}</p>
-        </div>
-        <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
+                <div class="iconPlay">
+                        <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                            <!-- Hello My Name is Nam. -->
+                            <desc>Created by Nam.</desc>
+                            <defs>
+                                <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                                    <stop stop-color="#FAD961" offset="0%"></stop>
+                                    <stop stop-color="#F76B1C" offset="100%"></stop>
+                                </linearGradient>
+                            </defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                                <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                                    <g id="detail" transform="translate(165.000000, 111.000000)">
+                                        <g id="play" transform="translate(508.000000, 223.000000)">
+                                            <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                            <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                                points="52.5 28 77 67 28 67"></polygon>
+                                        </g>
+                                    </g>
+                                </g>
                             </g>
-                        </g>
-                    </g>
-                </g>
-            </svg>
+                        </svg>
+                    </div>
+        <p>${e.name}</p>
         </div>
     </div>
     <div class="card__name">
@@ -138,7 +151,8 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Bộ Mới Nhất") {
+        } else if (e.tag == "Phim Bộ Mới Nhất" && i4<7) {
+            i4++;
             col4.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
             <div class="card__pic">
@@ -146,31 +160,31 @@ function homePage(arguments) {
                     <img src="${e.img}" alt=" ${e.name}">
                 </a>
                 <div class="transparent">
-                <p>${e.name}</p>
-                </div>
                 <div class="iconPlay">
-                    <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                        <!-- Hello My Name is Nam. -->
-                        <desc>Created by Nam.</desc>
-                        <defs>
-                            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                                <stop stop-color="#FAD961" offset="0%"></stop>
-                                <stop stop-color="#F76B1C" offset="100%"></stop>
-                            </linearGradient>
-                        </defs>
-                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                            <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                                <g id="detail" transform="translate(165.000000, 111.000000)">
-                                    <g id="play" transform="translate(508.000000, 223.000000)">
-                                        <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                        <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                            points="52.5 28 77 67 28 67"></polygon>
+                        <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                            <!-- Hello My Name is Nam. -->
+                            <desc>Created by Nam.</desc>
+                            <defs>
+                                <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                                    <stop stop-color="#FAD961" offset="0%"></stop>
+                                    <stop stop-color="#F76B1C" offset="100%"></stop>
+                                </linearGradient>
+                            </defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                                <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                                    <g id="detail" transform="translate(165.000000, 111.000000)">
+                                        <g id="play" transform="translate(508.000000, 223.000000)">
+                                            <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                            <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                                points="52.5 28 77 67 28 67"></polygon>
+                                        </g>
                                     </g>
                                 </g>
                             </g>
-                        </g>
-                    </svg>
-                </div>
+                        </svg>
+                    </div>
+        <p>${e.name}</p>
+        </div>
             </div>
             <div class="card__name">
                 <a onclick="movies(this)" data-name="${e.name}">
@@ -180,7 +194,8 @@ function homePage(arguments) {
                 </a>
             </div>
         </div>`
-        } else if (e.tag == "Phim Âu Mỹ") {
+        } else if (e.tag == "Phim Âu Mỹ"  && i5<7) {
+            i5++;
             col5.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -188,31 +203,31 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
-        <p>${e.name}</p>
-        </div>
         <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
+                <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                    <!-- Hello My Name is Nam. -->
+                    <desc>Created by Nam.</desc>
+                    <defs>
+                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                            <stop stop-color="#FAD961" offset="0%"></stop>
+                            <stop stop-color="#F76B1C" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                        <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                            <g id="detail" transform="translate(165.000000, 111.000000)">
+                                <g id="play" transform="translate(508.000000, 223.000000)">
+                                    <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                    <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                        points="52.5 28 77 67 28 67"></polygon>
+                                </g>
                             </g>
                         </g>
                     </g>
-                </g>
-            </svg>
-        </div>
+                </svg>
+            </div>
+<p>${e.name}</p>
+</div>
     </div>
     <div class="card__name">
         <a onclick="movies(this)" data-name="${e.name}">
@@ -222,7 +237,8 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Hàn Quốc") {
+        } else if (e.tag == "Phim Hàn Quốc"  && i6<7) {
+            i6++;
             col6.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -230,31 +246,31 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
-        <p>${e.name}</p>
-        </div>
         <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
+                <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                    <!-- Hello My Name is Nam. -->
+                    <desc>Created by Nam.</desc>
+                    <defs>
+                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                            <stop stop-color="#FAD961" offset="0%"></stop>
+                            <stop stop-color="#F76B1C" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                        <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                            <g id="detail" transform="translate(165.000000, 111.000000)">
+                                <g id="play" transform="translate(508.000000, 223.000000)">
+                                    <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                    <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                        points="52.5 28 77 67 28 67"></polygon>
+                                </g>
                             </g>
                         </g>
                     </g>
-                </g>
-            </svg>
-        </div>
+                </svg>
+            </div>
+<p>${e.name}</p>
+</div>
     </div>
     <div class="card__name">
         <a onclick="movies(this)" data-name="${e.name}">
@@ -264,7 +280,8 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Trung Quốc") {
+        } else if (e.tag == "Phim Trung Quốc"  && i7<7) {
+            i7++;
             col7.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
             <div class="card__pic">
@@ -272,31 +289,31 @@ function homePage(arguments) {
                     <img src="${e.img}" alt=" ${e.name}">
                 </a>
                 <div class="transparent">
-                <p>${e.name}</p>
-                </div>
                 <div class="iconPlay">
-                    <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                        <!-- Hello My Name is Nam. -->
-                        <desc>Created by Nam.</desc>
-                        <defs>
-                            <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                                <stop stop-color="#FAD961" offset="0%"></stop>
-                                <stop stop-color="#F76B1C" offset="100%"></stop>
-                            </linearGradient>
-                        </defs>
-                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                            <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                                <g id="detail" transform="translate(165.000000, 111.000000)">
-                                    <g id="play" transform="translate(508.000000, 223.000000)">
-                                        <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                        <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                            points="52.5 28 77 67 28 67"></polygon>
+                        <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                            <!-- Hello My Name is Nam. -->
+                            <desc>Created by Nam.</desc>
+                            <defs>
+                                <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                                    <stop stop-color="#FAD961" offset="0%"></stop>
+                                    <stop stop-color="#F76B1C" offset="100%"></stop>
+                                </linearGradient>
+                            </defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                                <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                                    <g id="detail" transform="translate(165.000000, 111.000000)">
+                                        <g id="play" transform="translate(508.000000, 223.000000)">
+                                            <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                            <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                                points="52.5 28 77 67 28 67"></polygon>
+                                        </g>
                                     </g>
                                 </g>
                             </g>
-                        </g>
-                    </svg>
-                </div>
+                        </svg>
+                    </div>
+        <p>${e.name}</p>
+        </div>
             </div>
             <div class="card__name">
                 <a onclick="movies(this)" data-name="${e.name}">
@@ -306,7 +323,8 @@ function homePage(arguments) {
                 </a>
             </div>
         </div>`
-        } else if (e.tag == "Phim Hoạt Hình - Animal") {
+        } else if (e.tag == "Phim Hoạt Hình - Animal"  && i8<7) {
+            i8++;
             col8.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -314,31 +332,31 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
-         <p>${e.name}</p>
-        </div>
         <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
+                <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                    <!-- Hello My Name is Nam. -->
+                    <desc>Created by Nam.</desc>
+                    <defs>
+                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                            <stop stop-color="#FAD961" offset="0%"></stop>
+                            <stop stop-color="#F76B1C" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                        <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                            <g id="detail" transform="translate(165.000000, 111.000000)">
+                                <g id="play" transform="translate(508.000000, 223.000000)">
+                                    <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                    <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                        points="52.5 28 77 67 28 67"></polygon>
+                                </g>
                             </g>
                         </g>
                     </g>
-                </g>
-            </svg>
-        </div>
+                </svg>
+            </div>
+<p>${e.name}</p>
+</div>
     </div>
     <div class="card__name">
         <a onclick="movies(this)" data-name="${e.name}">
@@ -348,7 +366,8 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Game Show Truyền Hình") {
+        } else if (e.tag == "Game Show Truyền Hình"  && i9<7) {
+            i9++;
             col9.innerHTML +=
                 `<div class="list__card" onclick="movies(this)"  data-name="${e.name}">
     <div class="card__pic">
@@ -356,31 +375,31 @@ function homePage(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
-        <p>${e.name}</p>
-        </div>
         <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
+                <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                    <!-- Hello My Name is Nam. -->
+                    <desc>Created by Nam.</desc>
+                    <defs>
+                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                            <stop stop-color="#FAD961" offset="0%"></stop>
+                            <stop stop-color="#F76B1C" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                        <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                            <g id="detail" transform="translate(165.000000, 111.000000)">
+                                <g id="play" transform="translate(508.000000, 223.000000)">
+                                    <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                    <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                        points="52.5 28 77 67 28 67"></polygon>
+                                </g>
                             </g>
                         </g>
                     </g>
-                </g>
-            </svg>
-        </div>
+                </svg>
+            </div>
+<p>${e.name}</p>
+</div>
     </div>
     <div class="card__name">
         <a  onclick="movies(this)" data-name="${e.name}">
@@ -399,8 +418,11 @@ function homePage(arguments) {
 }
 
 function detail(arguments) {
+    let i1 =0;
+    let i2 =0;
     data.forEach(e => {
-        if (e.tag == "Phim Hot") {
+        if (e.tag == "Phim Hot" && i1<7) {
+            i1++;
             col1.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -408,31 +430,31 @@ function detail(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
-        <p>${e.name}</p>
-        </div>
         <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
+                <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                    <!-- Hello My Name is Nam. -->
+                    <desc>Created by Nam.</desc>
+                    <defs>
+                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                            <stop stop-color="#FAD961" offset="0%"></stop>
+                            <stop stop-color="#F76B1C" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                        <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                            <g id="detail" transform="translate(165.000000, 111.000000)">
+                                <g id="play" transform="translate(508.000000, 223.000000)">
+                                    <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                    <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                        points="52.5 28 77 67 28 67"></polygon>
+                                </g>
                             </g>
                         </g>
                     </g>
-                </g>
-            </svg>
-        </div>
+                </svg>
+            </div>
+<p>${e.name}</p>
+</div>
     </div>
     <div class="card__name">
         <a onclick="movies(this)" data-name="${e.name}">
@@ -442,7 +464,8 @@ function detail(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Chiếu Rạp") {
+        } else if (e.tag == "Phim Chiếu Rạp" && i2<7) {
+            i2++;
             col2.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -450,31 +473,31 @@ function detail(arguments) {
             <img src="${e.img}" alt=" ${e.name}">
         </a>
         <div class="transparent">
-        <p>${e.name}</p>
-        </div>
         <div class="iconPlay">
-            <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
-                <!-- Hello My Name is Nam. -->
-                <desc>Created by Nam.</desc>
-                <defs>
-                    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
-                        <stop stop-color="#FAD961" offset="0%"></stop>
-                        <stop stop-color="#F76B1C" offset="100%"></stop>
-                    </linearGradient>
-                </defs>
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
-                    <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
-                        <g id="detail" transform="translate(165.000000, 111.000000)">
-                            <g id="play" transform="translate(508.000000, 223.000000)">
-                                <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
-                                <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
-                                    points="52.5 28 77 67 28 67"></polygon>
+                <svg width="60px" height="60px" viewBox="0 0 95 95" version="1.1">
+                    <!-- Hello My Name is Nam. -->
+                    <desc>Created by Nam.</desc>
+                    <defs>
+                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                            <stop stop-color="#FAD961" offset="0%"></stop>
+                            <stop stop-color="#F76B1C" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.896875">
+                        <g id="list_movies-copy" transform="translate(-673.000000, -334.000000)">
+                            <g id="detail" transform="translate(165.000000, 111.000000)">
+                                <g id="play" transform="translate(508.000000, 223.000000)">
+                                    <circle id="Oval-3" fill="#373737" cx="47.5" cy="47.5" r="47.5"></circle>
+                                    <polygon id="Triangle-2" fill="url(#linearGradient-1)" transform="translate(52.500000, 47.500000) rotate(-270.000000) translate(-52.500000, -47.500000) "
+                                        points="52.5 28 77 67 28 67"></polygon>
+                                </g>
                             </g>
                         </g>
                     </g>
-                </g>
-            </svg>
-        </div>
+                </svg>
+            </div>
+<p>${e.name}</p>
+</div>
     </div>
     <div class="card__name">
         <a onclick="movies(this)" data-name="${e.name}">
@@ -500,7 +523,8 @@ function movies(e) {
 }
 
 function showMovies(arguments) {
-    const dataStorage = JSON.parse(sessionStorage.data)
+    const dataStorage = JSON.parse(sessionStorage.data);
+
     contentMovies.innerHTML +=
         `<div class="movies__media">
     <div class="media__icon">
@@ -664,6 +688,7 @@ function categoryMovies(e) {
 
 function showMoviesCategory(arguments) {
     const dataStorage = JSON.parse(sessionStorage.dataCategory);
+
     dataStorage.forEach(e => {
         here.innerHTML +=
             `<div class="list--wrap col">
@@ -731,24 +756,26 @@ function preload(arguments) {
         }, 500)
     }
 }
-
-window.onload = () => {
-    loadData();
+function loadHomePage () {
     if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "" || window.location.pathname.split("/").pop() == "index.php") {
-        setTimeout(function  () {
+        // setTimeout(function  () {
             homePage();
             checkFirstVisit();
             hideCard();
-        },1000)
+        // },1000)
     } else if (window.location.pathname.split("/").pop() == "category.html" || window.location.pathname.split("/").pop() == "category.php") {
         checkFirstVisit();
         showMoviesCategory();
     } else if (window.location.pathname.split("/").pop() == "detail.html" || window.location.pathname.split("/").pop() == "detail.php") {
-        setTimeout(function  () {
+        // setTimeout(function  () {
             checkFirstVisit();
             showMovies();
             detail();
             hideCard();
-        },500)
+        // },500)
     }
+}
+
+window.onload = () => {
+    loadData(loadHomePage);
 }

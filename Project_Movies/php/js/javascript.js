@@ -208,12 +208,13 @@ function loginClose(e) {
 
 function hideCard(e) {
     const randomNumber = Math.floor((Math.random() * 7) + 1);
-    col.forEach(child2 => {
-        let test = child2.childNodes;
-        for (let i = 9; i < test.length; i++) {
-            test[i].classList.add("card--disable")
-        }
-    });
+
+    // col.forEach(child2 => {
+    //     let test = child2.childNodes;
+    //     for (let i=8; i < test.length; i++) {
+    //         test[i].classList.add("card--disable")
+    //     }
+    // });
     col.forEach(child => {
         child.childNodes[1] == undefined ? 0 : child.childNodes[randomNumber].classList.add("card--hide");
     })
@@ -283,7 +284,7 @@ function logout() {
         }
     };
 
-    // Khai báo với phương thức GET, và url chính là file result.php
+    // Khai báo với phương thức GET để nhận data
     xmlhttp.open("GET", "logout.php", true);
 
     // Cuối cùng là Gửi ajax, sau khi gọi hàm send thì function vừa tạo ở
@@ -325,26 +326,25 @@ function register(arguments) {
     </div>
         `
     });
-
-
-
 }
-
-function loadData() {
+function loadData(load) {
     let ajax = new XMLHttpRequest();
     let method = "GET";
-    let url = "getdata2.php";
+    let url = "getdata.php";
     let asynchronous = true;
     ajax.open(method, url, asynchronous);
     ajax.send();
     ajax.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             database.push(...JSON.parse(this.responseText));
+            data = (database.sort(function () {
+                return .5 - Math.random();
+            }));
+            setTimeout(function  () {
+                load();
+            },500);
         }
     }
-    data = (database.sort(function () {
-        return .5 - Math.random();
-    }))
 }
 
 searchIcons.addEventListener('click', searchInput);

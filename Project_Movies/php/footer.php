@@ -176,6 +176,3 @@
             </p>
         </div>
     </footer>
-    <?php
-include 'getdata.php';
-?>

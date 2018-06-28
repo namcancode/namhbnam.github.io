@@ -8,6 +8,8 @@
     <title>Phim Đây Rồi || Xem Phim Online || Phim HD miễn phí || Cinema</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <link rel="shortcut icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" type="text/css" href="fonts/web-fonts-with-css/css/fontawesome-all.css" />
@@ -99,36 +101,7 @@ include 'header.php';
                         </p>
                     </a>
                 </div>
-                <div class="list--wrap col1 col">
-                    <div class="spinner">
-                        <div class="dots">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <filter id="goo">
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="9" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -7" result="goo" />
-                                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-
-                </div>
-
-            </div>
+                <div class="list--wrap col1 col"></div>
             <div class="content__list">
                 <div class="list__title">
                     <a data-name="Phim Chiếu Rạp" onclick="categoryMovies(this)">
@@ -140,33 +113,7 @@ include 'header.php';
                         </p>
                     </a>
                 </div>
-                <div class="list--wrap col2 col">
-                    <div class="spinner">
-                        <div class="dots">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <filter id="goo">
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="9" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -7" result="goo" />
-                                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-                </div>
+                <div class="list--wrap col2 col"></div>
             </div>
             <div class="content__list">
                 <div class="list__title">
@@ -179,35 +126,7 @@ include 'header.php';
                         </p>
                     </a>
                 </div>
-                <div class="list--wrap col3 col">
-                    <div class="spinner">
-                        <div class="dots">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <filter id="goo">
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="9" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -7" result="goo" />
-                                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-
-                </div>
-
+                <div class="list--wrap col3 col"></div>
             </div>
             <div class="content__list">
                 <div class="list__title">
@@ -220,35 +139,7 @@ include 'header.php';
                         </p>
                     </a>
                 </div>
-                <div class="list--wrap col4 col">
-                    <div class="spinner">
-                        <div class="dots">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <filter id="goo">
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="9" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -7" result="goo" />
-                                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-
-                </div>
-
+                <div class="list--wrap col4 col"></div>
             </div>
             <div class="content__list">
                 <div class="list__title">
@@ -261,35 +152,7 @@ include 'header.php';
                         </p>
                     </a>
                 </div>
-                <div class="list--wrap col5 col">
-                    <div class="spinner">
-                        <div class="dots">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <filter id="goo">
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="9" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -7" result="goo" />
-                                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-
-                </div>
-
+                <div class="list--wrap col5 col"></div>
             </div>
             <div class="content__list">
                 <div class="list__title">
@@ -302,35 +165,7 @@ include 'header.php';
                         </p>
                     </a>
                 </div>
-                <div class="list--wrap col6 col">
-                    <div class="spinner">
-                        <div class="dots">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <filter id="goo">
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="9" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -7" result="goo" />
-                                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-
-                </div>
-
+                <div class="list--wrap col6 col"></div>
             </div>
             <div class="content__list">
                 <div class="list__title">
@@ -384,35 +219,7 @@ include 'header.php';
                         </p>
                     </a>
                 </div>
-                <div class="list--wrap col8 col">
-                    <div class="spinner">
-                        <div class="dots">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <filter id="goo">
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="9" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -7" result="goo" />
-                                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-
-                </div>
-
+                <div class="list--wrap col8 col"></div>
             </div>
             <div class="content__list">
                 <div class="list__title">
@@ -425,35 +232,7 @@ include 'header.php';
                         </p>
                     </a>
                 </div>
-                <div class="list--wrap col9 col">
-                    <div class="spinner">
-                        <div class="dots">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <filter id="goo">
-                                    <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="9" />
-                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -7" result="goo" />
-                                    <feBlend in2="goo" in="SourceGraphic" result="mix" />
-                                </filter>
-                            </defs>
-                        </svg>
-                    </div>
-
-                </div>
-
+                <div class="list--wrap col9 col"></div>
             </div>
         </div>
     </section>
@@ -461,12 +240,8 @@ include 'header.php';
 include 'footer.php';
 ?>
 
-  <!-- jQuery JS 3.1.0 -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-     <!-- jQuery JS 3.1.0 -->
     <script src="js/javascript.js"></script>
     <script src="js/card.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <!-- slide wow -->
     <script type="text/javascript" src="slide/engine1/wowslider.js"></script>
     <script type="text/javascript" src="slide/engine1/script.js"></script>
