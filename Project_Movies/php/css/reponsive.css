@@ -59,6 +59,9 @@
     .mobile {
         display: block;
     }
+    .transparent {
+        display: grid;
+    }
 }
 
 @media only screen and (max-width: 768px) {

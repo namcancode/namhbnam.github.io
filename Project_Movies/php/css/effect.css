@@ -93,7 +93,7 @@
     -ms-transition: 0.4s;
     -o-transition: 0.4s;
     opacity: 0;
-    display: grid;
+    display: none;
     grid-template-rows: 1fr auto;
     align-items: center;
     justify-items: center;

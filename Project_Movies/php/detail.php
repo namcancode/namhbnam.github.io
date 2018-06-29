@@ -17,31 +17,26 @@
     <link rel="stylesheet" href="css/detail.css" />
     <link rel="stylesheet" type="text/css" href="slide/engine1/style.css" />
     <link rel="stylesheet" href="css/reponsive.css" />
+    <meta content='180527869281283' property='fb:app_id'/>
+    <meta content='100002686640082' property='fb:admins'/>
 </head>
+
 <div id="fb-root"></div>
-<script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src =
-            'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=180527869281283&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.0&appId=180527869281283&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <body>
-
 <?php
 include 'header.php';
 ?>
     <section class="content">
         <div class="wrap">
             <div class="content__movies">
-
             </div>
-
             <div class="content__list">
                 <div class="content__list">
                     <div class="list__title">

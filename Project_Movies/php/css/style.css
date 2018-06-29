@@ -406,6 +406,7 @@ header {
 
 .list__card {
     width: 145px;
+    cursor: pointer;
 }
 
 .card__pic {
@@ -438,6 +439,7 @@ header {
     font-size: 15px;
     padding: 1px 5px;
     line-height: 19px;
+    justify-self: start;
 }
 
 /* CSS content list*/
@@ -924,7 +926,7 @@ label {
     padding: 10px;
     display: none;
     gap: 5px;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.3;
     visibility: hidden;
 }

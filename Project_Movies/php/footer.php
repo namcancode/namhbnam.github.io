@@ -1,3 +1,5 @@
+<div class="transparent-1">
+    </div>
 <footer class="footer__desktop">
         <div class="wrap footer--layout">
             <div class="footer__box">

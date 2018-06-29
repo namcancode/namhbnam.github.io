@@ -11,7 +11,7 @@
 .movies__title {
     padding: 20px 5px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: auto 1fr;
     justify-items: end;
     -webkit-box-align: center;
     -ms-flex-align: center;

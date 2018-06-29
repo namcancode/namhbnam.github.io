@@ -560,7 +560,6 @@ function showMovies(arguments) {
         </div>
     </div>
     <div class="title__icon">
-
         <svg width="61px" height="58px" viewBox="0 0 61 58" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <!-- Hello my name is Nam-->
             <desc>Created by Nam.</desc>
@@ -655,15 +654,12 @@ function showMovies(arguments) {
         <div class="episode">
             <h1>Các tập tiếp theo</h1>
             <div class="episode__icon">
-
                     <p>1</p>
-
             </div>
         </div>
         <div class="comment">
             <!-- comment facebook -->
-            <div class="fb-comments" data-href="http://phimdayroi.ga/" data-numposts="4"
-                data-width='100%'></div>
+            <div class="fb-comments" data-href="http://phimdayroi.ga/detail.php" data-numposts="4"></div>
             <!-- main -->
         </div>
     </div>`
@@ -688,7 +684,6 @@ function categoryMovies(e) {
 
 function showMoviesCategory(arguments) {
     const dataStorage = JSON.parse(sessionStorage.dataCategory);
-
     dataStorage.forEach(e => {
         here.innerHTML +=
             `<div class="list--wrap col">
@@ -778,4 +773,9 @@ function loadHomePage () {
 
 window.onload = () => {
     loadData(loadHomePage);
+setTimeout(function () {
+    document.querySelectorAll('.list__card').forEach(a=>a.addEventListener('mousemove', tooltip));
+    document.querySelectorAll('.list__card').forEach(a=>a.addEventListener('mouseout', tooltip2));
+},2000)
+
 }
