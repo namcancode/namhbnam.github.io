@@ -109,6 +109,8 @@ body {
 .menu__text i {
     text-shadow: -3px 5px 5px rgba(0, 0, 0, 0.5);
     color: #FFFFFF;
+    font-size: 20px;
+    padding-bottom: 5px;
 }
 
 .text__name p {

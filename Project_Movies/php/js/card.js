@@ -773,9 +773,12 @@ function loadHomePage () {
 
 window.onload = () => {
     loadData(loadHomePage);
-setTimeout(function () {
-    document.querySelectorAll('.list__card').forEach(a=>a.addEventListener('mousemove', tooltip));
-    document.querySelectorAll('.list__card').forEach(a=>a.addEventListener('mouseout', tooltip2));
-},2000)
+
+        setTimeout(function () {
+            document.querySelectorAll('.list__card').forEach(a=>a.addEventListener('mousemove', tooltip));
+            document.querySelectorAll('.list__card').forEach(a=>a.addEventListener('mouseout', tooltip2));
+        },2000)
+
+
 
 }

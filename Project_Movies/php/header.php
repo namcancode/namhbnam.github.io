@@ -56,9 +56,7 @@
                 </div>
                 <div class="header__menu">
                     <a class="menu__text" href="index.php">
-                        <i class="material-icons md-24">
-                            home
-                        </i>
+                    <i class="fas fa-home"></i>
                     </a>
                     <div class="list--hover1 list-center">
                         <a class="menu__text">

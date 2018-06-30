@@ -216,7 +216,7 @@ function hideCard(e) {
     //     }
     // });
     col.forEach(child => {
-        child.childNodes[randomNumber] == undefined ? location.reload() : child.childNodes[randomNumber].classList.add("card--hide");
+        child.childNodes[randomNumber] == undefined ? 0 : child.childNodes[randomNumber].classList.add("card--hide");
     })
 
     sessionStorage.setItem('loaded', true);
@@ -328,78 +328,92 @@ function register(arguments) {
     });
 }
 
+// function loadData(load) {
+//     let ajax = new XMLHttpRequest();
+//     let method = "GET";
+//     let url = "getdata.php";
+//     let asynchronous = true;
+//     ajax.open(method, url, asynchronous);
+//     ajax.send();
+//     ajax.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             database.push(...JSON.parse(this.responseText));
+//             data = (database.sort(function () {
+//                 return .5 - Math.random();
+//             }));
+//             setTimeout(function () {
+//                 load();
+//             }, 1000);
+//         }
+//     }
+// }
 function loadData(load) {
-    let ajax = new XMLHttpRequest();
-    let method = "GET";
-    let url = "getdata.php";
-    let asynchronous = true;
-    ajax.open(method, url, asynchronous);
-    ajax.send();
-    ajax.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            database.push(...JSON.parse(this.responseText));
-            data = (database.sort(function () {
+    $.ajax({
+        url: "getdata.php",
+        type: "POST",
+        dataType: "json",
+        success: function (result) {
+            data = (result.sort(function () {
                 return .5 - Math.random();
             }));
-            setTimeout(function () {
-                load();
-            }, 1000);
+            load();
         }
-    }
+    });
+
 }
 
 
 function tooltip(e) {
-    const transparent = document.querySelector('.transparent-1');
- const namefilm = e.target.parentElement.dataset.name;
-data.forEach(a=>{
-    if (a.name == namefilm){
-        transparent.innerHTML =
-        `<div class="transparent__name">
-    <h3>${a.name}</h3>
-</div>
-<div class="transparent__imdb">
-    <span>Điểm IMDB:
-    </span>
-    <div class="imdb">
-        ${a.rate}
+    if(window.innerWidth >834){
+        const transparent = document.querySelector('.transparent-1');
+        const namefilm = e.target.parentElement.dataset.name;
+        data.forEach(a => {
+            if (a.name == namefilm) {
+                transparent.innerHTML =
+                    `<div class="transparent__name">
+        <h3>${a.name}</h3>
     </div>
-</div>
-<div class="transparent__actor">
-    <span> Diễn Viên: </span>${a.actor}
-</div>
-<div class="transparent__country">
-    <span>Quốc Gia:
-    </span>${a.country}
-</div>
-<div class="transparent__category">
-    <span>Thể Loại: </span>${a.category}
-</div>
-<div class="transparent__content">
-    <span>Nội Dung: </span>${a.content}
-</div>`
-    }
-})
+    <div class="transparent__imdb">
+        <span>Điểm IMDB:
+        </span>
+        <div class="imdb">
+            ${a.rate}
+        </div>
+    </div>
+    <div class="transparent__actor">
+        <span> Diễn Viên: </span>${a.actor}
+    </div>
+    <div class="transparent__country">
+        <span>Quốc Gia:
+        </span>${a.country}
+    </div>
+    <div class="transparent__category">
+        <span>Thể Loại: </span>${a.category}
+    </div>
+    <div class="transparent__content">
+        <span>Nội Dung: </span>${a.content}
+    </div>`
+            }
+        })
 
-    const body = document.querySelector('body');
-    let heightTransparent = transparent.offsetHeight;
-    let widthTransparent = transparent.offsetWidth;
-    let scroll = document.documentElement.scrollTop;
-    let coorH = body.clientHeight - e.clientY - 20;
-    let coorW = body.clientWidth - e.clientX - 40;
-    if (coorH >= heightTransparent) {
-        transparent.setAttribute("style", `display: grid;opacity:1; visibility:visible;top:${e.clientY+20+scroll}px; left:${e.clientX+20}px;`);
-    } else {
-        transparent.setAttribute("style", `display: grid;opacity:1; visibility:visible;top:${e.clientY-20-heightTransparent+scroll}px; left:${e.clientX-230 -heightTransparent}px;`);
-    };
-    if (coorW < widthTransparent) {
-        transparent.setAttribute("style", `display: grid;opacity:1; visibility:visible;top:${e.clientY+20+scroll}px; left:${e.clientX-20}px;transform: translateX(-100%)`);
+        const body = document.querySelector('body');
+        let heightTransparent = transparent.offsetHeight;
+        let widthTransparent = transparent.offsetWidth;
+        let scroll = document.documentElement.scrollTop;
+        let coorH = body.clientHeight - e.clientY - 20;
+        let coorW = body.clientWidth - e.clientX - 40;
+        if (coorH >= heightTransparent) {
+            transparent.setAttribute("style", `display: grid;opacity:1; visibility:visible;top:${e.clientY+20+scroll}px; left:${e.clientX+20}px;`);
+        } else {
+            transparent.setAttribute("style", `display: grid;opacity:1; visibility:visible;top:${e.clientY-20-heightTransparent+scroll}px; left:${e.clientX-230 -heightTransparent}px;`);
+        };
+        if (coorW < widthTransparent) {
+            transparent.setAttribute("style", `display: grid;opacity:1; visibility:visible;top:${e.clientY+20+scroll}px; left:${e.clientX-20}px;transform: translateX(-100%)`);
+        }
     }
+
 
 }
-
-
-
 
 function tooltip2(e) {
     const transparent = document.querySelector('.transparent-1');
