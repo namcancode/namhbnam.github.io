@@ -1,0 +1,15 @@
+{
+  "name": "tedu-nodejs",
+  "version": "1.0.0",
+  "description": "tedu",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "keywords": [
+    "tedu",
+    "nodejs"
+  ],
+  "author": "Nam",
+  "license": "ISC"
+}
