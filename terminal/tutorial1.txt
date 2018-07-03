@@ -1,4 +1,5 @@
 https://kipalog.com/posts/Thu-Thuat--Toi-Uu-Terminal-Cua-Mac-Voi-ITerm2-Va-Oh-My-Zsh
+https://github.com/mathiasbynens/dotfiles
 
 Tất cả các lệnh đều là chạy trên Terminal/iTerm2 nhé
 
