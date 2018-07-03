@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 //     //read file;
 // const http = require('http');
 // http.createServer(function (req, res) {
@@ -19,7 +19,15 @@ const fs = require('fs');
 //     console.log('save2');
 //     console.log(file);
 // });
-fs.writeFile('myTextFile3.txt','content 3',function  (err) {
-    if(err) throw err;
-    console.log('save3');
-})
+// fs.writeFile('myTextFile3.txt','content 3',function  (err) {
+//     if(err) throw err;
+//     console.log('save3');
+// })
+// fs.unlink('myTextFile3.txt',function  (err) {
+//     if(err) throw err;
+//     console.log('deleted');
+// })
+fs.rename("myTextFile2.txt", "myTextFile3.txt", function(err) {
+	if (err) throw err;
+	console.log("rename");
+});

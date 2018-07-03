@@ -1,0 +1,2 @@
+cài debug
+npm install -g node-inspector
