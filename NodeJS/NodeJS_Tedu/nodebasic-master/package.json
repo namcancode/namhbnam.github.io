@@ -1,0 +1,26 @@
+{
+  "name": "tedunodejs",
+  "version": "1.0.0",
+  "description": "TEDU Nodejs course ",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "multer": "^1.3.0",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "webpack": "^4.0.0"
+  },
+  "scripts": {
+    "test": "node main.js"
+  },
+  "keywords": [
+    "tedu",
+    "nodejs"
+  ],
+  "author": "ToanBN",
+  "license": "MIT"
+}

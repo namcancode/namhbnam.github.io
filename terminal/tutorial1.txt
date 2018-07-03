@@ -1,0 +1,52 @@
+https://kipalog.com/posts/Thu-Thuat--Toi-Uu-Terminal-Cua-Mac-Voi-ITerm2-Va-Oh-My-Zsh
+
+Tất cả các lệnh đều là chạy trên Terminal/iTerm2 nhé
+
+    Cài http://brew.sh/.
+
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+    Homebrew là phần mềm quản lí phiên bản cho Mac. Các bước sau mình sẽ sử dụng Homebrew.
+
+    Cài iTerm2.
+
+    brew cask install iterm2
+
+    iTerm2 là emulator thay thế cho Terminal mặc định, đẹp hơn, nhiều chức năng hơn.
+    Sau khi mở iTerm2 lên thì đổi theme sang Solarized Dark nhé.
+    Solarized Dark iTerm2
+
+    Cài zsh.
+
+    brew install zsh zsh-completions
+
+    Zsh là shell thay thế cho bash shell mặc định của Mac, có nhiều thứ hay ho hơn, nhất là...
+
+    Cài Oh My Zsh.
+
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+    Oh My Zsh là framework giúp các bạn cài hàng trăm plugin và theme cho cái thèng zsh ở trên, cực kỳ tuyệt vời. :D
+
+    Gõ dòng lệnh sau để mở file config của zsh:
+
+    open ~/.zshrc
+
+    Tìm dòng ZSH_THEME và đổi thành agnoster
+    Change theme to agnoster
+
+    Agnoster là một theme khá đẹp và phổ biến, hỗ trợ git, cũng chính là cái theme trong ảnh demo của mình.
+
+    Cài hết đống font Powerline, sau đó vào Preferences đổi font nhé.
+
+Change font
+Voila!
+
+Chỉ với sáu bước đơn giản bạn đã thay đổi hoàn toàn dung mạo của Terminal, từ một cái màn hình đen trắng nhàm chán thành màn hình xanh đỏ tím vàng đỡ nhàm chán hơn =)).
+
+Tuy nhiên, như đã nói là Oh My Zsh có hàng trăm plugin với theme đủ cho các bạn vọc cả ngày. Nếu bạn cảm thấy thay mỗi cái theme chưa đủ độ "phê"" thì hãy thử hút thêm ít "hàng" nhé:
+
+    Powerlevel9k là một theme khá bá đạo với khả năng tùy biến cao. Showcase.
+    Auto-complete, ẩn username, syntax highlight,... Here
+
+Bài viết được truyền cảm hứng từ bài này, cái ảnh đầu bài cũng là mượn của nó luôn ahihi.
