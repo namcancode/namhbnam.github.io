@@ -31,7 +31,7 @@ router.get("/", function(req, res, next) {
 // });
 
 router.get("/listAll", async (req, res) => {
-	const dataAll = Detail.findAll({
+	const dataAll = await Detail.findAll({
 		attributes: ["id", "name", "priority", "description", "duedate"],
 		order: ["id"]
 	});
@@ -39,7 +39,7 @@ router.get("/listAll", async (req, res) => {
 	try {
 		res.json({
 			result: SUCCESS,
-			data: await dataAll,
+			data: dataAll,
 			description: `Đã lấy danh sách thành công`
 		});
 	} catch (err) {
@@ -82,7 +82,7 @@ router.get("/listAll", async (req, res) => {
 
 router.post("/createUser", async (req, res) => {
 	const { name, priority, description, duedate } = req.body;
-	const creatUser = Detail.create(
+	const creatUser = await Detail.create(
 		{
 			name,
 			priority: parseInt(priority),
@@ -96,7 +96,7 @@ router.post("/createUser", async (req, res) => {
 	try {
 		res.json({
 			result: SUCCESS,
-			data: await creatUser,
+			data: creatUser,
 			description: `Đã tạo user ${name} thành công`
 		});
 	} catch (error) {
@@ -133,14 +133,14 @@ router.post("/createUser", async (req, res) => {
 
 router.get("/listOfset", async (req, res) => {
 	const { offset, limit } = req.query;
-	const limitOffset = Detail.findAll({
+	const limitOffset = await Detail.findAll({
 		offset: offset * limit,
 		limit
 	});
 	try {
 		res.json({
 			result: SUCCESS,
-			data: await limitOffset,
+			data: limitOffset,
 			description: `Thành công`
 		});
 	} catch (err) {
@@ -189,7 +189,7 @@ router.get("/listOfset", async (req, res) => {
 
 router.get("/listById", async (req, res) => {
 	const { id } = req.query;
-	const searchId = Detail.findOne({
+	const searchId = await Detail.findOne({
 		attributes: ["id", "name", "priority", "description", "duedate"],
 		where: {
 			id
@@ -199,7 +199,7 @@ router.get("/listById", async (req, res) => {
 		if (searchId) {
 			res.json({
 				result: SUCCESS,
-				data: await searchId,
+				data: searchId,
 				description: `Đã tìm thấy user với id ${id}`
 			});
 		} else {
@@ -220,11 +220,54 @@ router.get("/listById", async (req, res) => {
 	}
 });
 
-router.get("/search/:iLike", (req, res) => {
+// router.get("/search/:iLike", (req, res) => {
+// 	const { iLike } = req.params;
+// 	//http://localhost:3000/search/huong
+// 	// console.log(iLike);
+// 	Detail.findAll({
+// 		attributes: ["id", "name", "priority", "description", "duedate"],
+// 		where: {
+// 			[Op.or]: [
+// 				{
+// 					name: {
+// 						[Op.iLike]: `%${iLike}%`
+// 					}
+// 				},
+// 				{
+// 					id: {
+// 						[Op.eq]: `${isNaN(iLike) == false ? iLike : 0}`
+// 					}
+// 				}
+// 			]
+// 		}
+// 	})
+// 		.then(result => {
+// 			if (result) {
+// 				res.json({
+// 					result: SUCCESS,
+// 					data: result,
+// 					description: `Đã tìm thấy user ${iLike}`
+// 				});
+// 			} else {
+// 				res.json({
+// 					result: FAILED,
+// 					data: "",
+// 					description: `Không tìm thấy user ${iLike}`
+// 				});
+// 			}
+// 		})
+// 		.catch(err => {
+// 			res.json({
+// 				result: FAILED,
+// 				data: "",
+// 				description: `Đã có lỗi xảy ra ${err}`
+// 			});
+// 		});
+// });
+
+router.get("/search/:iLike", async (req, res) => {
 	const { iLike } = req.params;
-	//http://localhost:3000/search/huong
-	// console.log(iLike);
-	Detail.findAll({
+	const searchIlike = await Detail.findAll({
 		attributes: ["id", "name", "priority", "description", "duedate"],
 		where: {
 			[Op.or]: [
@@ -240,71 +283,151 @@ router.get("/search/:iLike", (req, res) => {
 				}
 			]
 		}
-	})
-		.then(result => {
-			if (result) {
-				res.json({
-					result: SUCCESS,
-					data: result,
-					description: `Đã tìm thấy user ${iLike}`
-				});
-			} else {
-				res.json({
-					result: FAILED,
-					data: "",
-					description: `Không tìm thấy user ${iLike}`
-				});
-			}
-		})
-		.catch(err => {
+	});
+	try {
+		if (searchIlike) {
+			res.json({
+				result: SUCCESS,
+				data: searchIlike,
+				description: `Đã tìm thấy user ${iLike}`
+			});
+		} else {
 			res.json({
 				result: FAILED,
 				data: "",
-				description: `Đã có lỗi xảy ra ${err}`
+				description: `Không tìm thấy user ${iLike}`
 			});
+		}
+	} catch (error) {
+		res.json({
+			result: FAILED,
+			data: "",
+			description: `Đã có lỗi xảy ra ${error}`
 		});
+	}
 });
 
-router.put("/update", (req, res) => {
+// router.put("/update", (req, res) => {
+// 	const { id, name, priority, description, duedate } = req.body;
+// 	// console.log(name);
+// 	Detail.findOne({
+// 		where: {
+// 			id
+// 		}
+// 	})
+// 		.then(result => {
+// 			result.name = name ? name : result.name;
+// 			result.priority = priority ? priority : result.name;
+// 			result.description = description ? description : result.description;
+// 			result.duedate = duedate ? duedate : result.duedate;
+// 			result
+// 				.save()
+// 				.then(() => {
+// 					res.json({
+// 						result: SUCCESS,
+// 						data: result,
+// 						description: `Đã update user "${(result.name = name
+// 							? name
+// 							: result.name)}" "id = ${id}" thành công`
+// 					});
+// 				})
+// 				.catch(err => {
+// 					res.json({
+// 						result: FAILED,
+// 						data: "",
+// 						description: `Có lỗi xảy ra ${JSON.stringify(err)}`
+// 					});
+// 				});
+// 		})
+// 		.catch(err => {
+// 			res.json({
+// 				result: FAILED,
+// 				data: "",
+// 				description: `Không thể tìm thấy user id = ${id}`
+// 			});
+// 		});
+// });
+
+router.put("/update", async (req, res) => {
 	const { id, name, priority, description, duedate } = req.body;
-	// console.log(name);
-	Detail.findOne({
-		where: {
-			id
+	const update = await Detail.update(
+		{
+			name,
+			priority: parseInt(priority),
+			description,
+			duedate
+		},
+		{
+			where: {
+				id
+			}
 		}
-	})
-		.then(result => {
-			result.name = name ? name : result.name;
-			result.priority = priority ? priority : result.name;
-			result.description = description ? description : result.description;
-			result.duedate = duedate ? duedate : result.duedate;
-			result
-				.save()
-				.then(() => {
-					res.json({
-						result: SUCCESS,
-						data: result,
-						description: `Đã update user "${(result.name = name
-							? name
-							: result.name)}" "id = ${id}" thành công`
-					});
-				})
-				.catch(err => {
-					res.json({
-						result: FAILED,
-						data: "",
-						description: `Có lỗi xảy ra ${JSON.stringify(err)}`
-					});
-				});
-		})
-		.catch(err => {
+	);
+	try {
+		if(update){
 			res.json({
-				result: FAILED,
-				data: "",
-				description: `Không thể tìm thấy user id = ${id}`
+				result: SUCCESS,
+				data: {
+					id,
+					name,
+					priority: parseInt(priority),
+					description,
+					duedate
+				},
+				description: `Đã update user`
 			});
+		}else{
+			res.json({
+				result:FAILED,
+				data:"",
+				description:`Không tìm thấy user ${id}`
+			})
+		}
+	} catch (error) {
+		res.json({
+			result: FAILED,
+			data: "",
+			description: `Có lỗi xảy ra ${error}`
 		});
+	}
 });
+
+// router.put("/update", async (req, res) => {
+// 	const { id, name, priority, description, duedate } = req.body;
+// 	const update = Detail.findOne({
+// 		where: {
+// 			id
+// 		}
+// 	});
+// 	try {
+// 		update.name = name ? name : update.name;
+// 		update.priority = priority ? priority : update.priority;
+// 		update.description = description ? description : update.description;
+// 		update.duedate = duedate ? duedate : update.duedate;
+// 		update.save();
+// 		try {
+// 			res.json({
+// 				result: SUCCESS,
+// 				data: await update,
+// 				description: `Đã update user "${(result.name = name
+// 					? name
+// 					: result.name)}" "id = ${id}" thành công`
+// 			});
+// 		} catch (error) {
+// 			res.json({
+// 				result: FAILED,
+// 				data: "",
+// 				description: `Đã có lỗi xảy ra ${error}`
+// 			});
+// 		}
+// 	} catch (error) {
+// 		res.json({
+// 			result: FAILED,
+// 			data: "",
+// 			description: `Không tìm thấy user id ${id}`
+// 		});
+// 	}
+// });
 
 router.delete("/deleted", (req, res) => {
 	// const {id} = req.body;
