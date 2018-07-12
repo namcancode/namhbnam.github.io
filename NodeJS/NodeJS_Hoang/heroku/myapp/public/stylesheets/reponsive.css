@@ -1,0 +1,223 @@
+@media only screen and (min-width: 768px) {
+    .desktop {
+        display: block
+    }
+    .mobile {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .content__text {
+        padding: 15px 8%;
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+    .menu__text p {
+        font-size: 17px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .card--hide {
+        display: none;
+    }
+    .menu__text p {
+        font-size: 15px;
+    }
+    .text__name p {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 12px;
+    }
+    .content__text {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+@media only screen and (max-width: 968px) {
+    /* .header__menu {
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    } */
+    .super-input__result {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 834px) {
+    header {
+        grid-template-columns: 99px 1fr;
+    }
+    button[aria-hidden="true"] {
+        display: block;
+    }
+    .desktop {
+        display: none
+    }
+    .mobile {
+        display: block;
+    }
+    .transparent {
+        display: grid;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .ws_bullets {
+        bottom: 0px !important;
+    }
+    #mySidenav {
+        width: 0px;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .inputtext {
+        max-width: 100px;
+    }
+    .footer__desktop {
+        display: none;
+    }
+    .footer__mobile {
+        display: block;
+    }
+    .inputtext {
+        display: none;
+    }
+    .searchicon {
+        display: block;
+    }
+    .inputsearch {
+        opacity: 0;
+        visibility: hidden;
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0%;
+        height: 36px;
+        width: 90%;
+        border: 1px solid #F5A623;
+        border: 1px solid rgba(0, 0, 0, 0.100);
+        background-color: #f7f7f7 !important;
+        z-index: 1111;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        transform: translate(-6%, 0%);
+        -webkit-transform: translate(-6%, 0%);
+        -moz-transform: translate(-6%, 0%);
+        -ms-transform: translate(-6%, 0%);
+        -o-transform: translate(-6%, 0%);
+    }
+    .text__top h2 {
+        font-size: 24px;
+    }
+    .title__icon {
+        display: none;
+    }
+    .text__bot {
+        grid-template-columns: 0.6fr 1fr 1fr;
+    }
+    .text__bot button {
+        max-width: 119px;
+    }
+    .info__right {
+        grid-template-rows: 0.1fr 1fr;
+    }
+    .input__result {
+        top: 65px;
+        left: 0px;
+        max-height: 412px;
+    }
+    .mobile-input__result {
+        display: none;
+    }
+    .super-input__result {
+        display: block;
+        width: 90%;
+        top: 130px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0);
+    }
+    .login__input {
+        display: none;
+    }
+    .header__login button {
+        max-width: 100px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .login__popup {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .form--login {
+        padding: 0px 26px 20px 50px;
+    }
+    .box__text p,
+    .box--two {
+        font-size: 14px;
+    }
+    label {
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .sub__title {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .form--login {
+        grid-row-gap: 10px;
+        grid-column-gap: 10px;
+    }
+    input[type="username"],
+    input[type="password"] {
+        font-size: 12px;
+    }
+    .sub__title {
+        font-size: 14px;
+    }
+    label {
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .popup__title {
+        font-size: 26px;
+    }
+    .box__text p,
+    .box--two {
+        font-size: 13px;
+    }
+    .list--wrap {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        grid-gap: 20px;
+    }
+    .slide--Hide {
+        display: none !important;
+    }
+    .content__list {
+        padding-top: 10px;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
