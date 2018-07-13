@@ -19,12 +19,55 @@ router.get("/", function(req, res, next) {
 	res.render("index", { title: "Express" });
 });
 
-router.get("/listAll", async (req, res) => {
+router.get("/filmIndex", async (req, res) => {
 	try {
 		const dataAll = await listAllDetail(req.body);
+		const dataJSON = JSON.parse(JSON.stringify(dataAll));
+		const dataFilmIndex = [];
+		let i1 =0;
+		let i2 =0;
+		let i3 =0;
+		let i4 =0;
+		let i5 =0;
+		let i6 =0;
+		let i7 =0;
+		let i8 =0;
+		let i9 =0;
+		dataJSON.forEach(e=>{
+			if (e.tag == "Phim Hot" && i1<7){
+				i1++;
+				dataFilmIndex.push(e)
+			}
+			else if (e.tag == "Phim Chiếu Rạp" && i2<7) {
+				i2++;
+				dataFilmIndex.push(e)
+			}
+			else if (e.tag == "Phim Lẻ Mới Nhất" && i3<7) {
+				i3++;
+				dataFilmIndex.push(e)
+			} else if (e.tag == "Phim Bộ Mới Nhất" && i4<7) {
+				i4++;
+				dataFilmIndex.push(e)
+			} else if (e.tag == "Phim Âu Mỹ"  && i5<7) {
+				i5++;
+				dataFilmIndex.push(e)
+			} else if (e.tag == "Phim Hàn Quốc"  && i6<7) {
+				i6++;
+				dataFilmIndex.push(e)
+			} else if (e.tag == "Phim Trung Quốc"  && i7<7) {
+				i7++;
+				dataFilmIndex.push(e)
+			} else if (e.tag == "Phim Hoạt Hình - Animal"  && i8<7) {
+				i8++;
+				dataFilmIndex.push(e)
+			} else if (e.tag == "Game Show Truyền Hình"  && i9<7) {
+				i9++;
+				dataFilmIndex.push(e)
+			}
+			})
 		res.json({
 			result: SUCCESS,
-			data: dataAll,
+			data: dataFilmIndex,
 			description: `Đã lấy danh sách thành công`
 		});
 		// const dataAll = await convertDataFilmsToPostgres();
@@ -38,6 +81,25 @@ router.get("/listAll", async (req, res) => {
 		});
 	}
 });
+
+router.get('/dataCategory', async(req,res)=>{
+	try {
+		const dataAll = await listAllDetail(req.body);
+		const dataJSON = JSON.parse(JSON.stringify(dataAll));
+		res.json({
+			result: SUCCESS,
+			data: dataJSON,
+			description: `Đã lấy danh sách thành công`
+		});
+	} catch (error) {
+		res.json({
+			result: FAILED,
+			data: "",
+			description: `Lỗi ${JSON.stringify(error)}`
+		});
+	}
+})
+
 
 router.post("/createUser", async (req, res) => {
 	const { name, priority, description, duedate } = req.body;

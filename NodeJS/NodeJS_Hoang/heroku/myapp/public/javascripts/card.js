@@ -11,18 +11,9 @@ const col9 = document.querySelector(".col9");
 const col = document.querySelectorAll(".col");
 const contentMovies = document.querySelector(".content__movies");
 function homePage(arguments) {
-    let i1 =0;
-    let i2 =0;
-    let i3 =0;
-    let i4 =0;
-    let i5 =0;
-    let i6 =0;
-    let i7 =0;
-    let i8 =0;
-    let i9 =0;
+
     data.forEach(e => {
-        if (e.tag == "Phim Hot" && i1<7) {
-            i1++;
+        if (e.tag == "Phim Hot") {
             // console.log(i);
             col1.innerHTML +=
                 `<div class="list__card" onclick="movies(this)"  data-name="${e.name}">
@@ -65,8 +56,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Chiếu Rạp" && i2<7) {
-            i2++;
+        } else if (e.tag == "Phim Chiếu Rạp") {
             col2.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -108,8 +98,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Lẻ Mới Nhất" && i3<7) {
-            i3++;
+        } else if (e.tag == "Phim Lẻ Mới Nhất") {
             col3.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -151,8 +140,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Bộ Mới Nhất" && i4<7) {
-            i4++;
+        } else if (e.tag == "Phim Bộ Mới Nhất") {
             col4.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
             <div class="card__pic">
@@ -194,8 +182,7 @@ function homePage(arguments) {
                 </a>
             </div>
         </div>`
-        } else if (e.tag == "Phim Âu Mỹ"  && i5<7) {
-            i5++;
+        } else if (e.tag == "Phim Âu Mỹ" ) {
             col5.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -237,8 +224,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Hàn Quốc"  && i6<7) {
-            i6++;
+        } else if (e.tag == "Phim Hàn Quốc") {
             col6.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -280,8 +266,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Phim Trung Quốc"  && i7<7) {
-            i7++;
+        } else if (e.tag == "Phim Trung Quốc") {
             col7.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
             <div class="card__pic">
@@ -323,8 +308,7 @@ function homePage(arguments) {
                 </a>
             </div>
         </div>`
-        } else if (e.tag == "Phim Hoạt Hình - Animal"  && i8<7) {
-            i8++;
+        } else if (e.tag == "Phim Hoạt Hình - Animal") {
             col8.innerHTML +=
                 `<div class="list__card" onclick="movies(this)" data-name="${e.name}">
     <div class="card__pic">
@@ -366,8 +350,7 @@ function homePage(arguments) {
         </a>
     </div>
 </div>`
-        } else if (e.tag == "Game Show Truyền Hình"  && i9<7) {
-            i9++;
+        } else if (e.tag == "Game Show Truyền Hình") {
             col9.innerHTML +=
                 `<div class="list__card" onclick="movies(this)"  data-name="${e.name}">
     <div class="card__pic">
@@ -675,7 +658,7 @@ function categoryMovies(e) {
     sessionStorage.clear();
     let categoryFilm = e.dataset.name;
     let storageCategory = [];
-    for (let value of data) {
+    for (let value of dataCategory) {
         value.tag == categoryFilm ? storageCategory.push(value) : 0
     }
     sessionStorage.setItem("dataCategory", JSON.stringify(storageCategory));
@@ -759,8 +742,8 @@ function loadHomePage () {
             hideCard();
         // },1000)
     } else if (window.location.pathname.split("/").pop() == "category.html" || window.location.pathname.split("/").pop() == "category.php" || window.location.pathname.split("/").pop() == "category") {
-        checkFirstVisit();
-        showMoviesCategory();
+        // checkFirstVisit();
+        // showMoviesCategory();
     } else if (window.location.pathname.split("/").pop() == "detail.html" || window.location.pathname.split("/").pop() == "detail.php" || window.location.pathname.split("/").pop() == "detail") {
         // setTimeout(function  () {
             checkFirstVisit();
@@ -770,14 +753,34 @@ function loadHomePage () {
         // },500)
     }
 }
+function loadHomePage2 () {
+    if (window.location.pathname.split("/").pop() == "index.html" || window.location.pathname.split("/").pop() == "" || window.location.pathname.split("/").pop() == "index.php") {
+        // setTimeout(function  () {
+            // homePage();
+            // checkFirstVisit();
+            // hideCard();
+        // },1000)
+    } else if (window.location.pathname.split("/").pop() == "category.html" || window.location.pathname.split("/").pop() == "category.php" || window.location.pathname.split("/").pop() == "category") {
+        checkFirstVisit();
+        showMoviesCategory();
+    } else if (window.location.pathname.split("/").pop() == "detail.html" || window.location.pathname.split("/").pop() == "detail.php" || window.location.pathname.split("/").pop() == "detail") {
+        // setTimeout(function  () {
+            // checkFirstVisit();
+            // showMovies();
+            // detail();
+            // hideCard();
+        // },500)
+    }
+}
 
 window.onload = () => {
     loadData(loadHomePage);
+    loadDataCategory(loadHomePage2);
 
         setTimeout(function () {
             document.querySelectorAll('.list__card').forEach(a=>a.addEventListener('mousemove', tooltip));
             document.querySelectorAll('.list__card').forEach(a=>a.addEventListener('mouseout', tooltip2));
-        },2000)
+        },1000)
 
 
 

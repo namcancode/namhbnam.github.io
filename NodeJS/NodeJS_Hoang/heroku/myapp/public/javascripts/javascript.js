@@ -1,9 +1,11 @@
+import { fn } from 'moment';
 const search = document.querySelector(".inputsearch");
 const searchIcons = document.querySelector('.searchicon');
 const HEADER = document.querySelectorAll(".header--wrap");
 let scrollLoader = 0;
 let result = "";
 let data = [];
+let dataCategory = [];
 let database = [];
 
 Element.prototype.remove = function () {
@@ -349,7 +351,7 @@ function register(arguments) {
 // }
 function loadData(load) {
     $.ajax({
-        url: "/listAll",
+        url: "/filmIndex",
         type: "GET",
         dataType: "json",
         success: function (result) {
@@ -362,13 +364,30 @@ function loadData(load) {
     });
 
 }
+function loadDataCategory(load) {
+    $.ajax({
+        url: "/dataCategory",
+        type: "GET",
+        dataType: "json",
+        success: function (result) {
+            // console.log(result.data);
+            dataCategory = (result.data.sort(function () {
+                return .5 - Math.random();
+            }));
+            // console.log(dataCategory);
+            load();
+        },
+
+    });
+
+}
 
 
 function tooltip(e) {
     if(window.innerWidth >834){
         const transparent = document.querySelector('.transparent-1');
         const namefilm = e.target.parentElement.dataset.name;
-        data.forEach(a => {
+        dataCategory.forEach(a => {
             if (a.name == namefilm) {
                 transparent.innerHTML =
                     `<div class="transparent__name">
@@ -420,9 +439,40 @@ function tooltip2(e) {
     const transparent = document.querySelector('.transparent-1');
     transparent.removeAttribute("style");
     // console.clear();
-
+}
+function rememberUser(params) {
+    
 }
 
+function login(param) {
+    if (df) {
+       `
+        <div class="login__account">
+        <div class="account__avatar">
+        <img src="' . $_SESSION['avatar'] . '" alt="' . $_SESSION['username'] . '">
+        </div>
+        <div class="account__info">
+        <span class="arrow"></span>
+        <div class="info__user">
+            <a href="#">
+                <i class="fas fa-user-circle"></i>
+                <p>' . $_SESSION['username'] . '</p>
+            </a>
+        </div>
+        <div class="info__logout">
+            <i class="fas fa-power-off"></i>
+            <p>
+                Đăng Xuất
+            </p>
+        </div>
+    </div>';
+    `
+    } else {
+        `
+      <button id="btnlogin">Đăng nhập</button>;`
+    }
+
+  }
 searchIcons.addEventListener('click', searchInput);
 search.addEventListener('blur', searchInputHide);
 document.querySelector('section').addEventListener('click', searchInputHide);

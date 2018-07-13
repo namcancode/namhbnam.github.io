@@ -1,10 +1,10 @@
-import { Datafilm } from "../models/Datafilm";
+import { Member } from "../models/Member";
 import { Op } from "../databases/database";
 var mysql = require('mysql');
 
-export const listAllDetail = async params => {
-	const dataAll = await Datafilm.findAll({
-		attributes: ["id", "name", "rate", "link","img","season","eps","content","actor","director","category","country","tag"],
+export const listAllMember = async params => {
+	const dataAll = await Member.findAll({
+		attributes: ["id", "username", "password", "email"],
 		order: ["id"]
 	});
 	try {
@@ -13,34 +13,18 @@ export const listAllDetail = async params => {
 		return error;
 	}
 };
-export const listFilmsByTag = async params => {
-	let {inputTag, limit } = params;
-	const dataAll = await Datafilm.findAll({
-		attributes: ["id", "name", "rate", "link","img","season","eps","content","actor","director","category","country","tag"],
-		where: {
-			tag: inputTag
-		},
-		order: ["id"],
-		limit
 
-	});
-	try {
-		return dataAll;
-	} catch (error) {
-		return error;
-	}
-};
-export const createDetail = async params => {
-	const { name, priority, description, duedate } = params;
-	const creatUser = await Datafilm.create(
+
+export const createMember = async params => {
+	const { username, password, email } = params;
+	const creatUser = await Member.create(
 		{
-			name,
-			priority: parseInt(priority),
-			description,
-			duedate
+			username,
+			password,
+			email
 		},
 		{
-			fields: ["name", "rate", "link","img","season","eps","content","actor","director","category","country","tag"]
+			fields: ["username", "password", "email"]
 		}
 	);
 	try {
@@ -50,11 +34,10 @@ export const createDetail = async params => {
 	}
 };
 
-
 export const listOfset = async params => {
 	const { offset, limit } = params;
 
-	const limitOffset = await Datafilm.findAll({
+	const limitOffset = await Member.findAll({
 		offset: offset * limit,
 		limit
 	});
@@ -68,7 +51,7 @@ export const listOfset = async params => {
 export const listById = async params => {
 	const { id } = params;
 
-	const searchId = await Datafilm.findOne({
+	const searchId = await Member.findOne({
 		attributes: ["id", "name", "rate", "link","img","season","eps","content","actor","director","category","country","tag"],
 		where: {
 			id
@@ -83,7 +66,7 @@ export const listById = async params => {
 
 export const searchUser = async params => {
 	const { iLike } = params;
-	const searchIlike = await Datafilm.findAll({
+	const searchIlike = await Member.findAll({
 		attributes: ["id", "name", "rate", "link","img","season","eps","content","actor","director","category","country","tag"],
 		where: {
 			[Op.or]: [
@@ -109,7 +92,7 @@ export const searchUser = async params => {
 
 export const updateUser = async params => {
 	const { id, name, priority, description, duedate } = params;
-	const updateObject = await Datafilm.findOne({
+	const updateObject = await Member.findOne({
 		where: {
 			id
 		}
@@ -136,13 +119,13 @@ export const updateUser = async params => {
 
 export const deletedUser = async params => {
 	const { id } = params;
-	const deletedObject = await Datafilm.destroy({
+	const deletedObject = await Member.destroy({
 		where: {
 			id
 		}
 		// truncate: true /* this will ignore where and truncate the table instead */
 	});
-	const checkId = await Datafilm.findOne({
+	const checkId = await Member.findOne({
 		where: {
 			id
 		}
@@ -154,7 +137,7 @@ export const deletedUser = async params => {
 	}
 };
 //Scripts
-export const convertDataFilmsToPostgres = async () => {
+export const convertMembersToPostgres = async () => {
 	var con = mysql.createConnection({
 		host: "localhost",
 		database: "testMysql",
@@ -170,7 +153,7 @@ export const convertDataFilmsToPostgres = async () => {
 			};
 			console.log("Connected MySQL");
 		  });
-		  let sql = "SELECT name, rate, link, img, season, eps, content, actor, director, category, country, tag FROM datafilm";
+		  let sql = "SELECT name, rate, link, img, season, eps, content, actor, director, category, country, tag FROM Member";
 		  con.query(sql, function (err, films) {
 			if (err) {
 				console.log(`Error query mysql error1 = ${err}`);
@@ -178,7 +161,7 @@ export const convertDataFilmsToPostgres = async () => {
 			};
 			films.forEach(async (film) => {
 				let {name, rate, link, img, season, eps, content, actor, director, category, country, tag} = film;
-				const createNewFilm = await Datafilm.create(
+				const createNewFilm = await Member.create(
 					{
 						name, rate, link, img, season, eps, content, actor, director, category, country, tag
 					},
