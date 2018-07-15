@@ -1,4 +1,3 @@
-import { fn } from 'moment';
 const search = document.querySelector(".inputsearch");
 const searchIcons = document.querySelector('.searchicon');
 const HEADER = document.querySelectorAll(".header--wrap");
@@ -441,10 +440,10 @@ function tooltip2(e) {
     // console.clear();
 }
 function rememberUser(params) {
-    
+
 }
 
-function login(param) {
+function loginHandle(param) {
     if (df) {
        `
         <div class="login__account">

@@ -1,5 +1,7 @@
 import { Member } from "../models/Member";
 import { Op } from "../databases/database";
+import bcrypt from 'bcrypt';
+import {saltRounds, keySecret} from '../configs/config';
 var mysql = require('mysql');
 
 export const listAllMember = async params => {
@@ -17,22 +19,32 @@ export const listAllMember = async params => {
 
 export const createMember = async params => {
 	const { username, password, email } = params;
-	const creatUser = await Member.create(
-		{
-			username,
-			password,
-			email
-		},
-		{
-			fields: ["username", "password", "email"]
-		}
-	);
+	bcrypt.hash(password, saltRounds).then(function(hash) {
+		const creatUser =  Member.create(
+			{
+				username,
+				password:hash,
+				email
+			},
+			{
+				fields: ["username", "password", "email"]
+			}
+		);
+
 	try {
 		return creatUser;
 	} catch (error) {
 		return error;
 	}
+	});
 };
+
+export const checkPasswordUser = async params =>{
+	const { username, password, email } = params;
+	bcrypt.compare(password, hash).then(function(res) {
+		// res == false
+	});
+}
 
 export const listOfset = async params => {
 	const { offset, limit } = params;
@@ -179,5 +191,8 @@ export const convertMembersToPostgres = async () => {
 	  }
 
 };
+
+
+
 
 

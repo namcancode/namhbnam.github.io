@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
-import {DBNAME, USERNAME, PASSWORD, HOST, DBPORT, HOSTLOCAL} from '../configs/config'
+import {DBNAME, USERNAME, PASSWORD, HOST, DBPORT} from '../configs/config'
 export const sequelize = new Sequelize(DBNAME, USERNAME, PASSWORD, {
-  host: HOSTLOCAL,
+  host: HOST,
   dialect: 'postgres',
   operatorsAliases: false,
   pool: {
@@ -11,7 +11,7 @@ export const sequelize = new Sequelize(DBNAME, USERNAME, PASSWORD, {
     idle: 10000
   },
   dialectOptions: {
-    ssl: false
+    ssl: true
   }
 });
 export const testConnect = sequelize

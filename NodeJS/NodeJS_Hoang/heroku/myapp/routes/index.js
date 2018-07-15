@@ -1,8 +1,8 @@
 var express = require("express");
 var router = express.Router();
-import { sequelize, Op } from "../databases/database";
+// import { sequelize, Op } from "../databases/database";
 import { SUCCESS, FAILED } from "../configs/config";
-import { Datafilm } from "../models/Datafilm";
+// import { Datafilm } from "../models/Datafilm";
 import {
 	createDetail,
 	listAllDetail,

@@ -501,7 +501,7 @@ function detail(arguments) {
 function movies(e) {
     sessionStorage.clear();
     let nameFilm = e.dataset.name;
-    data.filter(a => (a.name == nameFilm)).map(b => sessionStorage.setItem("data", JSON.stringify(b)))
+    dataCategory.filter(a => (a.name == nameFilm)).map(b => sessionStorage.setItem("data", JSON.stringify(b)))
     window.open("detail", "_self");
 }
 
