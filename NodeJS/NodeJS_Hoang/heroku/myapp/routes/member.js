@@ -116,7 +116,6 @@ router.put("/update", async (req, res) => {
 
 	try {
 		const updateUser = await updateDataUser(req.body)
-		console.log(updateUser);
 		if (updateUser) {
 			res.json({
 				result: SUCCESS,
