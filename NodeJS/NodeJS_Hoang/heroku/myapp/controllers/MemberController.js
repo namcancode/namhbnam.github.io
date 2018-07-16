@@ -1,8 +1,8 @@
 import { Member } from "../models/Member";
 import { Op } from "../databases/database";
-import bcrypt from 'bcrypt';
-import {saltRounds, keySecret} from '../configs/config';
-var mysql = require('mysql');
+import bcrypt from "bcrypt";
+import { saltRounds, keySecret } from "../configs/config";
+var mysql = require("mysql");
 
 export const listAllMember = async params => {
 	const dataAll = await Member.findAll({
@@ -16,14 +16,13 @@ export const listAllMember = async params => {
 	}
 };
 
-
 export const createMember = async params => {
 	const { username, password, email } = params;
 	bcrypt.hash(password, saltRounds).then(function(hash) {
-		const creatUser =  Member.create(
+		const creatUser = Member.create(
 			{
 				username,
-				password:hash,
+				password: hash,
 				email
 			},
 			{
@@ -31,19 +30,54 @@ export const createMember = async params => {
 			}
 		);
 
-	try {
-		return creatUser;
-	} catch (error) {
-		return error;
-	}
+		try {
+			return creatUser;
+		} catch (error) {
+			return error;
+		}
 	});
 };
 
-export const checkPasswordUser = async params =>{
+export const checkPasswordUser = async params => {
 	const { username, password, email } = params;
-	bcrypt.compare(password, hash).then(function(res) {
-		// res == false
+	const checkId = await Member.findOne({
+		where: {
+			username
+		}
 	});
+	if(!checkId){
+		return
+	}
+	try {
+		return bcrypt.compareSync(password, checkId.password);
+	} catch (error) {
+		return error;
+	}
+};
+
+export const updateDataUser = async params =>{
+	const { id, username, password, email } = params;
+	if(!username){
+		return
+	}
+	try {
+		const hash = await bcrypt.hash(password, saltRounds);
+		const updateUser = await Member.update(
+			{
+				username,
+				password:hash,
+				email
+			},
+			{
+				where: {
+					username
+				}
+			}
+		);
+		return updateUser
+	} catch (error) {
+		return error;
+	}
 }
 
 export const listOfset = async params => {
@@ -64,7 +98,21 @@ export const listById = async params => {
 	const { id } = params;
 
 	const searchId = await Member.findOne({
-		attributes: ["id", "name", "rate", "link","img","season","eps","content","actor","director","category","country","tag"],
+		attributes: [
+			"id",
+			"name",
+			"rate",
+			"link",
+			"img",
+			"season",
+			"eps",
+			"content",
+			"actor",
+			"director",
+			"category",
+			"country",
+			"tag"
+		],
 		where: {
 			id
 		}
@@ -79,7 +127,21 @@ export const listById = async params => {
 export const searchUser = async params => {
 	const { iLike } = params;
 	const searchIlike = await Member.findAll({
-		attributes: ["id", "name", "rate", "link","img","season","eps","content","actor","director","category","country","tag"],
+		attributes: [
+			"id",
+			"name",
+			"rate",
+			"link",
+			"img",
+			"season",
+			"eps",
+			"content",
+			"actor",
+			"director",
+			"category",
+			"country",
+			"tag"
+		],
 		where: {
 			[Op.or]: [
 				{
@@ -102,32 +164,7 @@ export const searchUser = async params => {
 	}
 };
 
-export const updateUser = async params => {
-	const { id, name, priority, description, duedate } = params;
-	const updateObject = await Member.findOne({
-		where: {
-			id
-		}
-	});
-	if (!updateObject) {
-		return;
-	}
-	updateObject.name = name ? name : updateObject.name;
-	updateObject.priority = priority ? priority : updateObject.priority;
-	updateObject.description = description
-		? description
-		: updateObject.description;
-	updateObject.duedate = duedate ? duedate : updateObject.duedate;
-	let result = await updateObject.save();
-	if (!result) {
-		return;
-	}
-	try {
-		return updateObject;
-	} catch (error) {
-		return error;
-	}
-};
+
 
 export const deletedUser = async params => {
 	const { id } = params;
@@ -154,45 +191,76 @@ export const convertMembersToPostgres = async () => {
 		host: "localhost",
 		database: "testMysql",
 		user: "root",
-		password: "root",
-
-	  });
-	  try {
+		password: "root"
+	});
+	try {
 		await con.connect(function(err) {
 			if (err) {
 				console.log(`Error connect mysql error1 = ${err}`);
 				return;
-			};
+			}
 			console.log("Connected MySQL");
-		  });
-		  let sql = "SELECT name, rate, link, img, season, eps, content, actor, director, category, country, tag FROM Member";
-		  con.query(sql, function (err, films) {
+		});
+		let sql =
+			"SELECT name, rate, link, img, season, eps, content, actor, director, category, country, tag FROM Member";
+		con.query(sql, function(err, films) {
 			if (err) {
 				console.log(`Error query mysql error1 = ${err}`);
 				return;
-			};
-			films.forEach(async (film) => {
-				let {name, rate, link, img, season, eps, content, actor, director, category, country, tag} = film;
+			}
+			films.forEach(async film => {
+				let {
+					name,
+					rate,
+					link,
+					img,
+					season,
+					eps,
+					content,
+					actor,
+					director,
+					category,
+					country,
+					tag
+				} = film;
 				const createNewFilm = await Member.create(
 					{
-						name, rate, link, img, season, eps, content, actor, director, category, country, tag
+						name,
+						rate,
+						link,
+						img,
+						season,
+						eps,
+						content,
+						actor,
+						director,
+						category,
+						country,
+						tag
 					},
 					{
-						fields: ["name", "rate", "link","img","season","eps","content","actor","director","category","country","tag"]
+						fields: [
+							"name",
+							"rate",
+							"link",
+							"img",
+							"season",
+							"eps",
+							"content",
+							"actor",
+							"director",
+							"category",
+							"country",
+							"tag"
+						]
 					}
 				);
 			});
 			//console.log("query films: " + JSON.stringify(films));
 			return;
-		  });
-	  } catch (error) {
+		});
+	} catch (error) {
 		console.log(`error12 = ${error}`);
 		return;
-	  }
-
+	}
 };
-
-
-
-
-

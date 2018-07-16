@@ -6,7 +6,9 @@ import { Member } from "../models/Member";
 import {
 	createMember,
 	deletedUser,
-	listAllMember
+	listAllMember,
+	checkPasswordUser,
+	updateDataUser
 } from "../controllers/MemberController";
 // import { fail } from "assert";
 /* GET home page. */
@@ -41,8 +43,6 @@ router.get("/listAll", async (req, res) => {
 			description: `Đã lấy danh sách thành công`
 		});
 		// const dataAll = await convertDataFilmsToPostgres();
-
-
 	} catch (error) {
 		res.json({
 			result: FAILED,
@@ -78,4 +78,64 @@ router.delete("/deleted", async (req, res) => {
 	}
 });
 
+router.post('/login', async(req,res)=>{
+	const { username, password, email } = req.body;
+	if(!username){
+		res.json({
+			result: FAILED,
+			data: false,
+			description: `Thiếu username hoặc password`
+		});
+	}
+	try {
+		const checkId = await checkPasswordUser(req.body);
+		if (checkId) {
+			res.json({
+				result: SUCCESS,
+				data: true,
+				description: `Đã đăng nhập thành công với username ${username}`
+			});
+		} else {
+			res.json({
+				result: FAILED,
+				data: false,
+				description: `Đăng nhập thất bại`
+			});
+		}
+	} catch (error) {
+		res.json({
+			result: FAILED,
+			data: false,
+			description: `Đã có lỗi xảy ra ${error}`
+		});
+	}
+})
+
+router.put("/update", async (req, res) => {
+	const { id, username, password, email } = req.body;
+
+	try {
+		const updateUser = await updateDataUser(req.body)
+		console.log(updateUser);
+		if (updateUser) {
+			res.json({
+				result: SUCCESS,
+				data: true,
+				description: `Đã update user ${username}`
+			});
+		} else {
+			res.json({
+				result: FAILED,
+				data: "",
+				description: `Không tìm thấy user ${username}`
+			});
+		}
+	} catch (error) {
+		res.json({
+			result: FAILED,
+			data: "",
+			description: `Có lỗi xảy ra ${error}`
+		});
+	}
+});
 module.exports = router;
