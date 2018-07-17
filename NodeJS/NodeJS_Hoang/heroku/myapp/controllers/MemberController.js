@@ -18,7 +18,8 @@ export const listAllMember = async params => {
 
 export const createMember = async params => {
 	const { username, password, email, avatar } = params;
-	bcrypt.hash(password, saltRounds).then(function(hash) {
+
+	const hash = await bcrypt.hash(password, saltRounds);
 		const creatUser = Member.create(
 			{
 				username,
@@ -30,13 +31,12 @@ export const createMember = async params => {
 				fields: ["username", "password", "email", "avatar"]
 			}
 		);
-
 		try {
 			return creatUser;
 		} catch (error) {
 			return error;
 		}
-	});
+
 };
 
 export const checkPasswordUser = async params => {
@@ -51,6 +51,7 @@ export const checkPasswordUser = async params => {
 			return;
 		}
 		if (bcrypt.compareSync(password, checkId.password)){
+			checkId.password = "Not show";
 			return {checkId};
 		}
 	} catch (error) {

@@ -92,7 +92,7 @@ router.post("/login", async (req, res) => {
 		if (checkId) {
 			res.json({
 				result: SUCCESS,
-				data: checkId.avatar,
+				data: checkId,
 				description: `Đã đăng nhập thành công với username ${username}`
 			});
 		} else {

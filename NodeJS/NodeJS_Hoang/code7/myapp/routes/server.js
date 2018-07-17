@@ -27,6 +27,8 @@ CREATE USER postgres SUPERUSER;
 ALTER TABLE IF EXISTS table_name RENAME TO new_table_name;
 Thêm FIELD vào TABLE:
 ALTER TABLE members ADD COLUMN avatar VARCHAR;
+Thêm varchar
+ALTER TABLE members ALTER COLUMN avatar TYPE varchar(500);
 
 5. Create data:
 CREATE TABLE IF NOT EXISTS lists (
