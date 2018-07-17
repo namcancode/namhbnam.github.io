@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
@@ -11,6 +12,15 @@ var detailRouter = require('./routes/detail');
 var memberRouter = require('./routes/member');
 
 var app = express();
+//session
+app.set('trust proxy', 1) // trust first proxy
+         app.use(session({
+         secret: 'yeuhuongnhieu',
+         resave: false,
+         saveUninitialized: true,
+         cookie: { secure: true }
+}))
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

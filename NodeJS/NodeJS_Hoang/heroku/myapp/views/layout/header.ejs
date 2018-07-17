@@ -9,7 +9,7 @@
                 Mỗi người dùng chỉ sử dụng 01 tài khoản, nếu bạn chia sẻ, tài khoản có thể bị khóa mà không thông báo trước.
             </h3>
         </div>
-        <form action='dangnhap.php?do=login' method="post" id="registry">
+        <form method="post" id="registry">
             <div class="form--login">
                 <div class="name__text name1">
                     <label for="fname">Tài Khoản</label>
@@ -18,10 +18,10 @@
                     <label for="fname">Mật Khẩu</label>
                 </div>
                 <div class="name__input input1">
-                    <input placeholder="Username" name="Username" type="username">
+                    <input placeholder="Username" name="username" type="username">
                 </div>
                 <div class="name__input input2">
-                    <input placeholder="Password" name="Password" type="password">
+                    <input placeholder="Password" name="password" type="password">
                 </div>
                 <div class="box--one text1">
                     <div class="box__radio">
@@ -35,7 +35,7 @@
                     <a href="#">Quên mật khẩu</a>
                 </div>
                 <div class="clickbtn btn1">
-                    <input type="submit" value="Đăng Nhập" name="login">
+                    <input type="button" value="Đăng Nhập" name="login">
                 </div>
                 <div class="clickbtn btn2 btn--register">
                     <input type="button" value="Đăng Ký" name="registry" onclick='javascript:register();'></input>

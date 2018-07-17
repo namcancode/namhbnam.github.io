@@ -16,6 +16,9 @@ export const Member = sequelize.define(
 		},
 		email: {
 			type: Sequelize.STRING
+		},
+		avatar:{
+			type: Sequelize.STRING
 		}
 	},
 	{

@@ -13,8 +13,8 @@ import {
 // import { fail } from "assert";
 /* GET home page. */
 
-router.post('/create',async (req,res)=>{
-  const { username, password, description, duedate } = req.body;
+router.post("/create", async (req, res) => {
+	const { username, password, email, avatar } = req.body;
 	//Validate
 	if (!username) {
 		return;
@@ -33,7 +33,7 @@ router.post('/create',async (req,res)=>{
 			description: `Không tạo user lỗi ${error}`
 		});
 	}
-})
+});
 router.get("/listAll", async (req, res) => {
 	try {
 		const dataAll = await listAllMember(req.body);
@@ -78,9 +78,9 @@ router.delete("/deleted", async (req, res) => {
 	}
 });
 
-router.post('/login', async(req,res)=>{
-	const { username, password, email } = req.body;
-	if(!username){
+router.post("/login", async (req, res) => {
+	const { username, password, email, avatar } = req.body;
+	if (!username) {
 		res.json({
 			result: FAILED,
 			data: false,
@@ -92,7 +92,7 @@ router.post('/login', async(req,res)=>{
 		if (checkId) {
 			res.json({
 				result: SUCCESS,
-				data: true,
+				data: checkId.avatar,
 				description: `Đã đăng nhập thành công với username ${username}`
 			});
 		} else {
@@ -109,13 +109,13 @@ router.post('/login', async(req,res)=>{
 			description: `Đã có lỗi xảy ra ${error}`
 		});
 	}
-})
+});
 
 router.put("/update", async (req, res) => {
-	const { id, username, password, email } = req.body;
+	const { id, username, password, email, avatar } = req.body;
 
 	try {
-		const updateUser = await updateDataUser(req.body)
+		const updateUser = await updateDataUser(req.body);
 		if (updateUser) {
 			res.json({
 				result: SUCCESS,

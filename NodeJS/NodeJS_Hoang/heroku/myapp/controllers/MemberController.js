@@ -6,7 +6,7 @@ var mysql = require("mysql");
 
 export const listAllMember = async params => {
 	const dataAll = await Member.findAll({
-		attributes: ["id", "username", "password", "email"],
+		attributes: ["id", "username", "password", "email", "avatar"],
 		order: ["id"]
 	});
 	try {
@@ -17,16 +17,17 @@ export const listAllMember = async params => {
 };
 
 export const createMember = async params => {
-	const { username, password, email } = params;
+	const { username, password, email, avatar } = params;
 	bcrypt.hash(password, saltRounds).then(function(hash) {
 		const creatUser = Member.create(
 			{
 				username,
 				password: hash,
-				email
+				email,
+				avatar
 			},
 			{
-				fields: ["username", "password", "email"]
+				fields: ["username", "password", "email", "avatar"]
 			}
 		);
 
@@ -39,34 +40,37 @@ export const createMember = async params => {
 };
 
 export const checkPasswordUser = async params => {
-	const { username, password, email } = params;
-	const checkId = await Member.findOne({
-		where: {
-			username
-		}
-	});
-	if(!checkId){
-		return
-	}
+	const { username, password } = params;
 	try {
-		return bcrypt.compareSync(password, checkId.password);
+		const checkId = await Member.findOne({
+			where: {
+				username
+			}
+		});
+		if (!checkId) {
+			return;
+		}
+		if (bcrypt.compareSync(password, checkId.password)){
+			return {checkId};
+		}
 	} catch (error) {
 		return error;
 	}
 };
 
-export const updateDataUser = async params =>{
-	const { id, username, password, email } = params;
-	if(!username){
-		return
+export const updateDataUser = async params => {
+	const { id, username, password, email, avatar } = params;
+	if (!username) {
+		return;
 	}
 	try {
 		const hash = await bcrypt.hash(password, saltRounds);
 		const updateUser = await Member.update(
 			{
 				username,
-				password:hash,
-				email
+				password: hash,
+				email,
+				avatar
 			},
 			{
 				where: {
@@ -74,11 +78,11 @@ export const updateDataUser = async params =>{
 				}
 			}
 		);
-		return updateUser
+		return updateUser;
 	} catch (error) {
 		return error;
 	}
-}
+};
 
 export const listOfset = async params => {
 	const { offset, limit } = params;
@@ -98,21 +102,7 @@ export const listById = async params => {
 	const { id } = params;
 
 	const searchId = await Member.findOne({
-		attributes: [
-			"id",
-			"name",
-			"rate",
-			"link",
-			"img",
-			"season",
-			"eps",
-			"content",
-			"actor",
-			"director",
-			"category",
-			"country",
-			"tag"
-		],
+		attributes: ["id", "username", "password", "email", "avatar"],
 		where: {
 			id
 		}
@@ -127,21 +117,7 @@ export const listById = async params => {
 export const searchUser = async params => {
 	const { iLike } = params;
 	const searchIlike = await Member.findAll({
-		attributes: [
-			"id",
-			"name",
-			"rate",
-			"link",
-			"img",
-			"season",
-			"eps",
-			"content",
-			"actor",
-			"director",
-			"category",
-			"country",
-			"tag"
-		],
+		attributes: ["id", "username", "password", "email", "avatar"],
 		where: {
 			[Op.or]: [
 				{
@@ -164,22 +140,20 @@ export const searchUser = async params => {
 	}
 };
 
-
-
 export const deletedUser = async params => {
 	const { id } = params;
-	const deletedObject = await Member.destroy({
-		where: {
-			id
-		}
-		// truncate: true /* this will ignore where and truncate the table instead */
-	});
-	const checkId = await Member.findOne({
-		where: {
-			id
-		}
-	});
 	try {
+		const deletedObject = await Member.destroy({
+			where: {
+				id
+			}
+			// truncate: true /* this will ignore where and truncate the table instead */
+		});
+		const checkId = await Member.findOne({
+			where: {
+				id
+			}
+		});
 		return checkId;
 	} catch (error) {
 		return error;
