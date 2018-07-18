@@ -47,6 +47,7 @@ export const checkPasswordUser = async params => {
 				username
 			}
 		});
+
 		if (!checkId) {
 			return;
 		}

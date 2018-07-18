@@ -397,8 +397,9 @@ function loadDataCategory(load) {
 	});
 }
 function loginUser() {
-	const username = $('input[name=username]').val();
-	const password = $('input[name=password]').val();
+
+	const username = $('input[name=username]').val().trim();
+	const password = $('input[name=password]').val().trim();
 	const url = `${location.protocol}//${document.domain}:${
 		location.port
 	}/member/login`;
@@ -411,7 +412,9 @@ function loginUser() {
 		async: true,
 		data:{'username':username,'password':password},
 		dataType: "json",
-		success: function(result) {
+		success:  function(result) {
+			console.log(result);
+		 loginClose();
 			const dataUser = result.data.checkId
 			if (result) {
 				loginHtml.innerHTML =`
@@ -465,8 +468,6 @@ function loginUser() {
 			</div>
 				<button id="btnlogin">Đăng nhập</button>`;
 			}
-
-
 		},
 		error: function(error) {
 			return error

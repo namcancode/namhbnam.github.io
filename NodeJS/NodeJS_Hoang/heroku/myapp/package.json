@@ -17,6 +17,7 @@
     "mysql": "^2.15.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
+    "request-ip": "^2.1.1",
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
