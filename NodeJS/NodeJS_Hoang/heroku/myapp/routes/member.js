@@ -34,6 +34,7 @@ router.post("/create", async (req, res) => {
 		});
 	}
 });
+
 router.get("/listAll", async (req, res) => {
 	try {
 		const dataAll = await listAllMember(req.body);
@@ -80,6 +81,8 @@ router.delete("/deleted", async (req, res) => {
 
 router.post("/login", async (req, res) => {
 	const { username, password, email, avatar } = req.body;
+	console.log(username);
+	console.log("here");
 	if (!username) {
 		res.json({
 			result: FAILED,
@@ -113,7 +116,6 @@ router.post("/login", async (req, res) => {
 
 router.put("/update", async (req, res) => {
 	const { id, username, password, email, avatar } = req.body;
-
 	try {
 		const updateUser = await updateDataUser(req.body);
 		if (updateUser) {

@@ -396,16 +396,80 @@ function loadDataCategory(load) {
 		}
 	});
 }
-function loginUser(load) {
+function loginUser() {
+	const username = $('input[name=username]').val();
+	const password = $('input[name=password]').val();
+	const url = `${location.protocol}//${document.domain}:${
+		location.port
+	}/member/login`;
 	$.ajax({
-		url: "/member/login",
-		type: "POST",
+		url: url,
+		type: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		  },
+		async: true,
+		data:{'username':username,'password':password},
 		dataType: "json",
 		success: function(result) {
-           console.log(result);
-        },
+			const dataUser = result.data.checkId
+			if (result) {
+				loginHtml.innerHTML =`
+				<div class="login__input">
+				<input class="inputtext" type="text" placeholder="Tìm kiếm">
+				<div class="input__result desktop-input__result">
+					<div class="result__title">
+						<h1>
+							Kết quả tìm kiếm cho từ khóa:
+							<span>Hello</span>
+						</h1>
+					</div>
+					<div class="result__content">
+					</div>
+				</div>
+			</div>
+				<div class="login__account">
+				<div class="account__avatar">
+				<img src="${dataUser.avatar}" alt="${dataUser.username}">
+				</div>
+				<div class="account__info">
+				<span class="arrow"></span>
+				<div class="info__user">
+					<a href="#">
+						<i class="fas fa-user-circle"></i>
+						<p>${dataUser.username}</p>
+					</a>
+				</div>
+				<div class="info__logout">
+					<i class="fas fa-power-off"></i>
+					<p>
+						Đăng Xuất
+					</p>
+				</div>
+			</div>
+			`
+			} else {
+				loginHtml.innerHTML =`
+				<div class="login__input">
+				<input class="inputtext" type="text" placeholder="Tìm kiếm">
+				<div class="input__result desktop-input__result">
+					<div class="result__title">
+						<h1>
+							Kết quả tìm kiếm cho từ khóa:
+							<span>Hello</span>
+						</h1>
+					</div>
+					<div class="result__content">
+					</div>
+				</div>
+			</div>
+				<button id="btnlogin">Đăng nhập</button>`;
+			}
+
+
+		},
 		error: function(error) {
-			console.log(error);
+			return error
 		}
 	});
 }
@@ -483,36 +547,7 @@ function tooltip2(e) {
 }
 function rememberUser(params) {}
 
-function loginHandle(param) {
-    loginUser();
-    console.log(result);
-	if (result) {
-		`
-        <div class="login__account">
-        <div class="account__avatar">
-        <img src="' . $_SESSION['avatar'] . '" alt="' . $_SESSION['username'] . '">
-        </div>
-        <div class="account__info">
-        <span class="arrow"></span>
-        <div class="info__user">
-            <a href="#">
-                <i class="fas fa-user-circle"></i>
-                <p>' . $_SESSION['username'] . '</p>
-            </a>
-        </div>
-        <div class="info__logout">
-            <i class="fas fa-power-off"></i>
-            <p>
-                Đăng Xuất
-            </p>
-        </div>
-    </div>';
-    `;
-	} else {
-		`
-      <button id="btnlogin">Đăng nhập</button>;`;
-	}
-}
+
 searchIcons.addEventListener("click", searchInput);
 search.addEventListener("blur", searchInputHide);
 document.querySelector("section").addEventListener("click", searchInputHide);
@@ -523,7 +558,8 @@ document.querySelector(".loginclose").addEventListener("click", loginClose);
 document.querySelector(".blurtrans").addEventListener("click", loginClose);
 document.querySelector(".blurtrans").addEventListener("click", searchInputHide);
 document.querySelector(".inputtext").addEventListener("input", displayMatches);
-document.querySelector(".btn1").addEventListener("click", loginHandle);
+document.querySelector(".btn1").addEventListener("click", loginUser);
+const loginHtml = document.querySelector('.header__login');
 document
 	.querySelector(".inputsearch")
 	.addEventListener("input", displayMatches);
