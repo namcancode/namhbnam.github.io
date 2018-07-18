@@ -16,10 +16,7 @@ import {
 // import { fail } from "assert";
 /* GET home page. */
 router.get("/", function(req, res, next) {
-
-		console.log(req.session.user);
-
-	res.render("index", { title: "Express" });
+	res.render("index", { username: `${req.session.user.username}`, avatar:`${req.session.user.avatar}`});
 });
 
 router.get("/filmIndex", async (req, res) => {
@@ -72,6 +69,7 @@ router.get("/filmIndex", async (req, res) => {
 			result: SUCCESS,
 			data: dataFilmIndex,
 			description: `Đã lấy danh sách thành công`
+
 		});
 		// const dataAll = await convertDataFilmsToPostgres();
 
@@ -137,6 +135,7 @@ router.get("/listOfset", async (req, res) => {
 	}
 	try {
 		const limitOffset = await listOfset(req.query);
+
 		res.json({
 			result: SUCCESS,
 			data: limitOffset,

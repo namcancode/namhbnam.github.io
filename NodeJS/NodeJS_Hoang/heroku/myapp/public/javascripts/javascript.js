@@ -348,25 +348,6 @@ function register(arguments) {
 	});
 }
 
-// function loadData(load) {
-//     let ajax = new XMLHttpRequest();
-//     let method = "GET";
-//     let url = "getdata.php";
-//     let asynchronous = true;
-//     ajax.open(method, url, asynchronous);
-//     ajax.send();
-//     ajax.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             database.push(...JSON.parse(this.responseText));
-//             data = (database.sort(function () {
-//                 return .5 - Math.random();
-//             }));
-//             setTimeout(function () {
-//                 load();
-//             }, 1000);
-//         }
-//     }
-// }
 function loadData(load) {
 	$.ajax({
 		url: "/filmIndex",
@@ -405,6 +386,9 @@ function loginUser() {
 	}/member/login`;
 	$.ajax({
 		url: url,
+		xhrFields: {
+			withCredentials: true
+		 },
 		type: 'POST',
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded'

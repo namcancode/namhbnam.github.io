@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const requestIp = require('request-ip');
+const requestIp = require("request-ip");
 import { sequelize, Op } from "../databases/database";
 import { SUCCESS, FAILED } from "../configs/config";
 import { Member } from "../models/Member";
@@ -11,8 +11,8 @@ import {
 	checkPasswordUser,
 	updateDataUser
 } from "../controllers/MemberController";
-// import { fail } from "assert";
-/* GET home page. */
+
+
 
 router.post("/create", async (req, res) => {
 	const { username, password, email, avatar } = req.body;
@@ -38,13 +38,12 @@ router.post("/create", async (req, res) => {
 
 router.get("/listAll", async (req, res) => {
 	try {
-
 		const dataAll = await listAllMember(req.body);
 		res.json({
 			result: SUCCESS,
 			data: dataAll,
 			description: `Đã lấy danh sách thành công`,
-			ip:requestIp.getClientIp(req)
+			ip: req.session.user
 		});
 		// const dataAll = await convertDataFilmsToPostgres();
 	} catch (error) {
@@ -94,14 +93,13 @@ router.post("/login", async (req, res) => {
 	try {
 		const checkId = await checkPasswordUser(req.body);
 		if (checkId) {
-			req.session.user =  checkId;
-		await req.session.save();
-		// console.log(req.session.Auth);
+			req.session.user = checkId;
+			req.session.save();
+			// console.log(req.session.Auth);
 			res.json({
 				result: SUCCESS,
 				data: checkId,
 				description: `Đã đăng nhập thành công với username ${username}`,
-				test:req.session.user
 			});
 		} else {
 			res.json({

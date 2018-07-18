@@ -10,18 +10,18 @@ var indexRouter = require("./routes/index");
 var categoryRouter = require("./routes/category");
 var detailRouter = require("./routes/detail");
 var memberRouter = require("./routes/member");
-
 var app = express();
 //session
 app.set("trust proxy", 1); // trust first proxy
 app.use(
 	session({
-		secret: "yeuhuongnhieu",
+		secret: 'huongoianhyeuem',
 		resave: false,
 		saveUninitialized: true,
-		cookie: { secure: true}
+		cookie: { secure: false }
 	})
 );
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
