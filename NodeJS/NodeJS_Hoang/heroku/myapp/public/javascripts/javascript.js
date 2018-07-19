@@ -279,37 +279,24 @@ function displayMatches() {
 }
 
 function logout() {
-	// Tạo một biến lưu trữ đối tượng XML HTTP. Đối tượng này
-	// tùy thuộc vào trình duyệt browser ta sử dụng nên phải kiểm
-	// tra như bước bên dưới
-	let xmlhttp;
-
-	// Nếu trình duyệt là  IE7+, Firefox, Chrome, Opera, Safari
-	if (window.XMLHttpRequest) {
-		xmlhttp = new XMLHttpRequest();
-	}
-	// Nếu trình duyệt là IE6, IE5
-	else {
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-
-	// Khởi tạo một hàm gửi ajax
-	xmlhttp.onreadystatechange = function() {
-		// Nếu đối tượng XML HTTP trả về với hai thông số bên dưới thì mọi chuyện
-		// coi như thành công
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			// Sau khi thành công tiến hành thay đổi nội dung của thẻ div, nội dung
-			// ở đây chính là
+	const url = `${location.protocol}//${document.domain}:${
+		location.port
+	}/member/logout`;
+	$.ajax({
+		url: url,
+		xhrFields: {withCredentials: true},
+		type: 'Get',
+		// headers: {
+		// 	'Content-Type': 'application/x-www-form-urlencoded'
+		//   },
+		async: true,
+		// data:{'username':username,'password':password},
+		dataType: "json",
+		success:  function(result) {
+			console.log("huong oi load di");
 			location.reload();
 		}
-	};
-
-	// Khai báo với phương thức GET để nhận data
-	xmlhttp.open("GET", "logout.php", true);
-
-	// Cuối cùng là Gửi ajax, sau khi gọi hàm send thì function vừa tạo ở
-	// trên (onreadystatechange) sẽ được chạy
-	xmlhttp.send();
+})
 }
 
 function register(arguments) {
@@ -378,7 +365,6 @@ function loadDataCategory(load) {
 	});
 }
 function loginUser() {
-
 	const username = $('input[name=username]').val().trim();
 	const password = $('input[name=password]').val().trim();
 	const url = `${location.protocol}//${document.domain}:${
@@ -397,7 +383,6 @@ function loginUser() {
 		data:{'username':username,'password':password},
 		dataType: "json",
 		success:  function(result) {
-			console.log(result);
 		 loginClose();
 			const dataUser = result.data.checkId
 			if (result) {
@@ -435,6 +420,12 @@ function loginUser() {
 				</div>
 			</div>
 			`
+
+			if (document.querySelector(".info__logout")) {
+				document
+					.querySelectorAll(".info__logout")
+					.forEach(a => a.addEventListener("click", logout));
+			}
 			} else {
 				loginHtml.innerHTML =`
 				<div class="login__input">

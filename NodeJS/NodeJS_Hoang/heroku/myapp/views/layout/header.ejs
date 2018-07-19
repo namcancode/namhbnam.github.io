@@ -145,13 +145,37 @@
                         </div>
                     </div>
                 </div>
-
-                <button id="btnlogin">Đăng nhập</button>
-
+                <%if(dataUser){%>
+                    <div class="login__account">
+                        <div class="account__avatar">
+                            <img src="<%= avatar%>" alt=" <%= username%>">
+                        </div>
+                        <div class="account__info">
+                            <span class="arrow"></span>
+                            <div class="info__user">
+                                <a href="#">
+                                    <i class="fas fa-user-circle"></i>
+                                    <p>
+                                        <%= username%>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="info__logout">
+                                <i class="fas fa-power-off"></i>
+                                <p>
+                                    Đăng Xuất
+                                </p>
+                            </div>
+                        </div>
+                        <%}
+else{%>
+                            <button id="btnlogin">Đăng nhập</button>
+                            <%}
+                        %>
+                    </div>
             </div>
+        </header>
     </div>
-    </header>
-</div>
 </div>
 <div class="header--wrap mobile">
     <input type="text" class="inputsearch" placeholder="Tìm kiếm">

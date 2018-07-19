@@ -42,8 +42,7 @@ router.get("/listAll", async (req, res) => {
 		res.json({
 			result: SUCCESS,
 			data: dataAll,
-			description: `Đã lấy danh sách thành công`,
-			ip: req.session.user
+			description: `Đã lấy danh sách thành công`
 		});
 		// const dataAll = await convertDataFilmsToPostgres();
 	} catch (error) {
@@ -80,7 +79,14 @@ router.delete("/deleted", async (req, res) => {
 		});
 	}
 });
-
+router.get("/logout", async (req,res)=>{
+	req.session.destroy();
+	res.json({
+		result: SUCCESS,
+		data: "",
+		description: `Đăng xuất thành công`
+	});
+})
 router.post("/login", async (req, res) => {
 	const { username, password, email, avatar } = req.body;
 	if (!username) {

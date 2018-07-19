@@ -16,7 +16,14 @@ import {
 // import { fail } from "assert";
 /* GET home page. */
 router.get("/", function(req, res, next) {
-	res.render("index", { username: `${req.session.user.username}`, avatar:`${req.session.user.avatar}`});
+	if(req.session.user){
+		const dataUser = req.session.user.checkId
+		res.render("index", {dataUser, username: dataUser.username, avatar:dataUser.avatar});
+	}
+else{
+	const dataUser = null
+	res.render("index",{dataUser});
+}
 });
 
 router.get("/filmIndex", async (req, res) => {
