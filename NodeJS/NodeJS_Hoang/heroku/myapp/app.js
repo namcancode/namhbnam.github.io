@@ -11,18 +11,49 @@ var categoryRouter = require("./routes/category");
 var detailRouter = require("./routes/detail");
 var memberRouter = require("./routes/member");
 var app = express();
+import { sequelize } from "./databases/database";
+import { DBNAME, USERNAME, PASSWORD, HOST, DBPORT } from "./configs/config";
 //session
 app.set("trust proxy", 1); // trust first proxy
+// app.use(
+// 	session({
+// 		store: new (require('connect-pg-simple')(session))(),
+// 		secret: 'huongoianhyeuem',
+// 		resave: false,
+// 		saveUninitialized: true,
+// 		cookie: { secure: false },
+// 		conString: 'pg://' + USERNAME + ':' + PASSWORD + '@' + HOST + '/' + DBNAME
+// 	})
+// );
+
+// var SequelizeStore = require('connect-session-sequelize')(session.Store);
+// var myStore = new SequelizeStore({
+//     db: sequelize
+// })
+// app.use(
+// 	session({
+// 		secret: "huongoianhyeuem",
+// 		store: myStore,
+// 		resave: false,
+// 		saveUninitialized: true,
+// 		cookie: { secure: false },
+// 		proxy: true
+// 	})
+// );
+// myStore.sync();
+
 app.use(
 	session({
-		secret: 'huongoianhyeuem',
+		secret: "huongoianhyeuem",
+		store: new (require("connect-session-sequelize")(session.Store))({
+			db: sequelize
+		}),
 		resave: false,
 		saveUninitialized: true,
-		cookie: { secure: false }
+		cookie: { secure: false },
+		proxy: true
 	})
 );
-
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

@@ -284,19 +284,21 @@ function logout() {
 	}/member/logout`;
 	$.ajax({
 		url: url,
-		xhrFields: {withCredentials: true},
-		type: 'Get',
+		xhrFields: { withCredentials: true },
+		type: "Get",
 		// headers: {
 		// 	'Content-Type': 'application/x-www-form-urlencoded'
 		//   },
 		async: true,
 		// data:{'username':username,'password':password},
 		dataType: "json",
-		success:  function(result) {
-			console.log("huong oi load di");
-			location.reload();
-		}
-})
+		success: function(result) {
+			setTimeout(() => {
+				location.reload();
+			}, 500);
+		},
+
+	});
 }
 
 function register(arguments) {
@@ -365,8 +367,12 @@ function loadDataCategory(load) {
 	});
 }
 function loginUser() {
-	const username = $('input[name=username]').val().trim();
-	const password = $('input[name=password]').val().trim();
+	const username = $("input[name=username]")
+		.val()
+		.trim();
+	const password = $("input[name=password]")
+		.val()
+		.trim();
 	const url = `${location.protocol}//${document.domain}:${
 		location.port
 	}/member/login`;
@@ -374,19 +380,19 @@ function loginUser() {
 		url: url,
 		xhrFields: {
 			withCredentials: true
-		 },
-		type: 'POST',
+		},
+		type: "POST",
 		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded'
-		  },
+			"Content-Type": "application/x-www-form-urlencoded"
+		},
 		async: true,
-		data:{'username':username,'password':password},
+		data: { username: username, password: password },
 		dataType: "json",
-		success:  function(result) {
-		 loginClose();
-			const dataUser = result.data.checkId
+		success: function(result) {
+			loginClose();
+			const dataUser = result.data.checkId;
 			if (result) {
-				loginHtml.innerHTML =`
+				loginHtml.innerHTML = `
 				<div class="login__input">
 				<input class="inputtext" type="text" placeholder="Tìm kiếm">
 				<div class="input__result desktop-input__result">
@@ -419,15 +425,15 @@ function loginUser() {
 					</p>
 				</div>
 			</div>
-			`
+			`;
 
-			if (document.querySelector(".info__logout")) {
-				document
-					.querySelectorAll(".info__logout")
-					.forEach(a => a.addEventListener("click", logout));
-			}
+				if (document.querySelector(".info__logout")) {
+					document
+						.querySelectorAll(".info__logout")
+						.forEach(a => a.addEventListener("click", logout));
+				}
 			} else {
-				loginHtml.innerHTML =`
+				loginHtml.innerHTML = `
 				<div class="login__input">
 				<input class="inputtext" type="text" placeholder="Tìm kiếm">
 				<div class="input__result desktop-input__result">
@@ -445,7 +451,7 @@ function loginUser() {
 			}
 		},
 		error: function(error) {
-			return error
+			return error;
 		}
 	});
 }
@@ -523,7 +529,6 @@ function tooltip2(e) {
 }
 function rememberUser(params) {}
 
-
 searchIcons.addEventListener("click", searchInput);
 search.addEventListener("blur", searchInputHide);
 document.querySelector("section").addEventListener("click", searchInputHide);
@@ -535,7 +540,7 @@ document.querySelector(".blurtrans").addEventListener("click", loginClose);
 document.querySelector(".blurtrans").addEventListener("click", searchInputHide);
 document.querySelector(".inputtext").addEventListener("input", displayMatches);
 document.querySelector(".btn1").addEventListener("click", loginUser);
-const loginHtml = document.querySelector('.header__login');
+const loginHtml = document.querySelector(".header__login");
 document
 	.querySelector(".inputsearch")
 	.addEventListener("input", displayMatches);

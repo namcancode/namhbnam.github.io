@@ -80,7 +80,7 @@ router.delete("/deleted", async (req, res) => {
 	}
 });
 router.get("/logout", async (req,res)=>{
-	req.session.destroy();
+	await req.session.destroy();
 	res.json({
 		result: SUCCESS,
 		data: "",
