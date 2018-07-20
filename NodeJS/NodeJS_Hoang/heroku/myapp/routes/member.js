@@ -1,9 +1,8 @@
 var express = require("express");
 var router = express.Router();
-const requestIp = require("request-ip");
-import { sequelize, Op } from "../databases/database";
+// import { sequelize, Op } from "../databases/database";
 import { SUCCESS, FAILED } from "../configs/config";
-import { Member } from "../models/Member";
+// import { Member } from "../models/Member";
 import {
 	createMember,
 	deletedUser,

@@ -367,93 +367,101 @@ function loadDataCategory(load) {
 	});
 }
 function loginUser() {
-	const username = $("input[name=username]")
-		.val()
-		.trim();
-	const password = $("input[name=password]")
-		.val()
-		.trim();
+	// const username = $("input[name=username]")
+	// 	.val()
+	// 	.trim();
+	// const password = $("input[name=password]")
+	// 	.val()
+	// 	.trim();
 	const url = `${location.protocol}//${document.domain}:${
 		location.port
 	}/member/login`;
-	$.ajax({
-		url: url,
-		xhrFields: {
-			withCredentials: true
-		},
-		type: "POST",
-		headers: {
-			"Content-Type": "application/x-www-form-urlencoded"
-		},
-		async: true,
-		data: { username: username, password: password },
-		dataType: "json",
-		success: function(result) {
-			loginClose();
-			const dataUser = result.data.checkId;
-			if (result) {
-				loginHtml.innerHTML = `
-				<div class="login__input">
-				<input class="inputtext" type="text" placeholder="Tìm kiếm">
-				<div class="input__result desktop-input__result">
-					<div class="result__title">
-						<h1>
-							Kết quả tìm kiếm cho từ khóa:
-							<span>Hello</span>
-						</h1>
+	$('form').submit(function(event) {
+		// Stop the browser from submitting the form.
+		event.preventDefault();
+		$.ajax({
+			url: url,
+			xhrFields: {
+				withCredentials: true
+			},
+			crossDomain:true,
+			type: "POST",
+			headers: {
+				"Content-Type": "application/x-www-form-urlencoded",
+				"Access-Control-Allow-Origin": "*"
+			},
+			async: true,
+			// data: { username: username, password: password },
+			data: $('form').serialize(),
+			dataType: "json",
+			success: function(result) {
+				loginClose();
+				const dataUser = result.data.checkId;
+				if (result) {
+					loginHtml.innerHTML = `
+					<div class="login__input">
+					<input class="inputtext" type="text" placeholder="Tìm kiếm">
+					<div class="input__result desktop-input__result">
+						<div class="result__title">
+							<h1>
+								Kết quả tìm kiếm cho từ khóa:
+								<span>Hello</span>
+							</h1>
+						</div>
+						<div class="result__content">
+						</div>
 					</div>
-					<div class="result__content">
+				</div>
+					<div class="login__account">
+					<div class="account__avatar">
+					<img src="${dataUser.avatar}" alt="${dataUser.username}">
+					</div>
+					<div class="account__info">
+					<span class="arrow"></span>
+					<div class="info__user">
+						<a href="#">
+							<i class="fas fa-user-circle"></i>
+							<p>${dataUser.username}</p>
+						</a>
+					</div>
+					<div class="info__logout">
+						<i class="fas fa-power-off"></i>
+						<p>
+							Đăng Xuất
+						</p>
 					</div>
 				</div>
-			</div>
-				<div class="login__account">
-				<div class="account__avatar">
-				<img src="${dataUser.avatar}" alt="${dataUser.username}">
-				</div>
-				<div class="account__info">
-				<span class="arrow"></span>
-				<div class="info__user">
-					<a href="#">
-						<i class="fas fa-user-circle"></i>
-						<p>${dataUser.username}</p>
-					</a>
-				</div>
-				<div class="info__logout">
-					<i class="fas fa-power-off"></i>
-					<p>
-						Đăng Xuất
-					</p>
-				</div>
-			</div>
-			`;
+				`;
 
-				if (document.querySelector(".info__logout")) {
-					document
-						.querySelectorAll(".info__logout")
-						.forEach(a => a.addEventListener("click", logout));
-				}
-			} else {
-				loginHtml.innerHTML = `
-				<div class="login__input">
-				<input class="inputtext" type="text" placeholder="Tìm kiếm">
-				<div class="input__result desktop-input__result">
-					<div class="result__title">
-						<h1>
-							Kết quả tìm kiếm cho từ khóa:
-							<span>Hello</span>
-						</h1>
-					</div>
-					<div class="result__content">
+					if (document.querySelector(".info__logout")) {
+						document
+							.querySelectorAll(".info__logout")
+							.forEach(a => a.addEventListener("click", logout));
+					}
+				} else {
+					loginHtml.innerHTML = `
+					<div class="login__input">
+					<input class="inputtext" type="text" placeholder="Tìm kiếm">
+					<div class="input__result desktop-input__result">
+						<div class="result__title">
+							<h1>
+								Kết quả tìm kiếm cho từ khóa:
+								<span>Hello</span>
+							</h1>
+						</div>
+						<div class="result__content">
+						</div>
 					</div>
 				</div>
-			</div>
-				<button id="btnlogin">Đăng nhập</button>`;
+					<button id="btnlogin">Đăng nhập</button>`;
+				}
+			},
+			error: function(error) {
+				return error;
 			}
-		},
-		error: function(error) {
-			return error;
-		}
+		});
 	});
+
 }
 
 function tooltip(e) {
