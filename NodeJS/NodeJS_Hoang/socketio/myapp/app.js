@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-import { socketio } from "./bin/socket";
+// import { socketio } from "./bin/socket";
 var app = express();
 
 // view engine setup

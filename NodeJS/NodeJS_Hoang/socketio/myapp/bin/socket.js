@@ -9,10 +9,12 @@ io.on("connection", function(socket) {
         console.log("user disconnected");
     });
     socket.on("send message", function(data) {
-        console.log("message: " + data);
+        // console.log("message: " + data);
         io.emit('new message',{msg:data})
-
     });
+    socket.on("new user",(name)=>{
+        io.emit('name user',{name})
+    })
 });
 
 http.listen(4000, function() {

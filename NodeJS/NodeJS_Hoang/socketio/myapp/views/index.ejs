@@ -34,14 +34,30 @@
   <script src="/socket.io/socket.io.js"></script>
   <script>
     $(() => {
-      const socket = io.connect();
-      $('messageForm').submit((e) => {
+      const socket = io();
+      $('#messageForm').submit((e) => {
+
         e.preventDefault();
         socket.emit('send message', $('#message').val());
-        $('#message').val();
+        $('#message').val("");
+
       });
       socket.on('new message', (data) => {
         $('#chatWindow').append(data.msg + '<br>')
+      });
+      $('#usernameForm').submit((e) => {
+        if ($('#users').html()) {
+          return
+        };
+        console.log($('#username').val());
+        e.preventDefault();
+        socket.emit('new user', $('#username').val());
+        $('#username').val("");
+      });
+      socket.on('name user', (data) => {
+        $('#users').append(data.name + '<br>')
+        $('#namesWrapper').css("display", "none");
+        $('#mainWrapper').css("display", "block");
       });
     })
   </script>

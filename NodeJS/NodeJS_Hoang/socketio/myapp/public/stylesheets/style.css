@@ -21,7 +21,7 @@ body {
 }
 
 #mainWrapper {
-  /* display: none; */
+  display: none;
 }
 
 #chatWrapper {
