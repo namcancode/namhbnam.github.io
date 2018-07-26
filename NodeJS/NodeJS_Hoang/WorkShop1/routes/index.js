@@ -12,7 +12,7 @@ router.get("/", function(req, res, next) {
 router.get("/chaopaya", async (req, res) => {
 	let url =
 		"http://www.thaiwater.net/DATA/REPORT/php/chaopraya_scada/chaopaya_scada.php?lang=";
-	request.get(url, function(error, response, body) {
+	request.get(url, async (error, response, body) => {
 		if (!error && response.statusCode == 200) {
 			const $ = cheerio.load(body);
 			const Area = [];
@@ -22,7 +22,7 @@ router.get("/chaopaya", async (req, res) => {
 			const S5 = async () => {
 				const OriginalName = "สถานีอยุธยา";
 				const translateName = "Ayutthaya Station";
-				const rainFallUnit = "Mm";
+				const unit = "Mm";
 				const waterLevelUnit = "M";
 				const bankLevelUnit = "M";
 				const code = "S.5";
@@ -30,22 +30,22 @@ router.get("/chaopaya", async (req, res) => {
 					Latitude: `14 21' 32"`,
 					Longitude: `100 35' 2"`
 				};
-				const time = $("#table_S5")
+				const time = await $("#table_S5")
 					.next()
 					.find('[bgcolor="#999999"]')
 					.text()
 					.replace("ข้อมูลล่าสุด", "")
 					.trim();
 
-				const rainFall = {
+				const rainFall = await {
 					value: `${$("#table_S5")
 						.next()
 						.find('[bgcolor="#99ccff"] >strong')[0]
 						.children[1].next.data.trim()}`,
-					unit: rainFallUnit
+					unit: unit
 				};
 
-				const waterLevel = {
+				const waterLevel = await {
 					value: `${$("#table_S5")
 						.next()
 						.find('[bgcolor="#99ccff"] >strong')[1]
@@ -53,7 +53,7 @@ router.get("/chaopaya", async (req, res) => {
 					unit: waterLevelUnit
 				};
 
-				const bankLevel = {
+				const bankLevel = await {
 					value: `${$("#table_S5")
 						.next()
 						.find('[bgcolor="#f4e5b7"] >strong')
@@ -76,7 +76,7 @@ router.get("/chaopaya", async (req, res) => {
 			const C29 = async () => {
 				const OriginalName = "สถานีบางไทร";
 				const translateName = "Bang Sai Station";
-				const rainFallUnit = "Mm";
+				const unit = "Mm";
 				const waterLevelUnit = "M";
 				const bankLevelUnit = "M";
 				const code = "C.29";
@@ -84,7 +84,9 @@ router.get("/chaopaya", async (req, res) => {
 					Latitude: `14 11' 36"`,
 					Longitude: `100 30' 14"`
 				};
-				const time = $($($($("#table_C29").parent()).parent()).parent())
+				const time = await $(
+					$($($("#table_C29").parent()).parent()).parent()
+				)
 					.parent()
 					.next()
 					.find('[bgcolor="#999999"]')
@@ -92,7 +94,7 @@ router.get("/chaopaya", async (req, res) => {
 					.replace("ข้อมูลล่าสุด", "")
 					.trim();
 
-				const rainFall = {
+				const rainFall = await {
 					value: `${$(
 						$($($("#table_C29").parent()).parent()).parent()
 					)
@@ -100,9 +102,9 @@ router.get("/chaopaya", async (req, res) => {
 						.next()
 						.find('[bgcolor="#99ccff"] >strong')[0]
 						.children[1].next.data.trim()}`,
-					unit: rainFallUnit
+					unit: unit
 				};
-				const waterLevel = {
+				const waterLevel = await {
 					value: `${$(
 						$($($("#table_C29").parent()).parent()).parent()
 					)
@@ -113,7 +115,7 @@ router.get("/chaopaya", async (req, res) => {
 					unit: waterLevelUnit
 				};
 
-				const bankLevel = {
+				const bankLevel = await {
 					value: `${$(
 						$($($("#table_C29").parent()).parent()).parent()
 					)
@@ -142,7 +144,7 @@ router.get("/chaopaya", async (req, res) => {
 			const C55 = async () => {
 				const OriginalName = "สถานีปทุมธานี";
 				const translateName = "Pathum Thani Station";
-				const rainFallUnit = "Mm";
+				const unit = "Mm";
 				const waterLevelUnit = "M";
 				const bankLevelUnit = "M";
 				const code = "C.55";
@@ -150,7 +152,9 @@ router.get("/chaopaya", async (req, res) => {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
 				};
-				const time = $($($($("#table_C55").parent()).parent()).parent())
+				const time = await $(
+					$($($("#table_C55").parent()).parent()).parent()
+				)
 					.parent()
 					.next()
 					.find('[bgcolor="#999999"]')
@@ -158,7 +162,7 @@ router.get("/chaopaya", async (req, res) => {
 					.replace("ข้อมูลล่าสุด", "")
 					.trim();
 
-				const rainFall = {
+				const rainFall = await {
 					value: `${$(
 						$($($("#table_C55").parent()).parent()).parent()
 					)
@@ -166,10 +170,10 @@ router.get("/chaopaya", async (req, res) => {
 						.next()
 						.find('[bgcolor="#99ccff"] >strong')[0]
 						.children[1].next.data.trim()}`,
-					unit: rainFallUnit
+					unit: unit
 				};
 
-				const waterLevel = {
+				const waterLevel = await {
 					value: `${$(
 						$($($("#table_C55").parent()).parent()).parent()
 					)
@@ -180,7 +184,7 @@ router.get("/chaopaya", async (req, res) => {
 					unit: waterLevelUnit
 				};
 
-				const bankLevel = {
+				const bankLevel = await {
 					value: `${$(
 						$($($("#table_C55").parent()).parent()).parent()
 					)
@@ -208,7 +212,7 @@ router.get("/chaopaya", async (req, res) => {
 			const C22A = async () => {
 				const OriginalName = "สถานีปากเกร็ด";
 				const translateName = "Pak Kred Station";
-				const rainFallUnit = "Mm";
+				const unit = "Mm";
 				const waterLevelUnit = "M";
 				const bankLevelUnit = "M";
 				const code = "C.22A";
@@ -216,7 +220,7 @@ router.get("/chaopaya", async (req, res) => {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
 				};
-				const time = $(
+				const time = await $(
 					$($($("#table_C22A").parent()).parent()).parent()
 				)
 					.parent()
@@ -226,7 +230,7 @@ router.get("/chaopaya", async (req, res) => {
 					.replace("ข้อมูลล่าสุด", "")
 					.trim();
 
-				const rainFall = {
+				const rainFall = await {
 					value: `${$(
 						$($($("#table_C22A").parent()).parent()).parent()
 					)
@@ -234,10 +238,10 @@ router.get("/chaopaya", async (req, res) => {
 						.next()
 						.find('[bgcolor="#99ccff"] >strong')[0]
 						.children[1].next.data.trim()}`,
-					unit: rainFallUnit
+					unit: unit
 				};
 
-				const waterLevel = {
+				const waterLevel = await {
 					value: `${$(
 						$($($("#table_C22A").parent()).parent()).parent()
 					)
@@ -248,7 +252,7 @@ router.get("/chaopaya", async (req, res) => {
 					unit: waterLevelUnit
 				};
 
-				const bankLevel = {
+				const bankLevel = await {
 					value: `${$(
 						$($($("#table_C22A").parent()).parent()).parent()
 					)
@@ -276,7 +280,7 @@ router.get("/chaopaya", async (req, res) => {
 			const C12 = async () => {
 				const OriginalName = "สถานีสามเสน";
 				const translateName = "Sam Sen Station";
-				const rainFallUnit = "Mm";
+				const unit = "Mm";
 				const waterLevelUnit = "M";
 				const bankLevelUnit = "M";
 				const code = "C.12";
@@ -284,7 +288,9 @@ router.get("/chaopaya", async (req, res) => {
 					Latitude: `13 47' 14"`,
 					Longitude: `100 30' 58"`
 				};
-				const time = $($($($("#table_C12").parent()).parent()).parent())
+				const time = await $(
+					$($($("#table_C12").parent()).parent()).parent()
+				)
 					.parent()
 					.next()
 					.find('[bgcolor="#999999"]')
@@ -292,7 +298,7 @@ router.get("/chaopaya", async (req, res) => {
 					.replace("ข้อมูลล่าสุด", "")
 					.trim();
 
-				const rainFall = {
+				const rainFall = await {
 					value: `${$(
 						$($($("#table_C12").parent()).parent()).parent()
 					)
@@ -300,10 +306,10 @@ router.get("/chaopaya", async (req, res) => {
 						.next()
 						.find('[bgcolor="#99ccff"] >strong')[0]
 						.children[1].next.data.trim()}`,
-					unit: rainFallUnit
+					unit: unit
 				};
 
-				const waterLevel = {
+				const waterLevel = await {
 					value: `${$(
 						$($($("#table_C12").parent()).parent()).parent()
 					)
@@ -314,7 +320,7 @@ router.get("/chaopaya", async (req, res) => {
 					unit: waterLevelUnit
 				};
 
-				const bankLevel = {
+				const bankLevel = await {
 					value: `${$(
 						$($($("#table_C12").parent()).parent()).parent()
 					)
@@ -342,7 +348,7 @@ router.get("/chaopaya", async (req, res) => {
 			const C4 = async () => {
 				const OriginalName = "สถานีสะพานพุธ";
 				const translateName = "Saphan Phut Station";
-				const rainFallUnit = "Mm";
+				const unit = "Mm";
 				const waterLevelUnit = "M";
 				const bankLevelUnit = "M";
 				const code = "C.4";
@@ -350,7 +356,9 @@ router.get("/chaopaya", async (req, res) => {
 					Latitude: `13 44' 15"`,
 					Longitude: `100 29' 56"`
 				};
-				const time = $($($($("#table_C4").parent()).parent()).parent())
+				const time = await $(
+					$($($("#table_C4").parent()).parent()).parent()
+				)
 					.parent()
 					.next()
 					.find('[bgcolor="#999999"]')
@@ -358,16 +366,16 @@ router.get("/chaopaya", async (req, res) => {
 					.replace("ข้อมูลล่าสุด", "")
 					.trim();
 
-				const rainFall = {
+				const rainFall = await {
 					value: `${$($($($("#table_C4").parent()).parent()).parent())
 						.parent()
 						.next()
 						.find('[bgcolor="#99ccff"] >strong')[0]
 						.children[1].next.data.trim()}`,
-					unit: rainFallUnit
+					unit: unit
 				};
 
-				const waterLevel = {
+				const waterLevel = await {
 					value: `${$($($($("#table_C4").parent()).parent()).parent())
 						.parent()
 						.next()
@@ -376,7 +384,7 @@ router.get("/chaopaya", async (req, res) => {
 					unit: waterLevelUnit
 				};
 
-				const bankLevel = {
+				const bankLevel = await {
 					value: `${$($($($("#table_C4").parent()).parent()).parent())
 						.parent()
 						.next()
@@ -402,7 +410,7 @@ router.get("/chaopaya", async (req, res) => {
 			const C53 = async () => {
 				const OriginalName = "สถานีท่าเรือ";
 				const translateName = "Tha Rua Station";
-				const rainFallUnit = "Mm";
+				const unit = "Mm";
 				const waterLevelUnit = "M";
 				const bankLevelUnit = "M";
 				const code = "C.53";
@@ -418,7 +426,7 @@ router.get("/chaopaya", async (req, res) => {
 					.replace("ข้อมูลล่าสุด", "")
 					.trim();
 
-				const rainFall = {
+				const rainFall = await {
 					value: `${$(
 						$($($("#table_C53").parent()).parent()).parent()
 					)
@@ -426,10 +434,10 @@ router.get("/chaopaya", async (req, res) => {
 						.next()
 						.find('[bgcolor="#99ccff"] >strong')[0]
 						.children[1].next.data.trim()}`,
-					unit: rainFallUnit
+					unit: unit
 				};
 
-				const waterLevel = {
+				const waterLevel = await {
 					value: `${$(
 						$($($("#table_C53").parent()).parent()).parent()
 					)
@@ -440,7 +448,7 @@ router.get("/chaopaya", async (req, res) => {
 					unit: waterLevelUnit
 				};
 
-				const bankLevel = {
+				const bankLevel = await {
 					value: `${$(
 						$($($("#table_C53").parent()).parent()).parent()
 					)
@@ -467,7 +475,7 @@ router.get("/chaopaya", async (req, res) => {
 			const C54 = async () => {
 				const OriginalName = "สถานีป้อมพระจุลฯ";
 				const translateName = "Phra Chulachomklao Fortress Station";
-				const rainFallUnit = "Mm";
+				const unit = "Mm";
 				const waterLevelUnit = "M";
 				const bankLevelUnit = "M";
 				const code = "C.54";
@@ -475,7 +483,9 @@ router.get("/chaopaya", async (req, res) => {
 					Latitude: `13 22' 8"`,
 					Longitude: `100 34' 59"`
 				};
-				const time = $($($($("#table_C54").parent()).parent()).parent())
+				const time = await $(
+					$($($("#table_C54").parent()).parent()).parent()
+				)
 					.parent()
 					.next()
 					.find('[bgcolor="#999999"]')
@@ -483,7 +493,7 @@ router.get("/chaopaya", async (req, res) => {
 					.replace("ข้อมูลล่าสุด", "")
 					.trim();
 
-				const rainFall = {
+				const rainFall = await {
 					value: `${$(
 						$($($("#table_C54").parent()).parent()).parent()
 					)
@@ -491,10 +501,10 @@ router.get("/chaopaya", async (req, res) => {
 						.next()
 						.find('[bgcolor="#99ccff"] >strong')[0]
 						.children[1].next.data.trim()}`,
-					unit: rainFallUnit
+					unit: unit
 				};
 
-				const waterLevel = {
+				const waterLevel = await {
 					value: `${$(
 						$($($("#table_C54").parent()).parent()).parent()
 					)
@@ -505,7 +515,7 @@ router.get("/chaopaya", async (req, res) => {
 					unit: waterLevelUnit
 				};
 
-				const bankLevel = {
+				const bankLevel = await {
 					value: `${$(
 						$($($("#table_C54").parent()).parent()).parent()
 					)
@@ -530,14 +540,14 @@ router.get("/chaopaya", async (req, res) => {
 				// console.log(lastUpdate);
 				return data.push(dataC54);
 			};
-			S5();
-			C29();
-			C55();
-			C22A();
-			C12();
-			C4();
-			C53();
-			C54();
+			await S5();
+			await C29();
+			await C55();
+			await C22A();
+			await C12();
+			await C4();
+			await C53();
+			await C54();
 			// console.log(data);
 			res.json({
 				data
@@ -547,18 +557,38 @@ router.get("/chaopaya", async (req, res) => {
 });
 router.get("/chumporn", async (req, res) => {
 	let url =
-		"http://www.thaiwater.net/DATA/REPORT/php/chumporn_scada/chumporn.php?lang=";
+		"http://www.thaiwater.net/DATA/REPORT/php/chumporn_scada/chumporn.php?lang=en";
 	request.get(url, async (error, response, body) => {
 		if (!error && response.statusCode == 200) {
 			const $ = cheerio.load(body);
+			const unit = [];
+			const nameFactor = [];
 			const data = [];
 			const ID1 = async () => {
-				const OriginalName = "บ้านคีรีล้อม";
-				const translateName = "Ban Kee Ree Lom";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "1";
+				const getName = await $("#table_1")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_1")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+				const getFactor = await $("#table_9")
+					.find("td.style_gen:first-child")
+					.each(function(e) {
+						return nameFactor.push(
+							$(this)
+								.text()
+								.replace(" :", "")
+								.trim()
+						);
+					});
+				const getCode = "";
 				const AreaId = {
 					Latitude: `11 11' 16"`,
 					Longitude: `99 19' 39"`
@@ -573,19 +603,20 @@ router.get("/chumporn", async (req, res) => {
 					value: `${$("#table_1")
 						.find(".style_blue > strong")[0]
 						.children[0].data.trim()}`,
-					unit: rainFallUnit
+					unit: unit[0],
+					name:nameFactor[0]
 				};
 				const dayRain = await {
 					value: `${$("#table_1")
 						.find(".style_blue > strong")[1]
 						.children[0].data.trim()}`,
-					unit: dayRainlUnit
+						unit: unit[1],
+						name:nameFactor[1]
 				};
 
 				const dataID1 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -594,12 +625,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID1);
 			};
 			const ID2 = async () => {
-				const OriginalName = "อนามัยบ้านบางเจริญ";
-				const translateName = "Ban Bang Charoen";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "2";
+				const getName = await $("#table_2")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_2")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `11 00' 31.87"`,
 					Longitude: `99 15' 51.84"`
@@ -614,19 +654,20 @@ router.get("/chumporn", async (req, res) => {
 					value: `${$("#table_2")
 						.find(".style_blue > strong")[0]
 						.children[0].data.trim()}`,
-					unit: rainFallUnit
+					unit: unit[0],
+					name:nameFactor[0]
 				};
 				const dayRain = await {
 					value: `${$("#table_2")
 						.find(".style_blue > strong")[1]
 						.children[0].data.trim()}`,
-					unit: dayRainlUnit
+						unit: unit[1],
+					name:nameFactor[1]
 				};
 
 				const dataID2 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -635,12 +676,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID2);
 			};
 			const ID3 = async () => {
-				const OriginalName = "คลองท่าแซะ";
-				const translateName = "Klong Tha Sae";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "3";
+				const getName = await $("#table_3")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_3")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
@@ -654,27 +704,29 @@ router.get("/chumporn", async (req, res) => {
 					value: `${$("#table_3")
 						.find(".style_blue > strong")[0]
 						.children[0].data.trim()}`,
-					unit: rainFallUnit
+						unit: unit[0],
+						name:nameFactor[0]
 				};
 
 				const dayRain = await {
 					value: `${$("#table_3")
 						.find(".style_blue > strong")[1]
 						.children[0].data.trim()}`,
-					unit: dayRainlUnit
+						unit: unit[1],
+						name:nameFactor[1]
 				};
 
 				const gageHeight = await {
 					value: `${$("#table_3")
 						.find(".style_blue > strong")[2]
 						.children[0].data.trim()}`,
-					unit: gageHeightUnit
+						unit: unit[2],
+						name:nameFactor[2]
 				};
 
 				const dataID3 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -684,12 +736,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID3);
 			};
 			const ID4 = async () => {
-				const OriginalName = "วังมะปราง";
-				const translateName = "Wang Ma Prang";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "4";
+				const getName = await $("#table_4")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_4")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
@@ -703,27 +764,29 @@ router.get("/chumporn", async (req, res) => {
 					value: `${$("#table_4")
 						.find(".style_blue > strong")[0]
 						.children[0].data.trim()}`,
-					unit: rainFallUnit
+						unit: unit[0],
+						name:nameFactor[0]
 				};
 
 				const dayRain = await {
 					value: `${$("#table_4")
 						.find(".style_blue > strong")[1]
 						.children[0].data.trim()}`,
-					unit: dayRainlUnit
+						unit: unit[1],
+						name:nameFactor[1]
 				};
 
 				const gageHeight = await {
 					value: `${$("#table_4")
 						.find(".style_blue > strong")[2]
 						.children[0].data.trim()}`,
-					unit: gageHeightUnit
+						unit: unit[2],
+						name:nameFactor[2]
 				};
 
 				const dataID4 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -733,12 +796,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID4);
 			};
 			const ID5 = async () => {
-				const OriginalName = "อนามัยบ้านสลุย";
-				const translateName = "Ban Slui Sanitarium";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "5";
+				const getName = await $("#table_5")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_5")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `10 52' 14.55"`,
 					Longitude: `99 15' 09.23"`
@@ -752,20 +824,21 @@ router.get("/chumporn", async (req, res) => {
 					value: `${$("#table_5")
 						.find(".style_blue > strong")[0]
 						.children[0].data.trim()}`,
-					unit: rainFallUnit
+						unit: unit[0],
+						name:nameFactor[0]
 				};
 
 				const dayRain = await {
 					value: `${$("#table_5")
 						.find(".style_blue > strong")[1]
 						.children[0].data.trim()}`,
-					unit: dayRainlUnit
+						unit: unit[1],
+						name:nameFactor[1]
 				};
 
 				const dataID5 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -774,12 +847,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID5);
 			};
 			const ID6 = async () => {
-				const OriginalName = "อนามัยบ้านธรรมเจริญ";
-				const translateName = "Ban Dhamma Charoen Sanitarium";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "6";
+				const getName = await $("#table_6")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_6")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `10 51' 45.88"`,
 					Longitude: `99 07' 03.97"`
@@ -793,20 +875,21 @@ router.get("/chumporn", async (req, res) => {
 					value: `${$("#table_6")
 						.find(".style_blue > strong")[0]
 						.children[0].data.trim()}`,
-					unit: rainFallUnit
+						unit: unit[0],
+						name:nameFactor[0]
 				};
 
 				const dayRain = await {
 					value: `${$("#table_6")
 						.find(".style_blue > strong")[1]
 						.children[0].data.trim()}`,
-					unit: dayRainlUnit
+						unit: unit[1],
+						name:nameFactor[1]
 				};
 
 				const dataID6 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -815,12 +898,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID6);
 			};
 			const ID7 = async () => {
-				const OriginalName = "คลองรับร่อ";
-				const translateName = "Klong Rub Roe";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "7";
+				const getName = await $("#table_7")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_7")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
@@ -834,26 +926,28 @@ router.get("/chumporn", async (req, res) => {
 					value: `${$("#table_7")
 						.find(".style_blue > strong")[0]
 						.children[0].data.trim()}`,
-					unit: rainFallUnit
+						unit: unit[0],
+						name:nameFactor[0]
 				};
 				const dayRain = await {
 					value: `${$("#table_7")
 						.find(".style_blue > strong")[1]
 						.children[0].data.trim()}`,
-					unit: dayRainlUnit
+						unit: unit[1],
+						name:nameFactor[1]
 				};
 
 				const gageHeight = await {
 					value: `${$("#table_7")
 						.find(".style_blue > strong")[2]
 						.children[0].data.trim()}`,
-					unit: gageHeightUnit
+						unit: unit[2],
+						name:nameFactor[2]
 				};
 
 				const dataID7 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -863,12 +957,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID7);
 			};
 			const ID8 = async () => {
-				const OriginalName = "บ้านวังครก";
-				const translateName = "Ban Wang Krog";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "8";
+				const getName = await $("#table_8")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_8")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
@@ -882,26 +985,28 @@ router.get("/chumporn", async (req, res) => {
 					value: `${$("#table_8")
 						.find(".style_blue > strong")[0]
 						.children[0].data.trim()}`,
-					unit: rainFallUnit
+						unit: unit[0],
+						name:nameFactor[0]
 				};
 				const dayRain = await {
 					value: `${$("#table_8")
 						.find(".style_blue > strong")[1]
 						.children[0].data.trim()}`,
-					unit: dayRainlUnit
+						unit: unit[1],
+						name:nameFactor[1]
 				};
 
 				const gageHeight = await {
 					value: `${$("#table_8")
 						.find(".style_blue > strong")[2]
 						.children[0].data.trim()}`,
-					unit: gageHeightUnit
+						unit: unit[2],
+						name:nameFactor[2]
 				};
 
 				const dataID8 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -911,12 +1016,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID8);
 			};
 			const ID9 = async () => {
-				const OriginalName = "ประตูระบายน้ำหัววัง";
-				const translateName = "Hua Wang Gate";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "9";
+				const getName = await $("#table_9")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_9")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
@@ -930,33 +1044,36 @@ router.get("/chumporn", async (req, res) => {
 					value: `${$("#table_9")
 						.find(".style_blue > strong")[0]
 						.children[0].data.trim()}`,
-					unit: rainFallUnit
+						unit: unit[0],
+						name:nameFactor[0]
 				};
 				const dayRain = await {
 					value: `${$("#table_9")
 						.find(".style_blue > strong")[1]
 						.children[0].data.trim()}`,
-					unit: dayRainlUnit
+						unit: unit[1],
+						name:nameFactor[1]
 				};
 
 				const gageHeightPage = await {
-					value:`${	$("#table_9")
-					.find(".style_blue > strong")[2]
-					.children[0].data.trim()}`,
-					unit:gageHeightUnit
-				}
+					value: `${$("#table_9")
+						.find(".style_blue > strong")[2]
+						.children[0].data.trim()}`,
+						unit: unit[2],
+						name:nameFactor[2]
+				};
 
 				const gageHeightAfter = await {
-					value:`${$("#table_9")
-					.find(".style_blue > strong")[3]
-					.children[0].data.trim()}`,
-					unit:gageHeightUnit
-				}
+					value: `${$("#table_9")
+						.find(".style_blue > strong")[2]
+						.children[0].data.trim()}`,
+						unit: unit[3],
+						name:nameFactor[3]
+				};
 
 				const dataID9 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -967,12 +1084,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID9);
 			};
 			const ID10 = async () => {
-				const OriginalName = "ประตูระบายน้ำสามแก้ว";
-				const translateName = "Sam Kaew Gate";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "10";
+				const getName = await $("#table_10")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_10")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
@@ -982,39 +1108,41 @@ router.get("/chumporn", async (req, res) => {
 					.find("td:last-child")
 					.text()
 					.trim();
-				const rainFall =await {
-					value:`${$("#table_10")
-					.find(".style_blue > strong")[0]
-					.children[0].data.trim()}`,
-					unit:rainFallUnit
-				}
+				const rainFall = await {
+					value: `${$("#table_10")
+						.find(".style_blue > strong")[0]
+						.children[0].data.trim()}`,
+						unit: unit[0],
+						name:nameFactor[0]
+				};
 
 				const dayRain = await {
-					value:`${$("#table_10")
-					.find(".style_blue > strong")[1]
-					.children[0].data.trim()}`,
-					unit:dayRainlUnit
-				}
+					value: `${$("#table_10")
+						.find(".style_blue > strong")[1]
+						.children[0].data.trim()}`,
+						unit: unit[1],
+						name:nameFactor[1]
+				};
 
 				const gageHeightPage = await {
-					value:`${$("#table_10")
-					.find(".style_blue > strong")[2]
-					.children[0].data.trim()}`,
-					unit:gageHeightUnit
-				}
+					value: `${$("#table_10")
+						.find(".style_blue > strong")[2]
+						.children[0].data.trim()}`,
+						unit: unit[2],
+						name:nameFactor[2]
+				};
 
 				const gageHeightAfter = await {
-					value:`${	$("#table_10")
-					.find(".style_blue > strong")[3]
-					.children[0].data.trim()}`,
-					unit:gageHeightUnit
-				}
-
+					value: `${$("#table_10")
+						.find(".style_blue > strong")[2]
+						.children[0].data.trim()}`,
+						unit: unit[3],
+						name:nameFactor[3]
+				};
 
 				const dataID10 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -1025,12 +1153,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID10);
 			};
 			const ID11 = async () => {
-				const OriginalName = "สะพานเทศบาล2";
-				const translateName = "Municipality2 Bridge";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "11";
+				const getName = await $("#table_11")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_11")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
@@ -1041,30 +1178,32 @@ router.get("/chumporn", async (req, res) => {
 					.text()
 					.trim();
 				const rainFall = await {
-					value:`${$("#table_11")
-					.find(".style_blue > strong")[0]
-					.children[0].data.trim()}`,
-					unit:rainFallUnit
-				}
+					value: `${$("#table_11")
+						.find(".style_blue > strong")[0]
+						.children[0].data.trim()}`,
+						unit: unit[0],
+						name:nameFactor[0]
+				};
 
 				const dayRain = await {
-					value:`${$("#table_11")
-					.find(".style_blue > strong")[1]
-					.children[0].data.trim()}`,
-					unit:dayRainlUnit
-				}
+					value: `${$("#table_11")
+						.find(".style_blue > strong")[1]
+						.children[0].data.trim()}`,
+						unit: unit[1],
+						name:nameFactor[1]
+				};
 
 				const gageHeight = await {
-					value:`${$("#table_11")
-					.find(".style_blue > strong")[2]
-					.children[0].data.trim()}`,
-					unit:gageHeightUnit
-				}
+					value: `${$("#table_11")
+						.find(".style_blue > strong")[2]
+						.children[0].data.trim()}`,
+						unit: unit[2],
+						name:nameFactor[2]
+				};
 
 				const dataID11 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -1074,12 +1213,21 @@ router.get("/chumporn", async (req, res) => {
 				return data.push(dataID11);
 			};
 			const ID12 = async () => {
-				const OriginalName = "ปากน้ำ";
-				const translateName = "Pak Nam";
-				const rainFallUnit = "Mm";
-				const dayRainlUnit = "Mm";
-				const gageHeightUnit = "M";
-				const code = "12";
+				const getName = await $("#table_12")
+				.find(".style_big_bu")
+				.text()
+				.trim().substring(2).trim();
+				const getUnit = await $("#table_12")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+
+				const getCode = "";
 				const AreaId = {
 					Latitude: `0 0' 0"`,
 					Longitude: `0 0' 0"`
@@ -1090,30 +1238,32 @@ router.get("/chumporn", async (req, res) => {
 					.text()
 					.trim();
 				const rainFall = await {
-					value:`${$("#table_12")
-					.find(".style_blue > strong")[0]
-					.children[0].data.trim()}`,
-					unit:rainFallUnit
-				}
+					value: `${$("#table_12")
+						.find(".style_blue > strong")[0]
+						.children[0].data.trim()}`,
+						unit: unit[0],
+						name:nameFactor[0]
+				};
 
 				const dayRain = await {
-					value:`${	$("#table_12")
-					.find(".style_blue > strong")[1]
-					.children[0].data.trim()}`,
-					unit:dayRainlUnit
-				}
+					value: `${$("#table_12")
+						.find(".style_blue > strong")[1]
+						.children[0].data.trim()}`,
+						unit: unit[1],
+						name:nameFactor[1]
+				};
 
 				const gageHeight = await {
-					value:`${$("#table_12")
-					.find(".style_blue > strong")[2]
-					.children[0].data.trim()}`,
-					unit:gageHeightUnit
-				}
+					value: `${$("#table_12")
+						.find(".style_blue > strong")[2]
+						.children[0].data.trim()}`,
+						unit: unit[2],
+						name:nameFactor[2]
+				};
 
 				const dataID12 = {
-					OriginalName,
-					translateName,
-					code,
+					getName,
+					getCode,
 					AreaId,
 					time,
 					rainFall,
@@ -1143,473 +1293,1078 @@ router.get("/chumporn", async (req, res) => {
 
 router.get("/ppn", async (req, res) => {
 	let url =
-		"http://www.thaiwater.net/DATA/REPORT/php/ppn_scada/ppn_scada.php?lang=";
+		"http://www.thaiwater.net/DATA/REPORT/php/ppn_scada/ppn_scada.php?lang=en";
 	request.get(url, async (error, response, body) => {
 		if (!error && response.statusCode == 200) {
 			const $ = cheerio.load(body);
+			const unit = [];
+			const nameFactor = [];
 			const data = [];
 			const ID1 = async () => {
-				const lastUpdate = await $("#table_1")
+				const getName = await $("#table_1")
+					.find(".style_big_bu")
+					.text()
+					.trim();
+				const getUnit = await $("#table_1")
+					.find("td.style_gen:last-child")
+					.each(function(e) {
+						return unit.push(
+							$(this)
+								.text()
+								.trim()
+						);
+					});
+				const getFactor = await $("#table_1")
+					.find("td.style_gen:first-child")
+					.each(function(e) {
+						return nameFactor.push(
+							$(this)
+								.text()
+								.replace(" :", "")
+								.trim()
+						);
+					});
+				const getCode = "";
+				const AreaId = {
+					Latitude: `0 00' 00"`,
+					Longitude: `0 00' 00"`
+				};
+				const time = await $("#table_1")
 					.find('[bgcolor="#999999"]')
 					.find("td:last-child")
 					.text()
 					.trim();
 
-				const rainFall =
-					(await $("#table_1")
+				const rainFall = await {
+					value: `${$("#table_1")
 						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_1")
+						.children[0].data.trim()}`,
+					unit: unit[0],
+					name: nameFactor[0]
+				};
+
+				const UpStreamWaterLevel = await {
+					value: `${$("#table_1")
 						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_1")
+						.children[0].data.trim()}`,
+					unit: unit[1],
+					name: nameFactor[1]
+				};
+
+				const DownStreamWaterLevel = await {
+					value: `${$("#table_1")
 						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
+						.children[0].data.trim()}`,
+					unit: unit[2],
+					name: nameFactor[2]
+				};
+
 				const dataID1 = {
-					lastUpdate,
+					Name: getName,
+					code: getCode,
+					AreaId,
+					time,
 					rainFall,
 					UpStreamWaterLevel,
-					DownStreamWaterLevel
+					UpStreamWaterLevel
 				};
 				return data.push(dataID1);
 			};
 			const ID2 = async () => {
-				const lastUpdate = await $("#table_2")
+				const getName = await $("#table_2")
+					.find(".style_big_bu")
+					.text()
+					.trim();
+
+				const getFactor = await $("#table_2")
+					.find("td.style_gen:first-child")
+					.each(function(e) {
+						return nameFactor.push(
+							$(this)
+								.text()
+								.replace(" :", "")
+								.trim()
+						);
+					});
+				const getCode = "";
+				const AreaId = {
+					Latitude: `0 00' 00"`,
+					Longitude: `0 00' 00"`
+				};
+				const time = await $("#table_2")
 					.find('[bgcolor="#999999"]')
 					.find("td:last-child")
 					.text()
 					.trim();
 
-				const rainFall =
-					(await $("#table_2")
+				const rainFall = await {
+					value: `${$("#table_2")
 						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_2")
+						.children[0].data.trim()}`,
+					unit: unit[0],
+					name: nameFactor[0]
+				};
+
+				const UpStreamWaterLevel = await {
+					value: `${$("#table_2")
 						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_2")
+						.children[0].data.trim()}`,
+					unit: unit[1],
+					name: nameFactor[1]
+				};
+
+				const DownStreamWaterLevel = await {
+					value: `${$("#table_2")
 						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
+						.children[0].data.trim()}`,
+					unit: unit[2],
+					name: nameFactor[2]
+				};
+
 				const dataID2 = {
-					lastUpdate,
+					Name: getName,
+					code: getCode,
+					AreaId,
+					time,
 					rainFall,
 					UpStreamWaterLevel,
-					DownStreamWaterLevel
+					UpStreamWaterLevel
 				};
 				return data.push(dataID2);
 			};
 
 			const ID3 = async () => {
-				const lastUpdate = await $("#table_3")
+				const getName = await $("#table_3")
+					.find(".style_big_bu")
+					.text()
+					.trim();
+
+				const getFactor = await $("#table_3")
+					.find("td.style_gen:first-child")
+					.each(function(e) {
+						return nameFactor.push(
+							$(this)
+								.text()
+								.replace(" :", "")
+								.trim()
+						);
+					});
+				const getCode = "";
+				const AreaId = {
+					Latitude: `0 00' 00"`,
+					Longitude: `0 00' 00"`
+				};
+				const time = await $("#table_3")
 					.find('[bgcolor="#999999"]')
 					.find("td:last-child")
 					.text()
 					.trim();
 
-				const rainFall =
-					(await $("#table_3")
+				const rainFall = await {
+					value: `${$("#table_3")
 						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_3")
+						.children[0].data.trim()}`,
+					unit: unit[0],
+					name: nameFactor[0]
+				};
+
+				const UpStreamWaterLevel = await {
+					value: `${$("#table_3")
 						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_3")
+						.children[0].data.trim()}`,
+					unit: unit[1],
+					name: nameFactor[1]
+				};
+
+				const DownStreamWaterLevel = await {
+					value: `${$("#table_3")
 						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
+						.children[0].data.trim()}`,
+					unit: unit[2],
+					name: nameFactor[2]
+				};
+
 				const dataID3 = {
-					lastUpdate,
+					Name: getName,
+					code: getCode,
+					AreaId,
+					time,
 					rainFall,
 					UpStreamWaterLevel,
-					DownStreamWaterLevel
+					UpStreamWaterLevel
 				};
 				return data.push(dataID3);
 			};
 
 			const ID4 = async () => {
-				const lastUpdate = await $("#table_4")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_4")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_4")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_4")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_4")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID4 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_4")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_4")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_4")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_4")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_4")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID4 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID4);
 			};
 			const ID5 = async () => {
-				const lastUpdate = await $("#table_5")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_5")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_5")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_5")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_5")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID5 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_5")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_5")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_5")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_5")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_5")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID5 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID5);
 			};
 			const ID6 = async () => {
-				const lastUpdate = await $("#table_6")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_6")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_6")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_6")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_6")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID6 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_6")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_6")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_6")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_6")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_6")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID6 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID6);
 			};
 			const ID7 = async () => {
-				const lastUpdate = await $("#table_7")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_7")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_7")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_7")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_7")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID7 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_7")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_7")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_7")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_7")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_7")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID7 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID7);
 			};
 			const ID8 = async () => {
-				const lastUpdate = await $("#table_8")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_8")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_8")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_8")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_8")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID8 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_8")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_8")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_8")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_8")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_8")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID8 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID8);
 			};
 			const ID9 = async () => {
-				const lastUpdate = await $("#table_9")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_9")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_9")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_9")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_9")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID9 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_9")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_9")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_9")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_9")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_9")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID9 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID9);
 			};
 
 			const ID10 = async () => {
-				const lastUpdate = await $("#table_10")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_10")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_10")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_10")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_10")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID10 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_10")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_10")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_10")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_10")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_10")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID10 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID10);
 			};
 			const ID11 = async () => {
-				const lastUpdate = await $("#table_11")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_11")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_11")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_11")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_11")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID11 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_11")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_11")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_11")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_11")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_11")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID11 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID11);
 			};
 			const ID12 = async () => {
-				const lastUpdate = await $("#table_12")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_12")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_12")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_12")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_12")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID12 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_12")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_12")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_12")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_12")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_12")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID12 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID12);
 			};
 
 			const ID13 = async () => {
-				const lastUpdate = await $("#table_13")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_13")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_13")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_13")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_13")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID13 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_13")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_13")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_13")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_13")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_13")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID13 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID13);
 			};
 
 			const ID14 = async () => {
-				const lastUpdate = await $("#table_14")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_14")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_14")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_14")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_14")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID14 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_14")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_14")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_14")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_14")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_14")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID14 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID14);
 			};
 			const ID15 = async () => {
-				const lastUpdate = await $("#table_15")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_15")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_15")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_15")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_15")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID15 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_15")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_15")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_15")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_15")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_15")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID15 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID15);
 			};
 			const ID16 = async () => {
-				const lastUpdate = await $("#table_16")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_16")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_16")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_16")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_16")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID16 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_16")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_16")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_16")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_16")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_16")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID16 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID16);
 			};
 			const ID17 = async () => {
-				const lastUpdate = await $("#table_17")
-					.find('[bgcolor="#999999"]')
-					.find("td:last-child")
-					.text()
-					.trim();
+				const getName = await $("#table_17")
+				.find(".style_big_bu")
+				.text()
+				.trim();
 
-				const rainFall =
-					(await $("#table_17")
-						.find(".style_blue > strong")[0]
-						.children[0].data.trim()) + " mm";
-				const UpStreamWaterLevel =
-					$("#table_17")
-						.find(".style_blue > strong")[1]
-						.children[0].data.trim() + " mm";
-				const DownStreamWaterLevel =
-					$("#table_17")
-						.find(".style_blue > strong")[2]
-						.children[0].data.trim() + " mm";
-				const dataID17 = {
-					lastUpdate,
-					rainFall,
-					UpStreamWaterLevel,
-					DownStreamWaterLevel
-				};
+			const getFactor = await $("#table_17")
+				.find("td.style_gen:first-child")
+				.each(function(e) {
+					return nameFactor.push(
+						$(this)
+							.text()
+							.replace(" :", "")
+							.trim()
+					);
+				});
+			const getCode = "";
+			const AreaId = {
+				Latitude: `0 00' 00"`,
+				Longitude: `0 00' 00"`
+			};
+			const time = await $("#table_17")
+				.find('[bgcolor="#999999"]')
+				.find("td:last-child")
+				.text()
+				.trim();
+
+			const rainFall = await {
+				value: `${$("#table_17")
+					.find(".style_blue > strong")[0]
+					.children[0].data.trim()}`,
+				unit: unit[0],
+				name: nameFactor[0]
+			};
+
+			const UpStreamWaterLevel = await {
+				value: `${$("#table_17")
+					.find(".style_blue > strong")[1]
+					.children[0].data.trim()}`,
+				unit: unit[1],
+				name: nameFactor[1]
+			};
+
+			const DownStreamWaterLevel = await {
+				value: `${$("#table_17")
+					.find(".style_blue > strong")[2]
+					.children[0].data.trim()}`,
+				unit: unit[2],
+				name: nameFactor[2]
+			};
+
+			const dataID17 = {
+				Name: getName,
+				code: getCode,
+				AreaId,
+				time,
+				rainFall,
+				UpStreamWaterLevel,
+				UpStreamWaterLevel
+			};
 				return data.push(dataID17);
 			};
 			await ID1();
