@@ -1,0 +1,43 @@
+{
+  "name": "sails",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a Sails application",
+  "keywords": [],
+  "dependencies": {
+    "@sailshq/connect-redis": "^3.2.1",
+    "@sailshq/lodash": "^3.10.3",
+    "@sailshq/socket.io-redis": "^5.2.0",
+    "async": "2.0.1",
+    "connect-mongo": "^1.1.0",
+    "grunt": "^1.0.3",
+    "mongoose": "^5.2.5",
+    "sails": "^1.0.2",
+    "sails-hook-babel": "^6.0.3",
+    "sails-hook-grunt": "^3.0.2",
+    "sails-hook-orm": "^2.0.0-16",
+    "sails-hook-sockets": "^1.4.0",
+    "sails-mongo": "^1.0.1"
+  },
+  "devDependencies": {
+    "@sailshq/eslint": "^4.19.3",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node app.js",
+    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
+    "lint": "eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
+    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nam/sails.git"
+  },
+  "author": "nam",
+  "license": "",
+  "engines": {
+    "node": ">=10.6"
+  }
+}
