@@ -56,11 +56,13 @@ if production
     config.amazonBucket = amazonBucketProd
     config.amazonBucketOld = amazonBucketProdOld
     config.craftUrl = config.craftUrlProd
+    config.env = "production"
 else
     config.production = false
     config.amazonBucket = amazonBucketBeta
     config.amazonBucketOld = amazonBucketBetaOld
     config.craftUrl = config.craftUrlBeta
+    config.env = "beta"
 
 config.craftUrlNext = config.craftUrl + "next/"
 config.amazonBucketNext = config.amazonBucket + "next/"
@@ -264,26 +266,39 @@ gulp.task 'tag-branch', ->
     if process.argv.indexOf("--notag") >- 1
         console.log "No tag"
         return
+    
     process.chdir(config.appProjectPath)
 
     data = plist.parse(fs.readFileSync(config.infoPlistPath, 'utf8'))
     buildNumber = data.CFBundleVersion
     versionNumber = data.CFBundleShortVersionString
 
-    if config.production
-        env = "release"
-    else
-        env = "beta"
+    env = config.env
+
     tag = "#{env}-#{versionNumber}-#{buildNumber}"
     console.log "Tag: #{tag}"
 
-    execSync("git add -A")
-    execSync("git commit -m 'Changes for #{env} #{versionNumber}-#{buildNumber}'")
-    branch = execSync("git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p'")
-    console.log("Branch: #{branch}")
-    execSync("git push origin #{branch}")
     execSync("git tag #{tag}")
     execSync("git push origin #{tag}")
+
+gulp.task 'commit-branch', ->
+    if process.argv.indexOf("--notag") >- 1
+        console.log "No branch commit"
+        return
+    if process.argv.indexOf("--nobranch") >- 1
+        console.log "No release branch"
+        return
+    process.chdir(config.appProjectPath)
+
+    data = plist.parse(fs.readFileSync(config.infoPlistPath, 'utf8'))
+    buildNumber = data.CFBundleVersion
+    versionNumber = data.CFBundleShortVersionString
+
+    env = config.env
+
+    execSync("git add -A")
+    execSync("git commit -m 'Changes for #{env} #{versionNumber}-#{buildNumber}'")
+    execSync("git push origin HEAD")
 
 gulp.task 'what-version', ->
     process.chdir(config.appProjectPath)
@@ -305,27 +320,18 @@ gulp.task 'create-release-branch', ->
         console.log "No release branch"
         return
 
-    uri = "https://s3.amazonaws.com/#{config.amazonBucket}appcast.xml"
+    env = config.env
     getNextVersion (buildNumber, versionNumber) ->
-        branch = "branch-#{versionNumber}-#{buildNumber}"
+        branch = "branch-#{env}-#{versionNumber}-#{buildNumber}"
         console.log("Branch: #{branch}")
-        execSync("git checkout master")
-        execSync("git pull origin master")
         execSync("git checkout -b #{branch}")
-
-gulp.task 'build-frontend', ->
-    execSync("gulp --gulpfile '#{frontendBasePath}/gulpfile.coffee'")
 
 gulp.task 'cloudfront-invalidation-next', ->
     if process.argv.indexOf("--noinvalidate") >- 1
         console.log "No cloudfront invalidation"
         return
 
-    if config.production
-        env = "production"
-    else
-        env = "beta"
-
+    env = config.env
     execSync("aws configure set preview.cloudfront true")
     execSync("aws cloudfront create-invalidation --distribution-id E9MTE3E9ESDLE --paths /CraftManager/#{env}/next/appcast.xml /CraftManager/#{env}/next/appcast-next.xml /CraftManager/#{env}/next/CraftManager.zip", { stdio: [0, 1, 2] })
 
@@ -334,13 +340,30 @@ gulp.task 'cloudfront-invalidation', ->
         console.log "No cloudfront invalidation"
         return
 
-    if config.production
-        env = "production"
-    else
-        env = "beta"
-
+    env = config.env
     execSync("aws configure set preview.cloudfront true")
     execSync("aws cloudfront create-invalidation --distribution-id E9MTE3E9ESDLE --paths /CraftManager/#{env}/appcast.xml /CraftManager/#{env}/CraftManager.zip /CraftManager/#{env}/CraftInstaller.zip", { stdio: [0, 1, 2] })
+
+gulp.task 'switch-to-release-branch', ->
+    if process.argv.indexOf("--notag") >- 1
+        console.log "Do not switch to release branch"
+        return
+    env = config.env
+    uri = "https://s3.amazonaws.com/#{config.amazonBucketNext}appcast.xml"
+    getVersion uri, (err, buildNumber, versionNumber) ->
+        if err
+            throw err
+        branch = "branch-#{env}-#{versionNumber}-#{buildNumber}"
+        execSync("git fetch")
+        execSync("git checkout #{branch}")
+        currentBranch = execSync("git rev-parse --abbrev-ref HEAD")
+        currentBranch = "#{currentBranch}".replace /^\s+|\s+$/g, ""
+        if branch == currentBranch
+            console.log "Current Branch: #{currentBranch}"
+        else
+            console.log "Expected Branch: #{branch}"
+            console.log "Current Branch: #{currentBranch}"
+            throw new Error("Did not switch to branch")
 
 gulp.task 'pull-request', ->
     if process.argv.indexOf("--notag") >- 1
@@ -350,11 +373,7 @@ gulp.task 'pull-request', ->
         console.log "No Pull Request"
         return
 
-    if config.production
-        env = "production"
-    else
-        env = "beta"
-
+    env = config.env
     data = plist.parse(fs.readFileSync(config.infoPlistPath, 'utf8'))
     buildVersion = data.CFBundleVersion
     shortVersionString = data.CFBundleShortVersionString
@@ -446,8 +465,7 @@ gulp.task 'deploy', (callback) ->
         'increment-version',
         'default',
         'upload-to-s3',
-        'tag-branch',
-        'pull-request',
+        'commit-branch',
         'cloudfront-invalidation-next',
         'what-version',
         'get-urls',
@@ -455,12 +473,15 @@ gulp.task 'deploy', (callback) ->
 
 gulp.task 'go-live', (callback) ->
     runSequence(
+        'switch-to-release-branch',
         'test-update',
         'backup-s3-version',
         'backup-previous-version',
         'move-next-version',
         'backup-s3-version',
         'cloudfront-invalidation',
+        'tag-branch',
+        'pull-request',
         callback)
 
 gulp.task 'roll-back', (callback) ->
@@ -469,7 +490,7 @@ gulp.task 'roll-back', (callback) ->
         'move-previous-version',
         'cloudfront-invalidation',
         callback)
-
+        
 #this method returns the current live version and build number for the sparcle appcast
 getVersion = (uri, callback) ->
     res = request('GET', uri)
