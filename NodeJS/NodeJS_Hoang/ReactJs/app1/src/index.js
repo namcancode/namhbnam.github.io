@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
+// import registerServiceWorker from "./registerServiceWorker";
 /*
 const user = {
 	name: "Nam",
@@ -287,6 +287,7 @@ class FormComponent extends Component {
 
 ReactDOM.render(<FormComponent />, document.getElementById("root"));
 */
+/*
 class PanelComponent extends Component {
 	constructor(props) {
 		super(props);
@@ -307,7 +308,8 @@ function UpComponent(props) {
 function DownComponent(props) {
 	return <div className="blue">This is BLUE</div>;
 }
-
+*/
+/*
 ReactDOM.render(
 	<PanelComponent
 	up={<UpComponent />}
@@ -316,3 +318,5 @@ ReactDOM.render(
 	</PanelComponent>,
 	document.getElementById("root")
 );
+*/
+ReactDOM.render(<App/>,document.getElementById("root"));
