@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "../logo.svg";
 import "./App.css";
-
+import FoodContainer from '../containers/food-list'
 class App extends Component {
 	render() {
 		return (
@@ -13,6 +13,7 @@ class App extends Component {
 					<p>This is a tutorial React app with Redux</p>
 				</p>
 				<h2>List of foods:</h2>
+				<FoodContainer />
 				<hr />
 				<h2>Food details:</h2>
 			</div>

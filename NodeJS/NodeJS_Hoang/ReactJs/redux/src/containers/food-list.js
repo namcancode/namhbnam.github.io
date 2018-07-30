@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 export class FoodList extends Component {
-	static propTypes = {
-		prop: PropTypes
-	};
+	createFoodListItems() {
+		return this.props.foods.map(eachFood => {
+			return <li key={eachFood.id}>Name:{eachFood.name}</li>;
+		});
+
+	}
 
 	render() {
 		return (
 			<div>
-				<ul>
-					<li />
-				</ul>
+				<ul>{this.createFoodListItems()}</ul>
 			</div>
 		);
 	}
@@ -24,9 +24,5 @@ const mapStateToProps = state => {
 	};
 };
 
-const mapDispatchToProps = {};
+export default connect(mapStateToProps)(FoodList);
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(FoodList);
