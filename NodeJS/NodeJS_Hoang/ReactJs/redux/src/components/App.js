@@ -9,9 +9,9 @@ class App extends Component {
 				<header className="App-header">
 					<h1 className="App-title">Welcome to Redux</h1>
 				</header>
-				<p className="App-intro">
+				<div className="App-intro">
 					<p>This is a tutorial React app with Redux</p>
-				</p>
+				</div>
 				<h2>List of foods:</h2>
 				<FoodContainer />
 				<hr />

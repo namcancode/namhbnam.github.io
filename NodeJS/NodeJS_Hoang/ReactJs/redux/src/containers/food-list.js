@@ -1,28 +1,42 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {selectFood} from '../actions/index';
 
-export class FoodList extends Component {
-	createFoodListItems() {
-		return this.props.foods.map(eachFood => {
-			return <li key={eachFood.id}>Name:{eachFood.name}</li>;
-		});
+class FoodList extends Component {
 
-	}
-
-	render() {
-		return (
-			<div>
-				<ul>{this.createFoodListItems()}</ul>
-			</div>
-		);
-	}
+    createFoodListItems() {
+        let listItems= this.props.foods.map(
+            (eachFood) => {
+                return (
+                    <li key={eachFood.id} onClick={
+                        () => {
+                            this.props.selectFood(eachFood)
+                        }
+                    }>
+                        Food's name: {eachFood.name}
+                    </li>
+                );
+            }
+        );
+        return listItems;
+    }
+    render() {
+        return (
+            <ul>
+                {this.createFoodListItems()}
+            </ul>
+        );
+    }
 }
-
-const mapStateToProps = state => {
-	return {
-		foods: state.foods
-	};
-};
-
-export default connect(mapStateToProps)(FoodList);
-
+function mapStateToProps(state) {
+    return {
+        foods: state.foods
+    };
+}
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({selectFood: selectFood}, dispatch);
+}
+// container components to connect the presentational components to Redux
+let FoodContainer = connect(mapStateToProps, mapDispatchToProps)(FoodList);
+export default FoodContainer;
