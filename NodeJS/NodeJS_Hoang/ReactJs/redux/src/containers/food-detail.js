@@ -11,7 +11,7 @@ class FoodDetail extends Component {
 				<img
 					src={
 						this.props.activeFood.imageUrl
-							? "http://" + this.props.activeFood.imageUrl
+							? this.props.activeFood.imageUrl
 							: ""
 					}
 					height={this.props.activeFood.imageUrl ? 200 : 0}

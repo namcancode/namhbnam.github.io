@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import logo from "../logo.svg";
 import "./App.css";
 import FoodContainer from '../containers/food-list'
+import FoodDetailContainer from '../containers/food-detail'
 class App extends Component {
 	render() {
 		return (
@@ -16,6 +17,7 @@ class App extends Component {
 				<FoodContainer />
 				<hr />
 				<h2>Food details:</h2>
+				<FoodDetailContainer />
 			</div>
 		);
 	}
