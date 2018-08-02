@@ -1,8 +1,8 @@
 #gendat {
     margin-left: 5px;
 }
-@import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
 .sortSelected::after {
     content: '\f00c';
     font-family: FontAwesome;
@@ -11,10 +11,16 @@
     margin: 0px 0px 0px 10px;
     float: left;
 }
+
 .sortSelected a {
     width: 250px;
     float: left;
 }
+
 .dropdown-menu {
     width: 300px;
+}
+
+.label {
+    cursor: pointer;
 }

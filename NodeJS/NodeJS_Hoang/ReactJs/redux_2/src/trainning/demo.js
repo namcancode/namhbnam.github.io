@@ -1,1 +1,0 @@
-import {creatStore} from 'redux';
