@@ -5,9 +5,9 @@ export const listAll = () => {
 	};
 };
 
-export const addTask = task => {
+export const saveTask = task => {
 	return {
-		type: types.ADD_TASK,
+		type: types.SAVE_TASK,
 		task
 	};
 };
@@ -17,22 +17,26 @@ export const toggleForm = () => {
 		type: types.TOGGLE_FORM
 	};
 };
+
 export const openForm = () => {
 	return {
 		type: types.OPEN_FORM
 	};
 };
+
 export const closeForm = () => {
 	return {
 		type: types.CLOSE_FORM
 	};
 };
+
 export const updateStatus = id => {
 	return {
 		type: types.UPDATE_STATUS_TASK,
 		id
 	};
 };
+
 export const deleteTask = id => {
 	return {
 		type: types.DELETE_TASK,
@@ -44,5 +48,19 @@ export const updateContent = id =>{
 	return {
 		type: types.UPDATE_CONTENT_TASK,
 		id
+	}
+}
+
+export const editTask = task =>{
+	return {
+		type: types.EDIT_TASK,
+		task
+	}
+}
+
+export const filterTask = filter =>{
+	return {
+		type: types.FILTER_TABLE,
+		filter
 	}
 }

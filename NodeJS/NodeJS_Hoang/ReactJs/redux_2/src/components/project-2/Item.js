@@ -4,14 +4,14 @@ import * as actions from "../../actions";
 class Item extends Component {
 	onUpdateStt = () => {
 		this.props.onUpdateStt(this.props.tasks.id);
-		//   this.props.onUpdateStt(this.props.tasks.id);
 	};
 
 	onDelete = () => {
 		this.props.onDelete(this.props.tasks.id);
 	};
 	onUpdateContent = () => {
-		this.props.onUpdateContent(this.props.tasks.id);
+		this.props.onOpenForm();
+		this.props.onEditTask(this.props.tasks);
 	};
 
 	render() {
@@ -63,9 +63,18 @@ const mapDispatchToProps = (dispatch, props) => {
 		onUpdateStt: id => {
 			dispatch(actions.updateStatus(id));
 		},
-		onDelete: id =>{
+		onDelete: id => {
 			dispatch(actions.deleteTask(id));
 		},
+		onCloseForm: () => {
+			dispatch(actions.closeForm());
+		},
+		onOpenForm: () => {
+			dispatch(actions.openForm());
+		},
+		onEditTask : (task) =>{
+			dispatch(actions.editTask(task))
+		}
 	};
 };
 

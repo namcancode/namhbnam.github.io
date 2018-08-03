@@ -36,13 +36,19 @@ const myReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.LIST_ALL:
 			return state;
-		case types.ADD_TASK:
-			const newTask = {
-				id: randomID(),
+		case types.SAVE_TASK:
+			const task = {
+				id: action.task.id ? action.task.id : null,
 				name: action.task.name,
 				status: action.task.status ? true : false
 			};
-			state.push(newTask);
+			if (!task.id) {
+				task.id = randomID();
+				state.push(task);
+			} else {
+				const indexUpdate = findIndex(state, task.id);
+				state[indexUpdate] = task;
+			}
 			localStorage.setItem("tasks", JSON.stringify(state));
 			return [...state];
 		case types.UPDATE_STATUS_TASK:
@@ -56,7 +62,7 @@ const myReducer = (state = initialState, action) => {
 		case types.DELETE_TASK:
 			const indexDelete = findIndex(state, action.id);
 			if (indexDelete !== -1) {
-				state.splice(index, 1);
+				state.splice(indexDelete, 1);
 				localStorage.setItem("tasks", JSON.stringify(state));
 			}
 			return [...state];
