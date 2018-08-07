@@ -6,39 +6,6 @@ import "./App.css";
 import { connect } from "react-redux";
 import * as actions from "./actions/index";
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			keyword: "",
-			sort: {
-				by: "name",
-				value: 1
-			}
-		};
-	}
-
-	componentWillMount() {
-		// only called once
-		// if (localStorage && localStorage.getItem("tasks")) {
-		// 	var taskdata = JSON.parse(localStorage.getItem("tasks"));
-		// 	this.setState({
-		// 		tasks: taskdata
-		// 	});
-		// }
-		// var { tasks } = this.state;
-		// tasks.sort((a, b) => {
-		// 	var nameA = a.name.toUpperCase();
-		// 	var nameB = b.name.toUpperCase();
-		// 	if (nameA < nameB) {
-		// 		return -1;
-		// 	}
-		// 	if (nameA > nameB) {
-		// 		return 1;
-		// 	}
-		// 	return 0;
-		// });
-	}
-
 	onToggleForm = () => {
 		if (this.props.itemEditing && this.props.itemEditing !== "") {
 			this.props.onOpenForm();
@@ -52,100 +19,10 @@ class App extends Component {
 		});
 	};
 
-	// onDelete = id => {
-	// 	var { tasks } = this.state;
-	// 	var index = this.findIndex(id);
-
-	// 	this.onCloseForm();
-	// 	if (index !== -1) {
-	// 		tasks.splice(index, 1);
-
-	// 		this.setState({
-	// 			tasks: tasks
-	// 		});
-	// 		localStorage.setItem("tasks", JSON.stringify(tasks));
-	// 	}
-	// };
-
-
-
-
-	onSearch = keyword => {
-		this.setState({
-			keyword: keyword
-		});
-	};
-
-	onSort = (sortBy, sortValue) => {
-		this.setState({
-			sort: {
-				by: sortBy,
-				value: sortValue
-			}
-		});
-	};
-
 	//------------------------------------------------------------------------------------------
 
 	render() {
-		// var {
-		// tasks,
-		// isDisplayForm,
-		// taskEditing
-		// filter,
-		// keyword,
-		// sort
-		// } = this.state;
 		const { isDisplayForm } = this.props;
-		// console.log(sort);
-
-
-		// tasks = tasks.filter(task => {
-		// 	return task.name.toLowerCase().indexOf(keyword) !== -1;
-		// });
-
-
-		// if (sort.by === "name" && sort.value === 1) {
-		// tasks.sort((a, b) => {
-		// 	var nameA = a.name.toUpperCase();
-		// 	var nameB = b.name.toUpperCase();
-		// 	if (nameA < nameB) {
-		// 		return -1;
-		// 	}
-		// 	if (nameA > nameB) {
-		// 		return 1;
-		// 	}
-		// 	return 0;
-		// });
-		// }
-
-		// if (sort.by === "name" && sort.value === -1) {
-		// 	tasks.sort((a, b) => {
-		// 		var nameA = a.name.toUpperCase();
-		// 		var nameB = b.name.toUpperCase();
-		// 		if (nameA < nameB) {
-		// 			return 1;
-		// 		}
-		// 		if (nameA > nameB) {
-		// 			return -1;
-		// 		}
-		// 		return 0;
-		// 	});
-		// }
-
-		// if (sort.by === "status" && sort.value === 1) {
-		// 	tasks.sort((a, b) => {
-		// 		return b.status - a.status;
-		// 	});
-		// }
-		// if (sort.by === "status" && sort.value === -1) {
-		// 	tasks.sort((a, b) => {
-		// 		return a.status - b.status;
-		// 	});
-		// }
-
-
-
 		return (
 			<div className="container">
 				<div className="text-center">
@@ -177,13 +54,9 @@ class App extends Component {
 							<span className="fa fa-plus" /> Thêm Công Việc
 						</button>
 						<hr />
-						<Control
-							onSearch={this.onSearch}
-							onSort={this.onSort}
-						/>
+						<Control />
 						&nbsp;
-						<Table
-						/>
+						<Table />
 					</div>
 				</div>
 			</div>
