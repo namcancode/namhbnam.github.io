@@ -17,6 +17,10 @@ body {
 	cursor: pointer;
 	min-height: 12vw;
 	width: 12vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	user-select: none
 }
 
 .square:hover {
@@ -29,4 +33,8 @@ body {
 
 .white {
 	background-color: #ffffff;
+}
+
+.square svg {
+	cursor: pointer;
 }

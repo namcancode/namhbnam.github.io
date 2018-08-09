@@ -23,7 +23,7 @@ const initialState = [
 		id: 3,
 		name: "Samsung S9",
 		image:
-			"https://cdn.tgdd.vn/Products/Images/42/177047/samsung-galaxy-s9-tim-1-400x460.png",
+			"https://www.bhphotovideo.com/images/images2500x2500/samsung_sm_g960uzkaxaa_samsung_galaxy_s9_1394702.jpg",
 		description: "Sản phẩm do Samsung sản xuất",
 		price: 900,
 		inventory: 5,

@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="hidden-sn animated navy-blue-skin">
+<body class="hidden-sn animated light-blue-skin">
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
@@ -32,11 +32,15 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript " src="%PUBLIC_URL%/js/mdb.min.js "></script>
   <!-- Customizer -->
-  <script type="text/javascript " src="https://mdbootstrap.com/live/_MDB/js/customizer.min.js "></script>
+  <script type="text/javascript " src="https://mdbootstrap.com/live/_MDB/js/customizer.min.js"></script>
   <!-- Custom -->
   <script type="text/javascript ">
   $(()=>{
-    $(".button-collapse ").sideNav()
+   // SideNav Button Initialization
+$(".button-collapse").sideNav();
+// SideNav Scrollbar Initialization
+var sideNavScrollbar = document.querySelector('.custom-scrollbar');
+Ps.initialize(sideNavScrollbar);
   })
   </script>
 </body>
