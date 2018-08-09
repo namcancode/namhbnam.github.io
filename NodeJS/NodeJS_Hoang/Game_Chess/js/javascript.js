@@ -1,10 +1,15 @@
 for (let i = 0; i < 8; i++) {
-  for (let j = 0; j < 8; j++) {
-    (i % 2 == j % 2)
-      ? $('.container').append(`<div class="square ui-widget-content black"  data-x ="${i}" data-y ="${j}"data-point = "${i},${j}"> </div>`)
-      : $('.container').append(`<div class="square white" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}"></div>`);
-    (i == 0 && j == 0) ? $("div.square:nth-child(1)").append(
-      `
+	for (let j = 0; j < 8; j++) {
+		i % 2 == j % 2
+			? $(".container").append(
+					`<div class="square ui-widget-content black"  data-x ="${i}" data-y ="${j}"data-point = "${i},${j}"> </div>`
+			  )
+			: $(".container").append(
+					`<div class="square white" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}"></div>`
+			  );
+		i == 0 && j == 0
+			? $("div.square:nth-child(1)").append(
+					`
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="45" height="45" id="castle">
       <g style="opacity:1; fill:none; fill-rule:evenodd; fill-opacity:1; stroke:#137dc0; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; stroke-miterlimit:4; stroke-dasharray:none; stroke-opacity:1;">
         <g style="fill:#137dc0; stroke:#0081ab; stroke-linecap:butt;">
@@ -20,11 +25,23 @@ for (let i = 0; i < 8; i++) {
            style="fill:none; stroke:#ffffff; stroke-linejoin:miter;" />
       </g>
     </svg>
-    `)
-      : ""
-
-  }
+    `
+			  )
+			: "";
+	}
 }
-$(function () {
-  $("#castle").draggable();
+$(function() {
+	$("#castle").draggable({
+		helper: "clone"
+	});
+	$("div").droppable({
+		drop: function(event, ui) {
+			$(".square").append(ui.draggable);
+			const id = $(ui.draggable).attr("id");
+			const html = $(ui.draggable).html();
+			const box = $(this).attr("id");
+			// $(ui.draggable).remove();
+			// $("#" + box).append(`<div id="${id}">${html}</div>`);
+		}
+	});
 });
