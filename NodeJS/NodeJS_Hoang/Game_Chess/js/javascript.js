@@ -1,45 +1,196 @@
-for (let i = 0; i < 8; i++) {
-	for (let j = 0; j < 8; j++) {
-		i % 2 == j % 2
-			? $(".container").append(
-					`<div class="square ui-widget-content black"  data-x ="${i}" data-y ="${j}"data-point = "${i},${j}"> </div>`
-			  )
-			: $(".container").append(
-					`<div class="square white" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}"></div>`
-			  );
-		i == 0 && j == 0
-			? $("div.square:nth-child(1)").append(
-					`
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="45" height="45" id="castle">
-      <g style="opacity:1; fill:none; fill-rule:evenodd; fill-opacity:1; stroke:#137dc0; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; stroke-miterlimit:4; stroke-dasharray:none; stroke-opacity:1;">
-        <g style="fill:#137dc0; stroke:#0081ab; stroke-linecap:butt;">
-          <path
-            d="M 9,36 C 12.39,35.03 19.11,36.43 22.5,34 C 25.89,36.43 32.61,35.03 36,36 C 36,36 37.65,36.54 39,38 C 38.32,38.97 37.35,38.99 36,38.5 C 32.61,37.53 25.89,38.96 22.5,37.5 C 19.11,38.96 12.39,37.53 9,38.5 C 7.646,38.99 6.677,38.97 6,38 C 7.354,36.06 9,36 9,36 z" />
-          <path
-            d="M 15,32 C 17.5,34.5 27.5,34.5 30,32 C 30.5,30.5 30,30 30,30 C 30,27.5 27.5,26 27.5,26 C 33,24.5 33.5,14.5 22.5,10.5 C 11.5,14.5 12,24.5 17.5,26 C 17.5,26 15,27.5 15,30 C 15,30 14.5,30.5 15,32 z" />
-          <path
-            d="M 25 8 A 2.5 2.5 0 1 1  20,8 A 2.5 2.5 0 1 1  25 8 z" />
-        </g>
-        <path
-           d="M 17.5,26 L 27.5,26 M 15,30 L 30,30 M 22.5,15.5 L 22.5,20.5 M 20,18 L 25,18"
-           style="fill:none; stroke:#ffffff; stroke-linejoin:miter;" />
-      </g>
-    </svg>
-    `
-			  )
-			: "";
+const showBoard = async () => {
+	for (let i = 0; i < 8; i++) {
+		for (let j = 0; j < 8; j++) {
+			await (i % 2 == j % 2
+				? $(".container").append(
+						`<div class="square ui-widget-content black"  data-x ="${i}" data-y ="${j}"data-point = "${i},${j}"> </div>`
+				  )
+				: $(".container").append(
+						`<div class="square white" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}"></div>`
+				  ));
+		}
 	}
-}
-$(function() {
-	$("#castle").draggable({
-		helper: "clone"
+	await chess();
+};
+const chess = async () => {
+	$("div.square:nth-child(1)").append(
+		`
+         <div class="chess--piece" id="black-castle-left">
+        <img  src="../img/br.svg"
+        </div>
+         `
+	);
+	$("div.square:nth-child(8)").append(
+		`
+         <div class="chess--piece" id="black-castle-rigth">
+        <img  src="../img/br.svg"
+        </div>
+         `
+	);
+
+	$("div.square:nth-child(2)").append(
+		`
+         <div class="chess--piece" id="black-knight-left">
+        <img  src="../img/bn.svg"
+        </div>
+         `
+	);
+	$("div.square:nth-child(7)").append(
+		`
+         <div class="chess--piece" id="black-knight-right">
+        <img  src="../img/bn.svg"
+        </div>
+         `
+	);
+
+	$("div.square:nth-child(3)").append(
+		`
+         <div  class="chess--piece" id="black-bishop-left">
+        <img  src="../img/bb.svg"
+        </div>
+         `
+	);
+	$("div.square:nth-child(6)").append(
+		`
+         <div  class="chess--piece" id="black-bishop-right">
+        <img  src="../img/bb.svg"
+        </div>
+         `
+	);
+
+	$("div.square:nth-child(4)").append(
+		`
+         <div class="chess--piece" id="black-queen">
+        <img  src="../img/bq.svg"
+        </div>
+         `
+	);
+	$("div.square:nth-child(5)").append(
+		`
+         <div class="chess--piece" id="black-king">
+        <img  src="../img/bk.svg"
+        </div>
+         `
+	);
+	$(
+		"div.square:nth-child(9)"
+	).append(
+		`
+         <div class="chess--piece" id="black-pawn-1">
+        <img  src="../img/bp.svg"
+        </div>
+         `
+  );
+  $(
+		"div.square:nth-child(10)"
+	).append(
+		`
+         <div class="chess--piece" id="black-pawn-2">
+        <img  src="../img/bp.svg"
+        </div>
+         `
+  );
+  $(
+		"div.square:nth-child(11)"
+	).append(
+		`
+         <div class="chess--piece" id="black-pawn-3">
+        <img  src="../img/bp.svg"
+        </div>
+         `
+  );
+  $(
+		"div.square:nth-child(12)"
+	).append(
+		`
+         <div class="chess--piece" id="black-pawn-4">
+        <img  src="../img/bp.svg"
+        </div>
+         `
+  );
+  $(
+		"div.square:nth-child(13)"
+	).append(
+		`
+         <div class="chess--piece" id="black-pawn-5">
+        <img  src="../img/bp.svg"
+        </div>
+         `
+  );
+  $(
+		"div.square:nth-child(14)"
+	).append(
+		`
+         <div class="chess--piece" id="black-pawn-6">
+        <img  src="../img/bp.svg"
+        </div>
+         `
+  );
+  $(
+		"div.square:nth-child(15)"
+	).append(
+		`
+         <div class="chess--piece" id="black-pawn-7">
+        <img  src="../img/bp.svg"
+        </div>
+         `
+  );
+  $(
+		"div.square:nth-child(16)"
+	).append(
+		`
+         <div class="chess--piece" id="black-pawn-8">
+        <img  src="../img/bp.svg"
+        </div>
+         `
+	);
+};
+
+$(async () => {
+	await showBoard();
+
+	$("#black-castle-left").draggable({
+		helper: "clone",
+		start: function(event, ui) {
+			console.log($(this).parent());
+		}
 	});
-	$("div").droppable({
+	$("#black-castle-right").draggable({
+		helper: "clone",
+		start: function(event, ui) {
+			console.log($(this).parent());
+		}
+	});
+	$("#black-bishop-left").draggable({
+		helper: "clone",
+		start: function(event, ui) {
+			console.log($(this).parent());
+		}
+	});
+	$("#black-bishop-right").draggable({
+		helper: "clone",
+		start: function(event, ui) {
+			console.log($(this).parent());
+		}
+	});
+	$("#black-queen").draggable({
+		helper: "clone",
+		start: function(event, ui) {
+			console.log($(this).parent());
+		}
+	});
+	$("#black-king").draggable({
+		helper: "clone",
+		start: function(event, ui) {
+			console.log($(this).parent());
+		}
+	});
+	$(".square").droppable({
+		hoverClass: "hovering",
 		drop: function(event, ui) {
-			$(".square").append(ui.draggable);
-			const id = $(ui.draggable).attr("id");
-			const html = $(ui.draggable).html();
-			const box = $(this).attr("id");
+			$(this).append(ui.draggable);
+			console.log(this);
+			// console.log(this);
 			// $(ui.draggable).remove();
 			// $("#" + box).append(`<div id="${id}">${html}</div>`);
 		}
