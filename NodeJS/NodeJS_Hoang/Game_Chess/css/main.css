@@ -13,7 +13,7 @@ body {
 	border: 1px solid black;
 }
 
-.square, .fill {
+.square {
 	min-height: 12vw;
 	width: 12vw;
 	display: flex;
@@ -23,12 +23,19 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	/* -webkit-box-shadow:  0 0 3px 3px yellow;
+   -moz-box-shadow:  0 0 3px 3px yellow; */
+   /* box-shadow:  0 0 3px 3px yellow; */
+
 }
 
 .fill {
-	background: rgb(255, 238, 0);
-	opacity: .6;
-	display: none
+	/* background: rgb(255, 238, 0); */
+	/* opacity: 1;
+	display: block;
+	position: absolute; */
+
+
 }
 
 .square:hover {
@@ -45,7 +52,8 @@ body {
 
 .chess--piece {
 	cursor: pointer;
-	width: 50px
+	width: 50px;
+
 }
 
 .chess--piece img {

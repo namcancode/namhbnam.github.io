@@ -4,17 +4,18 @@ const showBoard = async () => {
 		for (let j = 0; j < 8; j++) {
 			i % 2 == j % 2
 				? $(".container").append(
-						`<div class="square ui-widget-content black"  data-x ="${i}" data-y ="${j}"data-point = "${i},${j}">
-						<div class = "fill" id="${8 * i +
-							j}" data-x ="${i}" data-y ="${j}"data-point = "${i}${j}"></div>
-							<span>${8 * i + j}</span>
+						`<div class="square ui-widget-content black" id="${8 *
+							i +
+							j}" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}">
+
+
 						</div>`
 				  )
 				: $(".container").append(
-						`<div class="square white" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}">
-						<div class = "fill" id="${8 * i +
-							j}" data-x ="${i}" data-y ="${j}"data-point = "${i}${j}"></div>
-							<span>${8 * i + j}</span>
+						`<div class="square white" data-x ="${i}" id="${8 * i +
+							j}" data-y ="${j}"data-point = "${i},${j}">
+
+
 						</div>`
 				  );
 		}
@@ -150,7 +151,7 @@ const chess = async () => {
 	);
 	$("div.square:nth-child(64)").append(
 		`
-         <div class="chess--piece" id="white-castle-rigth" data-team="phoenix">
+         <div class="chess--piece" id="white-castle-right" data-team="phoenix">
         <img  src="./img/wr.svg"
         </div>
          `
@@ -261,10 +262,70 @@ const chess = async () => {
 
 $(async () => {
 	await showBoard();
+	function getPointBishop(n) {
+		let t = 0;
+		let i, j;
+		i = parseInt(n / 8);
+		j = n % 8;
+		t = Math.min(i, j);
+		let a = (i - t) * 8 + j - t;
+		t = Math.min(i, 7 - j);
+		let b = (i - t) * 8 + j + t;
+		t = Math.min(7 - i, j);
+		let c = (i + t) * 8 + j - t;
+		t = Math.min(7 - i, 7 - j);
+		let d = (i + t) * 8 + j + t;
+		const result = [a, d, b, c];
+		return result;
+	}
 	$(
 		"#black-castle-left, #black-castle-right,#black-knight-right,#black-knight-left,#black-bishop-left,#black-bishop-right,#black-queen,#black-king,#black-pawn-1,#black-pawn-2,#black-pawn-3,#black-pawn-4,#black-pawn-5,#black-pawn-6,#black-pawn-7,#black-pawn-8,#white-castle-left, #white-castle-right,#white-knight-right,#white-knight-left,#white-bishop-left,#white-bishop-right,#white-queen,#white-king,#white-pawn-1,#white-pawn-2,#white-pawn-3,#white-pawn-4,#white-pawn-5,#white-pawn-6,#white-pawn-7,#white-pawn-8"
 	).draggable({
-		helper: "clone"
+		helper: "clone",
+		start: function(event, ui) {
+			let currentName = $(this).attr("id");
+			let currentPoint = $(this)
+				.parent()
+				.attr("id");
+			if (
+				currentName == "black-castle-left" ||
+				currentName == "black-castle-right" ||
+				currentName == "white-castle-right" ||
+				currentName == "white-castle-left"
+			) {
+				for (
+					let i = parseInt(currentPoint / 8) * 8;
+					i <= (parseInt(currentPoint / 8) + 1) * 8 - 1;
+					i++
+				) {
+					if ($(`#${i}`)[0].childElementCount == 0) {
+						$(`#${i}`).css("box-shadow", "0 0 3px 3px yellow");
+					}
+					// console.log($(`#${i}`)[0].children[0].dataset.team);
+
+				}
+				for (
+					let i = parseInt(currentPoint % 8) + 1 - 1;
+					i <= parseInt(currentPoint % 8) + 1 + 55;
+					i = i + 8
+				) {
+					if ($(`#${i}`)[0].childElementCount == 0) {
+						$(`#${i}`).css("box-shadow", "0 0 3px 3px yellow");
+					}
+					// if($(`#${i}`)[0].children[0].dataset.team == "dragon"){
+					// 	$(".square").css("box-shadow", "");
+					// }
+				}
+			}
+		},
+		stop: function(event, ui) {
+			let currentName = $(this).attr("id");
+			let currentPoint = $(this)
+				.parent()
+				.find(".fill")
+				.attr("id");
+			$(".square").css("box-shadow", "");
+		}
 	});
 	$(".square").droppable({
 		// scope: "tasks", //thằng này để chặn di chuyển
@@ -285,19 +346,23 @@ $(async () => {
 			if (startPoint[0] == endPoint[0] && startPoint[1] == endPoint[1]) {
 				return;
 			}
-			if ($(this)[0].children[1]) {
-				const teamPieces = $(this)[0].children[1].dataset.team;
+
+			// while (currentPoint >= 0) {
+			// 	console.log($(`[data-point='${currentPoint}']`));
+			// }
+			if ($(this)[0].children[0]) {
+				const teamPieces = $(this)[0].children[0].dataset.team;
 				if (teamate === teamPieces) {
 					return;
 				} else {
-					$(this)[0].children[1].remove();
-					$(this).append(ui.draggable);
+					// $(this)[0].children[1].remove();
+					$(this).html(ui.draggable);
 					console.log(
 						`Quân Cờ: ${nameCurrent}\nBắt đầu: ${startPointInt}\nKết thúc:${endPointInt}\nQuân Đội:${teamate}`
 					);
 				}
 			} else {
-				$(this).append(ui.draggable);
+				$(this).html(ui.draggable);
 				console.log(
 					`Quân Cờ: ${nameCurrent}\nBắt đầu: ${startPointInt}\nKết thúc:${endPointInt}\nQuân Đội:${teamate}`
 				);
