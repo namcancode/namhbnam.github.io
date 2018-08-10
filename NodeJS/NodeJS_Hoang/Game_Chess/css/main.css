@@ -13,14 +13,22 @@ body {
 	border: 1px solid black;
 }
 
-.square {
-	cursor: pointer;
+.square, .fill {
 	min-height: 12vw;
 	width: 12vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	user-select: none
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.fill {
+	background: rgb(255, 238, 0);
+	opacity: .6;
+	display: none
 }
 
 .square:hover {
@@ -35,16 +43,13 @@ body {
 	background-color: #ffffff;
 }
 
-.square svg {
-	cursor: pointer;
-}
-
 .chess--piece {
 	cursor: pointer;
 	width: 50px
 }
 
-.chess--piece img  {
+.chess--piece img {
+	cursor: pointer;
 	width: 100%
 }
 
