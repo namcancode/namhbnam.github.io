@@ -7,15 +7,11 @@ const showBoard = async () => {
 						`<div class="square ui-widget-content black" id="${8 *
 							i +
 							j}" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}">
-						<span>${i},${j}</span>
-
 						</div>`
 				  )
 				: $(".container").append(
 						`<div class="square white" data-x ="${i}" id="${8 * i +
 							j}" data-y ="${j}"data-point = "${i},${j}">
-							<span>${i},${j}</span>
-
 						</div>`
 				  );
 		}
@@ -333,151 +329,110 @@ $(async () => {
 		) {
 			let i = parseInt(currentPoint / 8);
 			let j = currentPoint % 8;
-			let L1 = i != 5 ? 8 * (i - 2) + (j - 1) : null;
+			let L1 = 8 * (i - 2) + (j - 1);
 			let L2 = 8 * (i - 2) + (j + 1);
-			let L3 = i != 7 && i != 5 ? 8 * (i - 1) + (j - 2) : null;
-			let L4 = i != 0 && i != 7 ? 8 * (i - 1) + (j + 2) : null;
-			let L5 = i != 0 && i != 7 && i != 5 ? 8 * (i + 1) + (j - 2) : null;
-			let L6 = i != 0 ? 8 * (i + 1) + (j + 2) : null;
-			let L7 = i != 5 ? 8 * (i + 2) + (j - 1) : null;
+			let L3 = 8 * (i - 1) + (j - 2);
+			let L4 = 8 * (i - 1) + (j + 2);
+			let L5 = 8 * (i + 1) + (j - 2);
+			let L6 = 8 * (i + 1) + (j + 2);
+			let L7 = 8 * (i + 2) + (j - 1);
 			let L8 = 8 * (i + 2) + (j + 1);
-
-			$(`#${L1}`).css("background", "rgb(164, 164, 164)");
-
-			$(`#${L2}`).css("background", "rgb(218, 107, 107)");
-
-			$(`#${L3}`).css("background", "rgb(132, 107, 107)");
-
-			$(`#${L4}`).css("background", "rgb(178, 107, 107)");
-
-			$(`#${L5}`).css("background", "rgb(160, 107, 107)");
-
-			$(`#${L6}`).css("background", "rgb(200, 107, 107)");
-
-			$(`#${L7}`).css("background", "rgb(231, 107, 107)");
-
-			$(`#${L8}`).css("background", "rgb(244, 107, 107)");
-
-			// if (
-			// 	$(`#${L1}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "dragon" ||
-			// 	$(`#${L1}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "phoenix"
-			// ) {
-			// 	$(`#${L1}`).css("background", "");
-			// } else {
-			// 	$(`#${L1}`).css(
-			// 		"background",
-			// 		"rgb(164, 164, 164)"
-			// 	);
-			// }
-			// if (
-			// 	$(`#${L2}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "dragon" ||
-			// 	$(`#${L2}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "phoenix"
-			// ) {
-			// 	$(`#${L2}`).css("background", "");
-			// } else {
-			// 	$(`#${L2}`).css(
-			// 		"background",
-			// 		"rgb(107, 107, 107)"
-			// 	);
-			// }
-			// if (
-			// 	$(`#${L3}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "dragon" ||
-			// 	$(`#${L3}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "phoenix"
-			// ) {
-			// 	$(`#${L3}`).css("background", "");
-			// } else {
-			// 	$(`#${L3}`).css(
-			// 		"background",
-			// 		"rgb(107, 107, 107)"
-			// 	);
-			// }
-			// if (
-			// 	$(`#${L4}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "dragon" ||
-			// 	$(`#${L4}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "phoenix"
-			// ) {
-			// 	$(`#${L4}`).css("background", "");
-			// } else {
-			// 	$(`#${L4}`).css(
-			// 		"background",
-			// 		"rgb(107, 107, 107)"
-			// 	);
-			// }
-			// if (
-			// 	$(`#${L5}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "dragon" ||
-			// 	$(`#${L5}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "phoenix"
-			// ) {
-			// 	$(`#${L5}`).css("background", "");
-			// } else {
-			// 	$(`#${L5}`).css(
-			// 		"background",
-			// 		"rgb(107, 107, 107)"
-			// 	);
-			// }
-			// if (
-			// 	$(`#${L6}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "dragon" ||
-			// 	$(`#${L6}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "phoenix"
-			// ) {
-			// 	$(`#${L6}`).css("background", "");
-			// } else {
-			// 	$(`#${L6}`).css(
-			// 		"background",
-			// 		"rgb(107, 107, 107)"
-			// 	);
-			// }
-			// if (
-			// 	$(`#${L7}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "dragon" ||
-			// 	$(`#${L7}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "phoenix"
-			// ) {
-			// 	$(`#${L7}`).css("background", "");
-			// } else {
-			// 	$(`#${L7}`).css(
-			// 		"background",
-			// 		"rgb(107, 107, 107)"
-			// 	);
-			// }
-			// if (
-			// 	$(`#${L8}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "dragon" ||
-			// 	$(`#${L8}`)
-			// 		.find(".chess--piece")
-			// 		.data("team") == "phoenix"
-			// ) {
-			// 	$(`#${L8}`).css("background", "");
-			// } else {
-			// 	$(`#${L8}`).css(
-			// 		"background",
-			// 		"rgb(107, 107, 107)"
-			// 	);
-			// }
+			if (
+				$(`#${L1}`)
+					.find(".chess--piece")
+					.data("team") == "dragon" ||
+				$(`#${L1}`)
+					.find(".chess--piece")
+					.data("team") == "phoenix"
+			) {
+				$(`#${L1}`).css("background", "");
+			} else {
+				$(`#${L1}`).css("background", "rgb(164, 164, 164)");
+			}
+			if (
+				$(`#${L2}`)
+					.find(".chess--piece")
+					.data("team") == "dragon" ||
+				$(`#${L2}`)
+					.find(".chess--piece")
+					.data("team") == "phoenix"
+			) {
+				$(`#${L2}`).css("background", "");
+			} else {
+				$(`#${L2}`).css("background", "rgb(107, 107, 107)");
+			}
+			if (
+				$(`#${L3}`)
+					.find(".chess--piece")
+					.data("team") == "dragon" ||
+				$(`#${L3}`)
+					.find(".chess--piece")
+					.data("team") == "phoenix"
+			) {
+				$(`#${L3}`).css("background", "");
+			} else {
+				$(`#${L3}`).css("background", "rgb(107, 107, 107)");
+			}
+			if (
+				$(`#${L4}`)
+					.find(".chess--piece")
+					.data("team") == "dragon" ||
+				$(`#${L4}`)
+					.find(".chess--piece")
+					.data("team") == "phoenix"
+			) {
+				$(`#${L4}`).css("background", "");
+			} else {
+				$(`#${L4}`).css("background", "rgb(107, 107, 107)");
+			}
+			if (
+				$(`#${L5}`)
+					.find(".chess--piece")
+					.data("team") == "dragon" ||
+				$(`#${L5}`)
+					.find(".chess--piece")
+					.data("team") == "phoenix"
+			) {
+				$(`#${L5}`).css("background", "");
+			} else {
+				$(`#${L5}`).css("background", "rgb(107, 107, 107)");
+			}
+			if (
+				$(`#${L6}`)
+					.find(".chess--piece")
+					.data("team") == "dragon" ||
+				$(`#${L6}`)
+					.find(".chess--piece")
+					.data("team") == "phoenix"
+			) {
+				$(`#${L6}`).css("background", "");
+			} else {
+				$(`#${L6}`).css("background", "rgb(107, 107, 107)");
+			}
+			if (
+				$(`#${L7}`)
+					.find(".chess--piece")
+					.data("team") == "dragon" ||
+				$(`#${L7}`)
+					.find(".chess--piece")
+					.data("team") == "phoenix"
+			) {
+				$(`#${L7}`).css("background", "");
+			} else {
+				$(`#${L7}`).css("background", "rgb(107, 107, 107)");
+			}
+			if (
+				$(`#${L8}`)
+					.find(".chess--piece")
+					.data("team") == "dragon" ||
+				$(`#${L8}`)
+					.find(".chess--piece")
+					.data("team") == "phoenix"
+			) {
+				$(`#${L8}`).css("background", "");
+			} else {
+				$(`#${L8}`).css("background", "rgb(107, 107, 107)");
+			}
 		}
 	}
 	function getPointKnight(n) {
@@ -556,9 +511,6 @@ $(async () => {
 				return;
 			}
 
-			// while (currentPoint >= 0) {
-			// 	console.log($(`[data-point='${currentPoint}']`));
-			// }
 			if ($(this)[0].children[0]) {
 				const teamPieces = $(this)[0].children[0].dataset.team;
 				if (teamate === teamPieces) {
