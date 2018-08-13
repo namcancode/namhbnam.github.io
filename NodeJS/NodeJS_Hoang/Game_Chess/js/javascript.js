@@ -1,4 +1,4 @@
-let check = false;
+let check = Boolean;
 const showBoard = async () => {
 	for (let i = 0; i < 8; i++) {
 		for (let j = 0; j < 8; j++) {
@@ -7,11 +7,13 @@ const showBoard = async () => {
 						`<div class="square ui-widget-content black" id="${8 *
 							i +
 							j}" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}">
+
 						</div>`
 				  )
 				: $(".container").append(
 						`<div class="square white" data-x ="${i}" id="${8 * i +
 							j}" data-y ="${j}"data-point = "${i},${j}">
+
 						</div>`
 				  );
 		}
@@ -259,7 +261,6 @@ const showChessPieces = async () => {
 $(async () => {
 	await showBoard();
 	function highLightCastle(currentPoint, currentName) {
-		let check = true;
 		if (
 			currentName == "black-castle-left" ||
 			currentName == "black-castle-right" ||
@@ -327,141 +328,328 @@ $(async () => {
 			currentName == "white-knight-right" ||
 			currentName == "white-knight-left"
 		) {
+			const pointKnight = [];
 			let i = parseInt(currentPoint / 8);
 			let j = currentPoint % 8;
-			let L1 = 8 * (i - 2) + (j - 1);
-			let L2 = 8 * (i - 2) + (j + 1);
-			let L3 = 8 * (i - 1) + (j - 2);
-			let L4 = 8 * (i - 1) + (j + 2);
-			let L5 = 8 * (i + 1) + (j - 2);
-			let L6 = 8 * (i + 1) + (j + 2);
-			let L7 = 8 * (i + 2) + (j - 1);
-			let L8 = 8 * (i + 2) + (j + 1);
-			if (
-				$(`#${L1}`)
-					.find(".chess--piece")
-					.data("team") == "dragon" ||
-				$(`#${L1}`)
-					.find(".chess--piece")
-					.data("team") == "phoenix"
-			) {
-				$(`#${L1}`).css("background", "");
-			} else {
-				$(`#${L1}`).css("background", "rgb(164, 164, 164)");
+			for (let x = -2; x <= 2; x++)
+				for (let y = -2; y <= 2; y++)
+					if (
+						x * x != y * y &&
+						x != 0 &&
+						y != 0 &&
+						i + x >= 0 &&
+						i + x < 8 &&
+						j + y >= 0 &&
+						j + y < 8
+					)
+						pointKnight.push(8 * (i + x) + (j + y));
+			pointKnight.forEach(knight => {
+				if (
+					$(`#${knight}`)
+						.find(".chess--piece")
+						.data("team") == "dragon" ||
+					$(`#${knight}`)
+						.find(".chess--piece")
+						.data("team") == "phoenix"
+				) {
+					$(`#${knight}`).css("background", "");
+				} else {
+					check
+						? $(`#${knight}`).css(
+								"background",
+								"rgb(164, 164, 164)"
+						  )
+						: $(`#${knight}`).css(
+								"background",
+								"rgb(107, 107, 107)"
+						  );
+					check = !check;
+				}
+			});
+		}
+	}
+	function hightLightBishop(currentPoint, currentName) {
+		if (
+			currentName == "black-bishop-left" ||
+			currentName == "black-bishop-right" ||
+			currentName == "white-bishop-left" ||
+			currentName == "white-bishop-right"
+		) {
+			let t = 0;
+			let x = parseInt(currentPoint / 8);
+			let y = currentPoint % 8;
+			t = Math.min(x, y);
+			let a = (x - t) * 8 + y - t;
+			t = Math.min(x, 7 - y);
+			let b = (x - t) * 8 + y + t;
+			t = Math.min(7 - x, y);
+			let c = (x + t) * 8 + y - t;
+			t = Math.min(7 - x, 7 - y);
+			let d = (x + t) * 8 + y + t;
+			for (let i = currentPoint - 9; i >= a; i = i - 9) {
+				if (
+					$(`#${i}`)
+						.find(".chess--piece")
+						.data("team") == "dragon" ||
+					$(`#${i}`)
+						.find(".chess--piece")
+						.data("team") == "phoenix"
+				) {
+					$(`#${i}`).css("background", "");
+					break;
+				} else {
+					check
+						? $(`#${i}`).css("background", "rgb(164, 164, 164)")
+						: $(`#${i}`).css("background", "rgb(107, 107, 107)");
+					check = !check;
+				}
 			}
-			if (
-				$(`#${L2}`)
-					.find(".chess--piece")
-					.data("team") == "dragon" ||
-				$(`#${L2}`)
-					.find(".chess--piece")
-					.data("team") == "phoenix"
-			) {
-				$(`#${L2}`).css("background", "");
-			} else {
-				$(`#${L2}`).css("background", "rgb(107, 107, 107)");
+			for (let i = currentPoint + 9; i <= d; i = i + 9) {
+				if (
+					$(`#${i}`)
+						.find(".chess--piece")
+						.data("team") == "dragon" ||
+					$(`#${i}`)
+						.find(".chess--piece")
+						.data("team") == "phoenix"
+				) {
+					$(`#${i}`).css("background", "");
+					break;
+				} else {
+					check
+						? $(`#${i}`).css("background", "rgb(164, 164, 164)")
+						: $(`#${i}`).css("background", "rgb(107, 107, 107)");
+					check = !check;
+				}
 			}
-			if (
-				$(`#${L3}`)
-					.find(".chess--piece")
-					.data("team") == "dragon" ||
-				$(`#${L3}`)
-					.find(".chess--piece")
-					.data("team") == "phoenix"
-			) {
-				$(`#${L3}`).css("background", "");
-			} else {
-				$(`#${L3}`).css("background", "rgb(107, 107, 107)");
+			for (let i = currentPoint - 7; i >= b; i = i - 7) {
+				if (
+					$(`#${i}`)
+						.find(".chess--piece")
+						.data("team") == "dragon" ||
+					$(`#${i}`)
+						.find(".chess--piece")
+						.data("team") == "phoenix"
+				) {
+					$(`#${i}`).css("background", "");
+					break;
+				} else {
+					check
+						? $(`#${i}`).css("background", "rgb(164, 164, 164)")
+						: $(`#${i}`).css("background", "rgb(107, 107, 107)");
+					check = !check;
+				}
 			}
-			if (
-				$(`#${L4}`)
-					.find(".chess--piece")
-					.data("team") == "dragon" ||
-				$(`#${L4}`)
-					.find(".chess--piece")
-					.data("team") == "phoenix"
-			) {
-				$(`#${L4}`).css("background", "");
-			} else {
-				$(`#${L4}`).css("background", "rgb(107, 107, 107)");
-			}
-			if (
-				$(`#${L5}`)
-					.find(".chess--piece")
-					.data("team") == "dragon" ||
-				$(`#${L5}`)
-					.find(".chess--piece")
-					.data("team") == "phoenix"
-			) {
-				$(`#${L5}`).css("background", "");
-			} else {
-				$(`#${L5}`).css("background", "rgb(107, 107, 107)");
-			}
-			if (
-				$(`#${L6}`)
-					.find(".chess--piece")
-					.data("team") == "dragon" ||
-				$(`#${L6}`)
-					.find(".chess--piece")
-					.data("team") == "phoenix"
-			) {
-				$(`#${L6}`).css("background", "");
-			} else {
-				$(`#${L6}`).css("background", "rgb(107, 107, 107)");
-			}
-			if (
-				$(`#${L7}`)
-					.find(".chess--piece")
-					.data("team") == "dragon" ||
-				$(`#${L7}`)
-					.find(".chess--piece")
-					.data("team") == "phoenix"
-			) {
-				$(`#${L7}`).css("background", "");
-			} else {
-				$(`#${L7}`).css("background", "rgb(107, 107, 107)");
-			}
-			if (
-				$(`#${L8}`)
-					.find(".chess--piece")
-					.data("team") == "dragon" ||
-				$(`#${L8}`)
-					.find(".chess--piece")
-					.data("team") == "phoenix"
-			) {
-				$(`#${L8}`).css("background", "");
-			} else {
-				$(`#${L8}`).css("background", "rgb(107, 107, 107)");
+			for (let i = currentPoint + 7; i <= c; i = i + 7) {
+				if (
+					$(`#${i}`)
+						.find(".chess--piece")
+						.data("team") == "dragon" ||
+					$(`#${i}`)
+						.find(".chess--piece")
+						.data("team") == "phoenix"
+				) {
+					$(`#${i}`).css("background", "");
+					break;
+				} else {
+					check
+						? $(`#${i}`).css("background", "rgb(164, 164, 164)")
+						: $(`#${i}`).css("background", "rgb(107, 107, 107)");
+					check = !check;
+				}
 			}
 		}
 	}
-	function getPointKnight(n) {
-		let i = parseInt(n / 8);
-		let j = n % 8;
-		let L1 = 8 * (i - 2) + (j - 1);
-		let L2 = 8 * (i - 2) + (j + 1);
-		let L3 = 8 * (i - 1) + (j - 2);
-		let L4 = 8 * (i - 2) + (j + 2);
-		let L5 = 8 * (i + 1) + (j - 2);
-		let L6 = 8 * (i + 2) + (j + 1);
-		let L7 = 8 * (i + 2) + (j - 1);
-		let L8 = 8 * (i + 2) + (j + 1);
+	function hightLightPawn(currentPoint, currentName) {
+		if (
+			currentName == "black-pawn-1" ||
+			currentName == "black-pawn-2" ||
+			currentName == "black-pawn-3" ||
+			currentName == "black-pawn-4" ||
+			currentName == "black-pawn-5" ||
+			currentName == "black-pawn-6" ||
+			currentName == "black-pawn-7" ||
+			currentName == "black-pawn-8"
+		) {
+			if (
+				currentPoint == 8 ||
+				currentPoint == 9 ||
+				currentPoint == 10 ||
+				currentPoint == 11 ||
+				currentPoint == 12 ||
+				currentPoint == 13 ||
+				currentPoint == 14 ||
+				currentPoint == 15
+			) {
+				for (
+					let i = currentPoint + 8;
+					i <= currentPoint + 16;
+					i = i + 8
+				) {
+					if (
+						$(`#${i}`)
+							.find(".chess--piece")
+							.data("team") == "dragon" ||
+						$(`#${i}`)
+							.find(".chess--piece")
+							.data("team") == "phoenix"
+					) {
+						$(`#${i}`).css("background", "");
+						break;
+					} else {
+						check
+							? $(`#${i}`).css("background", "rgb(164, 164, 164)")
+							: $(`#${i}`).css(
+									"background",
+									"rgb(107, 107, 107)"
+							  );
+						check = !check;
+					}
+				}
+			} else {
+				for (
+					let i = currentPoint + 8;
+					i <= currentPoint + 8;
+					i = i + 8
+				) {
+					if (
+						$(`#${i}`)
+							.find(".chess--piece")
+							.data("team") == "dragon" ||
+						$(`#${i}`)
+							.find(".chess--piece")
+							.data("team") == "phoenix"
+					) {
+						$(`#${i}`).css("background", "");
+						break;
+					} else {
+						check
+							? $(`#${i}`).css("background", "rgb(164, 164, 164)")
+							: $(`#${i}`).css(
+									"background",
+									"rgb(107, 107, 107)"
+							  );
+						check = !check;
+					}
+				}
+			}
+		}
+		if (
+			currentName == "white-pawn-1" ||
+			currentName == "white-pawn-2" ||
+			currentName == "white-pawn-3" ||
+			currentName == "white-pawn-4" ||
+			currentName == "white-pawn-5" ||
+			currentName == "white-pawn-6" ||
+			currentName == "white-pawn-7" ||
+			currentName == "white-pawn-8"
+		) {
+			if (
+				currentPoint == 48 ||
+				currentPoint == 49 ||
+				currentPoint == 50 ||
+				currentPoint == 51 ||
+				currentPoint == 52 ||
+				currentPoint == 53 ||
+				currentPoint == 54 ||
+				currentPoint == 55
+			) {
+				for (
+					let i = currentPoint - 8;
+					i >= currentPoint - 16;
+					i = i - 8
+				) {
+					if (
+						$(`#${i}`)
+							.find(".chess--piece")
+							.data("team") == "dragon" ||
+						$(`#${i}`)
+							.find(".chess--piece")
+							.data("team") == "phoenix"
+					) {
+						$(`#${i}`).css("background", "");
+						break;
+					} else {
+						check
+							? $(`#${i}`).css("background", "rgb(164, 164, 164)")
+							: $(`#${i}`).css(
+									"background",
+									"rgb(107, 107, 107)"
+							  );
+						check = !check;
+					}
+				}
+			} else {
+				for (
+					let i = currentPoint - 8;
+					i >= currentPoint - 8;
+					i = i - 8
+				) {
+					if (
+						$(`#${i}`)
+							.find(".chess--piece")
+							.data("team") == "dragon" ||
+						$(`#${i}`)
+							.find(".chess--piece")
+							.data("team") == "phoenix"
+					) {
+						$(`#${i}`).css("background", "");
+						break;
+					} else {
+						check
+							? $(`#${i}`).css("background", "rgb(164, 164, 164)")
+							: $(`#${i}`).css(
+									"background",
+									"rgb(107, 107, 107)"
+							  );
+						check = !check;
+					}
+				}
+			}
+		}
 	}
-	function getPointBishop(n) {
-		let t = 0;
-		let i = parseInt(n / 8);
-		let j = n % 8;
-		t = Math.min(i, j);
-		let a = (i - t) * 8 + j - t;
-		t = Math.min(i, 7 - j);
-		let b = (i - t) * 8 + j + t;
-		t = Math.min(7 - i, j);
-		let c = (i + t) * 8 + j - t;
-		t = Math.min(7 - i, 7 - j);
-		let d = (i + t) * 8 + j + t;
-		const result = [a, d, b, c];
-		return result;
+	function hightLightKing(currentPoint, currentName) {
+		if (currentName == "black-king" || currentName == "white-king") {
+			let i = parseInt(currentPoint / 8);
+			let j = currentPoint % 8;
+			const pointKing = [];
+			for (let x = i - 1; x <= i + 1; x++) {
+				for (let y = j - 1; y <= j + 1; y++) {
+					if (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
+						if (x != i || y != j) {
+							pointKing.push(8 * x + y);
+						}
+						pointKing.forEach(point => {
+							if (
+								$(`#${point}`)
+									.find(".chess--piece")
+									.data("team") == "dragon" ||
+								$(`#${point}`)
+									.find(".chess--piece")
+									.data("team") == "phoenix"
+							) {
+								$(`#${point}`).css("background", "");
+								return;
+							} else {
+								console.log($(`#${point}`).css('background-color'));
+$(`#${point}`).css('background-color')=="rgb(241, 100, 100)"
+									? $(`#${point}`).css(
+											"background",
+											"rgb(164, 164, 164)"
+									  )
+									: $(`#${point}`).css(
+											"background",
+											"rgb(107, 107, 107)"
+									  );
+
+							}
+						});
+					}
+				}
+			}
+		}
 	}
+	function hightLightQueen(currentPoint, currentName) {}
 	$(
 		"#black-castle-left, #black-castle-right,#black-knight-right,#black-knight-left,#black-bishop-left,#black-bishop-right,#black-queen,#black-king,#black-pawn-1,#black-pawn-2,#black-pawn-3,#black-pawn-4,#black-pawn-5,#black-pawn-6,#black-pawn-7,#black-pawn-8,#white-castle-left, #white-castle-right,#white-knight-right,#white-knight-left,#white-bishop-left,#white-bishop-right,#white-queen,#white-king,#white-pawn-1,#white-pawn-2,#white-pawn-3,#white-pawn-4,#white-pawn-5,#white-pawn-6,#white-pawn-7,#white-pawn-8"
 	).draggable({
@@ -480,6 +668,10 @@ $(async () => {
 			);
 			highLightCastle(currentPoint, currentName);
 			highLightKnight(currentPoint, currentName);
+			hightLightBishop(currentPoint, currentName);
+			hightLightPawn(currentPoint, currentName);
+			hightLightKing(currentPoint, currentName);
+			hightLightQueen(currentPoint, currentName);
 		},
 		stop: function(event, ui) {
 			let currentName = $(this).attr("id");
