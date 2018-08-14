@@ -49,7 +49,7 @@ body {
 
 .chess--piece {
 	cursor: pointer;
-	width: 50px;
+	max-width: 70%;
 }
 
 .chess--piece img {
@@ -64,4 +64,9 @@ body {
 
 .hight--light {
 	box-shadow: inset 0 0 3px 3px yellow;
+}
+
+.hidden {
+	visibility: hidden;
+	opacity: 0;
 }
