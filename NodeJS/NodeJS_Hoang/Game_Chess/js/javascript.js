@@ -7,11 +7,13 @@ const showBoard = async () => {
 						`<div class="square ui-widget-content black" id="${8 *
 							i +
 							j}" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}">
+						<span>${8*i+j}</span>
 						</div>`
 				  )
 				: $(".container").append(
 						`<div class="square white" data-x ="${i}" id="${8 * i +
 							j}" data-y ="${j}"data-point = "${i},${j}">
+						<span>${8*i+j}</span>
 						</div>`
 				  );
 		}
@@ -260,11 +262,7 @@ $(async () => {
 	await showBoard();
 	function logicHorVer(i, teamA) {
 		if ($(`#${i}`)[0].childElementCount == 0) {
-			if ($(`#${i}`).hasClass("black")) {
-				$(`#${i}`).css("background", "rgb(164, 164, 164)");
-			} else {
-				$(`#${i}`).css("background", "rgb(107, 107, 107)");
-			}
+			$(`#${i}`).addClass("circleB");
 		} else if ($(`#${i}`)[0].childElementCount == 1) {
 			const teamB = $(`#${i}`)
 				.find(".chess--piece")
@@ -272,53 +270,41 @@ $(async () => {
 			if (teamA == teamB) {
 				return true;
 			} else {
-				if ($(`#${i}`).hasClass("black")) {
-					$(`#${i}`).css("background", "rgb(164, 164, 164)");
-				} else {
-					$(`#${i}`).css("background", "rgb(107, 107, 107)");
-				}
+				$(`#${i}`).addClass("circleB");
 				return true;
 			}
 		}
 	}
-	function canYouKill(i, teamA) {
+	function canYouKill(i, teamA, currentName) {
 		const teamB = $(`#${i}`)
 			.find(".chess--piece")
 			.data("team");
 		if (teamB) {
 			if (teamA == teamB) {
-				$(`#${i}`).css("background", "");
 				return true;
 			} else {
-				$(`#${i}`).hasClass("black")
-					? $(`#${i}`).css("background", "rgb(164, 164, 164)")
-					: $(`#${i}`).css("background", "rgb(107, 107, 107)");
+				$(`#${i}`).addClass("circleB");
 				return true;
 			}
 		} else {
-			if (teamA == teamB) {
-				$(`#${i}`).css("background", "");
-				return true;
-			} else {
-				$(`#${i}`).hasClass("black")
-					? $(`#${i}`).css("background", "rgb(164, 164, 164)")
-					: $(`#${i}`).css("background", "rgb(107, 107, 107)");
-			}
+			teamA == teamB ? true : $(`#${i}`).addClass("circleB");
 		}
 	}
 	async function highLightHorizontalVertical(currentPoint, teamA) {
-		for (let i = currentPoint; i >= parseInt(currentPoint / 8) * 8; i--) { //Xác định điểm đầu
-			const done = await canYouKill(i, teamA);  //hightlight ô đen trắng
+		console.log(parseInt(currentPoint / 8) * 8);
+		for (let i = currentPoint; i >= (currentPoint / 8) * 8; i--) {
+			//Xác định điểm đầu
+			const done = await canYouKill(i, teamA); //hightlight ô đen trắng
 			if (done) {
 				break;
 			}
 		}
-		for (                                  //Xác định điểm cuối
+		/* for (                                  //Xác định điểm cuối
 			let i = currentPoint;
 			i <= (parseInt(currentPoint / 8) + 1) * 8 - 1;
 			i++
 		) {
-			const done = await canYouKill(i, teamA);//hightlight ô đen trắng
+			const done = await logicHorVer(i, teamA);//hightlight ô đen trắng
 			if (done) {
 				break;
 			}
@@ -329,22 +315,22 @@ $(async () => {
 			i <= parseInt(currentPoint % 8) + 1 + 55;
 			i = i + 8
 		) {
-			const done = await canYouKill(i, teamA);
+			const done = await logicHorVer(i, teamA);
 			if (done) {
 				break;
 			}
 		}
 		for (let i = currentPoint; i >= parseInt(currentPoint % 8); i = i - 8) {
-			const done = await canYouKill(i, teamA);
+			const done = await logicHorVer(i, teamA);
 			if (done) {
 				break;
 			}
-		}
+		} */
 	}
 	async function highLightFrogging(currentPoint, teamA) {
 		const pointKnight = [];
-		let i = parseInt(currentPoint / 8);
-		let j = currentPoint % 8;
+		const i = parseInt(currentPoint / 8);
+		const j = currentPoint % 8;
 		for (let x = -2; x <= 2; x++)
 			for (let y = -2; y <= 2; y++)
 				if (
@@ -402,16 +388,7 @@ $(async () => {
 	async function hightLightPawn(currentPoint, currentName, teamA) {
 		const x = parseInt(currentPoint / 8);
 		const y = currentPoint % 8;
-		if (
-			currentName == "black-pawn-1" ||
-			currentName == "black-pawn-2" ||
-			currentName == "black-pawn-3" ||
-			currentName == "black-pawn-4" ||
-			currentName == "black-pawn-5" ||
-			currentName == "black-pawn-6" ||
-			currentName == "black-pawn-7" ||
-			currentName == "black-pawn-8"
-		) {
+		if (currentName.indexOf("black-pawn") != -1) {
 			const teamB = $(`[data-point="${x + 1},${y + 1}"]`)
 				.find(".chess--piece")
 				.data("team");
@@ -419,30 +396,10 @@ $(async () => {
 				.find(".chess--piece")
 				.data("team");
 			if (teamB && teamB != teamA) {
-				if ($(`[data-point="${x + 1},${y + 1}"]`).hasClass("black")) {
-					$(`[data-point="${x + 1},${y + 1}"]`).css(
-						"background",
-						"rgb(164, 164, 164)"
-					);
-				} else {
-					$(`[data-point="${x + 1},${y + 1}"]`).css(
-						"background",
-						"rgb(107, 107, 107)"
-					);
-				}
+				$(`[data-point="${x + 1},${y + 1}"]`).addClass("circleB");
 			}
 			if (teamC && teamC != teamA) {
-				if ($(`[data-point="${x + 1},${y - 1}"]`).hasClass("black")) {
-					$(`[data-point="${x + 1},${y - 1}"]`).css(
-						"background",
-						"rgb(164, 164, 164)"
-					);
-				} else {
-					$(`[data-point="${x + 1},${y - 1}"]`).css(
-						"background",
-						"rgb(107, 107, 107)"
-					);
-				}
+				$(`[data-point="${x + 1},${y - 1}"]`).addClass("circleB");
 			}
 			if (
 				currentPoint == 8 ||
@@ -477,16 +434,7 @@ $(async () => {
 				}
 			}
 		}
-		if (
-			currentName == "white-pawn-1" ||
-			currentName == "white-pawn-2" ||
-			currentName == "white-pawn-3" ||
-			currentName == "white-pawn-4" ||
-			currentName == "white-pawn-5" ||
-			currentName == "white-pawn-6" ||
-			currentName == "white-pawn-7" ||
-			currentName == "white-pawn-8"
-		) {
+		if (currentName.indexOf("white-pawn") != -1) {
 			const teamB = $(`[data-point="${x - 1},${y - 1}"]`)
 				.find(".chess--piece")
 				.data("team");
@@ -494,30 +442,10 @@ $(async () => {
 				.find(".chess--piece")
 				.data("team");
 			if (teamB && teamB != teamA) {
-				if ($(`[data-point="${x - 1},${y - 1}"]`).hasClass("black")) {
-					$(`[data-point="${x - 1},${y - 1}"]`).css(
-						"background",
-						"rgb(164, 164, 164)"
-					);
-				} else {
-					$(`[data-point="${x - 1},${y - 1}"]`).css(
-						"background",
-						"rgb(107, 107, 107)"
-					);
-				}
+				$(`[data-point="${x - 1},${y - 1}"]`).addClass("circleB");
 			}
 			if (teamC && teamC != teamA) {
-				if ($(`[data-point="${x - 1},${y + 1}"]`).hasClass("black")) {
-					$(`[data-point="${x - 1},${y + 1}"]`).css(
-						"background",
-						"rgb(164, 164, 164)"
-					);
-				} else {
-					$(`[data-point="${x - 1},${y + 1}"]`).css(
-						"background",
-						"rgb(107, 107, 107)"
-					);
-				}
+				$(`[data-point="${x - 1},${y + 1}"]`).addClass("circleB");
 			}
 			if (
 				currentPoint == 48 ||
@@ -554,14 +482,14 @@ $(async () => {
 		}
 	}
 	async function hightLightKing(currentPoint, teamA) {
-		const i = parseInt(currentPoint / 8);
-		const j = currentPoint % 8;
+		const x = parseInt(currentPoint / 8);
+		const y = currentPoint % 8;
 		const pointKing = [];
-		for (let x = i - 1; x <= i + 1; x++) {
-			for (let y = j - 1; y <= j + 1; y++) {
-				if (x >= 0 && x <= 7 && y >= 0 && y <= 7) {
-					if (x != i || y != j) {
-						pointKing.push(8 * x + y);
+		for (let i = x - 1; i <= x + 1; i++) {
+			for (let j = y - 1; j <= y + 1; j++) {
+				if (i >= 0 && i <= 7 && j >= 0 && j <= 7) {
+					if (i != x || j != y) {
+						pointKing.push(8 * i + j);
 					}
 					pointKing.forEach(async point => {
 						await canYouKill(point, teamA);
@@ -574,9 +502,7 @@ $(async () => {
 		await highLightHorizontalVertical(currentPoint, teamA);
 		await hightLightDiagonally(currentPoint, teamA);
 	}
-	$(
-		"#black-castle-left, #black-castle-right,#black-knight-right,#black-knight-left,#black-bishop-left,#black-bishop-right,#black-queen,#black-king,#black-pawn-1,#black-pawn-2,#black-pawn-3,#black-pawn-4,#black-pawn-5,#black-pawn-6,#black-pawn-7,#black-pawn-8,#white-castle-left, #white-castle-right,#white-knight-right,#white-knight-left,#white-bishop-left,#white-bishop-right,#white-queen,#white-king,#white-pawn-1,#white-pawn-2,#white-pawn-3,#white-pawn-4,#white-pawn-5,#white-pawn-6,#white-pawn-7,#white-pawn-8"
-	).draggable({
+	$(".chess--piece").draggable({
 		addClasses: false,
 		helper: "clone",
 		start: function(event, ui) {
@@ -594,53 +520,41 @@ $(async () => {
 			const teamA = $(`#${currentPoint}`)
 				.find(".chess--piece")
 				.data("team");
-			if (
-				currentName == "black-castle-left" ||
-				currentName == "black-castle-right" ||
-				currentName == "white-castle-right" ||
-				currentName == "white-castle-left"
-			) {
+			if (currentName.indexOf("castle") != -1) {
 				highLightHorizontalVertical(currentPoint, teamA);
 			}
-			if (
-				currentName == "black-knight-right" ||
-				currentName == "black-knight-left" ||
-				currentName == "white-knight-right" ||
-				currentName == "white-knight-left"
-			) {
+			if (currentName.indexOf("knight") != -1) {
 				highLightFrogging(currentPoint, teamA);
 			}
-			if (
-				currentName == "black-bishop-left" ||
-				currentName == "black-bishop-right" ||
-				currentName == "white-bishop-left" ||
-				currentName == "white-bishop-right"
-			) {
+			if (currentName.indexOf("bishop") != -1) {
 				hightLightDiagonally(currentPoint, teamA);
 			}
 			hightLightPawn(currentPoint, currentName, teamA);
-			if (currentName == "black-king" || currentName == "white-king") {
+			if (currentName.indexOf("king") != -1) {
 				hightLightKing(currentPoint, teamA);
 			}
-			if (currentName == "black-queen" || currentName == "white-queen") {
+			if (currentName.indexOf("queen") != -1) {
 				hightLightQueen(currentPoint, teamA);
 			}
 		},
 		stop: function(event, ui) {
-			$(".square").removeAttr("style");
+			$(".square").removeClass("circleB");
 			$(this).removeClass("hidden");
 		}
 	});
 	$(".square").droppable({
 		over: function(event, ui) {
-			$(event.target).addClass("hight--light");
+			if ($(event.target).hasClass("circleB")) {
+				$(event.target).addClass("circleA");
+			}
 		},
 		out: function(event, ui) {
-			$(event.target).removeClass("hight--light");
+			$(event.target).removeClass("circleA");
 		},
 		tolerance: "pointer", //chỉ cần mouse chỉ vào ô là move
 		drop: function(event, ui) {
 			$(".square").removeClass("hight--light");
+			$(".square").removeClass("circleA");
 			$(ui.draggable).removeClass("hidden");
 			const startPoint = $(ui.draggable)
 				.parent()[0]

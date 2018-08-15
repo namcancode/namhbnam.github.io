@@ -31,16 +31,19 @@ body {
 	/* box-shadow:  0 0 3px 3px yellow; */
 }
 
-.square:hover {
+/* .square:hover {
 	background-color: rgba(22, 22, 22, 0.199);
-}
+} */
 
 .black {
-	background-color: rgb(241, 100, 100);
+	/* background-color: rgb(241, 100, 100); */
+	background-image: url(../img/black.png);
 }
 
 .white {
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
+	background-image: url(../img/white.png)
+
 }
 
 .chess--piece {
@@ -64,4 +67,34 @@ body {
 .hidden {
 	visibility: hidden;
 	opacity: 0;
+}
+
+.circleB::before {
+	content: "";
+	position: absolute;
+	width: 3vw;
+	height: 3vw;
+	background: rgba(255, 255, 255, 0.541);
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-ms-border-radius: 100%;
+	-o-border-radius: 100%;
+}
+
+.circleA::after {
+	content: "";
+	position: absolute;
+	width: 4vw;
+	height: 4vw;
+	border: 5px solid rgba(255, 255, 255, 0.774);
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-ms-border-radius: 100%;
+	-o-border-radius: 100%;
+}
+
+span {
+	color: aliceblue
 }
