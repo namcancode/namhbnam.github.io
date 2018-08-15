@@ -11,6 +11,9 @@ body {
 	flex-wrap: wrap;
 	margin: auto;
 	border: 1px solid black;
+	position: relative;
+	overflow: hidden;
+	user-select: none;
 }
 
 .square {
@@ -26,13 +29,6 @@ body {
 	/* -webkit-box-shadow:  0 0 3px 3px yellow;
    -moz-box-shadow:  0 0 3px 3px yellow; */
 	/* box-shadow:  0 0 3px 3px yellow; */
-}
-
-.fill {
-	/* background: rgb(255, 238, 0); */
-	/* opacity: 1;
-	display: block;
-	position: absolute; */
 }
 
 .square:hover {
@@ -57,9 +53,8 @@ body {
 	width: 100%
 }
 
-.ui-draggable-dragging img {
-	cursor: pointer;
-	width: 20%
+.ui-helper {
+	width: 10%;
 }
 
 .hight--light {

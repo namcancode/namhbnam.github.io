@@ -285,18 +285,30 @@ $(async () => {
 		const teamB = $(`#${i}`)
 			.find(".chess--piece")
 			.data("team");
-		if (teamB && teamA == teamB) {
+		if (teamB) {
+			if (teamA == teamB) {
 				$(`#${i}`).css("background", "");
 				return true;
-		} else {
+			} else {
 				$(`#${i}`).hasClass("black")
 					? $(`#${i}`).css("background", "rgb(164, 164, 164)")
 					: $(`#${i}`).css("background", "rgb(107, 107, 107)");
+				return true;
+			}
+		} else {
+			if (teamA == teamB) {
+				$(`#${i}`).css("background", "");
+				return true;
+			} else {
+				$(`#${i}`).hasClass("black")
+					? $(`#${i}`).css("background", "rgb(164, 164, 164)")
+					: $(`#${i}`).css("background", "rgb(107, 107, 107)");
+			}
 		}
 	}
 	async function highLightHorizontalVertical(currentPoint, teamA) {
-		/* for (let i = currentPoint; i >= parseInt(currentPoint / 8) * 8; i--) { //Xác định điểm đầu
-			const done = await logicHorVer(i, teamA);  //hightlight ô đen trắng
+		for (let i = currentPoint; i >= parseInt(currentPoint / 8) * 8; i--) { //Xác định điểm đầu
+			const done = await canYouKill(i, teamA);  //hightlight ô đen trắng
 			if (done) {
 				break;
 			}
@@ -306,7 +318,7 @@ $(async () => {
 			i <= (parseInt(currentPoint / 8) + 1) * 8 - 1;
 			i++
 		) {
-			const done = await logicHorVer(i, teamA);//hightlight ô đen trắng
+			const done = await canYouKill(i, teamA);//hightlight ô đen trắng
 			if (done) {
 				break;
 			}
@@ -317,13 +329,13 @@ $(async () => {
 			i <= parseInt(currentPoint % 8) + 1 + 55;
 			i = i + 8
 		) {
-			const done = await logicHorVer(i, teamA);
+			const done = await canYouKill(i, teamA);
 			if (done) {
 				break;
 			}
-		} */
+		}
 		for (let i = currentPoint; i >= parseInt(currentPoint % 8); i = i - 8) {
-			const done = await logicHorVer(i, teamA);
+			const done = await canYouKill(i, teamA);
 			if (done) {
 				break;
 			}
@@ -568,6 +580,7 @@ $(async () => {
 		addClasses: false,
 		helper: "clone",
 		start: function(event, ui) {
+			$(ui.helper).addClass("ui-helper");
 			$(this)
 				.parent()
 				.addClass("hight--light");
@@ -615,6 +628,7 @@ $(async () => {
 		},
 		stop: function(event, ui) {
 			$(".square").removeAttr("style");
+			$(this).removeClass("hidden");
 		}
 	});
 	$(".square").droppable({
