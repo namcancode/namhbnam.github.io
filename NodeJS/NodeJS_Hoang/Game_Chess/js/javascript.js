@@ -399,13 +399,12 @@ async function hightLightPawn(currentPoint, currentName, teamA) {
 			}
 		} else {
 			for (let i = currentPoint + 8; i <= currentPoint + 8; i = i + 8) {
-				if($(`#${i}`).find('.chess--piece').length <=0){
+				if ($(`#${i}`).find(".chess--piece").length <= 0) {
 					const done = await canYouKill(i, teamA);
 					if (done) {
 						break;
 					}
-				}else break
-
+				} else break;
 			}
 		}
 	}
@@ -440,12 +439,12 @@ async function hightLightPawn(currentPoint, currentName, teamA) {
 			}
 		} else {
 			for (let i = currentPoint - 8; i >= currentPoint - 8; i = i - 8) {
-				if($(`#${i}`).find('.chess--piece').length <=0){
+				if ($(`#${i}`).find(".chess--piece").length <= 0) {
 					const done = await canYouKill(i, teamA);
 					if (done) {
 						break;
 					}
-				}else break
+				} else break;
 			}
 		}
 	}
@@ -563,6 +562,9 @@ async function dragItem() {
 					checkMoves = !checkMoves;
 				}
 			}
+			checkMoves
+				? $("#turnDownForWhat").html("Lượt Quân Đen")
+				: $("#turnDownForWhat").html("Lượt Quân Trắng");
 		}
 	});
 }
@@ -570,4 +572,7 @@ async function dragItem() {
 $(async () => {
 	await showBoard();
 	await dragItem();
+	checkMoves
+		? $("#turnDownForWhat").html("Lượt Quân Đen")
+		: $("#turnDownForWhat").html("Lượt Quân Trắng");
 });

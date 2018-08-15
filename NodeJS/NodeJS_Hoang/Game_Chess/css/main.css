@@ -120,6 +120,9 @@ body {
 	-o-border-radius: 100%;
 }
 
-span {
-	color: aliceblue
+#turnDownForWhat {
+	padding: 3%;
+	color: red;
+	font-size: 22px;
+	font-weight: 600;
 }
