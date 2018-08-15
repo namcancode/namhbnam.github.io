@@ -43,7 +43,6 @@ body {
 .white {
 	/* background-color: #ffffff; */
 	background-image: url(../img/white.png)
-
 }
 
 .chess--piece {
@@ -88,6 +87,31 @@ body {
 	width: 4vw;
 	height: 4vw;
 	border: 5px solid rgba(255, 255, 255, 0.774);
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-ms-border-radius: 100%;
+	-o-border-radius: 100%;
+}
+.circleB2::before {
+	content: "";
+	position: absolute;
+	width: 3vw;
+	height: 3vw;
+	background: rgba(255, 0, 0, 0.541);
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-ms-border-radius: 100%;
+	-o-border-radius: 100%;
+}
+
+.circleA2::after {
+	content: "";
+	position: absolute;
+	width: 4vw;
+	height: 4vw;
+	border: 5px solid rgba(255, 0, 0, 0.774);
 	border-radius: 100%;
 	-webkit-border-radius: 100%;
 	-moz-border-radius: 100%;
