@@ -93,6 +93,7 @@ body {
 	-ms-border-radius: 100%;
 	-o-border-radius: 100%;
 }
+
 .circleB2::before {
 	content: "";
 	position: absolute;

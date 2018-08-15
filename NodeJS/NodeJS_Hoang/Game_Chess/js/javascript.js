@@ -1,4 +1,4 @@
-let checkMoves = 1
+let checkMoves = Math.random() >= 0.5; //true là quân black (random)
 const showBoard = async () => {
 	for (let i = 0; i < 8; i++) {
 		for (let j = 0; j < 8; j++) {
@@ -7,15 +7,11 @@ const showBoard = async () => {
 						`<div class="square ui-widget-content black" id="${8 *
 							i +
 							j}" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}">
-							<!--	<span>${8*i+j}</span>  -->
-
 						</div>`
 				  )
 				: $(".container").append(
 						`<div class="square white" data-x ="${i}" id="${8 * i +
 							j}" data-y ="${j}"data-point = "${i},${j}">
-							<!--	<span>${8*i+j}</span>  -->
-
 						</div>`
 				  );
 		}
@@ -276,25 +272,26 @@ function canYouKill(i, teamA, currentName) {
 	}
 }
 async function highLightHorizontalVertical(currentPoint, teamA) {
-	for (let i = currentPoint-1; i >= parseInt(currentPoint / 8) * 8; i--) {
+	for (let i = currentPoint - 1; i >= parseInt(currentPoint / 8) * 8; i--) {
 		//Xác định điểm đầu
-		const done = await canYouKill(i, teamA);//hightlight ô đen trắng
-		if (done) {
-			break;
-		}
-	}
-	for (                                  //Xác định điểm cuối
-		let i = currentPoint+1;
-		i <= (parseInt(currentPoint / 8) + 1) * 8 - 1;
-		i++
-	) {
-		const done = await canYouKill(i, teamA);//hightlight ô đen trắng
+		const done = await canYouKill(i, teamA); //hightlight ô đen trắng
 		if (done) {
 			break;
 		}
 	}
 	for (
-		let i = currentPoint+8;
+		//Xác định điểm cuối
+		let i = currentPoint + 1;
+		i <= (parseInt(currentPoint / 8) + 1) * 8 - 1;
+		i++
+	) {
+		const done = await canYouKill(i, teamA); //hightlight ô đen trắng
+		if (done) {
+			break;
+		}
+	}
+	for (
+		let i = currentPoint + 8;
 		i <= parseInt(currentPoint % 8) + 1 + 55;
 		i = i + 8
 	) {
@@ -303,7 +300,7 @@ async function highLightHorizontalVertical(currentPoint, teamA) {
 			break;
 		}
 	}
-	for (let i = currentPoint-8; i >= parseInt(currentPoint % 8); i = i - 8) {
+	for (let i = currentPoint - 8; i >= parseInt(currentPoint % 8); i = i - 8) {
 		const done = await canYouKill(i, teamA);
 		if (done) {
 			break;
@@ -394,26 +391,21 @@ async function hightLightPawn(currentPoint, currentName, teamA) {
 			currentPoint == 14 ||
 			currentPoint == 15
 		) {
-			for (
-				let i = currentPoint + 8;
-				i <= currentPoint + 16;
-				i = i + 8
-			) {
+			for (let i = currentPoint + 8; i <= currentPoint + 16; i = i + 8) {
 				const done = await canYouKill(i, teamA);
 				if (done) {
 					break;
 				}
 			}
 		} else {
-			for (
-				let i = currentPoint + 8;
-				i <= currentPoint + 8;
-				i = i + 8
-			) {
-				const done = await canYouKill(i, teamA);
-				if (done) {
-					break;
-				}
+			for (let i = currentPoint + 8; i <= currentPoint + 8; i = i + 8) {
+				if($(`#${i}`).find('.chess--piece').length <=0){
+					const done = await canYouKill(i, teamA);
+					if (done) {
+						break;
+					}
+				}else break
+
 			}
 		}
 	}
@@ -440,26 +432,20 @@ async function hightLightPawn(currentPoint, currentName, teamA) {
 			currentPoint == 54 ||
 			currentPoint == 55
 		) {
-			for (
-				let i = currentPoint - 8;
-				i >= currentPoint - 16;
-				i = i - 8
-			) {
+			for (let i = currentPoint - 8; i >= currentPoint - 16; i = i - 8) {
 				const done = await canYouKill(i, teamA);
 				if (done) {
 					break;
 				}
 			}
 		} else {
-			for (
-				let i = currentPoint - 8;
-				i >= currentPoint - 8;
-				i = i - 8
-			) {
-				const done = await canYouKill(i, teamA);
-				if (done) {
-					break;
-				}
+			for (let i = currentPoint - 8; i >= currentPoint - 8; i = i - 8) {
+				if($(`#${i}`).find('.chess--piece').length <=0){
+					const done = await canYouKill(i, teamA);
+					if (done) {
+						break;
+					}
+				}else break
 			}
 		}
 	}
@@ -481,12 +467,50 @@ async function hightLightKing(currentPoint, teamA) {
 		}
 	}
 }
-async function hightLightQueen(currentPoint, teamA) {
-	await highLightHorizontalVertical(currentPoint, teamA);
-	await hightLightDiagonally(currentPoint, teamA);
-}
-function dropItem (piece) {
-	$(`.${piece}`).droppable({
+async function dragItem() {
+	$(".chess--piece").draggable({
+		addClasses: false,
+		helper: "clone",
+		start: function(event, ui) {
+			$(ui.helper).addClass("ui-helper");
+			$(this)
+				.parent()
+				.addClass("hight--light");
+			$(this).addClass("hidden");
+			let currentName = $(this).attr("id");
+			let currentPoint = Number(
+				$(this)
+					.parent()
+					.attr("id")
+			);
+			const teamA = $(`#${currentPoint}`)
+				.find(".chess--piece")
+				.data("team");
+			if (currentName.indexOf("castle") != -1) {
+				highLightHorizontalVertical(currentPoint, teamA);
+			}
+			if (currentName.indexOf("knight") != -1) {
+				highLightFrogging(currentPoint, teamA);
+			}
+			if (currentName.indexOf("bishop") != -1) {
+				hightLightDiagonally(currentPoint, teamA);
+			}
+			hightLightPawn(currentPoint, currentName, teamA);
+			if (currentName.indexOf("king") != -1) {
+				hightLightKing(currentPoint, teamA);
+			}
+			if (currentName.indexOf("queen") != -1) {
+				highLightHorizontalVertical(currentPoint, teamA);
+				hightLightDiagonally(currentPoint, teamA);
+			}
+		},
+		stop: function(event, ui) {
+			$(".square").removeClass("circleB");
+			$(".square").removeClass("circleB2");
+			$(this).removeClass("hidden");
+		}
+	});
+	$(".square").droppable({
 		over: function(event, ui) {
 			if ($(event.target).hasClass("circleB")) {
 				$(event.target).addClass("circleA");
@@ -520,94 +544,30 @@ function dropItem (piece) {
 			if (startPoint[0] == endPoint[0] && startPoint[1] == endPoint[1]) {
 				return;
 			}
+			if (teamate == "dragon" && checkMoves) {
 				if ($(event.target).hasClass("circleB")) {
-							$(this).html(ui.draggable);
-						}
-						if ($(event.target).hasClass("circleB2")) {
-							$(this).html(ui.draggable);
-						}
-			/* if ($(this).find("chess--piece").length) {
-				const teamPieces = $(this)[0].children[0].dataset.team;
-				if (teamate === teamPieces) {
-					return;
-				} else {
-						if ($(event.target).hasClass("circleB")) {
-							$(this).html(ui.draggable);
-							checkMoves++
-						}
-						if ($(event.target).hasClass("circleB2")) {
-							$(this).html(ui.draggable);
-							checkMoves++
-						}
-						console.log(
-							`Quân Cờ: ${nameCurrent}\nBắt đầu: ${startPointInt}\nKết thúc:${endPointInt}\nQuân Đội:${teamate}`
-						);
+					$(this).html(ui.draggable);
+					checkMoves = !checkMoves;
 				}
-			} else {
-					if ($(event.target).hasClass("circleB")) {
-						$(this).html(ui.draggable);
-						checkMoves++
-					}
-					if ($(event.target).hasClass("circleB2")) {
-						$(this).html(ui.draggable);
-						checkMoves++
-					}
-					console.log(
-						`Quân Cờ: ${nameCurrent}\nBắt đầu: ${startPointInt}\nKết thúc:${endPointInt}\nQuân Đội:${teamate}`
-					);
-			} */
+				if ($(event.target).hasClass("circleB2")) {
+					$(this).html(ui.draggable);
+					checkMoves = !checkMoves;
+				}
+			} else if (teamate == "phoenix" && !checkMoves) {
+				if ($(event.target).hasClass("circleB")) {
+					$(this).html(ui.draggable);
+					checkMoves = !checkMoves;
+				}
+				if ($(event.target).hasClass("circleB2")) {
+					$(this).html(ui.draggable);
+					checkMoves = !checkMoves;
+				}
+			}
 		}
 	});
 }
+
 $(async () => {
 	await showBoard();
-	$(".chess--piece").draggable({
-		addClasses: false,
-		helper: "clone",
-		start: function(event, ui) {
-			$(ui.helper).addClass("ui-helper");
-			$(this)
-				.parent()
-				.addClass("hight--light");
-			$(this).addClass("hidden");
-			let currentName = $(this).attr("id");
-			let currentPoint = Number(
-				$(this)
-					.parent()
-					.attr("id")
-			);
-			const teamA = $(`#${currentPoint}`)
-				.find(".chess--piece")
-				.data("team");
-			if (currentName.indexOf("castle") != -1) {
-				highLightHorizontalVertical(currentPoint, teamA);
-			}
-			if (currentName.indexOf("knight") != -1) {
-				highLightFrogging(currentPoint, teamA);
-			}
-			if (currentName.indexOf("bishop") != -1) {
-				hightLightDiagonally(currentPoint, teamA);
-			}
-			hightLightPawn(currentPoint, currentName, teamA);
-			if (currentName.indexOf("king") != -1) {
-				hightLightKing(currentPoint, teamA);
-			}
-			if (currentName.indexOf("queen") != -1) {
-				hightLightQueen(currentPoint, teamA);
-			}
-		},
-		stop: function(event, ui) {
-			$(".square").removeClass("circleB");
-			$(".square").removeClass("circleB2");
-			$(this).removeClass("hidden");
-		}
-	});
-	if(checkMoves % 2 == 0){
-		checkMoves=1
-		dropItem("black")
-	}else{
-		checkMoves=2
-		dropItem("white")
-	}
-
+	await dragItem();
 });
