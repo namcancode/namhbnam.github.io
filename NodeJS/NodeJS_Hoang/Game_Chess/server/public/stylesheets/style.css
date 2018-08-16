@@ -1,0 +1,70 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+body {
+  background: #f9f9f9;
+}
+
+#container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+#chatWindow {
+  height: 300px;
+}
+
+#mainWrapper {
+  display: none;
+}
+
+#chatWrapper {
+  float: left;
+  border: 1px #cccccc solid;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background: #f4f4f4;
+  padding: 10px;
+}
+
+#userWrapper {
+  float: left;
+  border: 1px #cccccc solid;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background: #f4f4f4;
+  padding: 10px;
+  margin-left: 20px;
+  width: 150px;
+  max-height: 200px;
+}
+
+#namesWrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px #cccccc solid;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background: #f4f4f4;
+  padding: 10px;
+  margin-left: 20px;
+}
+
+input {
+  height: 30px;
+}

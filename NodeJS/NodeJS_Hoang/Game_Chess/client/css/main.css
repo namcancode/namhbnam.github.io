@@ -3,23 +3,23 @@ body {
 	margin: 0;
 }
 
-.container {
-	width: 80vw;
+.chess--board {
+	width: 80%;
 	height: 80vw;
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
 	margin: auto;
-	border: 3px solid rgba(0, 0, 0, 0.11);
+	/* border: 3px solid rgba(0, 0, 0, 0); */
 	position: relative;
 	overflow: hidden;
 	user-select: none;
 }
 
 .square {
-	min-height: 10vw;
-	width: 10vw;
+	min-height: 8vw;
+	width: 12.5%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -27,23 +27,13 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	/* -webkit-box-shadow:  0 0 3px 3px yellow;
-   -moz-box-shadow:  0 0 3px 3px yellow; */
-	/* box-shadow:  0 0 3px 3px yellow; */
-	/* box-shadow: 0 0 3px 3px #fbff00 */
 }
 
-/* .square:hover {
-	background-color: rgba(22, 22, 22, 0.199);
-} */
-
 .black {
-	/* background-color: rgb(241, 100, 100); */
 	background-image: url(../img/black.jpg);
 }
 
 .white {
-	/* background-color: #ffffff; */
 	background-image: url(../img/white.jpg)
 }
 
@@ -78,8 +68,8 @@ body {
 .circleB::before {
 	content: "";
 	position: absolute;
-	width: 3vw;
-	height: 3vw;
+	width: 2vw;
+	height: 2vw;
 	background: rgba(255, 255, 255, 0.541);
 	border-radius: 100%;
 	-webkit-border-radius: 100%;
@@ -91,8 +81,8 @@ body {
 .circleA::after {
 	content: "";
 	position: absolute;
-	width: 4vw;
-	height: 4vw;
+	width: 3.5vw;
+	height: 3.5vw;
 	border: 5px solid rgba(255, 255, 255, 0.774);
 	border-radius: 100%;
 	-webkit-border-radius: 100%;
@@ -104,8 +94,8 @@ body {
 .circleB2::before {
 	content: "";
 	position: absolute;
-	width: 3vw;
-	height: 3vw;
+	width: 2vw;
+	height: 2vw;
 	background: rgba(255, 0, 0, 0.541);
 	border-radius: 100%;
 	-webkit-border-radius: 100%;
@@ -117,8 +107,8 @@ body {
 .circleA2::after {
 	content: "";
 	position: absolute;
-	width: 4vw;
-	height: 4vw;
+	width: 3.5vw;
+	height: 3.5vw;
 	border: 5px solid rgba(255, 0, 0, 0.774);
 	border-radius: 100%;
 	-webkit-border-radius: 100%;
@@ -127,9 +117,25 @@ body {
 	-o-border-radius: 100%;
 }
 
-#turnDownForWhat {
-	padding: 3%;
-	color: red;
-	font-size: 22px;
-	font-weight: 600;
+.wrap--content {
+	margin: auto;
+	max-width: 1140px;
+	position: relative;
+}
+
+.progress-slide {
+	width: 80.07%;
+	bottom: 0%;
+	left: 50%;
+	margin: 0;
+	transform: translate(-50%, 0%);
+	-webkit-transform: translate(-50%, 0%);
+	-moz-transform: translate(-50%, 0%);
+	-ms-transform: translate(-50%, 0%);
+	-o-transform: translate(-50%, 0%);
+	visibility: hidden;
+}
+
+.bar-show {
+	visibility: visible
 }

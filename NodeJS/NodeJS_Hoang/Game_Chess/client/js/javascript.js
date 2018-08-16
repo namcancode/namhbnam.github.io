@@ -3,13 +3,13 @@ const showBoard = async () => {
 	for (let i = 0; i < 8; i++) {
 		for (let j = 0; j < 8; j++) {
 			i % 2 == j % 2
-				? $(".container").append(
+				? $(".chess--board").append(
 						`<div class="square ui-widget-content black" id="${8 *
 							i +
 							j}" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}">
 						</div>`
 				  )
-				: $(".container").append(
+				: $(".chess--board").append(
 						`<div class="square white" data-x ="${i}" id="${8 * i +
 							j}" data-y ="${j}"data-point = "${i},${j}">
 						</div>`
@@ -392,10 +392,12 @@ async function hightLightPawn(currentPoint, currentName, teamA) {
 			currentPoint == 15
 		) {
 			for (let i = currentPoint + 8; i <= currentPoint + 16; i = i + 8) {
-				const done = await canYouKill(i, teamA);
-				if (done) {
-					break;
-				}
+				if ($(`#${i}`).find(".chess--piece").length <= 0) {
+					const done = await canYouKill(i, teamA);
+					if (done) {
+						break;
+					}
+				} else break;
 			}
 		} else {
 			for (let i = currentPoint + 8; i <= currentPoint + 8; i = i + 8) {
@@ -432,10 +434,12 @@ async function hightLightPawn(currentPoint, currentName, teamA) {
 			currentPoint == 55
 		) {
 			for (let i = currentPoint - 8; i >= currentPoint - 16; i = i - 8) {
-				const done = await canYouKill(i, teamA);
-				if (done) {
-					break;
-				}
+				if ($(`#${i}`).find(".chess--piece").length <= 0) {
+					const done = await canYouKill(i, teamA);
+					if (done) {
+						break;
+					}
+				} else break;
 			}
 		} else {
 			for (let i = currentPoint - 8; i >= currentPoint - 8; i = i - 8) {
@@ -546,34 +550,62 @@ async function dragItem() {
 			if (teamate == "dragon" && checkMoves) {
 				if ($(event.target).hasClass("circleB")) {
 					$(this).html(ui.draggable);
+					// timeOut("bar2")
 					checkMoves = !checkMoves;
 				}
 				if ($(event.target).hasClass("circleB2")) {
+					// timeOut("bar2")
 					$(this).html(ui.draggable);
 					checkMoves = !checkMoves;
 				}
 			} else if (teamate == "phoenix" && !checkMoves) {
 				if ($(event.target).hasClass("circleB")) {
 					$(this).html(ui.draggable);
+					// timeOut("bar1")
 					checkMoves = !checkMoves;
 				}
 				if ($(event.target).hasClass("circleB2")) {
 					$(this).html(ui.draggable);
+					// timeOut("bar1")
 					checkMoves = !checkMoves;
 				}
 			}
-			$(".container").removeAttr("style")
+			$(".chess--board").removeAttr("style");
+			$(".progress-slide").removeClass("bar-show");
 			checkMoves
-			? $(".container").css("border-top","3px solid #0ec5e3")
-		: $(".container").css("border-bottom","3px solid #0ec5e3")
+			? $("#progress1").addClass("bar-show")
+			: $("#progress2").addClass("bar-show");
 		}
 	});
 }
-
+/* function timeOut(name) {
+    var elem = document.getElementById(name);
+    var width = 100;
+    var id = setInterval(frame, 30);
+    function frame() {
+        if (width == 0) {
+			$(".progress-slide").removeClass("bar-show");
+			if(elem =="bar1"){
+				$("#progress1").css("width","100%")
+				$("#progress2").addClass("bar-show");
+				timeOut("bar2")
+			}else{
+				$("#progress2").css("width","100%")
+				$("#progress1").addClass("bar-show")
+				timeOut("bar1")
+			}
+			checkMoves=!checkMoves
+            clearInterval(id);
+        } else {
+            width--;
+            elem.style.width = width + '%';
+        }
+	}
+} */
 $(async () => {
 	await showBoard();
 	await dragItem();
 	checkMoves
-		? $(".container").css("border-top","3px solid #0ec5e3")
-		: $(".container").css("border-bottom","3px solid #0ec5e3")
+		? $("#progress1").addClass("bar-show")
+		: $("#progress2").addClass("bar-show");
 });
