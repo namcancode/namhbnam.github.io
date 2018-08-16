@@ -4,21 +4,22 @@ body {
 }
 
 .container {
-	width: 96vw;
+	width: 80vw;
+	height: 80vw;
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex-wrap: wrap;
 	flex-wrap: wrap;
 	margin: auto;
-	border: 1px solid black;
+	border: 3px solid rgba(0, 0, 0, 0.11);
 	position: relative;
 	overflow: hidden;
 	user-select: none;
 }
 
 .square {
-	min-height: 12vw;
-	width: 12vw;
+	min-height: 10vw;
+	width: 10vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -29,6 +30,7 @@ body {
 	/* -webkit-box-shadow:  0 0 3px 3px yellow;
    -moz-box-shadow:  0 0 3px 3px yellow; */
 	/* box-shadow:  0 0 3px 3px yellow; */
+	/* box-shadow: 0 0 3px 3px #fbff00 */
 }
 
 /* .square:hover {
@@ -37,12 +39,12 @@ body {
 
 .black {
 	/* background-color: rgb(241, 100, 100); */
-	background-image: url(../img/black.png);
+	background-image: url(../img/black.jpg);
 }
 
 .white {
 	/* background-color: #ffffff; */
-	background-image: url(../img/white.png)
+	background-image: url(../img/white.jpg)
 }
 
 .chess--piece {
@@ -52,7 +54,12 @@ body {
 
 .chess--piece img {
 	cursor: pointer;
-	width: 100%
+	width: 100%;
+}
+
+.chess--piece svg {
+	cursor: pointer;
+	width: 100%;
 }
 
 .ui-helper {

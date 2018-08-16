@@ -562,9 +562,10 @@ async function dragItem() {
 					checkMoves = !checkMoves;
 				}
 			}
+			$(".container").removeAttr("style")
 			checkMoves
-				? $("#turnDownForWhat").html("Lượt Quân Đen")
-				: $("#turnDownForWhat").html("Lượt Quân Trắng");
+			? $(".container").css("border-top","3px solid #0ec5e3")
+		: $(".container").css("border-bottom","3px solid #0ec5e3")
 		}
 	});
 }
@@ -573,6 +574,6 @@ $(async () => {
 	await showBoard();
 	await dragItem();
 	checkMoves
-		? $("#turnDownForWhat").html("Lượt Quân Đen")
-		: $("#turnDownForWhat").html("Lượt Quân Trắng");
+		? $(".container").css("border-top","3px solid #0ec5e3")
+		: $(".container").css("border-bottom","3px solid #0ec5e3")
 });
