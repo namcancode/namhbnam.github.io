@@ -54,9 +54,22 @@
         $('#username').val("");
       });
       socket.on('name user', (data) => {
-        $('#users').append(data.name + '<br>')
+        console.log(data);
+        if (data.length <= 1) {
+          $('#users').append(data[0].name + '<br>')
+        } else {
+          $('#users').html("")
+          for (let i of data) {
+            $('#users').append(i.name + '<br>')
+          }
+
+        }
+
         $('#namesWrapper').css("display", "none");
         $('#mainWrapper').css("display", "block");
+      });
+      socket.on('cannot create user', (name) => {
+        $("#namesWrapper p").html(`Create Username: Đã có người sử dụng tên "${name.name}" này vui lòng tạo tên khác`)
       });
     })
   </script>
