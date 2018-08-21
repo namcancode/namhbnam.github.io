@@ -28,14 +28,30 @@ io.on("connection", function(socket) {
 			clients.push(user);
 			socket.join("room total");
 			io.to("room total").emit("name user", clients);
-
 		} else {
 			clients.push(user);
 			socket.join("room total");
 			io.to("room total").emit("name user", clients);
 		}
+	});
+	socket.on("challenge", data => {
+		clients.forEach(c => {
+			if (c.name == data.data) {
+				socket.leave("room total");
+				io.sockets.connected[c.id].leave("room total");
+				socket.join(`${data.data}`);
+				io.sockets.connected[c.id].join(`${data.data}`);
+				io.to(`${data.data}`).emit("createBoard", data.data);
+			}
+		});
 
 	});
+	socket.on("move",function  (move) {
+		const room = Object.keys(socket.rooms)[0]
+		socket.to(`${room}`).emit("moveSuccess", {piece:move.piece,square:move.square,checkMoves:move.checkMoves});
+	})
+
+
 });
 // const clientInRoom =
 // io.sockets.adapter.rooms["room total"];
