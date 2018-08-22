@@ -142,7 +142,7 @@ body {
 
 .chess--board {
   width: 80%;
-  height: 80vw;
+  max-height: 717px;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -155,7 +155,7 @@ body {
 }
 
 .square {
-  min-height: 8vw;
+  height: 73px;
   width: 12.5%;
   display: flex;
   justify-content: center;
@@ -205,8 +205,8 @@ body {
 .circleB::before {
   content: "";
   position: absolute;
-  width: 2vw;
-  height: 2vw;
+  width: 15px;
+  height: 15px;
   background: rgba(255, 255, 255, 0.541);
   border-radius: 100%;
   -webkit-border-radius: 100%;
@@ -218,9 +218,9 @@ body {
 .circleA::after {
   content: "";
   position: absolute;
-  width: 3.5vw;
-  height: 3.5vw;
-  border: 5px solid rgba(255, 255, 255, 0.774);
+  width: 30px;
+  height: 30px;
+  border: 3.5px solid rgba(255, 255, 255, 0.774);
   border-radius: 100%;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
@@ -231,8 +231,8 @@ body {
 .circleB2::before {
   content: "";
   position: absolute;
-  width: 2vw;
-  height: 2vw;
+  width: 15px;
+  height: 15px;
   background: rgba(255, 0, 0, 0.541);
   border-radius: 100%;
   -webkit-border-radius: 100%;
@@ -244,9 +244,9 @@ body {
 .circleA2::after {
   content: "";
   position: absolute;
-  width: 3.5vw;
-  height: 3.5vw;
-  border: 5px solid rgba(255, 0, 0, 0.774);
+  width: 30px;
+  height: 30px;
+  border: 3.5px solid rgba(255, 0, 0, 0.774);
   border-radius: 100%;
   -webkit-border-radius: 100%;
   -moz-border-radius: 100%;
@@ -257,7 +257,7 @@ body {
 .wrap--content {
   display: none;
   margin: auto;
-  max-width: 1140px;
+  max-width: 700px;
   position: relative;
 }
 
