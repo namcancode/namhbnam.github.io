@@ -1,3 +1,3 @@
- const io = require("socket.io")(4000);
- const clients = []
-module.exports = {io,clients}
+const io = require("socket.io")(4000);
+const mangUser = {};
+module.exports = { io, mangUser };

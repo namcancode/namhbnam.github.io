@@ -19,7 +19,7 @@
     <div class="chatForm">
       <div id="left">
         <div id="boxTittle">
-          <h3>User Online</h3><button id='challengeButton'>Challenge</button></div>
+          <h3>User Online</h3><button id='challengeButton1'>Challenge</button></div>
         <div id="boxContent">
 
 
@@ -43,17 +43,60 @@
           Hello <span id="currentUser">Teo</span>
           <input type="button" id="btnLogout" value="Logout">
         </div>
-        <div id="listMessage">
+        <!-- <div id="listMessage">
 
-        </div>
+        </div> -->
 
-        <input type="text" id="txtMessage">
-        <input type="button" id="btnSend" value="Send">
+        <!-- <input type="text" id="txtMessage"> -->
+        <!-- <input type="button" id="btnSend" value="Send"> -->
       </div>
     </div>
   </div>
 
+  <div class="card rare-wind-gradient chat-room">
+    <div class="card-body">
 
+      <!-- Grid row -->
+      <div class="row px-lg-2 px-2">
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-xl-4 px-0">
+
+          <h6 class="font-weight-bold mb-3 text-center text-lg-left">Member Online</h6>
+          <div class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue">
+            <ul class="list-unstyled friend-list">
+
+            </ul>
+          </div>
+
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-xl-8 pl-md-3 px-lg-auto px-0">
+
+          <div class="chat-message">
+
+            <ul class="list-unstyled chat-1 scrollbar-light-blue" id="listMessage">
+
+            </ul>
+            <div class="white">
+              <div class="form-group basic-textarea">
+                <textarea class="form-control pl-2 my-0" id="txtMessage" rows="3" placeholder="Type your message here..."></textarea>
+              </div>
+            </div>
+            <button type="button" id="btnSend" class="btn btn-outline-pink btn-rounded btn-sm waves-effect waves-dark float-right">Send</button>
+
+          </div>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+  </div>
 
 
 

@@ -1,5 +1,4 @@
-import { io, clients } from "../bin/socket";
-let mangUser = {};
+import { io, mangUser } from "../bin/socket";
 /* io.on("connection", function(socket) {
 	// console.log("a user connected" + socket);
 	socket.on("disconnect", function() {
@@ -64,6 +63,7 @@ io.on("connection", function(socket) {
 			socket.Username = data;
 			socket.emit("server-send-dangky-thanhcong", data);
 			io.sockets.emit("danh-sach-dang-online", mangUser);
+			socket.emit("challengSend", data);
 		}
 	});
 
@@ -110,19 +110,19 @@ io.on("connection", function(socket) {
 		socket.myGame = `${socket.Username}-${cha}`; //ten phong
 		socket.challenger = `${cha}`; //ten thach dau
 		socket.join(`${socket.Username}-${cha}`); // target join room
-
+		const name = socket.Username;
 		socket.on("moved", function(data) {
 			if (data) {
 				if (
 					data.sender === socket.challenger &&
 					data.color === "dragon"
 				) {
-					io.in(socket.myGame).emit("everyBodyMove", data);
+					io.in(socket.myGame).emit("everyBodyMove", { data, name });
 				} else if (
 					data.sender !== socket.challenger &&
 					data.color === "phoenix"
 				) {
-					io.in(socket.myGame).emit("everyBodyMove", data);
+					io.in(socket.myGame).emit("everyBodyMove", { data, name });
 				}
 			}
 		});
@@ -130,6 +130,7 @@ io.on("connection", function(socket) {
 
 	socket.on("join-room", target => {
 		// challenger join room  socket nam
+		const name = socket.Username;
 		socket.myGame = `${target}-${socket.Username}`;
 		socket.challenger = `${socket.Username}`; //thach dau
 		socket.join(`${target}-${socket.Username}`);
@@ -140,12 +141,12 @@ io.on("connection", function(socket) {
 					data.sender === socket.challenger &&
 					data.color === "dragon"
 				) {
-					io.in(socket.myGame).emit("everyBodyMove", data);
+					io.in(socket.myGame).emit("everyBodyMove", { data, name });
 				} else if (
 					data.sender !== socket.challenger &&
 					data.color === "phoenix"
 				) {
-					io.in(socket.myGame).emit("everyBodyMove", data);
+					io.in(socket.myGame).emit("everyBodyMove", { data, name });
 				}
 			}
 		});

@@ -5,13 +5,13 @@ const showBoard = async () => {
 		for (let j = 0; j < 8; j++) {
 			i % 2 == j % 2
 				? $(".chess--board").append(
-						`<div class="square ui-widget-content black" id="${8 *
+						`<div class="square ui-widget-content black--square" id="${8 *
 							i +
 							j}" data-x ="${i}" data-y ="${j}"data-point = "${i},${j}">
 						</div>`
 				  )
 				: $(".chess--board").append(
-						`<div class="square white" data-x ="${i}" id="${8 * i +
+						`<div class="square white--square" data-x ="${i}" id="${8 * i +
 							j}" data-y ="${j}"data-point = "${i},${j}">
 						</div>`
 				  );
@@ -472,6 +472,7 @@ async function hightLightKing(currentPoint, teamA) {
 	}
 }
 async function dragItem() {
+	$(".wrap--content").css("display", "block");
 	$(".chess--piece").draggable({
 		addClasses: false,
 		helper: "clone",
@@ -550,31 +551,30 @@ async function dragItem() {
 			}
 			// $(this).html(ui.draggable);
 
-
 			if (teamate == "dragon" && checkMoves) {
 				if ($(event.target).hasClass("circleB")) {
 					// $(this).html(ui.draggable);
 					// timeOut("bar2")
 					// checkMoves = !checkMoves;
 					socket.emit("moved", {
-				sender: socket.Username,
-				name: $(ui.draggable).attr("id"),
-				square: $(this).attr("id"),
-				checkMoves: !checkMoves,
-				color: teamate
-			});
+						sender: socket.Username,
+						name: $(ui.draggable).attr("id"),
+						square: $(this).attr("id"),
+						checkMoves: !checkMoves,
+						color: teamate
+					});
 				}
 				if ($(event.target).hasClass("circleB2")) {
 					// timeOut("bar2")
 					// $(this).html(ui.draggable);
 					// checkMoves = !checkMoves;
 					socket.emit("moved", {
-				sender: socket.Username,
-				name: $(ui.draggable).attr("id"),
-				square: $(this).attr("id"),
-				checkMoves: !checkMoves,
-				color: teamate
-			});
+						sender: socket.Username,
+						name: $(ui.draggable).attr("id"),
+						square: $(this).attr("id"),
+						checkMoves: !checkMoves,
+						color: teamate
+					});
 				}
 			} else if (teamate == "phoenix" && !checkMoves) {
 				if ($(event.target).hasClass("circleB")) {
@@ -582,24 +582,24 @@ async function dragItem() {
 					// timeOut("bar1")
 					// checkMoves = !checkMoves;
 					socket.emit("moved", {
-				sender: socket.Username,
-				name: $(ui.draggable).attr("id"),
-				square: $(this).attr("id"),
-				checkMoves: !checkMoves,
-				color: teamate
-			});
+						sender: socket.Username,
+						name: $(ui.draggable).attr("id"),
+						square: $(this).attr("id"),
+						checkMoves: !checkMoves,
+						color: teamate
+					});
 				}
 				if ($(event.target).hasClass("circleB2")) {
 					// $(this).html(ui.draggable);
 					// timeOut("bar1")
 					// checkMoves = !checkMoves;
 					socket.emit("moved", {
-				sender: socket.Username,
-				name: $(ui.draggable).attr("id"),
-				square: $(this).attr("id"),
-				checkMoves: !checkMoves,
-				color: teamate
-			});
+						sender: socket.Username,
+						name: $(ui.draggable).attr("id"),
+						square: $(this).attr("id"),
+						checkMoves: !checkMoves,
+						color: teamate
+					});
 				}
 			}
 			$(".chess--board").removeAttr("style");
@@ -701,16 +701,16 @@ function styleForm(arguments) {
 		$(".chatForm").show(1000);
 		$("#currentUser").html(data);
 		socket.Username = data;
-		$("#challengeButton").click(function() {
-			var target = prompt("Your opponent's name", "cuong");
 
-			if (target != null) {
-				socket.emit("challenging", {
-					challenger: data,
-					target: target
-				});
-			}
-		});
+		// $("#challengeButton").click(function() {
+		// 	var target = $($("#challengeButton").parent().prev(".text-small")).find("strong").text();
+		// 	if (target) {
+		// 		socket.emit("challenging", {
+		// 			challenger: data,
+		// 			target: target
+		// 		});
+		// 	}
+		// });
 	});
 
 	$("#btnLogout").click(function() {
@@ -732,23 +732,76 @@ function styleForm(arguments) {
 	});
 }
 
-function socketIoMrCuong(arguments) {
+function socketIoMrCuong() {
 	socket.on("server-send-dangky-thatbai", function() {
 		alert("Ten dang nhap da ton tai.");
 	});
 
 	socket.on("danh-sach-dang-online", function(mangUser) {
-		$("#boxContent").html("");
-
-		for (i in mangUser) {
-			$("#boxContent").append(
-				`<div class='userOnline'> <h5>${i}</h5>  </div>`
-			); // <button name='${i}' id='${mangUser[i]}' class='challengeButton'  >Challenge</button>
+		$(".list-unstyled.friend-list").html("");
+		for (name in mangUser) {
+			if(name){
+				$(".list-unstyled.friend-list").append(
+					`
+					<li class="p-2">
+					<a href="#" class="d-flex justify-content-between">
+					  <img src="/images/face.png" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
+					  <div class="text-small">
+						<strong>${name}</strong>
+						<p class="last-message text-muted">Cần người thách đấu</p>
+					  </div>
+					  <div class="chat-footer">
+						<p class="text-smaller text-muted mb-0">1 min ago</p>
+						<div class="challengeButton">
+						<img src="/images/challenge.png" alt="avatar" class="icon--challenge rounded-circle d-flex align-self-center mr-2 z-depth-1">
+						</div>
+					  </div>
+					</a>
+				  </li>
+					`
+				)
+			}
 		}
+
 	});
+	socket.on("challengSend",function  (data) {
+		socket.Username = data;
+		// console.log(data);
+
+		$(".challengeButton").click(function() {
+			const target = $($(this).parent().prev(".text-small")).find("strong").text();
+			console.log('target :', target);
+			console.log('data :', data);
+			if (target) {
+				socket.emit("challenging", {
+					challenger: data,
+					target: target
+				});
+			}
+		});
+	})
 
 	socket.on("tin-nhan-chung", function(data) {
-		$("#listMessage").append("<p>" + data.un + " :" + data.mes + "</p>");
+		if(data.un){
+			$("#listMessage").append(
+				`
+				<li class="d-flex justify-content-between mb-4">
+				<img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+				<div class="chat-body white p-3 ml-2 z-depth-1">
+				  <div class="header">
+					<strong class="primary-font">${data.un}</strong>
+					<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 1 mins ago</small>
+				  </div>
+				  <hr class="w-100">
+				  <p class="mb-0">
+					${data.mes}
+				  </p>
+				</div>
+			  </li>
+
+				`);
+		}
+
 	});
 
 	socket.on("no-dang-go-chu", function(gochu) {
@@ -769,10 +822,8 @@ function socketIoMrCuong(arguments) {
 
 	socket.on("wanna-fight", function(data) {
 		//cuong
-
 		if (window.confirm(`${data.challenger} challenge you to a game !`)) {
 			socket.emit("accepted", data.challenger);
-			renbanco();
 			dragItem();
 		} else {
 			socket.emit("declined", data.challenger);
@@ -784,21 +835,28 @@ function socketIoMrCuong(arguments) {
 		if (data.status === "accepted") {
 			alert("Your opponent accepted the challenge");
 			socket.emit("join-room", data.target);
-			renbanco();
 			dragItem();
 		} else {
 			alert("Your opponent declined the challenge");
 		}
 	});
 }
-function renbanco(arguments) {
-	// body
-	$(".wrap--content").css("display", "block");
-}
+
 socket.on("everyBodyMove", function(data) {
-	checkMoves = data.checkMoves;
-	$(`#${data.square}`).html("");
-	$(`#${data.name}`).appendTo($(`#${data.square}`));
+	checkMoves = data.data.checkMoves;
+	$(`#${data.data.square}`).html("");
+	$(`#${data.data.name}`).appendTo($(`#${data.data.square}`));
+	$(".progress-slide").removeClass("bar-show");
+	$('.userOnline h5').each(function(){
+		if($(this).html()==data.name){
+			$(this).removeAttr("style")
+		}else{
+			$(this).css('color',"red")
+		}
+	})
+	checkMoves
+		? $("#progress1").addClass("bar-show")
+		: $("#progress2").addClass("bar-show");
 });
 
 $(async () => {
