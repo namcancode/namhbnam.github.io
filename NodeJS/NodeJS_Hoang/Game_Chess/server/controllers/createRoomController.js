@@ -1,6 +1,6 @@
 import { io, clients } from "../bin/socket";
-
-io.on("connection", function(socket) {
+let mangUser = {};
+/* io.on("connection", function(socket) {
 	// console.log("a user connected" + socket);
 	socket.on("disconnect", function() {
 		// console.log("user disconnected");
@@ -52,7 +52,108 @@ io.on("connection", function(socket) {
 	})
 
 
+}); */
+//Socket mr Cuong
+
+io.on("connection", function(socket) {
+	socket.on("client-send-username", function(data) {
+		if (mangUser[`'${data}'`] || data == "") {
+			socket.emit("server-send-dangky-thatbai");
+		} else {
+			mangUser[`${data}`] = socket.id;
+			socket.Username = data;
+			socket.emit("server-send-dangky-thanhcong", data);
+			io.sockets.emit("danh-sach-dang-online", mangUser);
+		}
+	});
+
+	socket.on("logout", function() {
+		delete mangUser[`${socket.Username}`];
+		socket.broadcast.emit("danh-sach-dang-online", mangUser);
+	});
+
+	socket.on("user-send-message", function(tinnhan) {
+		io.sockets.emit("tin-nhan-chung", {
+			un: socket.Username,
+			mes: tinnhan
+		});
+	});
+
+	socket.on("dang-go-chu", function() {
+		socket.broadcast.emit("no-dang-go-chu", socket.Username);
+	});
+	socket.on("dung-go-chu", function() {
+		socket.broadcast.emit("no-dung-go-chu", socket.Username);
+	});
+
+	socket.on("challenging", data => {
+		// challenger ask for a match
+
+		io.to(`${mangUser[`${data.target}`]}`).emit("wanna-fight", {
+			challenger: data.challenger
+		});
+	});
+	socket.on("declined", cha => {
+		// target reply
+		io.to(`${mangUser[`${cha}`]}`).emit("challenge-status", {
+			status: "declined",
+			target: socket.Username
+		});
+	});
+
+	socket.on("accepted", cha => {
+		// target reply socket cuong
+		io.to(`${mangUser[`${cha}`]}`).emit("challenge-status", {
+			status: "accepted",
+			target: socket.Username
+		});
+		socket.myGame = `${socket.Username}-${cha}`; //ten phong
+		socket.challenger = `${cha}`; //ten thach dau
+		socket.join(`${socket.Username}-${cha}`); // target join room
+
+		socket.on("moved", function(data) {
+			if (data) {
+				if (
+					data.sender === socket.challenger &&
+					data.color === "dragon"
+				) {
+					io.in(socket.myGame).emit("everyBodyMove", data);
+				} else if (
+					data.sender !== socket.challenger &&
+					data.color === "phoenix"
+				) {
+					io.in(socket.myGame).emit("everyBodyMove", data);
+				}
+			}
+		});
+	});
+
+	socket.on("join-room", target => {
+		// challenger join room  socket nam
+		socket.myGame = `${target}-${socket.Username}`;
+		socket.challenger = `${socket.Username}`; //thach dau
+		socket.join(`${target}-${socket.Username}`);
+
+		socket.on("moved", function(data) {
+			if (data) {
+				if (
+					data.sender === socket.challenger &&
+					data.color === "dragon"
+				) {
+					io.in(socket.myGame).emit("everyBodyMove", data);
+				} else if (
+					data.sender !== socket.challenger &&
+					data.color === "phoenix"
+				) {
+					io.in(socket.myGame).emit("everyBodyMove", data);
+				}
+			}
+		});
+	});
+	//------------chess xuli trong room------------------------
+
+	// -----------chess-end------------------------------------
+	socket.on("disconnect", function() {
+		socket.broadcast.emit("no-dung-go-chu", socket.Username);
+	});
 });
-// const clientInRoom =
-// io.sockets.adapter.rooms["room total"];
-// const keyIDClient = Object.keys(clientInRoom.sockets);

@@ -10,41 +10,61 @@
 </head>
 
 <body>
-  <div id="container">
-    <div id="namesWrapper">
-      <h2>ChatIO</h2>
-      <p>Create Username:</p>
-      <form action="" id="usernameForm">
-        <input size="35" id="username">
-        <input type="submit" value="Submit" id="">
-      </form>
+  <div class="wrapper">
+    <div class="loginForm">
+        <h3>Your name </h3>
+        <input type="text" id="txtUsername">
+        <input type="button" id="btnRegister" value="Register">
     </div>
-    <div id="mainWrapper">
-      <h2>ChatIO</h2>
-      <div id="chatWrapper">
-        <div id="chatWindow"></div>
-        <form action="" id="messageForm">
-          <input size="35" id="message" placeholder="Type Something...">
-          <input type="submit" value="Say It!" id="">
-        </form>
-      </div>
-      <div id="userWrapper">
-        <div id="users"></div>
-      </div>
+    <div class="chatForm">
+        <div id="left">
+            <div id="boxTittle"><h3>User Online</h3><button id='challengeButton' >Challenge</button></div>
+            <div id="boxContent">
+
+
+
+            </div>
+        </div>
+        <div id="middle">
+          <div class="wrap--content">
+            <div class="progress md-progress progress-slide" id="progress1">
+              <div class="progress-bar bg-info" id="bar1" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="chess--board">
+            </div>
+            <div class="progress md-progress progress-slide" id="progress2">
+              <div class="progress-bar bg-info" id="bar2" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+        <div id="right">
+            <div id="sayHi">
+                Hello <span id="currentUser">Teo</span>
+                <input type="button" id="btnLogout" value="Logout">
+            </div>
+            <div id="listMessage">
+
+            </div>
+
+            <input type="text" id="txtMessage">
+            <input type="button" id="btnSend" value="Send">
+        </div>
     </div>
-  </div>
-  <div class="wrap--content">
-    <div class="progress md-progress progress-slide" id="progress1">
-      <div class="progress-bar bg-info" id="bar1" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-        aria-valuemax="100"></div>
-    </div>
-    <div class="chess--board">
-    </div>
-    <div class="progress md-progress progress-slide" id="progress2">
-      <div class="progress-bar bg-info" id="bar2" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-        aria-valuemax="100"></div>
-    </div>
-  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
   <script src="/javascripts/jquery-3.3.1.min.js"></script>
   <script src="/javascripts/jquery-ui-1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

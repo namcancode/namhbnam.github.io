@@ -1,4 +1,4 @@
-const socket = io('http://localhost:4000');
+const socket = io("http://localhost:4000");
 let checkMoves = true; //true là quân black (random)
 const showBoard = async () => {
 	for (let i = 0; i < 8; i++) {
@@ -548,38 +548,65 @@ async function dragItem() {
 			if (startPoint[0] == endPoint[0] && startPoint[1] == endPoint[1]) {
 				return;
 			}
+			// $(this).html(ui.draggable);
+
+
 			if (teamate == "dragon" && checkMoves) {
 				if ($(event.target).hasClass("circleB")) {
-					$(this).html(ui.draggable);
+					// $(this).html(ui.draggable);
 					// timeOut("bar2")
 					// checkMoves = !checkMoves;
-					socket.emit("move",{piece:$(ui.draggable).attr('id'),square:$(this).attr('id'),checkMoves:!checkMoves})
+					socket.emit("moved", {
+				sender: socket.Username,
+				name: $(ui.draggable).attr("id"),
+				square: $(this).attr("id"),
+				checkMoves: !checkMoves,
+				color: teamate
+			});
 				}
 				if ($(event.target).hasClass("circleB2")) {
 					// timeOut("bar2")
-					$(this).html(ui.draggable);
+					// $(this).html(ui.draggable);
 					// checkMoves = !checkMoves;
-					socket.emit("move",{piece:$(ui.draggable).attr('id'),square:$(this).attr('id'),checkMoves:!checkMoves})
+					socket.emit("moved", {
+				sender: socket.Username,
+				name: $(ui.draggable).attr("id"),
+				square: $(this).attr("id"),
+				checkMoves: !checkMoves,
+				color: teamate
+			});
 				}
 			} else if (teamate == "phoenix" && !checkMoves) {
 				if ($(event.target).hasClass("circleB")) {
-					$(this).html(ui.draggable);
+					// $(this).html(ui.draggable);
 					// timeOut("bar1")
 					// checkMoves = !checkMoves;
-					socket.emit("move",{piece:$(ui.draggable).attr('id'),square:$(this).attr('id'),checkMoves:!checkMoves})
+					socket.emit("moved", {
+				sender: socket.Username,
+				name: $(ui.draggable).attr("id"),
+				square: $(this).attr("id"),
+				checkMoves: !checkMoves,
+				color: teamate
+			});
 				}
 				if ($(event.target).hasClass("circleB2")) {
-					$(this).html(ui.draggable);
+					// $(this).html(ui.draggable);
 					// timeOut("bar1")
 					// checkMoves = !checkMoves;
-					socket.emit("move",{piece:$(ui.draggable).attr('id'),square:$(this).attr('id'),checkMoves:!checkMoves})
+					socket.emit("moved", {
+				sender: socket.Username,
+				name: $(ui.draggable).attr("id"),
+				square: $(this).attr("id"),
+				checkMoves: !checkMoves,
+				color: teamate
+			});
 				}
 			}
 			$(".chess--board").removeAttr("style");
 			$(".progress-slide").removeClass("bar-show");
 			checkMoves
-			? $("#progress1").addClass("bar-show")
-			: $("#progress2").addClass("bar-show");
+				? $("#progress1").addClass("bar-show")
+				: $("#progress2").addClass("bar-show");
 		}
 	});
 }
@@ -607,60 +634,177 @@ async function dragItem() {
         }
 	}
 } */
-function socketIo (s) {
-	$('#messageForm').submit((e) => {
-	  e.preventDefault();
-	  socket.emit('send message', $('#message').val());
-	  $('#message').val("");
-
+function socketIo(s) {
+	$("#messageForm").submit(e => {
+		e.preventDefault();
+		socket.emit("send message", $("#message").val());
+		$("#message").val("");
 	});
-	socket.on('new message', (data) => {
-	  $('#chatWindow').append(`${data.msg} <br>`)
+	socket.on("new message", data => {
+		$("#chatWindow").append(`${data.msg} <br>`);
 	});
-	$('#usernameForm').submit((e) => {
-	  if ($('#users').html()) {
-		return
-	  };
-	  e.preventDefault();
-	  socket.emit('new user', $('#username').val());
-	  $('#username').val("");
-	});
-	socket.on('name user', (data) => {
-	  if (data.length <= 1) {
-		$('#users').append(`<div class="nameUser"><p>${data[0].name}</p></div>`)
-	  } else {
-		$('#users').html("")
-		for (let i of data) {
-		  $('#users').append(`<div class="nameUser"><p>${i.name}</p></div>`)
+	$("#usernameForm").submit(e => {
+		if ($("#users").html()) {
+			return;
 		}
-	  }
-	  $('#namesWrapper').css("display", "none");
-	  $('#mainWrapper').css("display", "block");
-	  challenge()
-
+		e.preventDefault();
+		socket.emit("new user", $("#username").val());
+		$("#username").val("");
 	});
-	socket.on('cannot create user', (name) => {
-	  $("#namesWrapper p").html(`Create Username: Đã có người sử dụng tên "${name.name}" này vui lòng tạo tên khác`)
+	socket.on("name user", data => {
+		if (data.length <= 1) {
+			$("#users").append(
+				`<div class="nameUser"><p>${data[0].name}</p></div>`
+			);
+		} else {
+			$("#users").html("");
+			for (let i of data) {
+				$("#users").append(
+					`<div class="nameUser"><p>${i.name}</p></div>`
+				);
+			}
+		}
+		$("#namesWrapper").css("display", "none");
+		$("#mainWrapper").css("display", "block");
+		challenge();
+	});
+	socket.on("cannot create user", name => {
+		$("#namesWrapper p").html(
+			`Create Username: Đã có người sử dụng tên "${
+				name.name
+			}" này vui lòng tạo tên khác`
+		);
 	});
 	function challenge(arguments) {
-	  $('.nameUser').click(function (e) {
-		socket.emit('challenge', { data: $(this).text() })
-	  })
+		$(".nameUser").click(function(e) {
+			socket.emit("challenge", { data: $(this).text() });
+		});
 	}
-	socket.on("createBoard", function (e) {
-	 $('#container').css("display","none")
-	 $('.wrap--content').css("display","block")
-	})
-	socket.on("moveSuccess",function  (move) {
-		checkMoves= move.checkMoves
-		$(`#${move.square}`).html("")
-		$(`#${move.piece}`).appendTo($(`#${move.square}`))
-	})
+	socket.on("createBoard", function(e) {
+		$("#container").css("display", "none");
+		$(".wrap--content").css("display", "block");
+	});
+	socket.on("moveSuccess", function(move) {
+		checkMoves = move.checkMoves;
+		$(`#${move.square}`).html("");
+		$(`#${move.piece}`).appendTo($(`#${move.square}`));
+	});
 }
+function styleForm(arguments) {
+	$(".loginForm").show();
+	$(".chatForm").hide();
+	$("#btnRegister").click(function() {
+		socket.emit("client-send-username", $("#txtUsername").val());
+	});
+	socket.on("server-send-dangky-thanhcong", function(data) {
+		$(".loginForm").hide(2000);
+		$(".chatForm").show(1000);
+		$("#currentUser").html(data);
+		socket.Username = data;
+		$("#challengeButton").click(function() {
+			var target = prompt("Your opponent's name", "cuong");
+
+			if (target != null) {
+				socket.emit("challenging", {
+					challenger: data,
+					target: target
+				});
+			}
+		});
+	});
+
+	$("#btnLogout").click(function() {
+		socket.emit("logout");
+		$(".loginForm").show(2000);
+		$(".chatForm").hide(1000);
+	});
+
+	$("#txtMessage").focusin(function(params) {
+		socket.emit("dang-go-chu");
+	});
+	$("#txtMessage").focusout(function(params) {
+		socket.emit("dung-go-chu");
+	});
+
+	$("#btnSend").click(function() {
+		socket.emit("user-send-message", $("#txtMessage").val());
+		$("#txtMessage").val("");
+	});
+}
+
+function socketIoMrCuong(arguments) {
+	socket.on("server-send-dangky-thatbai", function() {
+		alert("Ten dang nhap da ton tai.");
+	});
+
+	socket.on("danh-sach-dang-online", function(mangUser) {
+		$("#boxContent").html("");
+
+		for (i in mangUser) {
+			$("#boxContent").append(
+				`<div class='userOnline'> <h5>${i}</h5>  </div>`
+			); // <button name='${i}' id='${mangUser[i]}' class='challengeButton'  >Challenge</button>
+		}
+	});
+
+	socket.on("tin-nhan-chung", function(data) {
+		$("#listMessage").append("<p>" + data.un + " :" + data.mes + "</p>");
+	});
+
+	socket.on("no-dang-go-chu", function(gochu) {
+		$("#" + gochu).remove();
+		$("#listMessage").append(
+			"<p  class='bacham' id =" +
+				gochu +
+				" >" +
+				gochu +
+				" : " +
+				"<span></span><span></span><span></span></p>"
+		);
+	});
+
+	socket.on("no-dung-go-chu", function(gochu) {
+		$("#" + gochu).remove();
+	});
+
+	socket.on("wanna-fight", function(data) {
+		//cuong
+
+		if (window.confirm(`${data.challenger} challenge you to a game !`)) {
+			socket.emit("accepted", data.challenger);
+			renbanco();
+			dragItem();
+		} else {
+			socket.emit("declined", data.challenger);
+		}
+	});
+
+	socket.on("challenge-status", data => {
+		//nam
+		if (data.status === "accepted") {
+			alert("Your opponent accepted the challenge");
+			socket.emit("join-room", data.target);
+			renbanco();
+			dragItem();
+		} else {
+			alert("Your opponent declined the challenge");
+		}
+	});
+}
+function renbanco(arguments) {
+	// body
+	$(".wrap--content").css("display", "block");
+}
+socket.on("everyBodyMove", function(data) {
+	checkMoves = data.checkMoves;
+	$(`#${data.square}`).html("");
+	$(`#${data.name}`).appendTo($(`#${data.square}`));
+});
+
 $(async () => {
-	await socketIo()
+	await socketIoMrCuong();
+	await styleForm();
 	await showBoard();
-	await dragItem();
 	checkMoves
 		? $("#progress1").addClass("bar-show")
 		: $("#progress2").addClass("bar-show");
