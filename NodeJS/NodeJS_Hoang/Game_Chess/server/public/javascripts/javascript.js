@@ -1,5 +1,5 @@
 
-const socket = io("http://192.168.1.113:4000");
+const socket = io("http://localhost:4000");
 let checkMoves = true; //true là quân black (random)
 const showBoard = async () => {
 	for (let i = 0; i < 8; i++) {
@@ -697,24 +697,24 @@ async function logOut (arguments) {
 		socket.emit("logout");
 		$('.wrapper').css("padding-top","4%")
 		$(".loginForm").show(1000);
-		$("#chatForm").hide(500);
+		$(".chat-room").hide(500);
+		$(".chat-room").css("visibility","hidden");
 	});
 }
 function styleForm(arguments) {
-	$("#chatForm").hide();
+	$(".chat-room").hide();
 	$(".loginForm").show();
 	$("#btnRegister").click(function() {
-		$('.wrapper').css("padding-top","0")
 		socket.emit("client-send-username", $("#txtUsername").val());
 	});
 	socket.on("server-send-dangky-thanhcong", function(data) {
+		$('.wrapper').css("padding-top","0")
+		$(".chat-room").css("visibility","visible");
 		$(".loginForm").hide(500);
-		$("#chatForm").show(1000);
+		$(".chat-room").show(1000);
 		$("#currentUser").html(data);
 		socket.Username = data;
 	});
-
-
 
 	$("#txtMessage").focusin(function(params) {
 		socket.emit("dang-go-chu");
@@ -725,7 +725,7 @@ function styleForm(arguments) {
 
 	$("#btnSend").click(function() {
 		socket.emit("user-send-message", $("#txtMessage").val());
-		socket.emit("room-send-message", $("#txtMessage").val());
+		// socket.emit("room-send-message", $("#txtMessage").val());
 		$("#txtMessage").val("");
 	});
 }
@@ -746,7 +746,12 @@ function challengeSend(e) {
 }
 function socketIoMrCuong() {
 	socket.on("server-send-dangky-thatbai", function() {
-		alert("Ten dang nhap da ton tai.");
+		$('.popover-dismiss').popover({
+			trigger: 'focus'
+		})
+		$('.wrapper').css("padding-top","4%")
+		$(".chat-room").css("visibility","hidden");
+
 	});
 
 	socket.on("danh-sach-dang-online", async function(mangUser) {
@@ -923,6 +928,7 @@ socket.on("everyBodyMove", function(data) {
 });
 
 $(async () => {
+
 	await styleForm();
 	await socketIoMrCuong();
 	await showBoard();

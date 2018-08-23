@@ -367,8 +367,8 @@ body {
   justify-self: end
 }
 
-.user-card {
-  /* display: none */
+.chat-room {
+  visibility: hidden;
 }
 
 #btnLogout {
