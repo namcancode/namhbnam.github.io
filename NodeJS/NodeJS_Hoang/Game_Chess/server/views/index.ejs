@@ -12,58 +12,115 @@
 <body>
   <div class="wrapper">
     <div class="loginForm">
-      <h3>Your name </h3>
-      <input type="text" id="txtUsername">
-      <input type="button" id="btnRegister" value="Register">
+      <!-- Material form login -->
+      <div class="card">
+
+        <h5 class="card-header info-color white-text text-center py-4">
+          <strong>Sign in</strong>
+        </h5>
+
+        <!--Card content-->
+        <div class="card-body px-lg-5 pt-0">
+
+          <!-- Form -->
+          <form class="text-center pt-3" style="color: #757575;">
+
+            <!-- Email -->
+            <div class="md-form">
+              <input type="email" id="txtUsername" class="form-control">
+              <label for="txtUsername">Name</label>
+            </div>
+
+            <!-- Password -->
+            <div class="md-form">
+              <input type="email" id="materialLoginFormPassword" class="form-control">
+              <label for="materialLoginFormPassword">Avatar</label>
+            </div>
+
+            <div class="d-flex justify-content-around">
+              <div>
+                <!-- Remember me -->
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="materialLoginFormRemember">
+                  <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
+                </div>
+              </div>
+              <div>
+                <!-- Forgot password -->
+                <a href="">Forgot password?</a>
+              </div>
+            </div>
+
+            <!-- Sign in button -->
+            <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" id="btnRegister" type="submit">Sign
+              in
+            </button>
+
+            <!-- Register -->
+            <p>Not a member?
+              <a href="">Register</a>
+            </p>
+
+            <!-- Social login -->
+            <p>or sign in with:</p>
+            <a type="button" class="btn-floating btn-fb btn-sm">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a type="button" class="btn-floating btn-tw btn-sm">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a type="button" class="btn-floating btn-li btn-sm">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a type="button" class="btn-floating btn-git btn-sm">
+              <i class="fab fa-github"></i>
+            </a>
+
+          </form>
+          <!-- Form -->
+
+        </div>
+
+      </div>
+      <!-- Material form login -->
     </div>
-    <div class="chatForm">
+    <!-- <div class="chatForm">
       <div id="left">
         <div id="boxTittle">
-          <h3>User Online</h3><button id='challengeButton1'>Challenge</button></div>
+          <h3>User Online</h3><button id='challengeButton'>Challenge</button></div>
         <div id="boxContent">
 
 
 
         </div>
       </div>
-      <div class="wrap--content">
-        <div class="progress md-progress progress-slide" id="progress1">
-          <div class="progress-bar bg-info" id="bar1" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-            aria-valuemax="100"></div>
-        </div>
-        <div class="chess--board">
-        </div>
-        <div class="progress md-progress progress-slide" id="progress2">
-          <div class="progress-bar bg-info" id="bar2" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-            aria-valuemax="100"></div>
-        </div>
-      </div>
+
       <div id="right">
         <div id="sayHi">
           Hello <span id="currentUser">Teo</span>
           <input type="button" id="btnLogout" value="Logout">
         </div>
-        <!-- <div id="listMessage">
+        <div id="listMessage">
 
-        </div> -->
+        </div>
 
-        <!-- <input type="text" id="txtMessage"> -->
-        <!-- <input type="button" id="btnSend" value="Send"> -->
+        <input type="text" id="txtMessage">
+        <input type="button" id="btnSend" value="Send">
       </div>
-    </div>
+    </div> -->
   </div>
 
   <div class="card rare-wind-gradient chat-room">
-    <div class="card-body">
+    <div class="card-body row user-card" id="chatForm">
 
       <!-- Grid row -->
-      <div class="row px-lg-2 px-2">
+      <div class="col col-lg-3 px-lg-2 px-2">
 
         <!-- Grid column -->
-        <div class="col-md-6 col-xl-4 px-0">
+        <div class=" px-0">
 
           <h6 class="font-weight-bold mb-3 text-center text-lg-left">Member Online</h6>
-          <div class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue">
+          <div class="height-0 white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue">
             <ul class="list-unstyled friend-list">
 
             </ul>
@@ -73,9 +130,9 @@
         <!-- Grid column -->
 
         <!-- Grid column -->
-        <div class="col-md-6 col-xl-8 pl-md-3 px-lg-auto px-0">
+        <div class=" px-0 pt-4">
 
-          <div class="chat-message">
+          <div class="white chat-message">
 
             <ul class="list-unstyled chat-1 scrollbar-light-blue" id="listMessage">
 
@@ -92,6 +149,18 @@
         </div>
         <!-- Grid column -->
 
+      </div>
+      <div class="wrap--content col-lg-9">
+        <div class="progress md-progress progress-slide" id="progress1">
+          <div class="progress-bar bg-info" id="bar1" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+            aria-valuemax="100"></div>
+        </div>
+        <div class="chess--board">
+        </div>
+        <div class="progress md-progress progress-slide" id="progress2">
+          <div class="progress-bar bg-info" id="bar2" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+            aria-valuemax="100"></div>
+        </div>
       </div>
       <!-- Grid row -->
 
@@ -115,7 +184,7 @@
     crossorigin="anonymous"></script>
   <script src="https://namboss.blob.core.windows.net/huong/mdb.min.js"></script>
 
-  <script src="http://localhost:4000/socket.io/socket.io.js"></script>
+  <script src="http://192.168.1.113:4000/socket.io/socket.io.js"></script>
   <script src="/javascripts/javascript.js" type="text/javascript"></script>
 
 

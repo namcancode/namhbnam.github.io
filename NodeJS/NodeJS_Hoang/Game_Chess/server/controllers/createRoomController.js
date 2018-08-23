@@ -61,23 +61,32 @@ io.on("connection", function(socket) {
 		} else {
 			mangUser[`${data}`] = socket.id;
 			socket.Username = data;
+			socket.join("total");
 			socket.emit("server-send-dangky-thanhcong", data);
 			io.sockets.emit("danh-sach-dang-online", mangUser);
-			socket.emit("challengSend", data);
+
 		}
 	});
-
 	socket.on("logout", function() {
 		delete mangUser[`${socket.Username}`];
 		socket.broadcast.emit("danh-sach-dang-online", mangUser);
 	});
 
 	socket.on("user-send-message", function(tinnhan) {
-		io.sockets.emit("tin-nhan-chung", {
+		io.in('total').emit("tin-nhan-chung", {
 			un: socket.Username,
 			mes: tinnhan
 		});
 	});
+	function chatRoom (room,username) {
+		socket.on("room-send-message", function(tinnhan) {
+			io.in(`${room}`).emit("tin-nhan-room", {
+				un: username,
+				mes: tinnhan
+			});
+		});
+	}
+
 
 	socket.on("dang-go-chu", function() {
 		socket.broadcast.emit("no-dang-go-chu", socket.Username);
@@ -87,8 +96,6 @@ io.on("connection", function(socket) {
 	});
 
 	socket.on("challenging", data => {
-		// challenger ask for a match
-
 		io.to(`${mangUser[`${data.target}`]}`).emit("wanna-fight", {
 			challenger: data.challenger
 		});
@@ -103,14 +110,19 @@ io.on("connection", function(socket) {
 
 	socket.on("accepted", cha => {
 		// target reply socket cuong
+		socket.leave("total")
+			delete mangUser[`${socket.Username}`];
+			socket.broadcast.emit("danh-sach-dang-online", mangUser);
 		io.to(`${mangUser[`${cha}`]}`).emit("challenge-status", {
 			status: "accepted",
 			target: socket.Username
 		});
 		socket.myGame = `${socket.Username}-${cha}`; //ten phong
+
 		socket.challenger = `${cha}`; //ten thach dau
-		socket.join(`${socket.Username}-${cha}`); // target join room
+		socket.join(`${socket.myGame}`); // target join room
 		const name = socket.Username;
+		chatRoom(socket.myGame,socket.Username)
 		socket.on("moved", function(data) {
 			if (data) {
 				if (
@@ -130,11 +142,15 @@ io.on("connection", function(socket) {
 
 	socket.on("join-room", target => {
 		// challenger join room  socket nam
+		socket.leave("total")
+			delete mangUser[`${socket.Username}`];
+			socket.broadcast.emit("danh-sach-dang-online", mangUser);
+
 		const name = socket.Username;
 		socket.myGame = `${target}-${socket.Username}`;
 		socket.challenger = `${socket.Username}`; //thach dau
-		socket.join(`${target}-${socket.Username}`);
-
+		socket.join(`${socket.myGame}`);
+		chatRoom(socket.myGame,socket.Username)
 		socket.on("moved", function(data) {
 			if (data) {
 				if (

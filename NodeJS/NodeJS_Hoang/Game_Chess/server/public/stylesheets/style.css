@@ -3,9 +3,9 @@ body {
 }
 
 .wrapper {
-  width: 1280px;
+  padding-top: 4%;
+  max-width: 450px;
   margin: auto;
-  background-color: #2cdd58;
 }
 
 .chatForm {
@@ -24,12 +24,6 @@ body {
   border: 1px solid black;
   height: 640px;
   width: 640px;
-}
-
-#txtUsername {
-  background-color: #fffc42;
-  border: solid 1px black;
-  width: 300px;
 }
 
 #left, #right {
@@ -141,8 +135,8 @@ body {
 }
 
 .chess--board {
-  width: 80%;
-  max-height: 717px;
+  width: 100%;
+  /*! max-height: 717px; */
   display: -webkit-flex;
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -155,7 +149,7 @@ body {
 }
 
 .square {
-  height: 73px;
+  height: 91px;
   width: 12.5%;
   display: flex;
   justify-content: center;
@@ -257,12 +251,13 @@ body {
 .wrap--content {
   display: none;
   margin: auto;
-  max-width: 700px;
+  max-width: 734px;
   position: relative;
+  /*! height: 95vh; */
 }
 
 .progress-slide {
-  width: 80.07%;
+  width: 100%;
   bottom: 0%;
   left: 50%;
   margin: 0;
@@ -285,9 +280,9 @@ body {
   overflow-y: scroll;
 }
 
-.card.chat-room .members-panel-1 {
+/* .card.chat-room .members-panel-1 {
   height: 570px;
-}
+} */
 
 .card.chat-room .chat-1 {
   height: 495px;
@@ -354,4 +349,29 @@ body {
 
 .icon--challenge:hover {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.685), 0 2px 10px 0 rgba(0, 0, 0, 0.685);
+}
+
+.user--list {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 30px;
+}
+
+.user--chat {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 30px;
+}
+
+.chat-footer {
+  justify-self: end
+}
+
+.user-card {
+  /* display: none */
+}
+
+#btnLogout {
+  font-size: 23px;
+  padding-left: 18px
 }

@@ -1,4 +1,5 @@
-const socket = io("http://localhost:4000");
+
+const socket = io("http://192.168.1.113:4000");
 let checkMoves = true; //true là quân black (random)
 const showBoard = async () => {
 	for (let i = 0; i < 8; i++) {
@@ -11,7 +12,8 @@ const showBoard = async () => {
 						</div>`
 				  )
 				: $(".chess--board").append(
-						`<div class="square white--square" data-x ="${i}" id="${8 * i +
+						`<div class="square white--square" data-x ="${i}" id="${8 *
+							i +
 							j}" data-y ="${j}"data-point = "${i},${j}">
 						</div>`
 				  );
@@ -690,34 +692,29 @@ function socketIo(s) {
 		$(`#${move.piece}`).appendTo($(`#${move.square}`));
 	});
 }
+async function logOut (arguments) {
+	$("#btnLogout").click(function() {
+		socket.emit("logout");
+		$('.wrapper').css("padding-top","4%")
+		$(".loginForm").show(1000);
+		$("#chatForm").hide(500);
+	});
+}
 function styleForm(arguments) {
+	$("#chatForm").hide();
 	$(".loginForm").show();
-	$(".chatForm").hide();
 	$("#btnRegister").click(function() {
+		$('.wrapper').css("padding-top","0")
 		socket.emit("client-send-username", $("#txtUsername").val());
 	});
 	socket.on("server-send-dangky-thanhcong", function(data) {
-		$(".loginForm").hide(2000);
-		$(".chatForm").show(1000);
+		$(".loginForm").hide(500);
+		$("#chatForm").show(1000);
 		$("#currentUser").html(data);
 		socket.Username = data;
-
-		// $("#challengeButton").click(function() {
-		// 	var target = $($("#challengeButton").parent().prev(".text-small")).find("strong").text();
-		// 	if (target) {
-		// 		socket.emit("challenging", {
-		// 			challenger: data,
-		// 			target: target
-		// 		});
-		// 	}
-		// });
 	});
 
-	$("#btnLogout").click(function() {
-		socket.emit("logout");
-		$(".loginForm").show(2000);
-		$(".chatForm").hide(1000);
-	});
+
 
 	$("#txtMessage").focusin(function(params) {
 		socket.emit("dang-go-chu");
@@ -728,23 +725,38 @@ function styleForm(arguments) {
 
 	$("#btnSend").click(function() {
 		socket.emit("user-send-message", $("#txtMessage").val());
+		socket.emit("room-send-message", $("#txtMessage").val());
 		$("#txtMessage").val("");
 	});
 }
-
+function challengeSend(e) {
+	const target = $(
+		$(e)
+			.parent()
+			.prev(".text-small")
+	)
+		.find("strong")
+		.text();
+	if (socket.Username && socket.Username!=target) {
+		socket.emit("challenging", {
+			challenger: socket.Username,
+			target: target
+		});
+	}
+}
 function socketIoMrCuong() {
 	socket.on("server-send-dangky-thatbai", function() {
 		alert("Ten dang nhap da ton tai.");
 	});
 
-	socket.on("danh-sach-dang-online", function(mangUser) {
+	socket.on("danh-sach-dang-online", async function(mangUser) {
 		$(".list-unstyled.friend-list").html("");
 		for (name in mangUser) {
-			if(name){
+			if (name!=socket.Username) {
 				$(".list-unstyled.friend-list").append(
 					`
 					<li class="p-2">
-					<a href="#" class="d-flex justify-content-between">
+					<a href="#" class="user--list">
 					  <img src="/images/face.png" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
 					  <div class="text-small">
 						<strong>${name}</strong>
@@ -752,40 +764,43 @@ function socketIoMrCuong() {
 					  </div>
 					  <div class="chat-footer">
 						<p class="text-smaller text-muted mb-0">1 min ago</p>
-						<div class="challengeButton">
+						${name!=socket.Username ?`<div class="challengeButton" onclick="challengeSend(this)">
 						<img src="/images/challenge.png" alt="avatar" class="icon--challenge rounded-circle d-flex align-self-center mr-2 z-depth-1">
-						</div>
+						</div>`:""}
 					  </div>
 					</a>
 				  </li>
 					`
-				)
+				);
 			}
+			else if( name==socket.Username){
+				$(".list-unstyled.friend-list").prepend(
+					`
+					<li class="p-2 active">
+					<a href="#" class="user--list">
+					  <img src="/images/face.png" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
+					  <div class="text-small">
+						<strong>${name}</strong>
+						<p class="last-message text-muted">I'm Monter</p>
+					  </div>
+					  <div class="chat-footer">
+						<p class="text-smaller text-muted mb-0">1 min ago</p>
+						<i class="fal fa-sign-out" id="btnLogout"></i>
+					  </div>
+					</a>
+				  </li>
+					`
+				);
+			}
+			await logOut()
 		}
-
 	});
-	socket.on("challengSend",function  (data) {
-		socket.Username = data;
-		// console.log(data);
-
-		$(".challengeButton").click(function() {
-			const target = $($(this).parent().prev(".text-small")).find("strong").text();
-			console.log('target :', target);
-			console.log('data :', data);
-			if (target) {
-				socket.emit("challenging", {
-					challenger: data,
-					target: target
-				});
-			}
-		});
-	})
 
 	socket.on("tin-nhan-chung", function(data) {
-		if(data.un){
+		if (data.un) {
 			$("#listMessage").append(
 				`
-				<li class="d-flex justify-content-between mb-4">
+				${data.un == socket.Username ?`<li class="user--list mb-4 pt-4 pl-4">
 				<img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
 				<div class="chat-body white p-3 ml-2 z-depth-1">
 				  <div class="header">
@@ -797,11 +812,59 @@ function socketIoMrCuong() {
 					${data.mes}
 				  </p>
 				</div>
-			  </li>
+			  </li>`:`<li class="user--chat mb-4 pt-4 pr-3 pl-4">
 
-				`);
+			  <div class="chat-body white p-3 ml-2 z-depth-1">
+				<div class="header">
+				  <strong class="primary-font">${data.un}</strong>
+				  <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 1 mins ago</small>
+				</div>
+				<hr class="w-100">
+				<p class="mb-0">
+				  ${data.mes}
+				</p>
+			  </div>
+			  <img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+			</li>`}
+
+				`
+			);
 		}
+	});
+	socket.on("tin-nhan-room", function(data) {
+		if (data.un) {
+			$("#listMessage").append(
+				`
+				${data.un == socket.Username ?`<li class="user--list mb-4 pt-4 pl-4">
+				<img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+				<div class="chat-body white p-3 ml-2 z-depth-1">
+				  <div class="header">
+					<strong class="primary-font">${data.un}</strong>
+					<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 1 mins ago</small>
+				  </div>
+				  <hr class="w-100">
+				  <p class="mb-0">
+					${data.mes}
+				  </p>
+				</div>
+			  </li>`:`<li class="user--chat mb-4 pt-4 pr-3 pl-4">
 
+			  <div class="chat-body white p-3 ml-2 z-depth-1">
+				<div class="header">
+				  <strong class="primary-font">${data.un}</strong>
+				  <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 1 mins ago</small>
+				</div>
+				<hr class="w-100">
+				<p class="mb-0">
+				  ${data.mes}
+				</p>
+			  </div>
+			  <img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+			</li>`}
+
+				`
+			);
+		}
 	});
 
 	socket.on("no-dang-go-chu", function(gochu) {
@@ -847,21 +910,21 @@ socket.on("everyBodyMove", function(data) {
 	$(`#${data.data.square}`).html("");
 	$(`#${data.data.name}`).appendTo($(`#${data.data.square}`));
 	$(".progress-slide").removeClass("bar-show");
-	$('.userOnline h5').each(function(){
-		if($(this).html()==data.name){
-			$(this).removeAttr("style")
-		}else{
-			$(this).css('color',"red")
+	$(".userOnline h5").each(function() {
+		if ($(this).html() == data.name) {
+			$(this).removeAttr("style");
+		} else {
+			$(this).css("color", "red");
 		}
-	})
+	});
 	checkMoves
 		? $("#progress1").addClass("bar-show")
 		: $("#progress2").addClass("bar-show");
 });
 
 $(async () => {
-	await socketIoMrCuong();
 	await styleForm();
+	await socketIoMrCuong();
 	await showBoard();
 	checkMoves
 		? $("#progress1").addClass("bar-show")
