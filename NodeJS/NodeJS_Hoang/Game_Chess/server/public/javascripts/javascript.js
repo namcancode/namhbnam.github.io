@@ -1,5 +1,4 @@
-
-const socket = io("http://localhost:4000");
+const socket = io(`${location.protocol}//${document.domain}:4000`);
 let checkMoves = true; //true là quân black (random)
 const showBoard = async () => {
 	for (let i = 0; i < 8; i++) {
@@ -636,7 +635,7 @@ async function dragItem() {
         }
 	}
 } */
-function socketIo(s) {
+/* function socketIo(s) {
 	$("#messageForm").submit(e => {
 		e.preventDefault();
 		socket.emit("send message", $("#message").val());
@@ -691,29 +690,49 @@ function socketIo(s) {
 		$(`#${move.square}`).html("");
 		$(`#${move.piece}`).appendTo($(`#${move.square}`));
 	});
-}
-async function logOut (arguments) {
-	$("#btnLogout").click(function() {
+} */
+async function logOut(arguments) {
+	$("#btnLogout").click(function(e) {
+		e.preventDefault;
 		socket.emit("logout");
-		$('.wrapper').css("padding-top","4%")
+		$(".wrapper").css("padding-top", "4%");
 		$(".loginForm").show(1000);
 		$(".chat-room").hide(500);
-		$(".chat-room").css("visibility","hidden");
+		$(".chat-room").css("visibility", "hidden");
 	});
 }
+function challengeSend(e) {
+	e.preventDefault;
+	const target = $(
+		$(e)
+			.parent()
+			.prev(".text-small")
+	)
+		.find("strong")
+		.text();
+	if (socket.Username && socket.Username != target) {
+		socket.emit("challenging", {
+			challenger: socket.Username,
+			target: target
+		});
+	}
+}
+
 function styleForm(arguments) {
 	$(".chat-room").hide();
 	$(".loginForm").show();
-	$("#btnRegister").click(function() {
+	$("#btnRegister").click(function(e) {
+		e.preventDefault;
 		socket.emit("client-send-username", $("#txtUsername").val());
 	});
 	socket.on("server-send-dangky-thanhcong", function(data) {
-		$('.wrapper').css("padding-top","0")
-		$(".chat-room").css("visibility","visible");
+		$(".wrapper").css("padding-top", "0");
+		$(".chat-room").css("visibility", "visible");
 		$(".loginForm").hide(500);
 		$(".chat-room").show(1000);
 		$("#currentUser").html(data);
 		socket.Username = data;
+
 	});
 
 	$("#txtMessage").focusin(function(params) {
@@ -723,45 +742,32 @@ function styleForm(arguments) {
 		socket.emit("dung-go-chu");
 	});
 
-	$("#btnSend").click(function() {
-		socket.emit("user-send-message", $("#txtMessage").val());
-		// socket.emit("room-send-message", $("#txtMessage").val());
-		$("#txtMessage").val("");
+	$("#btnSend").click(function(e) {
+		e.preventDefault;
+		const mes = $("#txtMessage").val()
+		const nameuser=$('.active').find('.text-small strong').text();
+		socket.emit("user-send-message",{mes,nameuser})
+		$("#txtMessage").val("")
 	});
 }
-function challengeSend(e) {
-	const target = $(
-		$(e)
-			.parent()
-			.prev(".text-small")
-	)
-		.find("strong")
-		.text();
-	if (socket.Username && socket.Username!=target) {
-		socket.emit("challenging", {
-			challenger: socket.Username,
-			target: target
-		});
-	}
-}
+
 function socketIoMrCuong() {
 	socket.on("server-send-dangky-thatbai", function() {
-		$('.popover-dismiss').popover({
-			trigger: 'focus'
-		})
-		$('.wrapper').css("padding-top","4%")
-		$(".chat-room").css("visibility","hidden");
-
+		$(".popover-dismiss").popover({
+			trigger: "focus"
+		});
+		$(".wrapper").css("padding-top", "4%");
+		$(".chat-room").css("visibility", "hidden");
 	});
 
-	socket.on("danh-sach-dang-online", async function(mangUser) {
+	socket.on("danh-sach-dang-online", async function(user) {
 		$(".list-unstyled.friend-list").html("");
-		for (name in mangUser) {
-			if (name!=socket.Username) {
+		for (name in user) {
+			if (name != socket.Username) {
 				$(".list-unstyled.friend-list").append(
 					`
 					<li class="p-2">
-					<a href="#" class="user--list">
+					<a href='javascript:;' class="user--list">
 					  <img src="/images/face.png" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
 					  <div class="text-small">
 						<strong>${name}</strong>
@@ -769,20 +775,23 @@ function socketIoMrCuong() {
 					  </div>
 					  <div class="chat-footer">
 						<p class="text-smaller text-muted mb-0">1 min ago</p>
-						${name!=socket.Username ?`<div class="challengeButton" onclick="challengeSend(this)">
+						${
+							name != socket.Username
+								? `<div class="challengeButton" href='javascript:;' onclick="challengeSend(this)">
 						<img src="/images/challenge.png" alt="avatar" class="icon--challenge rounded-circle d-flex align-self-center mr-2 z-depth-1">
-						</div>`:""}
+						</div>`
+								: ""
+						}
 					  </div>
 					</a>
 				  </li>
 					`
 				);
-			}
-			else if( name==socket.Username){
+			} else if (name == socket.Username) {
 				$(".list-unstyled.friend-list").prepend(
 					`
 					<li class="p-2 active">
-					<a href="#" class="user--list">
+					<a href='javascript:;' class="user--list">
 					  <img src="/images/face.png" alt="avatar" class="avatar rounded-circle d-flex align-self-center mr-2 z-depth-1">
 					  <div class="text-small">
 						<strong>${name}</strong>
@@ -797,41 +806,45 @@ function socketIoMrCuong() {
 					`
 				);
 			}
-			await logOut()
+			await logOut();
 		}
 	});
 
 	socket.on("tin-nhan-chung", function(data) {
-		if (data.un) {
+		if (data) {
 			$("#listMessage").append(
 				`
-				${data.un == socket.Username ?`<li class="user--list mb-4 pt-4 pl-4">
-				<img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
-				<div class="chat-body white p-3 ml-2 z-depth-1">
-				  <div class="header">
-					<strong class="primary-font">${data.un}</strong>
-					<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 1 mins ago</small>
-				  </div>
-				  <hr class="w-100">
-				  <p class="mb-0">
-					${data.mes}
-				  </p>
-				</div>
-			  </li>`:`<li class="user--chat mb-4 pt-4 pr-3 pl-4">
+				${
+					 data.un == socket.Username
+						?`<li class="user--list mb-4 pt-4 pl-4">
+											<img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+											<div class="chat-body white p-3 ml-2 z-depth-1">
+											  <div class="header">
+												<strong class="primary-font">${data.un}</strong>
+												<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 1 mins ago</small>
+											  </div>
+											  <hr class="w-100">
+											  <p class="mb-0">
+												${data.mes}
+											  </p>
+											</div>
+										  </li>`
 
-			  <div class="chat-body white p-3 ml-2 z-depth-1">
-				<div class="header">
-				  <strong class="primary-font">${data.un}</strong>
-				  <small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 1 mins ago</small>
-				</div>
-				<hr class="w-100">
-				<p class="mb-0">
-				  ${data.mes}
-				</p>
-			  </div>
-			  <img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
-			</li>`}
+						:`<li class="user--chat mb-4 pt-4 pr-3 pl-4">
 
+											<div class="chat-body white p-3 ml-2 z-depth-1">
+											  <div class="header">
+												<strong class="primary-font">${data.un}</strong>
+												<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> 1 mins ago</small>
+											  </div>
+											  <hr class="w-100">
+											  <p class="mb-0">
+												${data.mes}
+											  </p>
+											</div>
+											<img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
+										  </li>`
+				}
 				`
 			);
 		}
@@ -840,7 +853,9 @@ function socketIoMrCuong() {
 		if (data.un) {
 			$("#listMessage").append(
 				`
-				${data.un == socket.Username ?`<li class="user--list mb-4 pt-4 pl-4">
+				${
+					data.un == socket.Username
+						? `<li class="user--list mb-4 pt-4 pl-4">
 				<img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
 				<div class="chat-body white p-3 ml-2 z-depth-1">
 				  <div class="header">
@@ -852,7 +867,8 @@ function socketIoMrCuong() {
 					${data.mes}
 				  </p>
 				</div>
-			  </li>`:`<li class="user--chat mb-4 pt-4 pr-3 pl-4">
+			  </li>`
+						: `<li class="user--chat mb-4 pt-4 pr-3 pl-4">
 
 			  <div class="chat-body white p-3 ml-2 z-depth-1">
 				<div class="header">
@@ -865,7 +881,8 @@ function socketIoMrCuong() {
 				</p>
 			  </div>
 			  <img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
-			</li>`}
+			</li>`
+				}
 
 				`
 			);
@@ -891,44 +908,51 @@ function socketIoMrCuong() {
 	socket.on("wanna-fight", function(data) {
 		//cuong
 		if (window.confirm(`${data.challenger} challenge you to a game !`)) {
-			socket.emit("accepted", data.challenger);
+			socket.emit("accepted", {
+				challenger: data.challenger,
+				target: data.target
+			});
 			dragItem();
 		} else {
-			socket.emit("declined", data.challenger);
+			socket.emit("declined", {
+				challenger: data.challenger,
+				target: data.target
+			});
 		}
 	});
 
 	socket.on("challenge-status", data => {
 		//nam
 		if (data.status === "accepted") {
-			alert("Your opponent accepted the challenge");
-			socket.emit("join-room", data.target);
+			// alert("Your opponent accepted the challenge");
+			socket.emit("join-room", {
+				target: data.target,
+				challenger: data.challenger
+			});
 			dragItem();
 		} else {
 			alert("Your opponent declined the challenge");
 		}
 	});
+	socket.on("everyBodyMove", function(data) {
+		checkMoves = data.data.checkMoves;
+		$(`#${data.data.square}`).html("");
+		$(`#${data.data.name}`).appendTo($(`#${data.data.square}`));
+		$(".progress-slide").removeClass("bar-show");
+		$(".userOnline h5").each(function() {
+			if ($(this).html() == data.name) {
+				$(this).removeAttr("style");
+			} else {
+				$(this).css("color", "red");
+			}
+		});
+		checkMoves
+			? $("#progress1").addClass("bar-show")
+			: $("#progress2").addClass("bar-show");
+	});
 }
 
-socket.on("everyBodyMove", function(data) {
-	checkMoves = data.data.checkMoves;
-	$(`#${data.data.square}`).html("");
-	$(`#${data.data.name}`).appendTo($(`#${data.data.square}`));
-	$(".progress-slide").removeClass("bar-show");
-	$(".userOnline h5").each(function() {
-		if ($(this).html() == data.name) {
-			$(this).removeAttr("style");
-		} else {
-			$(this).css("color", "red");
-		}
-	});
-	checkMoves
-		? $("#progress1").addClass("bar-show")
-		: $("#progress2").addClass("bar-show");
-});
-
 $(async () => {
-
 	await styleForm();
 	await socketIoMrCuong();
 	await showBoard();

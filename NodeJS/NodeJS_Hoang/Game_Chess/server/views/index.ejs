@@ -53,11 +53,13 @@
 
             <!-- Sign in button -->
 
-            <a tabindex="0" id="btnRegister" class="popover-dismiss btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" role="button" data-toggle="popover" data-trigger="focus" title="Lỗi Đăng Nhập" data-content="Có vẻ như bạn gặp lỗi đăng nhập, hãy thử với tài khoản khác!">Sign
-              in</a>
+            <a tabindex="0" id="btnRegister" class="popover-dismiss btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0"
+              role="button" data-toggle="popover" data-trigger="focus" title="Lỗi Đăng Nhập" data-content="Có vẻ như bạn gặp lỗi đăng nhập, hãy thử với tài khoản khác!">Sign
+              in
+            </a>
             <!-- Register -->
             <p>Not a member?
-              <a href="">Register</a>
+              <a href='javascript:;'>Register</a>
             </p>
 
             <!-- Social login -->
@@ -113,7 +115,7 @@
     <div class="card-body row user-card" id="chatForm">
 
       <!-- Grid row -->
-      <div class="col col-lg-3 px-lg-2 px-2">
+      <div class="col col-lg-4 col-md-6 px-lg-2 px-2">
 
         <!-- Grid column -->
         <div class=" px-0">
@@ -141,7 +143,7 @@
                 <textarea class="form-control pl-2 my-0" id="txtMessage" rows="3" placeholder="Type your message here..."></textarea>
               </div>
             </div>
-            <button type="button" id="btnSend" class="btn btn-outline-pink btn-rounded btn-sm waves-effect waves-dark float-right">Send</button>
+            <button type="button" id="btnSend" class="btn btn-outline-pink btn-rounded btn-sm waves-effect waves-dark float-right" >Send</button>
 
           </div>
 
@@ -183,7 +185,7 @@
     crossorigin="anonymous"></script>
   <script src="https://namboss.blob.core.windows.net/huong/mdb.min.js"></script>
 
-  <script src="http://localhost:4000/socket.io/socket.io.js"></script>
+  <script src="<%= url %>/socket.io/socket.io.js"></script>
   <script src="/javascripts/javascript.js" type="text/javascript"></script>
 
 
