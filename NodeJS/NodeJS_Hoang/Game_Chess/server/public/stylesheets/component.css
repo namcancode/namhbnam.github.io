@@ -201,7 +201,7 @@
 
 .fs-fields>li label.fs-field-label {
 	display: inline-block;
-	padding: 0 5px 1em 0;
+	padding: 0 5px 0.3em 0;
 	font-weight: 700;
 	pointer-events: none;
 }

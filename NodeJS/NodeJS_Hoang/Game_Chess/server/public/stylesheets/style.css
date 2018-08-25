@@ -302,4 +302,6 @@ body {
   overflow: hidden;
 }
 
-/* particles js */
+#txtUsername {
+  height: 80px;
+}

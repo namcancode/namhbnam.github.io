@@ -84,6 +84,13 @@ io.on("connection", function(socket) {
 			io.in("total").emit("danh-sach-dang-online", mangUser);
 		}
 	});
+	socket.on("win",function  (data) {
+		mangUser[`${data.name}`] = socket.id;
+		mangUser[`${data.lose}`] = socket.id;
+		socket.leave(`${data.room}`);
+		socket.join('total')
+		io.in("total").emit("danh-sach-dang-online", mangUser);
+	})
 
 	socket.on("logout", function() {
 		const room = Object.keys(socket.rooms)[
@@ -154,7 +161,8 @@ io.on("connection", function(socket) {
 		io.in(`total`).emit("danh-sach-dang-online", mangUser);
 		io.to(`${mangUser[`${data.challenger}`]}`).emit("challenge-status", {
 			status: "accepted",
-			target: socket.Username
+			target: socket.Username,
+			challenger: data.challenger
 		});
 		socket.on("moved", function(data) {
 			if (data) {
@@ -162,12 +170,12 @@ io.on("connection", function(socket) {
 					data.sender === socket.challenger &&
 					data.color === "dragon"
 				) {
-					io.in(socket.myGame).emit("everyBodyMove", { data, name });
+					io.in(socket.myGame).emit("everyBodyMove", { data, name,room:socket.myGame });
 				} else if (
 					data.sender !== socket.challenger &&
 					data.color === "phoenix"
 				) {
-					io.in(socket.myGame).emit("everyBodyMove", { data, name });
+					io.in(socket.myGame).emit("everyBodyMove", { data, name,room:socket.myGame });
 				}
 			}
 		});
@@ -190,12 +198,12 @@ io.on("connection", function(socket) {
 					data.sender === socket.challenger &&
 					data.color === "dragon"
 				) {
-					io.in(socket.myGame).emit("everyBodyMove", { data, name });
+					io.in(socket.myGame).emit("everyBodyMove", { data, name,room:socket.myGame });
 				} else if (
 					data.sender !== socket.challenger &&
 					data.color === "phoenix"
 				) {
-					io.in(socket.myGame).emit("everyBodyMove", { data, name });
+					io.in(socket.myGame).emit("everyBodyMove",{ data, name,room:socket.myGame });
 				}
 			}
 		});

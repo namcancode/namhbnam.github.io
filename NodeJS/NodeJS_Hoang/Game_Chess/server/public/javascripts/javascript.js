@@ -709,13 +709,12 @@ function alertBeautiful(type, data, content, timeout) {
 		showMethod: "fadeIn",
 		hideMethod: "fadeOut"
 	};
-	toastr[`${type}`](`${data} ${content}`, "Thông Báo");
+	data ? toastr[`${type}`](`${data} ${content}`, "Thông Báo") : null;
 }
-async function logOut(arguments) {
+async function logOut() {
 	$("#btnLogout").click(function(e) {
 		e.preventDefault;
 		socket.emit("logout");
-		$(".wrapper").css("padding-top", "4%");
 		$(".loginForm").show(1000);
 		$(".chat-room").hide(500);
 		$(".chat-room").css("visibility", "hidden");
@@ -739,7 +738,7 @@ function challengeSend(e) {
 	}
 }
 
-function styleForm(arguments) {
+function styleForm() {
 	$(".chat-room").hide();
 	$(".loginForm").show();
 	document
@@ -763,11 +762,9 @@ function styleForm(arguments) {
 		socket.emit("client-send-username", $("#txtUsername").val());
 	});
 	socket.on("server-send-dangky-thanhcong", function(data) {
-		$(".wrapper").css("padding-top", "0");
 		$(".chat-room").css("visibility", "visible");
 		$(".loginForm").hide(500);
 		$(".chat-room").show(1000);
-
 		socket.Username = data;
 	});
 
@@ -796,7 +793,6 @@ function socketIoMrCuong() {
 		$(".popover-dismiss").popover({
 			trigger: "focus"
 		});
-		$(".wrapper").css("padding-top", "4%");
 		$(".chat-room").css("visibility", "hidden");
 	});
 
@@ -977,10 +973,16 @@ function socketIoMrCuong() {
 					target: data.target
 				});
 				dragItem();
+				alertBeautiful(
+					"info",
+					data.challenger,
+					"được quyền đi quân đen trước",
+					3000
+				);
 			}
 		});
 
-	const myTimeOut = setTimeout(() => {
+		const myTimeOut = setTimeout(() => {
 			socket.emit("declined", {
 				challenger: data.challenger,
 				target: data.target
@@ -988,14 +990,18 @@ function socketIoMrCuong() {
 		}, 5001);
 	});
 
-
 	socket.on("challenge-status", data => {
 		if (data.status === "accepted") {
 			socket.emit("join-room", {
 				target: data.target,
 				challenger: data.challenger
 			});
-
+			alertBeautiful(
+				"info",
+				"Bạn",
+				"được quyền đi quân đen trước",
+				3000
+			);
 			dragItem();
 		} else {
 			alertBeautiful(
@@ -1007,8 +1013,48 @@ function socketIoMrCuong() {
 		}
 	});
 	socket.on("everyBodyMove", function(data) {
+		let nameLose = data.room.split("-");
+		nameLose.forEach(n => {
+			if (n != data.name) {
+				nameLose = n;
+			}
+		});
 		checkMoves = data.data.checkMoves;
-		$(`#${data.data.square}`).html("")
+		if (
+			$(`#${data.data.square}`).children("#white-king").length ||
+			$(`#${data.data.square}`).children("#black-king").length
+		) {
+			toastr.options = {
+				closeButton: true,
+				debug: false,
+				newestOnTop: false,
+				progressBar: false,
+				positionClass: "toast-top-full-width",
+				preventDuplicates: true,
+				onclick: null,
+				showDuration: 300,
+				hideDuration: 1000,
+				timeOut: 5000,
+				extendedTimeOut: 1000,
+				showEasing: "swing",
+				hideEasing: "linear",
+				showMethod: "fadeIn",
+				hideMethod: "fadeOut"
+			};
+			toastr["success"](
+				`Chúc mừng ${data.name} là người chiến thắng`,
+				"Chúc mừng"
+			);
+			socket.emit("win", {
+				name: data.name,
+				room: data.room,
+				lose: nameLose
+			});
+			setTimeout(() => {
+				$(".wrap--content").css("display", "none");
+			}, 5001);
+		}
+
 		$(`#${data.data.square}`).html("");
 		$(`#${data.data.name}`).appendTo($(`#${data.data.square}`));
 		$(".progress-slide").removeClass("bar-show");
@@ -1030,7 +1076,7 @@ function socketIoMrCuong() {
 		let content;
 		if (data.room == "total") {
 			content = "đã rời khỏi phòng";
-		} else if (data.name){
+		} else if (data.name) {
 			content =
 				"đã rời khỏi phòng, bạn đã được tự động trở lại room chính";
 		}
