@@ -721,6 +721,22 @@ function challengeSend(e) {
 function styleForm(arguments) {
 	$(".chat-room").hide();
 	$(".loginForm").show();
+	document
+		.getElementById("txtUsername")
+		.addEventListener("keyup", function(event) {
+			event.preventDefault();
+			if (event.keyCode === 13) {
+				document.getElementById("btnRegister").click();
+			}
+		});
+	document
+		.getElementById("txtMessage")
+		.addEventListener("keyup", function(event) {
+			event.preventDefault();
+			if (event.keyCode === 13) {
+				document.getElementById("btnSend").click();
+			}
+		});
 	$("#btnRegister").click(function(e) {
 		e.preventDefault;
 		socket.emit("client-send-username", $("#txtUsername").val());
@@ -730,9 +746,7 @@ function styleForm(arguments) {
 		$(".chat-room").css("visibility", "visible");
 		$(".loginForm").hide(500);
 		$(".chat-room").show(1000);
-		$("#currentUser").html(data);
 		socket.Username = data;
-
 	});
 
 	$("#txtMessage").focusin(function(params) {
@@ -744,13 +758,17 @@ function styleForm(arguments) {
 
 	$("#btnSend").click(function(e) {
 		e.preventDefault;
-		const mes = $("#txtMessage").val()
-		const nameuser=$('.active').find('.text-small strong').text();
-		socket.emit("user-send-message",{mes,nameuser})
-		$("#txtMessage").val("")
+		const mes = $("#txtMessage").val();
+		const nameuser = $(".active")
+			.find(".text-small strong")
+			.text();
+		socket.emit("user-send-message", { mes, nameuser });
+		$("#txtMessage").val("");
+		$("#listMessage")
+			.stop()
+			.animate({ scrollTop: $("#listMessage")[0].scrollHeight }, 1500);
 	});
 }
-
 function socketIoMrCuong() {
 	socket.on("server-send-dangky-thatbai", function() {
 		$(".popover-dismiss").popover({
@@ -815,8 +833,8 @@ function socketIoMrCuong() {
 			$("#listMessage").append(
 				`
 				${
-					 data.un == socket.Username
-						?`<li class="user--list mb-4 pt-4 pl-4">
+					data.un == socket.Username
+						? `<li class="user--list mb-4 pt-4 pl-4">
 											<img src="/images/face.png" alt="avatar" class="avatar rounded-circle mr-2 ml-lg-3 ml-0 z-depth-1">
 											<div class="chat-body white p-3 ml-2 z-depth-1">
 											  <div class="header">
@@ -829,8 +847,7 @@ function socketIoMrCuong() {
 											  </p>
 											</div>
 										  </li>`
-
-						:`<li class="user--chat mb-4 pt-4 pr-3 pl-4">
+						: `<li class="user--chat mb-4 pt-4 pr-3 pl-4">
 
 											<div class="chat-body white p-3 ml-2 z-depth-1">
 											  <div class="header">
@@ -906,32 +923,65 @@ function socketIoMrCuong() {
 	});
 
 	socket.on("wanna-fight", function(data) {
-		//cuong
-		if (window.confirm(`${data.challenger} challenge you to a game !`)) {
-			socket.emit("accepted", {
-				challenger: data.challenger,
-				target: data.target
-			});
-			dragItem();
-		} else {
+		toastr.options = {
+			closeButton: false,
+			debug: false,
+			newestOnTop: true,
+			progressBar: true,
+			positionClass: "toast-top-right",
+			preventDuplicates: true,
+			onclick: null,
+			showDuration: 300,
+			hideDuration: 1000,
+			timeOut: 5000,
+			extendedTimeOut: 500,
+			showEasing: "swing",
+			hideEasing: "linear",
+			showMethod: "fadeIn",
+			hideMethod: "fadeOut",
+			tapToDismiss: false
+		};
+		toastr["info"](
+			`${
+				data.challenger
+			} đã gửi lời mời thách đấu<br /><br /><button id="submitChallenge" type="button" class="btn btn-li clear">Chấp Nhận</button>`,
+			"Thông Báo"
+		);
+
+		$("#submitChallenge").click(function(e) {
+			if (e.target) {
+				socket.emit("accepted", {
+					challenger: data.challenger,
+					target: data.target
+				});
+				dragItem();
+			}
+		});
+
+	const myTimeOut = setTimeout(() => {
 			socket.emit("declined", {
 				challenger: data.challenger,
 				target: data.target
 			});
-		}
+		}, 5001);
 	});
+
 
 	socket.on("challenge-status", data => {
 		//nam
 		if (data.status === "accepted") {
-			// alert("Your opponent accepted the challenge");
 			socket.emit("join-room", {
 				target: data.target,
 				challenger: data.challenger
 			});
 			dragItem();
 		} else {
-			alert("Your opponent declined the challenge");
+			alertBeautiful(
+				"info",
+				data.target,
+				"đã từ chối lời thách đấu của bạn",
+				2000
+			);
 		}
 	});
 	socket.on("everyBodyMove", function(data) {
@@ -950,8 +1000,42 @@ function socketIoMrCuong() {
 			? $("#progress1").addClass("bar-show")
 			: $("#progress2").addClass("bar-show");
 	});
+	socket.on("out-chess", function(data) {
+		const nameuser = $(".active")
+			.find(".text-small strong")
+			.text();
+		let content;
+		if (data.room == "total") {
+			content = "đã rời khỏi phòng";
+		} else {
+			content =
+				"đã rời khỏi phòng, bạn đã được tự động trở lại room chính";
+		}
+		alertBeautiful("info", data.name, content, 2000);
+		$(".wrap--content").css("display", "none");
+		socket.emit("back-to-total", { name: nameuser, room: data.room });
+	});
 }
-
+function alertBeautiful(type, data, content, timeout) {
+	toastr.options = {
+		closeButton: false,
+		debug: false,
+		newestOnTop: true,
+		progressBar: true,
+		positionClass: "toast-top-right",
+		preventDuplicates: false,
+		onclick: null,
+		showDuration: 300,
+		hideDuration: 1000,
+		timeOut: timeout,
+		extendedTimeOut: 1000,
+		showEasing: "swing",
+		hideEasing: "linear",
+		showMethod: "fadeIn",
+		hideMethod: "fadeOut"
+	};
+	toastr[`${type}`](`${data} ${content}`, "Thông Báo");
+}
 $(async () => {
 	await styleForm();
 	await socketIoMrCuong();

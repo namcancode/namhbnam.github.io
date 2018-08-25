@@ -54,7 +54,27 @@ let userInRoom = {};
 
 }); */
 //Socket mr Cuong
-
+function getLastClientOfRoom (userInRoom,room) {
+	if (Object.keys(userInRoom).length - 2 > 0) {
+		let twoGirlsOneCup = {};
+		let count = 0;
+		for (let key in userInRoom) {
+			count++;
+			if (
+				count == Object.keys(userInRoom).length - 1 ||
+				count == Object.keys(userInRoom).length
+			) {
+				twoGirlsOneCup[`${key}`] = userInRoom[`${key}`];
+			}
+		}
+		io.in(`${room}`).emit(
+			"danh-sach-dang-online",
+			twoGirlsOneCup
+		);
+	} else {
+		io.in(`${room}`).emit("danh-sach-dang-online", userInRoom);
+	}
+}
 io.on("connection", function(socket) {
 	socket.on("client-send-username", function(data) {
 		if (mangUser[`${data}`] || !data) {
@@ -64,21 +84,31 @@ io.on("connection", function(socket) {
 			socket.Username = data;
 			socket.join("total");
 			socket.emit("server-send-dangky-thanhcong", data);
-			io.sockets.emit("danh-sach-dang-online", mangUser);
-			// console.log("client sen username :", mangUser);
-			io.in("total").clients((err, clients) => {
-				// console.log(clients);
-			});
-			io.in("thien-nam").clients((err, clients) => {
-				// console.log(clients);
-			});
+			io.in("total").emit("danh-sach-dang-online", mangUser);
 		}
 	});
 
 	socket.on("logout", function() {
+		const room = Object.keys(socket.rooms)[
+			Object.keys(socket.rooms).length - 1
+		];
+		socket.broadcast.emit("no-dung-go-chu", socket.Username);
 		delete mangUser[`${socket.Username}`];
-		socket.broadcast.emit("danh-sach-dang-online", mangUser);
+		delete userInRoom[`${socket.Username}`];
+		if (room === "total") {
+			socket.leave(`${room}`)
+			io.in(`${room}`).emit("out-chess", {name:socket.Username,room});
+		} else {
+			socket.leave(`${room}`)
+			io.in(`${room}`).emit("out-chess", {name:socket.Username,room});
+		}
 	});
+	socket.on('back-to-total',function  (data) {
+		mangUser[`${data.name}`] = socket.id;
+		socket.join("total");
+		io.in(`${data.room}`).emit("danh-sach-dang-online", mangUser);
+		io.in(`total`).emit("danh-sach-dang-online", mangUser);
+	})
 
 	socket.on("user-send-message", function(data) {
 		if (mangUser[`${data.nameuser}`]) {
@@ -109,7 +139,6 @@ io.on("connection", function(socket) {
 		});
 	});
 	socket.on("declined", data => {
-		// target reply
 		io.to(`${mangUser[`${data.challenger}`]}`).emit("challenge-status", {
 			status: "declined",
 			target: socket.Username,
@@ -130,9 +159,6 @@ io.on("connection", function(socket) {
 			status: "accepted",
 			target: socket.Username
 		});
-		console.log("accepted :", userInRoom);
-		// io.in(`${socket.myGame}`).emit("danh-sach-dang-online", userInRoom);
-		// chatRoom(socket.myGame, name,socket.myGame);
 		socket.on("moved", function(data) {
 			if (data) {
 				if (
@@ -159,26 +185,9 @@ io.on("connection", function(socket) {
 		userInRoom[`${data.target}`] = socket.id;
 		socket.leave("total");
 		socket.join(`${socket.myGame}`);
-		console.log("join-room :", userInRoom);
 		io.in(`total`).emit("danh-sach-dang-online", mangUser);
-		if(Object.keys(userInRoom).length - 2 > 0){
-			let twoGirlOneCup = {};
-			let count = 0;
-			for (let key in userInRoom) {
-				console.log(Object.keys(userInRoom).length - 2);
-				if ((count == Object.keys(userInRoom).length - 1)) {
-					console.log("vao count");
-					twoGirlOneCup[`${key}`] = userInRoom[`${key}`];
-				}
-				count++;
-			}
-			io.in(`${socket.myGame}`).emit("danh-sach-dang-online", twoGirlOneCup);
-		}else{
-			io.in(`${socket.myGame}`).emit("danh-sach-dang-online", userInRoom);
-		}
+		getLastClientOfRoom (userInRoom,socket.myGame)
 
-
-		// chatRoom(socket.myGame, name,socket.myGame);
 		socket.on("moved", function(data) {
 			if (data) {
 				if (
