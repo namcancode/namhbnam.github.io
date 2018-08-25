@@ -1,5 +1,5 @@
 body {
-  background-color: #eee;
+  background: #111;
 }
 
 .wrapper {
@@ -14,113 +14,7 @@ body {
 }
 
 .loginForm {
-  padding-bottom: 10px;
-}
-
-#container {
-  margin: 0;
-  padding: 0;
-  background-color: white;
-  border: 1px solid black;
-  height: 640px;
-  width: 640px;
-}
-
-#left, #right {
-  min-height: 300px;
-}
-
-#left {
-  width: 15%;
-  background-color: #1de5bd;
-}
-
-#middle {
-  width: 60%;
-  display: flex;
-  justify-content: center;
-}
-
-#right {
-  width: 25%;
-  background-color: #1d9ce5;
-}
-
-#boxTittle {
-  border: solid 1px black;
-  padding: 5px;
-  text-align: center;
-}
-
-#boxContent {
-  border: solid 1px black;
-  border-top: none;
-  padding: 5px;
-  text-align: center;
-}
-
-#sayHi {
-  text-align: right;
-}
-
-/* #listMessage {
-  height: 200px;
-  background-color: azure;
-  margin-bottom: 15px;
-  overflow: scroll;
-} */
-
-/* #txtMessage {
-  background-color: #fffc42;
-  width: 200px;
-} */
-
-.bacham {
-  height: 50px;
-  text-align: center;
-  width: 150px;
-}
-
-.bacham span:nth-child(1) {
-  display: inline-block;
-  height: 7px;
-  width: 7px;
-  border-radius: 50%;
-  background-color: #1d9ce5;
-  margin: 5px;
-  animation: nay 400ms linear 0ms infinite forwards;
-  animation-direction: alternate;
-}
-
-.bacham span:nth-child(2) {
-  display: inline-block;
-  height: 7px;
-  width: 7px;
-  border-radius: 50%;
-  background-color: #e57e1d;
-  margin: 5px;
-  animation: nay 400ms linear 75ms infinite forwards;
-  animation-direction: alternate;
-}
-
-.bacham span:nth-child(3) {
-  display: inline-block;
-  height: 7px;
-  width: 7px;
-  border-radius: 50%;
-  background-color: #9c22cc;
-  margin: 5px;
-  animation: nay 800ms linear 150ms infinite forwards;
-  animation-direction: alternate;
-}
-
-@keyframes nay {
-  0% {
-    transform: translateY(0px);
-  }
-  100% {
-    transform: translateY(10px);
-  }
+  height: 100%;
 }
 
 /* ban co cua nam */
@@ -375,3 +269,16 @@ body {
   font-size: 23px;
   padding-left: 18px
 }
+
+#particles-js {
+  width: 100%;
+  height: 100%;
+  /* background-image: url('https://wallpapermemory.com/uploads/234/chess-background-hd-2560x1600-378802.jpg'); */
+  background-image: url('../images/background-2.jpg');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  position: absolute
+}
+
+/* particles js */
