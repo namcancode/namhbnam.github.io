@@ -54,7 +54,7 @@ let userInRoom = {};
 
 }); */
 //Socket mr Cuong
-function getLastClientOfRoom (userInRoom,room) {
+function getLastClientOfRoom(userInRoom, room) {
 	if (Object.keys(userInRoom).length - 2 > 0) {
 		let twoGirlsOneCup = {};
 		let count = 0;
@@ -67,10 +67,7 @@ function getLastClientOfRoom (userInRoom,room) {
 				twoGirlsOneCup[`${key}`] = userInRoom[`${key}`];
 			}
 		}
-		io.in(`${room}`).emit(
-			"danh-sach-dang-online",
-			twoGirlsOneCup
-		);
+		io.in(`${room}`).emit("danh-sach-dang-online", twoGirlsOneCup);
 	} else {
 		io.in(`${room}`).emit("danh-sach-dang-online", userInRoom);
 	}
@@ -95,20 +92,20 @@ io.on("connection", function(socket) {
 		socket.broadcast.emit("no-dung-go-chu", socket.Username);
 		delete mangUser[`${socket.Username}`];
 		delete userInRoom[`${socket.Username}`];
-		if (room === "total") {
-			socket.leave(`${room}`)
-			io.in(`${room}`).emit("out-chess", {name:socket.Username,room});
+		if (room == "total") {
+			socket.leave(`${room}`);
+			io.in(`${room}`).emit("out-chess", { name: socket.Username, room });
 		} else {
-			socket.leave(`${room}`)
-			io.in(`${room}`).emit("out-chess", {name:socket.Username,room});
+			socket.leave(`${room}`);
+			io.in(`${room}`).emit("out-chess", { name: socket.Username, room });
 		}
 	});
-	socket.on('back-to-total',function  (data) {
+	socket.on("back-to-total", function(data) {
 		mangUser[`${data.name}`] = socket.id;
 		socket.join("total");
 		io.in(`${data.room}`).emit("danh-sach-dang-online", mangUser);
 		io.in(`total`).emit("danh-sach-dang-online", mangUser);
-	})
+	});
 
 	socket.on("user-send-message", function(data) {
 		if (mangUser[`${data.nameuser}`]) {
@@ -186,8 +183,7 @@ io.on("connection", function(socket) {
 		socket.leave("total");
 		socket.join(`${socket.myGame}`);
 		io.in(`total`).emit("danh-sach-dang-online", mangUser);
-		getLastClientOfRoom (userInRoom,socket.myGame)
-
+		getLastClientOfRoom(userInRoom, socket.myGame);
 		socket.on("moved", function(data) {
 			if (data) {
 				if (
@@ -204,13 +200,11 @@ io.on("connection", function(socket) {
 			}
 		});
 	});
-	//------------chess xuli trong room------------------------
-
-	// -----------chess-end------------------------------------
 	socket.on("disconnect", function() {
 		socket.broadcast.emit("no-dung-go-chu", socket.Username);
 		delete mangUser[`${socket.Username}`];
 		delete userInRoom[`${socket.Username}`];
-		io.in("total").emit("danh-sach-dang-online", mangUser);
+		io.in("total").emit("out-chess", { name: socket.Username, room:"total" });
 	});
+
 });

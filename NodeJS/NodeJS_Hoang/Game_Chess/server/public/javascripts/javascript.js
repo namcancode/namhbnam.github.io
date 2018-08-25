@@ -719,6 +719,7 @@ async function logOut(arguments) {
 		$(".loginForm").show(1000);
 		$(".chat-room").hide(500);
 		$(".chat-room").css("visibility", "hidden");
+		$(".wrap--content").css("display", "none");
 	});
 }
 function challengeSend(e) {
@@ -766,6 +767,7 @@ function styleForm(arguments) {
 		$(".chat-room").css("visibility", "visible");
 		$(".loginForm").hide(500);
 		$(".chat-room").show(1000);
+
 		socket.Username = data;
 	});
 
@@ -944,7 +946,7 @@ function socketIoMrCuong() {
 
 	socket.on("wanna-fight", function(data) {
 		toastr.options = {
-			closeButton: false,
+			closeButton: true,
 			debug: false,
 			newestOnTop: true,
 			progressBar: true,
@@ -988,12 +990,12 @@ function socketIoMrCuong() {
 
 
 	socket.on("challenge-status", data => {
-		//nam
 		if (data.status === "accepted") {
 			socket.emit("join-room", {
 				target: data.target,
 				challenger: data.challenger
 			});
+
 			dragItem();
 		} else {
 			alertBeautiful(
@@ -1028,7 +1030,7 @@ function socketIoMrCuong() {
 		let content;
 		if (data.room == "total") {
 			content = "đã rời khỏi phòng";
-		} else {
+		} else if (data.name){
 			content =
 				"đã rời khỏi phòng, bạn đã được tự động trở lại room chính";
 		}
