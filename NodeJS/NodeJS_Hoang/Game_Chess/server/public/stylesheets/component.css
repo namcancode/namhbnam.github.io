@@ -15,6 +15,7 @@
 	color: #fff;
 	top: 50%;
 	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
 
@@ -237,7 +238,9 @@
 	color: #6a7b7e;
 	opacity: 0;
 	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, -webkit-transform 0.3s;
 	transition: opacity 0.3s, transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
 	-webkit-transform: translate3d(0, -5px, 0);
 	transform: translate3d(0, -5px, 0);
 	pointer-events: none;
@@ -274,6 +277,7 @@
 }
 
 .fs-fields input:invalid {
+	-webkit-box-shadow: none;
 	box-shadow: none;
 	/* removes red shadow in FF*/
 }
@@ -434,6 +438,7 @@
 
 .fs-form-overview .cs-skin-boxes>span::before {
 	padding-top: 50px;
+	-webkit-box-shadow: 0 20px 0 #292c30, inset 0 -5px #292c30;
 	box-shadow: 0 20px 0 #292c30, inset 0 -5px #292c30;
 }
 
@@ -497,7 +502,10 @@
 	border-radius: 50%;
 	background: transparent;
 	-webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
+	-webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+	transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
 	transition: transform 0.3s ease, opacity 0.3s ease;
+	transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .fs-nav-dots button::before, .fs-nav-dots button::after {
@@ -744,7 +752,10 @@ button.fs-submit:hover, button.fs-submit:focus, button.fs-continue:hover {
 .fs-message-error.fs-show {
 	opacity: 1;
 	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, -webkit-transform 0.3s;
 	transition: transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
 	-webkit-transform: translate3d(-50%, 0, 0);
 	transform: translate3d(-50%, 0, 0);
 }

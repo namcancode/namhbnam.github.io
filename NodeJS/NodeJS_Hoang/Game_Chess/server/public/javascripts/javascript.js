@@ -691,6 +691,26 @@ async function dragItem() {
 		$(`#${move.piece}`).appendTo($(`#${move.square}`));
 	});
 } */
+function alertBeautiful(type, data, content, timeout) {
+	toastr.options = {
+		closeButton: true,
+		debug: false,
+		newestOnTop: true,
+		progressBar: true,
+		positionClass: "toast-top-right",
+		preventDuplicates: false,
+		onclick: null,
+		showDuration: 300,
+		hideDuration: 1000,
+		timeOut: timeout,
+		extendedTimeOut: 1000,
+		showEasing: "swing",
+		hideEasing: "linear",
+		showMethod: "fadeIn",
+		hideMethod: "fadeOut"
+	};
+	toastr[`${type}`](`${data} ${content}`, "Thông Báo");
+}
 async function logOut(arguments) {
 	$("#btnLogout").click(function(e) {
 		e.preventDefault;
@@ -986,6 +1006,7 @@ function socketIoMrCuong() {
 	});
 	socket.on("everyBodyMove", function(data) {
 		checkMoves = data.data.checkMoves;
+		$(`#${data.data.square}`).html("")
 		$(`#${data.data.square}`).html("");
 		$(`#${data.data.name}`).appendTo($(`#${data.data.square}`));
 		$(".progress-slide").removeClass("bar-show");
@@ -1016,26 +1037,7 @@ function socketIoMrCuong() {
 		socket.emit("back-to-total", { name: nameuser, room: data.room });
 	});
 }
-function alertBeautiful(type, data, content, timeout) {
-	toastr.options = {
-		closeButton: false,
-		debug: false,
-		newestOnTop: true,
-		progressBar: true,
-		positionClass: "toast-top-right",
-		preventDuplicates: false,
-		onclick: null,
-		showDuration: 300,
-		hideDuration: 1000,
-		timeOut: timeout,
-		extendedTimeOut: 1000,
-		showEasing: "swing",
-		hideEasing: "linear",
-		showMethod: "fadeIn",
-		hideMethod: "fadeOut"
-	};
-	toastr[`${type}`](`${data} ${content}`, "Thông Báo");
-}
+
 $(async () => {
 	await styleForm();
 	await socketIoMrCuong();
