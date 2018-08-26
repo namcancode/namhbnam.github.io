@@ -1,6 +1,7 @@
 const socket = io(`${location.protocol}//${document.domain}:4000`);
 let checkMoves = true; //true là quân black (random)
 const showBoard = async () => {
+	$(".chess--board").html("");
 	for (let i = 0; i < 8; i++) {
 		for (let j = 0; j < 8; j++) {
 			i % 2 == j % 2
@@ -25,14 +26,14 @@ const showChessPieces = async () => {
 	$("div.square:nth-child(1)").append(
 		`
          <div class="chess--piece" id="black-castle-left" data-team="dragon">
-        <img  src="./images/br.svg"
+        <img  src="./images/black-castle-left.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(8)").append(
 		`
          <div class="chess--piece" id="black-castle-right" data-team="dragon">
-        <img  src="./images/br.svg"
+        <img  src="./images/black-castle-right.svg"
         </div>
          `
 	);
@@ -40,14 +41,14 @@ const showChessPieces = async () => {
 	$("div.square:nth-child(2)").append(
 		`
          <div class="chess--piece" id="black-knight-left" data-team="dragon">
-        <img  src="./images/bn.svg"
+        <img  src="./images/black-knight-left.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(7)").append(
 		`
          <div class="chess--piece" id="black-knight-right" data-team="dragon">
-        <img  src="./images/bn.svg"
+        <img  src="./images/black-knight-right.svg"
         </div>
          `
 	);
@@ -55,14 +56,14 @@ const showChessPieces = async () => {
 	$("div.square:nth-child(3)").append(
 		`
 		<div class="chess--piece" id="black-bishop-left" data-team="dragon">
-        <img  src="./images/bb.svg"
+        <img  src="./images/black-bishop-left.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(6)").append(
 		`
         <div class="chess--piece" id="black-bishop-right" data-team="dragon">
-        <img  src="./images/bb.svg"
+        <img  src="./images/black-bishop-right.svg"
         </div>
          `
 	);
@@ -70,70 +71,70 @@ const showChessPieces = async () => {
 	$("div.square:nth-child(4)").append(
 		`
          <div class="chess--piece" id="black-queen" data-team="dragon">
-        <img  src="./images/bq.svg"
+        <img  src="./images/black-queen.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(5)").append(
 		`
          <div class="chess--piece" id="black-king" data-team="dragon">
-        <img  src="./images/bk.svg"
+        <img  src="./images/black-king.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(9)").append(
 		`
          <div class="chess--piece" id="black-pawn-1" data-team="dragon">
-        <img  src="./images/bp.svg"
+        <img  src="./images/black-pawn-1.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(10)").append(
 		`
          <div class="chess--piece" id="black-pawn-2" data-team="dragon">
-        <img  src="./images/bp.svg"
+        <img  src="./images/black-pawn-2.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(11)").append(
 		`
          <div class="chess--piece" id="black-pawn-3" data-team="dragon">
-        <img  src="./images/bp.svg"
+        <img  src="./images/black-pawn-3.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(12)").append(
 		`
          <div class="chess--piece" id="black-pawn-4" data-team="dragon">
-        <img  src="./images/bp.svg"
+        <img  src="./images/black-pawn-4.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(13)").append(
 		`
          <div class="chess--piece" id="black-pawn-5" data-team="dragon">
-        <img  src="./images/bp.svg"
+        <img  src="./images/black-pawn-5.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(14)").append(
 		`
          <div class="chess--piece" id="black-pawn-6" data-team="dragon">
-        <img  src="./images/bp.svg"
+        <img  src="./images/black-pawn-6.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(15)").append(
 		`
          <div class="chess--piece" id="black-pawn-7" data-team="dragon">
-        <img  src="./images/bp.svg"
+        <img  src="./images/black-pawn-7.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(16)").append(
 		`
          <div class="chess--piece" id="black-pawn-8" data-team="dragon">
-        <img  src="./images/bp.svg"
+        <img  src="./images/black-pawn-8.svg"
         </div>
          `
 	);
@@ -143,14 +144,14 @@ const showChessPieces = async () => {
 	$("div.square:nth-child(57)").append(
 		`
          <div class="chess--piece" id="white-castle-left" data-team="phoenix">
-        <img  src="./images/wr.svg"
+        <img  src="./images/white-castle-left.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(64)").append(
 		`
          <div class="chess--piece" id="white-castle-right" data-team="phoenix">
-        <img  src="./images/wr.svg"
+        <img  src="./images/white-castle-right.svg"
         </div>
          `
 	);
@@ -158,14 +159,14 @@ const showChessPieces = async () => {
 	$("div.square:nth-child(58)").append(
 		`
          <div class="chess--piece" id="white-knight-left" data-team="phoenix">
-        <img  src="./images/wn.svg"
+        <img  src="./images/white-knight-left.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(63)").append(
 		`
          <div class="chess--piece" id="white-knight-right" data-team="phoenix">
-        <img  src="./images/wn.svg"
+        <img  src="./images/white-knight-right.svg"
         </div>
          `
 	);
@@ -173,14 +174,14 @@ const showChessPieces = async () => {
 	$("div.square:nth-child(59)").append(
 		`
 		<div class="chess--piece" id="white-bishop-left" data-team="phoenix">
-        <img  src="./images/wb.svg"
+        <img  src="./images/white-bishop-left.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(62)").append(
 		`
         <div class="chess--piece" id="white-bishop-right" data-team="phoenix">
-        <img  src="./images/wb.svg"
+        <img  src="./images/white-bishop-right.svg"
         </div>
          `
 	);
@@ -188,70 +189,70 @@ const showChessPieces = async () => {
 	$("div.square:nth-child(60)").append(
 		`
          <div class="chess--piece" id="white-queen" data-team="phoenix">
-        <img  src="./images/wq.svg"
+        <img  src="./images/white-queen.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(61)").append(
 		`
          <div class="chess--piece" id="white-king" data-team="phoenix">
-        <img  src="./images/wk.svg"
+        <img  src="./images/white-king.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(49)").append(
 		`
          <div class="chess--piece" id="white-pawn-1" data-team="phoenix">
-        <img  src="./images/wp.svg"
+        <img  src="./images/white-pawn-1.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(50)").append(
 		`
          <div class="chess--piece" id="white-pawn-2" data-team="phoenix">
-        <img  src="./images/wp.svg"
+        <img  src="./images/white-pawn-2.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(51)").append(
 		`
          <div class="chess--piece" id="white-pawn-3" data-team="phoenix">
-        <img  src="./images/wp.svg"
+        <img  src="./images/white-pawn-3.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(52)").append(
 		`
          <div class="chess--piece" id="white-pawn-4" data-team="phoenix">
-        <img  src="./images/wp.svg"
+        <img  src="./images/white-pawn-4.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(53)").append(
 		`
          <div class="chess--piece" id="white-pawn-5" data-team="phoenix">
-        <img  src="./images/wp.svg"
+        <img  src="./images/white-pawn-5.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(54)").append(
 		`
          <div class="chess--piece" id="white-pawn-6" data-team="phoenix">
-        <img  src="./images/wp.svg"
+        <img  src="./images/white-pawn-6.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(55)").append(
 		`
          <div class="chess--piece" id="white-pawn-7" data-team="phoenix">
-        <img  src="./images/wp.svg"
+        <img  src="./images/white-pawn-7.svg"
         </div>
          `
 	);
 	$("div.square:nth-child(56)").append(
 		`
          <div class="chess--piece" id="white-pawn-8" data-team="phoenix">
-        <img  src="./images/wp.svg"
+        <img  src="./images/white-pawn-8.svg"
         </div>
          `
 	);
@@ -473,6 +474,7 @@ async function hightLightKing(currentPoint, teamA) {
 	}
 }
 async function dragItem() {
+	await showBoard();
 	$(".wrap--content").css("display", "block");
 	$(".chess--piece").draggable({
 		addClasses: false,
@@ -547,6 +549,7 @@ async function dragItem() {
 				8 * parseInt(endPoint[0]) + parseInt(endPoint[1]);
 			const nameCurrent = $(ui.draggable).attr("id");
 			const teamate = $(ui.draggable).data("team");
+			const squareCurrent = $(ui.draggable).parent().attr("id")
 			if (startPoint[0] == endPoint[0] && startPoint[1] == endPoint[1]) {
 				return;
 			}
@@ -559,10 +562,11 @@ async function dragItem() {
 					// checkMoves = !checkMoves;
 					socket.emit("moved", {
 						sender: socket.Username,
-						name: $(ui.draggable).attr("id"),
+						name: nameCurrent,
 						square: $(this).attr("id"),
 						checkMoves: !checkMoves,
-						color: teamate
+						color: teamate,
+						squareCurrent
 					});
 				}
 				if ($(event.target).hasClass("circleB2")) {
@@ -571,10 +575,11 @@ async function dragItem() {
 					// checkMoves = !checkMoves;
 					socket.emit("moved", {
 						sender: socket.Username,
-						name: $(ui.draggable).attr("id"),
+						name: nameCurrent,
 						square: $(this).attr("id"),
 						checkMoves: !checkMoves,
-						color: teamate
+						color: teamate,
+						squareCurrent
 					});
 				}
 			} else if (teamate == "phoenix" && !checkMoves) {
@@ -584,10 +589,11 @@ async function dragItem() {
 					// checkMoves = !checkMoves;
 					socket.emit("moved", {
 						sender: socket.Username,
-						name: $(ui.draggable).attr("id"),
+						name: nameCurrent,
 						square: $(this).attr("id"),
 						checkMoves: !checkMoves,
-						color: teamate
+						color: teamate,
+						squareCurrent
 					});
 				}
 				if ($(event.target).hasClass("circleB2")) {
@@ -596,10 +602,11 @@ async function dragItem() {
 					// checkMoves = !checkMoves;
 					socket.emit("moved", {
 						sender: socket.Username,
-						name: $(ui.draggable).attr("id"),
+						name: nameCurrent,
 						square: $(this).attr("id"),
 						checkMoves: !checkMoves,
-						color: teamate
+						color: teamate,
+						squareCurrent
 					});
 				}
 			}
@@ -611,86 +618,6 @@ async function dragItem() {
 		}
 	});
 }
-/* function timeOut(name) {
-    var elem = document.getElementById(name);
-    var width = 100;
-    var id = setInterval(frame, 30);
-    function frame() {
-        if (width == 0) {
-			$(".progress-slide").removeClass("bar-show");
-			if(elem =="bar1"){
-				$("#progress1").css("width","100%")
-				$("#progress2").addClass("bar-show");
-				timeOut("bar2")
-			}else{
-				$("#progress2").css("width","100%")
-				$("#progress1").addClass("bar-show")
-				timeOut("bar1")
-			}
-			checkMoves=!checkMoves
-            clearInterval(id);
-        } else {
-            width--;
-            elem.style.width = width + '%';
-        }
-	}
-} */
-/* function socketIo(s) {
-	$("#messageForm").submit(e => {
-		e.preventDefault();
-		socket.emit("send message", $("#message").val());
-		$("#message").val("");
-	});
-	socket.on("new message", data => {
-		$("#chatWindow").append(`${data.msg} <br>`);
-	});
-	$("#usernameForm").submit(e => {
-		if ($("#users").html()) {
-			return;
-		}
-		e.preventDefault();
-		socket.emit("new user", $("#username").val());
-		$("#username").val("");
-	});
-	socket.on("name user", data => {
-		if (data.length <= 1) {
-			$("#users").append(
-				`<div class="nameUser"><p>${data[0].name}</p></div>`
-			);
-		} else {
-			$("#users").html("");
-			for (let i of data) {
-				$("#users").append(
-					`<div class="nameUser"><p>${i.name}</p></div>`
-				);
-			}
-		}
-		$("#namesWrapper").css("display", "none");
-		$("#mainWrapper").css("display", "block");
-		challenge();
-	});
-	socket.on("cannot create user", name => {
-		$("#namesWrapper p").html(
-			`Create Username: Đã có người sử dụng tên "${
-				name.name
-			}" này vui lòng tạo tên khác`
-		);
-	});
-	function challenge(arguments) {
-		$(".nameUser").click(function(e) {
-			socket.emit("challenge", { data: $(this).text() });
-		});
-	}
-	socket.on("createBoard", function(e) {
-		$("#container").css("display", "none");
-		$(".wrap--content").css("display", "block");
-	});
-	socket.on("moveSuccess", function(move) {
-		checkMoves = move.checkMoves;
-		$(`#${move.square}`).html("");
-		$(`#${move.piece}`).appendTo($(`#${move.square}`));
-	});
-} */
 function alertBeautiful(type, data, content, timeout) {
 	toastr.options = {
 		closeButton: true,
@@ -712,6 +639,7 @@ function alertBeautiful(type, data, content, timeout) {
 	data ? toastr[`${type}`](`${data} ${content}`, "Thông Báo") : null;
 }
 async function logOut() {
+	checkMoves = true;
 	$("#btnLogout").click(function(e) {
 		e.preventDefault;
 		socket.emit("logout");
@@ -733,7 +661,8 @@ function challengeSend(e) {
 	if (socket.Username && socket.Username != target) {
 		socket.emit("challenging", {
 			challenger: socket.Username,
-			target: target
+			target: target,
+			id: socket.id
 		});
 	}
 }
@@ -790,9 +719,14 @@ function styleForm() {
 }
 function socketIoMrCuong() {
 	socket.on("server-send-dangky-thatbai", function() {
-		$(".popover-dismiss").popover({
-			trigger: "focus"
-		});
+		if($('#txtUsername').val()==""){
+			$(".fs-message-error").addClass('fs-show').text("Hãy nhập tên của bạn vào!");
+		}else{
+			$(".fs-message-error").addClass('fs-show').text("Tên này đã có người dùng!");
+		}
+		$('#txtUsername').on("input",function  (e) {
+			$(".fs-message-error").removeClass('fs-show').text("");
+		})
 		$(".chat-room").css("visibility", "hidden");
 	});
 
@@ -968,9 +902,10 @@ function socketIoMrCuong() {
 
 		$("#submitChallenge").click(function(e) {
 			if (e.target) {
-				socket.emit("accepted", {
+				socket.emit("userA", {
 					challenger: data.challenger,
-					target: data.target
+					target: data.target,
+					id: data.id
 				});
 				dragItem();
 				alertBeautiful(
@@ -985,23 +920,20 @@ function socketIoMrCuong() {
 		const myTimeOut = setTimeout(() => {
 			socket.emit("declined", {
 				challenger: data.challenger,
-				target: data.target
+				target: data.target,
+				id: socket.id
 			});
 		}, 5001);
 	});
 
 	socket.on("challenge-status", data => {
 		if (data.status === "accepted") {
-			socket.emit("join-room", {
+			socket.emit("userB", {
 				target: data.target,
-				challenger: data.challenger
+				challenger: data.challenger,
+				id: data.id
 			});
-			alertBeautiful(
-				"info",
-				"Bạn",
-				"được quyền đi quân đen trước",
-				3000
-			);
+			alertBeautiful("info", "Bạn", "được quyền đi quân đen trước", 3000);
 			dragItem();
 		} else {
 			alertBeautiful(
@@ -1055,8 +987,55 @@ function socketIoMrCuong() {
 			}, 5001);
 		}
 
-		$(`#${data.data.square}`).html("");
-		$(`#${data.data.name}`).appendTo($(`#${data.data.square}`));
+		$(`#${data.data.squareCurrent}`).html("");
+		$(`#${data.data.square}`).html(`
+		<div class="chess--piece ui-draggable-handle" id="${data.data.name}" data-team="${data.data.color}">
+        <img src="./images/${data.data.name}.svg" <="" div="">
+         </div>
+		`);
+		// $(`#${data.data.name}`).appendTo($(`#${data.data.square}`));
+		$(".chess--piece").draggable({
+			addClasses: false,
+			helper: "clone",
+			start: function(event, ui) {
+				$(ui.helper).addClass("ui-helper");
+				$(this)
+					.parent()
+					.addClass("hight--light");
+				$(this).addClass("hidden");
+				let currentName = $(this).attr("id");
+				let currentPoint = Number(
+					$(this)
+						.parent()
+						.attr("id")
+				);
+				const teamA = $(`#${currentPoint}`)
+					.find(".chess--piece")
+					.data("team");
+				if (currentName.indexOf("castle") != -1) {
+					highLightHorizontalVertical(currentPoint, teamA);
+				}
+				if (currentName.indexOf("knight") != -1) {
+					highLightFrogging(currentPoint, teamA);
+				}
+				if (currentName.indexOf("bishop") != -1) {
+					hightLightDiagonally(currentPoint, teamA);
+				}
+				hightLightPawn(currentPoint, currentName, teamA);
+				if (currentName.indexOf("king") != -1) {
+					hightLightKing(currentPoint, teamA);
+				}
+				if (currentName.indexOf("queen") != -1) {
+					highLightHorizontalVertical(currentPoint, teamA);
+					hightLightDiagonally(currentPoint, teamA);
+				}
+			},
+			stop: function(event, ui) {
+				$(".square").removeClass("circleB");
+				$(".square").removeClass("circleB2");
+				$(this).removeClass("hidden");
+			}
+		});
 		$(".progress-slide").removeClass("bar-show");
 		$(".userOnline h5").each(function() {
 			if ($(this).html() == data.name) {
@@ -1069,7 +1048,9 @@ function socketIoMrCuong() {
 			? $("#progress1").addClass("bar-show")
 			: $("#progress2").addClass("bar-show");
 	});
-	socket.on("out-chess", function(data) {
+	socket.on("out-chess", async function(data) {
+		await dragItem();
+		checkMoves = true;
 		const nameuser = $(".active")
 			.find(".text-small strong")
 			.text();
@@ -1087,6 +1068,10 @@ function socketIoMrCuong() {
 }
 
 $(async () => {
+	$(".buttonAI").click(function(e) {
+		e.preventDefault;
+		$('.boardAI').toggleClass("boardShow")
+	});
 	await styleForm();
 	await socketIoMrCuong();
 	await showBoard();

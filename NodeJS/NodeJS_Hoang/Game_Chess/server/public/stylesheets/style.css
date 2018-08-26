@@ -26,6 +26,54 @@ body {
   height: 100%;
 }
 
+.bacham {
+  height: 50px;
+  text-align: center;
+  width: 150px;
+}
+
+.bacham span:nth-child(1) {
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-color: #1d9ce5;
+  margin: 5px;
+  animation: nay 400ms linear 0ms infinite forwards;
+  animation-direction: alternate;
+}
+
+.bacham span:nth-child(2) {
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-color: #e57e1d;
+  margin: 5px;
+  animation: nay 400ms linear 75ms infinite forwards;
+  animation-direction: alternate;
+}
+
+.bacham span:nth-child(3) {
+  display: inline-block;
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-color: #9c22cc;
+  margin: 5px;
+  animation: nay 800ms linear 150ms infinite forwards;
+  animation-direction: alternate;
+}
+
+@keyframes nay {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
 /* ban co cua nam */
 
 /* input {
@@ -304,4 +352,28 @@ body {
 
 #txtUsername {
   height: 80px;
+}
+
+.board {
+  width: 400px;
+  margin: auto
+}
+
+.info {
+  max-width: 400px;
+  margin: auto;
+  display: none;
+}
+
+.move-history {
+  max-height: 100px;
+  overflow-y: scroll;
+}
+
+.boardAI {
+  display: none
+}
+
+.boardShow {
+  display: block
 }

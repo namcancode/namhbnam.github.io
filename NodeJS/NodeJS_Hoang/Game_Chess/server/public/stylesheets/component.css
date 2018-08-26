@@ -736,7 +736,7 @@ button.fs-submit:hover, button.fs-submit:focus, button.fs-continue:hover {
 
 .fs-message-error {
 	position: absolute;
-	bottom: 75%;
+	bottom: -40%;
 	left: 50%;
 	z-index: 800;
 	max-width: 960px;
