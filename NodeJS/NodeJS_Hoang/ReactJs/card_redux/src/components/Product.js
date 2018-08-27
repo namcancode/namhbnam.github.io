@@ -2,14 +2,12 @@ import React, { Component } from "react";
 
 class Product extends Component {
 	showRating(rating) {
-		let result = [];
-		if (rating > 0) {
-			for (let i = 1; i <= rating; i++) {
-				result.push(<i key={i} className="fa fa-star" />);
-			}
-			for (let j = 1; j <= 5 - rating; j++) {
-				result.push(<i key={j+10} className="fa fa-star-o" />);
-			}
+		const result = [];
+		for (var i = 1; i <= rating; i++) {
+			result.push(<i key={i} className="fa fa-star" />);
+		}
+		for (let j = 1; j <= 5 - rating; j++) {
+			result.push(<i key={i + j} className="fa fa-star-o" />);
 		}
 		return result;
 	}

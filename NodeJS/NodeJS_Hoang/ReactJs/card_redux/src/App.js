@@ -4,6 +4,7 @@ import Message from "./components/Message";
 import Card from "./components/Card";
 import Footer from "./components/Footer";
 import ProductsContainer from "./containers/ProductsContainer";
+import CardContainer from "./containers/CardContainer";
 class App extends Component {
 	render() {
 		return (
@@ -13,7 +14,7 @@ class App extends Component {
 					<div className="container">
 						<ProductsContainer />
 						<Message />
-						<Card />
+						<CardContainer />
 					</div>
 				</main>
 				<Footer />
