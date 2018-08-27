@@ -6,7 +6,9 @@ import PropTypes from "prop-types";
 class ProductsContainer extends Component {
 	render() {
 		const { products } = this.props;
-		return <Products>{this.ShowProducts(products)}</Products>;
+		return <Products>
+			{this.ShowProducts(products)}
+		</Products>;
 	}
 
 	ShowProducts(products) {
@@ -16,7 +18,6 @@ class ProductsContainer extends Component {
 				return <Product key={index} product={product} />;
 			});
 		}
-
 		return result;
 	}
 }

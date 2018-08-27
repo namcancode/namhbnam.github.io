@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import CardItem from "./CardItem";
-import CardResult from "./CardResult";
 class Card extends Component {
 	render() {
+		const {children} = this.props;
 		return (
 			<section className="section">
 				<div className="table-responsive">
@@ -18,10 +18,7 @@ class Card extends Component {
 							</tr>
 						</thead>
 						<tbody>
-							<CardItem />
-							<CardItem />
-							<CardItem />
-							<CardResult />
+							{children}
 						</tbody>
 					</table>
 				</div>

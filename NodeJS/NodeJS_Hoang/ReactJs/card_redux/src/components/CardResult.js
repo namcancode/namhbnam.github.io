@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class CardResult extends Component {
 	render() {
+		const {card} = this.props
 		return (
 			<tr>
 				<td colSpan="3" />
@@ -12,7 +13,7 @@ class CardResult extends Component {
 				</td>
 				<td>
 					<h4>
-						<strong>15$</strong>
+						<strong>{this.showTotalAmount(card)}$</strong>
 					</h4>
 				</td>
 				<td colSpan="3">
@@ -26,6 +27,16 @@ class CardResult extends Component {
 				</td>
 			</tr>
 		);
+	}
+
+	showTotalAmount = card =>{
+		let total = 0;
+		if(card.length > 0){
+			for(let i = 0; i<card.length;i++){
+				total += card[i].product.price * card[i].quantity
+			}
+		}
+		return total
 	}
 }
 
