@@ -901,6 +901,7 @@ function socketIoMrCuong() {
 		);
 
 		$("#submitChallenge").click(function(e) {
+			$('#toast-container').remove()
 			if (e.target) {
 				socket.emit("userA", {
 					challenger: data.challenger,
@@ -914,6 +915,7 @@ function socketIoMrCuong() {
 					"được quyền đi quân đen trước",
 					3000
 				);
+
 			}
 		});
 
