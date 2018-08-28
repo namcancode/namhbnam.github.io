@@ -25,6 +25,14 @@ const card = (state = initialState, action) => {
 			}
 			localStorage.setItem("CARD", JSON.stringify(state));
 			return [...state];
+
+		case Types.UPDATE_PRODUCT_IN_CARD:
+			index = findProductInCard(state, product);
+			if (index !== -1) {
+				state[index].quantity = quantity;
+			}
+			localStorage.setItem("CARD", JSON.stringify(state));
+			return [...state];
 		default:
 			return [...state];
 	}

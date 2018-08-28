@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-
+import * as Message from "../contants/Message";
 class CardItem extends Component {
+
+
 	render() {
 		const { item } = this.props;
+
 		return (
 			<tr>
 				<th scope="row">
@@ -25,12 +28,24 @@ class CardItem extends Component {
 						data-toggle="buttons"
 					>
 						<label
+							onClick={() =>
+								this.onUpdateQuantity(
+									item.product,
+									item.quantity - 1
+								)
+							}
 							className="btn btn-sm btn-primary
                                               btn-rounded waves-effect waves-light"
 						>
 							<a>—</a>
 						</label>
 						<label
+							onClick={() =>
+								this.onUpdateQuantity(
+									item.product,
+									item.quantity + 1
+								)
+							}
 							className="btn btn-sm btn-primary
                                               btn-rounded waves-effect waves-light"
 						>
@@ -38,7 +53,7 @@ class CardItem extends Component {
 						</label>
 					</div>
 				</td>
-				<td>{this.showSubTotal(item.product.price,item.quantity)}$</td>
+				<td>{this.showSubTotal(item.product.price, item.quantity)}$</td>
 				<td>
 					<button
 						type="button"
@@ -47,7 +62,7 @@ class CardItem extends Component {
 						data-placement="top"
 						title=""
 						data-original-title="Remove item"
-						onClick = {()=>this.onDelete(item.product)}
+						onClick={() => this.onDelete(item.product)}
 					>
 						X
 					</button>
@@ -55,14 +70,25 @@ class CardItem extends Component {
 			</tr>
 		);
 	}
-	showSubTotal = (price,quantity)=>{
-		return price * quantity
-	}
-	onDelete = (product)=>{
-		const {onDeleteProductInCard} = this.props
-		onDeleteProductInCard(product)
-	}
-
+	showSubTotal = (price, quantity) => {
+		return price * quantity;
+	};
+	onDelete = product => {
+		const { onDeleteProductInCard, onChangeMessage } = this.props;
+		onDeleteProductInCard(product);
+		onChangeMessage(Message.MSG_DELETE_PRODUCT_IN_CARD_SUCCESS);
+	};
+	onUpdateQuantity = (product, quantity) => {
+		const { onDeleteProductInCard, onChangeMessage,onUpdateProductInCard } = this.props;
+		if(quantity > 0){
+			onChangeMessage(Message.MSG_UPDATE_CARD_SUCCESS);
+		}
+		else{
+			onDeleteProductInCard(product);
+			onChangeMessage(Message.MSG_DELETE_PRODUCT_IN_CARD_SUCCESS);
+		}
+		onUpdateProductInCard(product,quantity)
+	};
 }
 
 export default CardItem;

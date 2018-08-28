@@ -5,7 +5,7 @@ import Card from "../components/Card";
 import * as Message from "../contants/Message";
 import CardItem from "../components/CardItem";
 import CardResult from "../components/CardResult";
-import { actDeleteProductInCard } from "../actions";
+import { actDeleteProductInCard, actChangeMessage, actUpdateProductInCard } from "../actions";
 class CardContainer extends Component {
 	render() {
 		const { card } = this.props;
@@ -18,7 +18,7 @@ class CardContainer extends Component {
 	}
 
 	showCardItem = card => {
-		const {onDeleteProductInCard} = this.props
+		const {onDeleteProductInCard,onChangeMessage,onUpdateProductInCard} = this.props
 		let result = (
 			<tr>
 				<td>{Message.MSG_CARD_EMPTY}</td>
@@ -32,6 +32,8 @@ class CardContainer extends Component {
 						item={item}
 						index={index}
 						onDeleteProductInCard={onDeleteProductInCard}
+						onChangeMessage={onChangeMessage}
+						onUpdateProductInCard={onUpdateProductInCard}
 					/>
 				);
 			});
@@ -60,7 +62,10 @@ CardContainer.propTypes = {
 			}).isRequired,
 			quantity: PropTypes.number.isRequired
 		})
-	).isRequired
+	).isRequired,
+	onDeleteProductInCard: PropTypes.func.isRequired,
+	onChangeMessage: PropTypes.func.isRequired,
+	onUpdateProductInCard: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
@@ -72,6 +77,12 @@ const mapDispatchToProps = (dispatch, props) => {
 	return {
 		onDeleteProductInCard: product => {
 			dispatch(actDeleteProductInCard(product));
+		},
+		onChangeMessage: message => {
+			dispatch(actChangeMessage(message))
+		},
+		onUpdateProductInCard :(product, quantity) => {
+			dispatch(actUpdateProductInCard(product, quantity))
 		}
 	};
 };

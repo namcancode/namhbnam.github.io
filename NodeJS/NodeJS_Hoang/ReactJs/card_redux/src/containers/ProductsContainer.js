@@ -41,7 +41,8 @@ ProductsContainer.propTypes = {
 			rating: PropTypes.number.isRequired
 		})
 	).isRequired,
-	onChangeMessage :PropTypes.func.isRequired
+	onChangeMessage :PropTypes.func.isRequired,
+	onAddToCard:PropTypes.func.isRequired
 };
 const mapStateToProps = state => {
 	return {
