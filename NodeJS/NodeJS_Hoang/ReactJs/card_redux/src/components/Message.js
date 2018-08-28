@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 class Message extends Component {
 	render() {
+		const {message} = this.props
 		return (
 			<h3>
 				<span className="badge amber darken-2">
-					Mua Hàng Thành Công !
+				{message}
 				</span>
-				<button className="btn aqua-gradient btn-rounded">Aqua</button>
 			</h3>
 		);
 	}

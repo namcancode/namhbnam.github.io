@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import * as  Message from '../contants/Message'
 class Product extends Component {
 	showRating(rating) {
 		const result = [];
@@ -46,6 +46,7 @@ class Product extends Component {
 									data-placement="top"
 									title=""
 									data-original-title="Add to Cart"
+									onClick={() => this.onAddToCard(product)}
 								>
 									<i className="fa fa-shopping-cart" />
 								</a>
@@ -56,6 +57,11 @@ class Product extends Component {
 			</div>
 		);
 	}
+
+	onAddToCard = product => {
+		this.props.onAddToCard(product);
+		this.props.onChangeMessage(Message.MSG_ADD_TO_CARD_SUCCESS)
+	};
 }
 
 export default Product;

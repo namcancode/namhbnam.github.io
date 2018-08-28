@@ -5,6 +5,7 @@ import Card from "../components/Card";
 import * as Message from "../contants/Message";
 import CardItem from "../components/CardItem";
 import CardResult from "../components/CardResult";
+import { actDeleteProductInCard } from "../actions";
 class CardContainer extends Component {
 	render() {
 		const { card } = this.props;
@@ -17,10 +18,22 @@ class CardContainer extends Component {
 	}
 
 	showCardItem = card => {
-		let result = Message.MSG_CARD_EMPTY;
+		const {onDeleteProductInCard} = this.props
+		let result = (
+			<tr>
+				<td>{Message.MSG_CARD_EMPTY}</td>
+			</tr>
+		);
 		if (card.length > 0) {
 			result = card.map((item, index) => {
-				return <CardItem key={index} item={item} index={index} />;
+				return (
+					<CardItem
+						key={index}
+						item={item}
+						index={index}
+						onDeleteProductInCard={onDeleteProductInCard}
+					/>
+				);
 			});
 		}
 		return result;
@@ -28,7 +41,7 @@ class CardContainer extends Component {
 	showCardTotalAmount = card => {
 		let result = null;
 		if (card.length > 0) {
-			result =  <CardResult card={card} />;
+			result = <CardResult card={card} />;
 		}
 		return result;
 	};
@@ -55,8 +68,15 @@ const mapStateToProps = state => {
 		card: state.card
 	};
 };
+const mapDispatchToProps = (dispatch, props) => {
+	return {
+		onDeleteProductInCard: product => {
+			dispatch(actDeleteProductInCard(product));
+		}
+	};
+};
 
 export default connect(
 	mapStateToProps,
-	null
+	mapDispatchToProps
 )(CardContainer);

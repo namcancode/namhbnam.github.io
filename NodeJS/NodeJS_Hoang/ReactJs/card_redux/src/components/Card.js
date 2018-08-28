@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CardItem from "./CardItem";
+// import CardItem from "./CardItem";
 class Card extends Component {
 	render() {
 		const {children} = this.props;

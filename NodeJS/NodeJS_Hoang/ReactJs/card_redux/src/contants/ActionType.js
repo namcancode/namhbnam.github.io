@@ -1,1 +1,3 @@
-export const ADD_TO_CARD = 'ADD_TO_CARD'
+export const ADD_TO_CARD = "ADD_TO_CARD";
+export const DELETE_PRODUCT_IN_CARD = "DELETE_PRODUCT_IN_CARD";
+export const CHANGE_MESSAGE = "CHANGE_MESSAGE";

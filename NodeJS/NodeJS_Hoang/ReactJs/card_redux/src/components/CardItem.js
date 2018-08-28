@@ -47,6 +47,7 @@ class CardItem extends Component {
 						data-placement="top"
 						title=""
 						data-original-title="Remove item"
+						onClick = {()=>this.onDelete(item.product)}
 					>
 						X
 					</button>
@@ -57,6 +58,11 @@ class CardItem extends Component {
 	showSubTotal = (price,quantity)=>{
 		return price * quantity
 	}
+	onDelete = (product)=>{
+		const {onDeleteProductInCard} = this.props
+		onDeleteProductInCard(product)
+	}
+
 }
 
 export default CardItem;

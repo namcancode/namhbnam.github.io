@@ -1,41 +1,45 @@
-import * as types from "../contants/ActionType";
+import * as Types from "../contants/ActionType";
 const data = JSON.parse(localStorage.getItem("CARD"));
-const initialState = [
-	{
-		product: {
-			id: 2,
-			name: "Iphone 8 Plus",
-			image:
-				"https://cdn.tgdd.vn/Products/Images/42/114110/iphone-8-plus-hh-600x600.jpg",
-			description: "Sản phẩm do China sản xuất",
-			price: 300,
-			inventory: 15,
-			rating: 4
-		},
-		quantity: 5
-	},
-	{
-		product: {
-			id: 1,
-			name: "Iphone X",
-			image:
-				"https://cdn.fptshop.com.vn/Uploads/Originals/2017/12/8/636483219613202713_1.jpg",
-			description: "Sản phẩm do apple sản xuất",
-			price: 500,
-			inventory: 10,
-			rating: 3
-		},
-		quantity: 6
-	}
-];
+const initialState = data ? data : [];
 
 const card = (state = initialState, action) => {
+	const { product, quantity } = action;
+	let index = -1;
 	switch (action.type) {
-		case types.ADD_TO_CARD:
-			console.log(action);
+		case Types.ADD_TO_CARD:
+			index = findProductInCard(state, product);
+			if (index !== -1) {
+				state[index].quantity += quantity;
+			} else {
+				state.push({
+					product,
+					quantity
+				});
+			}
+			localStorage.setItem("CARD", JSON.stringify(state));
+			return [...state];
+		case Types.DELETE_PRODUCT_IN_CARD:
+			index = findProductInCard(state, product);
+			if (index !== -1) {
+				state.splice(index, 1);
+			}
+			localStorage.setItem("CARD", JSON.stringify(state));
 			return [...state];
 		default:
 			return [...state];
 	}
+};
+
+const findProductInCard = (card, product) => {
+	let index = -1;
+	if (card.length > 0) {
+		for (let i = 0; i < card.length; i++) {
+			if (card[i].product.id === product.id) {
+				index = i;
+				break;
+			}
+		}
+	}
+	return index;
 };
 export default card;
