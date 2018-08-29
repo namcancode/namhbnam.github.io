@@ -1,27 +1,30 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
+import Contact from "./components/Contact";
+import NotFound from "./components/NotFound";
+import Menu from './components/Menu'
+
+
 class App extends Component {
 	render() {
 		return (
-		<Router>
-      	<div className="App">
-				{/* Menu */}
-				<nav class="nav justify-content-center|justify-content-end">
-					<a class="nav-link active" href="">
-						Trang chủ
-					</a>
-					<a class="nav-link" href="">
-						Liên Hệ
-					</a>
-				</nav>
-				{/* Nội Dung */}
-				<Route path="/" exact component={Home} />
-				<Route path="/about" component={About} />
-			</div>
-    </Router>
+			<Router>
+				<div className="App">
+					{/* Menu */}
+<Menu></Menu>
+
+					{/* Nội Dung */}
+					<Switch>
+						<Route path="/" exact component={Home} />
+						<Route path="/about" component={About} />
+						<Route path="/contact" component={Contact} />
+						<Route component={NotFound} />
+					</Switch>
+				</div>
+			</Router>
 		);
 	}
 }

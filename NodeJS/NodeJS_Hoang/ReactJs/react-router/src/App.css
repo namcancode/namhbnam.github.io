@@ -22,7 +22,16 @@
   font-size: large;
 }
 
+/* .active {
+  background-color:rgba(54, 54, 54, 0.1);
+
+} */
+
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
