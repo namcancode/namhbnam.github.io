@@ -1,5 +1,28 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+
+const menus = [
+	{
+		name: "Trang Chủ",
+		to: "/",
+		exact: true
+	},
+	{
+		name: "About",
+		to: "/about",
+		exact: false
+	},
+	{
+		name: "Contact",
+		to: "/contact",
+		exact: false
+	},
+	{
+		name: "Product",
+		to: "/product",
+		exact: false
+	}
+];
 
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
 	return (
@@ -7,7 +30,6 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
 			path={to}
 			exact={activeOnlyWhenExact}
 			children={({ match }) => {
-				console.log(match);
 				const active = match ? "active" : "";
 				const classCurrent = "nav-item";
 				const classN = `${active} ${classCurrent}`;
@@ -24,53 +46,39 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
 };
 class Menu extends Component {
 	render() {
-		return <div>
-			<nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
-						<div
-							className="collapse navbar-collapse"
-							id="basicExampleNav"
-						>
-							<ul className="navbar-nav mr-auto">
-								<MenuLink
-									label="Trang Chủ"
-									to="/"
-									activeOnlyWhenExact={true}
-								/>
+		return (
+			<div>
+				<nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
+					<div
+						className="collapse navbar-collapse"
+						id="basicExampleNav"
+					>
+						<ul className="navbar-nav mr-auto">
+							{this.showMenus(menus)}
 
-								<MenuLink label="About" to="/about" />
-
-								<MenuLink label="Contact" to="/contact" />
-
-								<li className="nav-item dropdown">
-									<a
-										className="nav-link dropdown-toggle"
-										id="navbarDropdownMenuLink"
-										data-toggle="dropdown"
-										aria-haspopup="true"
-										aria-expanded="false"
-									>
-										Dropdown
-									</a>
-									<div
-										className="dropdown-menu dropdown-primary"
-										aria-labelledby="navbarDropdownMenuLink"
-									>
-										<a className="dropdown-item" href="">
-											Action
-										</a>
-										<a className="dropdown-item" href="">
-											Another action
-										</a>
-										<a className="dropdown-item" href="">
-											Something else here
-										</a>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</nav>
-		</div>;
+						</ul>
+					</div>
+				</nav>
+			</div>
+		);
 	}
+
+	showMenus = menus => {
+		let result = null;
+		if (menus.length > 0) {
+			result = menus.map((menu, index) => {
+				return (
+					<MenuLink
+						key={index}
+						label={menu.name}
+						to={menu.to}
+						activeOnlyWhenExact={menu.exact}
+					/>
+				);
+			});
+		}
+		return result;
+	};
 }
 
 export default Menu;
