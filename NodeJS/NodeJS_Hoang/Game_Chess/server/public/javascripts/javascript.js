@@ -1,5 +1,5 @@
 const socket = io(`${location.protocol}//${document.domain}:4000`);
-let checkMoves = true; //true là quân black (random)
+let checkMoves = true; //true là quân black (random) dasd
 const showBoard = async () => {
 	$(".chess--board").html("");
 	for (let i = 0; i < 8; i++) {

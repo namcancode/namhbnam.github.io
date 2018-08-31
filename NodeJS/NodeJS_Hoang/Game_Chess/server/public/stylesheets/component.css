@@ -708,7 +708,7 @@ button.fs-submit, button.fs-continue {
 button.fs-continue {
 	position: absolute;
 	right: 0;
-	top: 230%;
+	top: 200%;
 	margin: 0 40px 60px 0;
 	font-size: 1.25em;
 }
@@ -732,7 +732,7 @@ button.fs-submit:hover, button.fs-submit:focus, button.fs-continue:hover {
 	pointer-events: none;
 }
 
-/* Error message */
+/* Error messae */
 
 .fs-message-error {
 	position: absolute;
