@@ -21,6 +21,11 @@ const menus = [
 		name: "Product",
 		to: "/product",
 		exact: false
+	},
+	{
+		name: "Đăng Nhập",
+		to: "/login",
+		exact: false
 	}
 ];
 
@@ -48,7 +53,7 @@ class Menu extends Component {
 	render() {
 		return (
 			<div>
-				<nav className="navbar navbar-expand-lg navbar-light warning-color lighten-5">
+				<nav className="navbar navbar-expand navbar-light warning-color lighten-5">
 					<div
 						className="collapse navbar-collapse"
 						id="basicExampleNav"

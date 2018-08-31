@@ -35,6 +35,9 @@ class Products extends Component {
 			);
 		});
 
+		const {location} = this.props
+		console.log(location);
+
 		return (
 			<div className="container">
 				<h1>Đấy là danh sách sản phẩm</h1>
