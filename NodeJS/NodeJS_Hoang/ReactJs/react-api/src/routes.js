@@ -20,6 +20,11 @@ const routes = [
 		main: () => <ProductActionPage />
 	},
 	{
+		path: "/product/:id/edit",
+		exact: false,
+		main: ({match}) => <ProductActionPage match = {match}/>
+	},
+	{
 		path: "",
 		exact: false,
 		main: () => <NotFoundPage />
