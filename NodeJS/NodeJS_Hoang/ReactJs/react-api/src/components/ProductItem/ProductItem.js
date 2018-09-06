@@ -4,7 +4,7 @@ class ProductItem extends Component {
 	render() {
 		const { product, index } = this.props;
 		const statusName = product.status ? "Còn Hàng" : "Hết Hàng";
-		const statusClass = product.status ? "waring" : "default";
+		const statusClass = product.status ? "warning" : "default";
 		return (
 			<tr>
 				<td>{index + 1}</td>
@@ -18,7 +18,7 @@ class ProductItem extends Component {
 				</td>
 				<td>
 					<button type="button" className="btn btn-success">
-						Sủa
+						Sửa
 					</button>
 					<button type="button" className="btn btn-danger">
 						Xóa
